@@ -1,3 +1,5 @@
+<%@page import="Model.DAO"%>
+<%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -26,9 +28,26 @@
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
+
+	<!-- MemberVO, DAO 객체생성(진기현) -->
+	<%
+	  //mebervo객체 생성
+      MemberVO vo = (MemberVO)session.getAttribute("vo");
+      
+      //DAO객체 생성
+      DAO dao = new DAO();
+
+   %>
+
+
 	<ul id="login">
-		<li><a href="join.jsp">회원가입</a></li>
-		<li><a href="login.jsp">로그인</a></li>
+		<% if(vo == null){ %>
+			<li><a href="join.jsp">회원가입</a></li>
+			<li><a href="login.jsp">로그인</a></li>
+		<%}else{ %>
+			<li><a href="LogoutService">로그아웃</a></li>
+			<li><a href="mypage.jsp">마이페이지</a></li>
+		<%} %>
 	</ul>
 
 	<nav
