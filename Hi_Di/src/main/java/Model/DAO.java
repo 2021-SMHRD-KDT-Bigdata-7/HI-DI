@@ -56,7 +56,7 @@ public class DAO {
 		try {
 			connection();	//DB연결
 
-			String sql = "insert into t_member values ( ?, ?, ?, ?, ?, ?, ?, ?, sysdate, y, 0 )";	//insert문 가입날짜, 관리자여부, 포인트는 미리지정
+			String sql = "insert into t_member values ( ?, ?, ?, ?, ?, ?, ?, ?, sysdate, 'y', 0 )";	//insert문 가입날짜, 관리자여부, 포인트는 미리지정
 			psmt = conn.prepareStatement(sql);
 
 			//바인드 변수 채우기

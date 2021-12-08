@@ -31,6 +31,21 @@ public class MemberVO {
 		this.mb_point = mb_point;
 	}
 	
+	//가입일, 관리자, 포인트는 디폴트 값으로 정해졌으니 빼고 데이터 넣기 위해서 생성자 재지정(진기현)
+	public MemberVO(String mb_id, String mb_pw, String mb_email, String mb_name, String mb_gender, String mb_phone,
+			String mb_birthdate, String mb_addr) {
+		super();
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+		this.mb_email = mb_email;
+		this.mb_name = mb_name;
+		this.mb_gender = mb_gender;
+		this.mb_phone = mb_phone;
+		this.mb_birthdate = mb_birthdate;
+		this.mb_addr = mb_addr;
+	}
+
+
 	//getter&setter
 	public String getMb_id() {
 		return mb_id;
