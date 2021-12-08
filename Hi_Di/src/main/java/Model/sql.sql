@@ -1,5 +1,10 @@
 select * from t_member;
 
+
+
+
+
+
 --테이블 생성 (진기현)
 CREATE TABLE t_member
 (
