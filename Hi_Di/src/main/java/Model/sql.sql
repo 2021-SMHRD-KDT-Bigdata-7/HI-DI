@@ -1,12 +1,3 @@
-select * from t_member;
-select * from t_disease;
-
-
-
-
-
-
---테이블 생성 (진기현)
 -- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
 
 -- t_member Table Create SQL
@@ -21,7 +12,7 @@ CREATE TABLE t_member
     mb_birthdate    DATE             NOT NULL, 
     mb_addr         VARCHAR2(150)    NOT NULL, 
     mb_joindate     DATE             DEFAULT SYSDATE NOT NULL, 
-    admin_yn        VARCHAR2(1)      DEFAULT 'Y' NOT NULL, 
+    admin_yn        VARCHAR2(1)      NOT NULL, 
     mb_point        NUMBER(12, 0)    DEFAULT 0 NOT NULL, 
      PRIMARY KEY (mb_id)
 )
@@ -67,7 +58,6 @@ COMMENT ON COLUMN t_member.mb_point IS '회원 포인트'
 -- t_disease Table Create SQL
 CREATE TABLE t_disease
 (
-    dis_seq        NUMBER(12, 0)     NOT NULL, 
     dis_code       VARCHAR2(20)      NOT NULL, 
     dis_name       VARCHAR2(50)      NOT NULL, 
     dis_content    VARCHAR2(4000)    NOT NULL, 
@@ -78,38 +68,14 @@ CREATE TABLE t_disease
     dis_pic4       VARCHAR2(150)     NULL, 
     reg_date       DATE              DEFAULT SYSDATE NOT NULL, 
     mb_id          VARCHAR2(20)      NOT NULL, 
-     PRIMARY KEY (dis_seq)
+     PRIMARY KEY (dis_code)
 )
-/
-
-CREATE SEQUENCE t_disease_SEQ
-START WITH 1
-INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER t_disease_AI_TRG
-BEFORE INSERT ON t_disease 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT t_disease_SEQ.NEXTVAL
-    INTO :NEW.dis_seq
-    FROM DUAL;
-END;
-/
-
---DROP TRIGGER t_disease_AI_TRG;
-/
-
---DROP SEQUENCE t_disease_SEQ;
 /
 
 COMMENT ON TABLE t_disease IS '질병 정보'
 /
 
-COMMENT ON COLUMN t_disease.dis_seq IS '질병 순번'
-/
-
-COMMENT ON COLUMN t_disease.dis_code IS '질병 코드'
+COMMENT ON COLUMN t_disease.dis_code IS '질병코드'
 /
 
 COMMENT ON COLUMN t_disease.dis_name IS '질병 명'
@@ -159,7 +125,8 @@ CREATE TABLE t_poll
 
 CREATE SEQUENCE t_poll_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_poll_AI_TRG
@@ -201,17 +168,20 @@ COMMENT ON COLUMN t_poll.reg_date IS '등록 일자'
 CREATE TABLE t_checklist
 (
     check_seq     NUMBER(12, 0)     NOT NULL, 
+    check_age     VARCHAR2(20)      NOT NULL, 
+    check_name    VARCHAR2(20)      NOT NULL, 
     dis_code      VARCHAR2(20)      NOT NULL, 
     check_item    VARCHAR2(4000)    NOT NULL, 
+    check_std     NUMBER            NOT NULL, 
     reg_date      DATE              DEFAULT SYSDATE NOT NULL, 
-    mb_id         VARCHAR2(20)      NOT NULL, 
      PRIMARY KEY (check_seq)
 )
 /
 
 CREATE SEQUENCE t_checklist_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_checklist_AI_TRG
@@ -236,16 +206,22 @@ COMMENT ON TABLE t_checklist IS '질병 체크 리스트'
 COMMENT ON COLUMN t_checklist.check_seq IS '체크 순번'
 /
 
+COMMENT ON COLUMN t_checklist.check_age IS '체크 연령'
+/
+
+COMMENT ON COLUMN t_checklist.check_name IS '체크 질병명'
+/
+
 COMMENT ON COLUMN t_checklist.dis_code IS '질병 코드'
 /
 
 COMMENT ON COLUMN t_checklist.check_item IS '체크 항목'
 /
 
-COMMENT ON COLUMN t_checklist.reg_date IS '등록 일자'
+COMMENT ON COLUMN t_checklist.check_std IS '체크 기준'
 /
 
-COMMENT ON COLUMN t_checklist.mb_id IS '등록자 아이디'
+COMMENT ON COLUMN t_checklist.reg_date IS '등록 일자'
 /
 
 ALTER TABLE t_checklist
@@ -268,7 +244,8 @@ CREATE TABLE t_disease_history
 
 CREATE SEQUENCE t_disease_history_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_disease_history_AI_TRG
@@ -328,7 +305,8 @@ CREATE TABLE t_health_food
 
 CREATE SEQUENCE t_health_food_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_health_food_AI_TRG
@@ -392,7 +370,8 @@ CREATE TABLE t_food
 
 CREATE SEQUENCE t_food_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_food_AI_TRG
@@ -452,7 +431,8 @@ CREATE TABLE t_poll_items
 
 CREATE SEQUENCE t_poll_items_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_poll_items_AI_TRG
@@ -507,7 +487,8 @@ CREATE TABLE t_mb_answer
 
 CREATE SEQUENCE t_mb_answer_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_mb_answer_AI_TRG
@@ -579,7 +560,8 @@ CREATE TABLE t_hospital
 
 CREATE SEQUENCE t_hospital_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_hospital_AI_TRG
@@ -658,7 +640,8 @@ CREATE TABLE t_point
 
 CREATE SEQUENCE t_point_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_point_AI_TRG
@@ -720,7 +703,8 @@ CREATE TABLE t_recommend
 
 CREATE SEQUENCE t_recommend_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_recommend_AI_TRG
@@ -798,7 +782,8 @@ CREATE TABLE t_user_check
 
 CREATE SEQUENCE t_user_check_SEQ
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1
+NOCACHE;
 /
 
 CREATE OR REPLACE TRIGGER t_user_check_AI_TRG
@@ -844,3 +829,5 @@ ALTER TABLE t_user_check
     ADD CONSTRAINT FK_t_user_check_mb_id_t_member FOREIGN KEY (mb_id)
         REFERENCES t_member (mb_id)
 /
+
+
