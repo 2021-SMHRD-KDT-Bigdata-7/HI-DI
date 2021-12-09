@@ -8178,7 +8178,7 @@ h1, h2, h3, h4, h5,
 .text-primary {
   color: #b1b493 !important; }
 
-/* 로그인 */
+/* 로그인/회원가입 */
 #login{
   width:100%;
   height:4.5vh;
@@ -8203,7 +8203,7 @@ h1, h2, h3, h4, h5,
   color:#777;
 }
 
-/* login페이지 */
+/* login page */
 #loginBody{
   width: 40vw;
   /* height:50vh; */
@@ -8227,7 +8227,7 @@ h1, h2, h3, h4, h5,
   margin: 5vh 0;
 }
 
-/* join 페이지 */
+/* join page*/
 #joinBody{
   width: 40vw;
   /* height:50vh; */
@@ -8455,7 +8455,7 @@ h1, h2, h3, h4, h5,
   font-size: 24px;
   text-transform: uppercase; }
 
-/* 슬라이드 시작 */
+/* 슬라이드 */
 .owl-nav.disabled{
   display:none;
 }
@@ -8470,8 +8470,8 @@ h1, h2, h3, h4, h5,
 }
 #home-section{
   width : 100%;
-  height: 76vh;
-  background-image: url(/images/slide1.jpg);
+  height: 80vh;
+  background: #81A3AA;
   background-size: cover;
 }
 
