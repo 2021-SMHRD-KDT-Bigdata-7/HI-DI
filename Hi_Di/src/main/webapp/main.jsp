@@ -25,6 +25,7 @@
 
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/slide.css">
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -75,9 +76,18 @@
 			</div>
 		</div>
 	</nav>
-	<section id="home-section" class="hero">
-		<div class="slider-homez"></div>
-	</section>
+	<div id="home-section">
+		<div class="gallery">
+			<div class="gallery-container">
+			  <img class="gallery-item gallery-item-1" src="http://fakeimg.pl/300/?text=1" data-index="1">
+			  <img class="gallery-item gallery-item-2" src="http://fakeimg.pl/300/?text=2" data-index="2">
+			  <img class="gallery-item gallery-item-3" src="http://fakeimg.pl/300/?text=3" data-index="3">
+			  <img class="gallery-item gallery-item-4" src="http://fakeimg.pl/300/?text=4" data-index="4">
+			  <img class="gallery-item gallery-item-5" src="http://fakeimg.pl/300/?text=5" data-index="5">
+			</div>
+			<div class="gallery-controls"></div>
+		  </div>
+	</div>
 
 	<section class="ftco-counter img bg-light" id="section-counter">
 		<div class="container">
@@ -89,8 +99,7 @@
 							<span class="flaticon-suitcase"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="750">0</strong> <span>Project
-								Complete</span>
+							<strong class="number" data-number="750">0</strong> <span>Covid 19</span>
 						</div>
 					</div>
 				</div>
@@ -101,8 +110,7 @@
 							<span class="flaticon-loyalty"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="568">0</strong> <span>Happy
-								Clients</span>
+							<strong class="number" data-number="568">0</strong> <span>확진자 수</span>
 						</div>
 					</div>
 				</div>
@@ -113,8 +121,7 @@
 							<span class="flaticon-coffee"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="478">0</strong> <span>Cups
-								of coffee</span>
+							<strong class="number" data-number="478">0</strong> <span>사망자 수</span>
 						</div>
 					</div>
 				</div>
@@ -125,8 +132,7 @@
 							<span class="flaticon-calendar"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="780">0</strong> <span>Years
-								experienced</span>
+							<strong class="number" data-number="780">0</strong> <span>고혈압</span>
 						</div>
 					</div>
 				</div>
@@ -710,6 +716,6 @@
 	<script src="js/script.js"></script>
 
 	<script src="js/main.js"></script>
-
+	<script src="js/slide.js"></script>
 </body>
 </html>

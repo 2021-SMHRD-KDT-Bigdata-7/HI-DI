@@ -8470,11 +8470,10 @@ h1, h2, h3, h4, h5,
 }
 #home-section{
   width : 100%;
-  height: 80vh;
-  background: #81A3AA;
+  height: 76vh;
+  background:#81A3AA;
   background-size: cover;
 }
-
 
 /* 슬라이드 끝 */
 
