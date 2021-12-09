@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class DAO {
 	
@@ -13,6 +14,8 @@ public class DAO {
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 	int cnt = 0;
+	ArrayList<ChecklistVO> checklist = new ArrayList<ChecklistVO>();
+	ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 	
 	//DB연결
 	public void connection() {
@@ -123,5 +126,46 @@ public class DAO {
 		}
 		return vo;
 	}
+	//===================================================================
+	
+	//모든 체크리스트 불러오기
+	public ArrayList<ChecklistVO> SelectChecklist(){
+		try {
+			connection();
+
+			String sql = "select * from t_checklist";
+			psmt = conn.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next() == true) {
+
+				int checkSeq = rs.getInt(1);
+				String checkAge = rs.getString(2);
+				String checkName = rs.getString(3);
+				String disCode = rs.getString(4);
+				String checkItem = rs.getString(5);
+				String checkStd = rs.getString(6);
+				String reg_date = rs.getString(7);
+
+
+				ChecklistVO vo = new ChecklistVO(checkSeq, checkAge, checkName, disCode, checkItem, checkStd, reg_date);
+
+				checklist.add(vo);
+
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		
+		return checklist;
+	}
+	//===================================================================
+	
 	
 }
