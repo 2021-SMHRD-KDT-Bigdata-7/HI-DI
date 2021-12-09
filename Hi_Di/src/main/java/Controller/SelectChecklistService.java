@@ -25,16 +25,22 @@ public class SelectChecklistService extends HttpServlet {
 		DAO dao = new DAO();
 		
 		//DAO가 가진 selectChecklist() 사용
-		ArrayList<ChecklistVO> checklist = dao.SelectChecklist();
-		
+//		ArrayList<ChecklistVO> checklist = dao.SelectChecklist();
 		//checklist의 길이 확인
-		System.out.println(checklist.size());
+//		System.out.println(checklist.size());
+		ArrayList<ChecklistVO> checklist = dao.SelectChecklist();
+		if(checklist != null) {
+			System.out.println("성공");
+			//Forward 방식
+			RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
+			
+			//출발
+			rd.forward(request, response);
+		}else {
+			System.out.println("실패");
+			response.sendRedirect("main.jsp");
+		}
 		
-		//Forward 방식
-		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
-		
-		//출발
-		rd.forward(request, response);
 	}
 
 }

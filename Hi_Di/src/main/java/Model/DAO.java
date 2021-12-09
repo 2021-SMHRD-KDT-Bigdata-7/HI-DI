@@ -116,7 +116,6 @@ public class DAO {
 				vo = new MemberVO(userId, userPw, userEmail, userName, userGender, userPhone,
 						userBirthdate, userAddr, userJoindate, userAadmin_yn, userPoint);
 			}
-
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -145,13 +144,12 @@ public class DAO {
 				String checkName = rs.getString(3);
 				String disCode = rs.getString(4);
 				String checkItem = rs.getString(5);
-				String checkStd = rs.getString(6);
+				int checkStd = rs.getInt(6);
 				String reg_date = rs.getString(7);
 
+				ChecklistVO cvo = new ChecklistVO(checkSeq, checkAge, checkName, disCode, checkItem, checkStd, reg_date);
 
-				ChecklistVO vo = new ChecklistVO(checkSeq, checkAge, checkName, disCode, checkItem, checkStd, reg_date);
-
-				checklist.add(vo);
+				checklist.add(cvo);
 
 			}
 
@@ -167,5 +165,42 @@ public class DAO {
 	}
 	//===================================================================
 	
+//	ChecklistVO cvo = null;
+//	public ChecklistVO SelectChecklist() {
+//		try {
+//			connection();
+//
+//			String sql = "select * from t_checklist";
+//			psmt = conn.prepareStatement(sql);
+//
+//			rs = psmt.executeQuery();	//select문 이므로 executeQuery() --> return ResultSet
+//
+//			if (rs.next() == true) {
+//				//변수 받아오기
+//				int checkSeq = rs.getInt(1);
+//				String checkAge = rs.getString(2);
+//				String checkName = rs.getString(3);
+//				String disCode = rs.getString(4);
+//				String checkItem = rs.getString(5);
+//				int checkStd = rs.getInt(6);
+//				String reg_date = rs.getString(7);
+//				System.out.println(checkAge);
+//				System.out.println(checkName);
+//				System.out.println(disCode);
+//				System.out.println(checkItem);
+//				
+//				//vo지정
+//				ChecklistVO cvo = new ChecklistVO(checkSeq, checkAge, checkName, disCode, checkItem, checkStd, reg_date);
+//			}
+//		} catch (Exception e) {
+//
+//			e.printStackTrace();
+//
+//		} finally {
+//			close();
+//		}
+//		return cvo;
+//	}
+//	
 	
 }

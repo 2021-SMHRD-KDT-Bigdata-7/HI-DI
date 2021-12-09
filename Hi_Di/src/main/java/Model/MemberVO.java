@@ -46,11 +46,6 @@ public class MemberVO {
 	}
 
 
-	public MemberVO(String mb_id, String mb_pw) {
-		this.mb_id = mb_id;
-		this.mb_pw = mb_pw;	
-		}
-
 	//getter&setter
 	public String getMb_id() {
 		return mb_id;

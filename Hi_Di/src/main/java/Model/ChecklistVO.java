@@ -6,12 +6,12 @@ public class ChecklistVO {
 	private String check_name;	//체크리스트 질병명
 	private String dis_code;	//질병 코드
 	private String check_item;	//체크리스트 항목
-	private String check_std; 	//체크리스트 기준
+	private int check_std; 	//체크리스트 기준
 	private String reg_date;	//등록 날짜
 	
 	//생성자
 	public ChecklistVO(int check_seq, String check_age, String check_name, String dis_code, String check_item,
-			String check_std, String reg_date) {
+			int check_std, String reg_date) {
 		super();
 		this.check_seq = check_seq;
 		this.check_age = check_age;
@@ -22,12 +22,6 @@ public class ChecklistVO {
 		this.reg_date = reg_date;
 	}
 
-	public ChecklistVO(String check_age, String check_item, String check_std) {
-		super();
-		this.check_age = check_age;
-		this.check_item = check_item;
-		this.check_std = check_std;
-	}
 
 	//getter&setter
 	public int getCheck_seq() {
@@ -70,11 +64,11 @@ public class ChecklistVO {
 		this.check_item = check_item;
 	}
 
-	public String getCheck_std() {
+	public int getCheck_std() {
 		return check_std;
 	}
 
-	public void setCheck_std(String check_std) {
+	public void setCheck_std(int check_std) {
 		this.check_std = check_std;
 	}
 

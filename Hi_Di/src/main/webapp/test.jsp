@@ -25,13 +25,13 @@
 					<td>질병이름</td>
 					<td>체크항목</td>
 				</tr>
-				<% for(int i=0 ; i<checklist.size() ; i++){%>
+				<%// for(int i=0 ; i<checklist.size() ; i++){%>
 				<tr>
-					<td><%= checklist.get(i).getCheck_age()%></td>
-					<td><%= checklist.get(i).getCheck_item()%></td>
-					<td><%= checklist.get(i).getCheck_name()%></td>
+					<td><%= checklist.get(0).getCheck_age()%></td>
+					<td><%= checklist.get(0).getCheck_item()%></td>
+					<td><%= checklist.get(0).getCheck_name()%></td>
 				</tr>
-				<%} %>
+				<%//} %>
 			</table>
 		</nav>
 		<a href="main.jsp" class="button next scrolly">되돌아가기</a>
