@@ -79,11 +79,12 @@
 	<div id="home-section">
 		<div class="gallery">
 			<div class="gallery-container">
-			  <img class="gallery-item gallery-item-1" src="http://fakeimg.pl/300/?text=1" data-index="1">
-			  <img class="gallery-item gallery-item-2" src="http://fakeimg.pl/300/?text=2" data-index="2">
-			  <img class="gallery-item gallery-item-3" src="http://fakeimg.pl/300/?text=3" data-index="3">
-			  <img class="gallery-item gallery-item-4" src="http://fakeimg.pl/300/?text=4" data-index="4">
-			  <img class="gallery-item gallery-item-5" src="http://fakeimg.pl/300/?text=5" data-index="5">
+			  <!-- a 태그 달아줌 오후 7:00 성수 -->
+			  <a herf = "#"><<img class="gallery-item gallery-item-1" src="http://fakeimg.pl/300/?text=1" data-index="1"></a>
+			  <a herf = "#"><img class="gallery-item gallery-item-2" src="http://fakeimg.pl/300/?text=2" data-index="2"></a>
+			  <a herf = "#"><img class="gallery-item gallery-item-3" src="http://fakeimg.pl/300/?text=3" data-index="3"></a>
+			  <a herf = "#"><img class="gallery-item gallery-item-4" src="http://fakeimg.pl/300/?text=4" data-index="4"></a>
+			  <a herf = "#"><img class="gallery-item gallery-item-5" src="http://fakeimg.pl/300/?text=5" data-index="5"></a>
 			</div>
 			<div class="gallery-controls"></div>
 		  </div>
@@ -166,7 +167,7 @@
 						countries Vokalia and Consonantia</p>
 				</div>
 			</div>
-
+			<!-- a태그 달아줌 성수 -->
 			<div class="row">
 				<div class="col-md-6 col-lg-3">
 					<div
@@ -175,7 +176,7 @@
 							<span class="flaticon-3d-design"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Web Design</h3>
+							<a herf = "#"><h3 class="heading mb-3">Web Design</h3></a>
 							<p>A small river named Duden flows by their place and
 								supplies.</p>
 						</div>
@@ -189,7 +190,7 @@
 							<span class="flaticon-app-development"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Web Application</h3>
+							<a herf = "#"><h3 class="heading mb-3">Web Application</h3></a>
 							<p>A small river named Duden flows by their place and
 								supplies.</p>
 						</div>
@@ -203,7 +204,7 @@
 							<span class="flaticon-web-programming"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Web Development</h3>
+							<a herf = "#"><h3 class="heading mb-3">Web Development</h3></a>
 							<p>A small river named Duden flows by their place and
 								supplies.</p>
 						</div>
@@ -217,7 +218,7 @@
 							<span class="flaticon-branding"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Banner Design</h3>
+							<a href = "#"><h3 class="heading mb-3">Banner Design</h3></a>
 							<p>A small river named Duden flows by their place and
 								supplies.</p>
 						</div>
@@ -234,7 +235,7 @@
 							<span class="flaticon-computer"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Branding</h3>
+							<a href = "#"><h3 class="heading mb-3">Branding</h3></a>
 							<p>A small river named Duden flows by their place and
 								supplies.</p>
 						</div>
@@ -248,7 +249,7 @@
 							<span class="flaticon-vector"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Icon Design</h3>
+							<a href = "#"><h3 class="heading mb-3">Icon Design</h3></a>
 							<p>A small river named Duden flows by their place and
 								supplies.</p>
 						</div>
@@ -262,7 +263,7 @@
 							<span class="flaticon-vector"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Graphic Design</h3>
+							<a href = "#"><h3 class="heading mb-3">Graphic Design</h3></a>
 							<p>A small river named Duden flows by their place and
 								supplies.</p>
 						</div>
@@ -276,7 +277,7 @@
 							<span class="flaticon-zoom"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">SEO</h3>
+							<a href = "#"><h3 class="heading mb-3">SEO</h3></a>
 							<p>A small river named Duden flows by their place and
 								supplies.</p>
 						</div>
