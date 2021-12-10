@@ -25,8 +25,6 @@ public class SelectAllService extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		System.out.println("요청이 들어옴");
 		//DAO객체 생성
 		DAO dao = new DAO();
 		
@@ -35,14 +33,13 @@ public class SelectAllService extends HttpServlet {
 		//checklist의 길이 확인
 //		System.out.println(checklist.size());
 		ArrayList<ChecklistVO> checklist = dao.SelectAll();
-		System.out.println("질의 결과를 받음");
 		
 		// request영역에 Attribute를 추가
 		// request의 주머니에 데이터를 담아준다.
 		request.setAttribute("checklist", checklist);
 		
 		//Forward 방식
-		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("checklist.jsp");
 		
 		//출발
 		rd.forward(request, response);
