@@ -151,6 +151,24 @@
          </div>
       </div>
    </section>
+   
+   
+   <div id = "btn_group1">
+   		<span> 오늘의 자가진단 </span>
+   </div>
+   <br>
+   <br>
+	<div id = "btn_group2">
+		<a href ="#"><button id = "test2_btn1"> 당뇨 자가진단 > </button></a>
+		<a href = "#"><button id = "test2_btn2"> 뇌졸증 자가진단 > </button></a>
+		<a href = "#"><button id = "test2_btn3"> 당뇨 자가진단 > </button></a>
+	</div>
+	<div id = "btn_group3">
+		<a href = "#"><button id = "test3_btn1"> 당뇨 자가진단 > </button></a>
+		<a href = "#"><button id = "test3_btn2"> 당뇨 자가진단 > </button></a>
+		<a href = "#"><button id = "test3_btn3"> 당뇨 자가진단 > </button></a>
+	</div>
+   
 
    <section class="ftco-about ftco-section ftco-no-pt ftco-no-pb"
       id="about-section">
@@ -174,7 +192,7 @@
             <div class="col-md-12 heading-section text-center ftco-animate mb-5">
                <span class="subheading"></span>
                <h2 class="mb-4">건강 & 식품</h2>
-               <a href = "#"><p>건강 기능 식품</p></a><a href = "#"><p> 식품 </p></a>
+               <a href = "#"><p style="text-align:left"> 건강 기능 식품 </p></a><a href = "#"><p style="text-align:left">식품 </p></a>
             </div>
          </div>
          <!-- a태그, 이미지 달아줌 성수 -->

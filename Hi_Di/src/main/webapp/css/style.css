@@ -9551,4 +9551,8 @@ textarea.form-control {
   transform : transition(0,-50%);
   color: white;
   }
+ #btn_group2 button{
+ color: white;
+ }
+ 
   
