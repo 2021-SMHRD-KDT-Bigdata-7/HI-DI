@@ -166,8 +166,47 @@ public class DAO {
 	}
 	//===================================================================
 	
-	//원하는 질병의 체크리스트 호출
-	public ChecklistVO SelectChecklist(String check_name) {
+	//질병명으로 검색해 체크리스트 호출
+	public ChecklistVO SelectCheckName(String check_name) {
+		try {
+			connection();
+			//sql문
+			String sql = "select * from t_checklist where check_name = ?";
+			psmt = conn.prepareStatement(sql);
+
+			//바인드 변수 채우기
+			psmt.setString(1, check_name);
+			
+			//실행
+			rs = psmt.executeQuery();
+
+			//cvo에 체크리스트 저장
+			if(rs.next() == true) {
+				int checkSeq = rs.getInt(1);
+				String checkAge = rs.getString(2);
+				String checkName = rs.getString(3);
+				String disCode = rs.getString(4);
+				String checkItem = rs.getString(5);
+				int checkStd = rs.getInt(6);
+				String reg_date = rs.getString(7);
+
+				cvo = new ChecklistVO(checkSeq, checkAge, checkName, disCode, checkItem, checkStd, reg_date);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		
+		return cvo;
+	}
+	//===================================================================
+	
+	//연령으로 검색해 체크리스트 호출
+	public ChecklistVO SelectCheckAge(String check_name) {
 		try {
 			connection();
 			//sql문
