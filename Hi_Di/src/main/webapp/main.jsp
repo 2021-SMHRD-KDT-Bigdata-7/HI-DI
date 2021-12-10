@@ -69,16 +69,16 @@
             aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
          </button>
-
+		 
          <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav nav ml-auto">
-               <li class="nav-item"><a href="test.jsp" class="nav-link"><span>자가진단</span></a></li>
-               <li class="nav-item"><a href="#" class="nav-link"><span>질병검색</span></a></li>
-               <li class="nav-item"><a href="#" class="nav-link"><span>식품검색</span></a></li>
-               <li class="nav-item"><a href="#" class="nav-link"><span>설문</span></a></li>
-               <li class="nav-item"><a href="#" class="nav-link"><span>질병통계</span></a></li>
-               <li class="nav-item"><a href="#" class="nav-link"><span>마이
-                        페이지</span></a></li>
+               <li class="nav-item">
+               <li class="nav-link"><a href="#" class="nav-link"><span>자가진단</span></a></li>
+               <a href = "disease.jsp"><li class="nav-item"><a href="#" class="nav-link"><span>질병검색</span></a></li></a>
+               <a href = "#"><li class="nav-item"><a href="#" class="nav-link"><span>식품검색</span></a></li></a>
+               <a href = "#"><li class="nav-item"><a href="#" class="nav-link"><span>설문</span></a></li></a>
+               <a href = "#"><li class="nav-item"><a href="#" class="nav-link"><span>질병통계</span></a></li></a>
+               <a href = "#"><li class="nav-item"><a href="#" class="nav-link"><span>마이페이지</span></a></li></a>
             </ul>
          </div>
       </div>
