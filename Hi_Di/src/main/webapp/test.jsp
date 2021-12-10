@@ -1,3 +1,5 @@
+<%@page import="java.util.HashSet"%>
+<%@page import="Model.DAO"%>
 <%@page import="Model.ChecklistVO"%>
 <%@page import="Model.MemberVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -12,6 +14,15 @@
 <body>
 	<%
 	ArrayList<ChecklistVO> checklist = (ArrayList<ChecklistVO>) request.getAttribute("checklist");
+	ArrayList<String> name = new ArrayList<String>();
+	ArrayList<String> disname = new ArrayList<String>();
+	if(checklist != null){
+	for(int i=0; i<checklist.size(); i++){
+		name.add(checklist.get(i).getCheck_name());
+	}
+	}
+	HashSet<String> name2 = new HashSet<String>(name);
+	disname = new ArrayList<String>(name2);
 	%>
 	<div id="wrapper">
 		<!-- Menu -->
@@ -20,6 +31,12 @@
 				<caption>
 					<h2>자가진단</h2>
 				</caption>
+				<span>
+					<%for(int i=0; i<disname.size(); i++) {%>
+						<%=disname.get(i) %>
+					<%} %>
+					<%=disname.size() %>
+				</span>
 				<tr>
 					<td>연령대</td>
 					<td>질병이름</td>

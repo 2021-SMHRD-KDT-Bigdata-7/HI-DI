@@ -18,29 +18,20 @@ import Model.DAO;
 public class SelectChecklistService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//파라미터 수집
+		String check_name = request.getParameter("check_name");
 		
-		
-		//DAO객체 생성
 		DAO dao = new DAO();
+		ChecklistVO cvo = dao.SelectChecklist(check_name);
 		
-		//DAO가 가진 selectChecklist() 사용
-//		ArrayList<ChecklistVO> checklist = dao.SelectChecklist();
-		//checklist의 길이 확인
-//		System.out.println(checklist.size());
-		ArrayList<ChecklistVO> checklist = dao.SelectChecklist();
-		
-		// request영역에 Attribute를 추가
-		// request의 주머니에 데이터를 담아준다.
-		request.setAttribute("checklist", checklist);
+		request.setAttribute("cvo", cvo);
 		
 		//Forward 방식
-		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("test2.jsp");
 		
 		//출발
 		rd.forward(request, response);
-		
-	
 	}
-
+	
+	
 }

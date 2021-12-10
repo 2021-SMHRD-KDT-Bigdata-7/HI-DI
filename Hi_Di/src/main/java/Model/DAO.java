@@ -5,17 +5,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class DAO {
 	
 	// 객체 생성
 	MemberVO vo = null;
+	ChecklistVO cvo = null;
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 	int cnt = 0;
 	ArrayList<ChecklistVO> checklist = new ArrayList<ChecklistVO>();
-	ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 	
 	//DB연결
 	public void connection() {
@@ -128,7 +129,7 @@ public class DAO {
 	//===================================================================
 	
 	//모든 체크리스트 불러오기
-	public ArrayList<ChecklistVO> SelectChecklist(){
+	public ArrayList<ChecklistVO> SelectAll(){
 		try {
 			connection();
 
@@ -165,42 +166,41 @@ public class DAO {
 	}
 	//===================================================================
 	
-//	ChecklistVO cvo = null;
-//	public ChecklistVO SelectChecklist() {
-//		try {
-//			connection();
-//
-//			String sql = "select * from t_checklist";
-//			psmt = conn.prepareStatement(sql);
-//
-//			rs = psmt.executeQuery();	//select문 이므로 executeQuery() --> return ResultSet
-//
-//			if (rs.next() == true) {
-//				//변수 받아오기
-//				int checkSeq = rs.getInt(1);
-//				String checkAge = rs.getString(2);
-//				String checkName = rs.getString(3);
-//				String disCode = rs.getString(4);
-//				String checkItem = rs.getString(5);
-//				int checkStd = rs.getInt(6);
-//				String reg_date = rs.getString(7);
-//				System.out.println(checkAge);
-//				System.out.println(checkName);
-//				System.out.println(disCode);
-//				System.out.println(checkItem);
-//				
-//				//vo지정
-//				ChecklistVO cvo = new ChecklistVO(checkSeq, checkAge, checkName, disCode, checkItem, checkStd, reg_date);
-//			}
-//		} catch (Exception e) {
-//
-//			e.printStackTrace();
-//
-//		} finally {
-//			close();
-//		}
-//		return cvo;
-//	}
-//	
-	
+	//원하는 질병의 체크리스트 호출
+	public ChecklistVO SelectChecklist(String check_name) {
+		try {
+			connection();
+			//sql문
+			String sql = "select * from t_checklist where check_name = ?";
+			psmt = conn.prepareStatement(sql);
+
+			//바인드 변수 채우기
+			psmt.setString(1, check_name);
+			
+			//실행
+			rs = psmt.executeQuery();
+
+			//cvo에 체크리스트 저장
+			if(rs.next() == true) {
+				int checkSeq = rs.getInt(1);
+				String checkAge = rs.getString(2);
+				String checkName = rs.getString(3);
+				String disCode = rs.getString(4);
+				String checkItem = rs.getString(5);
+				int checkStd = rs.getInt(6);
+				String reg_date = rs.getString(7);
+
+				cvo = new ChecklistVO(checkSeq, checkAge, checkName, disCode, checkItem, checkStd, reg_date);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		
+		return cvo;
+	}
 }
