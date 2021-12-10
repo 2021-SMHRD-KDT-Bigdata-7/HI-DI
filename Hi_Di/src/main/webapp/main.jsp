@@ -32,7 +32,7 @@
 
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300">
+	data-offset="300" >
 
 	<!-- MemberVO, DAO 객체생성(진기현) -->
 	<%
