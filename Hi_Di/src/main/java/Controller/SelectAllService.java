@@ -41,7 +41,7 @@ public class SelectAllService extends HttpServlet {
 		request.setAttribute("checklist", checklist);
 		
 		//Forward 방식
-		RequestDispatcher rd = request.getRequestDispatcher("checklist.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
 		
 		//출발
 		rd.forward(request, response);
