@@ -132,7 +132,7 @@ public class DAO {
 		try {
 			connection();
 
-			String sql = "select * from t_checklist";
+			String sql = "select * from t_checklist order by check_seq";
 			psmt = conn.prepareStatement(sql);
 
 			rs = psmt.executeQuery();
