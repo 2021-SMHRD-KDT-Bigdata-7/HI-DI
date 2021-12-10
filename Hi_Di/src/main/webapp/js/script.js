@@ -5,13 +5,13 @@ function img(){
 
 // 자가진단 js
 
-$("#cl1_click").click(
+$(".cl1_click").click(
 	function(){
 		$("#checklist1").addClass("open");
 		$("#checklist2").removeClass("open");
 	}
 );
-$("#cl2_click").click(
+$(".cl2_click").click(
 	function(){
 		$("#checklist2").addClass("open");
 		$("#checklist1").removeClass("open");
