@@ -846,7 +846,7 @@
 	<script src="js/google-map.js"></script>
 	<script src="js/script.js"></script>
 
-	<script src="js/main.js"></script>
+	<script src="js/js_main.js"></script>
 	<script src="js/slidejs.js"></script>
 </body>
 </html>
