@@ -53,7 +53,7 @@
     /**
      * Interept scroll direction
      */
-    handleScroll: function (e) {
+    /*handleScroll: function (e) {
       // Scrolling up
       if (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0) {
         s.delta--;
@@ -74,7 +74,7 @@
 
       // Prevent page from scrolling
       return false;
-    },
+    },*/
 
     /**
      * Show Slide

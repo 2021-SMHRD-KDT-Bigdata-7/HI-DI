@@ -8178,7 +8178,7 @@ h1, h2, h3, h4, h5,
 .text-primary {
   color: #b1b493 !important; }
 
-/* ë¡œê·¸ì¸/íšŒì›ê°€ì… */
+/* ·Î±×ÀÎ/È¸¿ø°¡ÀÔ */
 #login{
   width:100%;
   height:4.5vh;
@@ -8251,7 +8251,7 @@ h1, h2, h3, h4, h5,
   margin: 5vh 0;
 }
 
-/* ë„¤ë¹„ */
+/* ³×ºñ */
 .ftco-navbar-light {
   background: transparent !important;
   position: absolute;
@@ -8455,7 +8455,7 @@ h1, h2, h3, h4, h5,
   font-size: 24px;
   text-transform: uppercase; }
 
-/* ìŠ¬ë¼ì´ë“œ */
+/* ½½¶óÀÌµå */
 .owl-nav.disabled{
   display:none;
 }
@@ -8470,12 +8470,13 @@ h1, h2, h3, h4, h5,
 }
 #home-section{
   width : 100%;
-  height: 80vh;
+  height: 70vh;
   /* background:#81A3AA; */
   background-size: cover;
   position:relative;
+  top:100px;
 }
-/* ìŠ¬ë¼ì´ë“œ ë */
+/* ½½¶óÀÌµå ³¡ */
 
 .bg-light {
   background: #f8f9fa !important; }
@@ -9551,8 +9552,4 @@ textarea.form-control {
   transform : transition(0,-50%);
   color: white;
   }
- #btn_group2 button{
- color: white;
- }
- 
   
