@@ -108,10 +108,15 @@
 									class="title-line"><span>체크해보자</span></span>
 							</h2>
 							<h2 class="slide__title_info slide__title">
-								<span class="title-line"><span>hidi의 자가진단은 정확하고
-										빠르게 당신의 질병을</span></span> <span class="title-line"><span>진단할 수
-										있습니다. HiDi만의 보다 질 좋은 정보를</span></span> <span class="title-line"><span>얻어
-										보세요!</span></span>
+								<span class="title-line">
+									<span>hidi의 자가진단은 정확하고 빠르게 당신의 </span>
+								</span> 
+								<span class="title-line">
+									<span>질병을 진단할 수 있습니다. HiDi만의 보다 </span>
+								</span> 
+								<span class="title-line">
+									<span>질 좋은 정보를 얻어보세요!</span>
+								</span>
 							</h2>
 							<div class="slide-go">바로가기</div>
 						</header>
@@ -129,6 +134,18 @@
 								<span class="title-line"><span>당신의 건강하고 행복한 </span></span> <span
 									class="title-line"><span>삶을 위한 건강 지식</span></span>
 							</h2>
+							<h2 class="slide__title_info slide__title">
+								<span class="title-line">
+									<span>당신이 찾는 모든 질병에 대한 정보들,</span>
+								</span> 
+								<span class="title-line">
+									<span>여기에서 얻을 수 있습니다. 원하는</span>
+								</span>
+								<span class="title-line">
+									<span>정보를 한눈에 찾아보세요!</span>
+								</span> 
+							</h2>
+							<div class="slide-go">바로가기</div>
 						</header>
 					</div>
 				</section>
@@ -144,6 +161,18 @@
 								<span class="title-line"><span>자기관리를 위한 식품</span></span> <span
 									class="title-line"><span>정보를 한곳에-</span></span>
 							</h2>
+							<h2 class="slide__title_info slide__title">
+								<span class="title-line">
+									<span>건강한 식단에 행복한 일상이 깃듭니다.</span>
+								</span> 
+								<span class="title-line">
+									<span>영양가 있고 건강한 식단을 원하시면</span>
+								</span>
+								<span class="title-line">
+									<span>HiDi가 도와드리겠습니다.</span>
+								</span> 
+							</h2>
+							<div class="slide-go">바로가기</div>
 						</header>
 					</div>
 				</section>
@@ -159,6 +188,18 @@
 								<span class="title-line"><span>고객의 건강을 위한 </span></span> <span
 									class="title-line"><span>설문조사 플랫폼</span></span>
 							</h2>
+							<h2 class="slide__title_info slide__title">
+								<span class="title-line">
+									<span>본인이 필요한 의료정보라면 무엇이든!</span>
+								</span> 
+								<span class="title-line">
+									<span>알맞춤 정보들을 얻고 싶으시다면</span>
+								</span>
+								<span class="title-line">
+									<span>이용해주십시오.</span>
+								</span> 
+							</h2>
+							<div class="slide-go">바로가기</div>
 						</header>
 					</div>
 				</section>
@@ -174,7 +215,18 @@
 								<span class="title-line"><span>자가진단의 결과를 통계로 </span></span> <span
 									class="title-line"><span>한눈에 알아보자</span></span>
 							</h2>
-
+							<h2 class="slide__title_info slide__title">
+								<span class="title-line">
+									<span>자가진단의 결과를 통해 </span>
+								</span> 
+								<span class="title-line">
+									<span>정확한 정보를 얻고 싶으시다면</span>
+								</span>
+								<span class="title-line">
+									<span>이용해주십시오.</span>
+								</span> 
+							</h2>
+							<div class="slide-go">바로가기</div>
 						</header>
 					</div>
 				</section>
