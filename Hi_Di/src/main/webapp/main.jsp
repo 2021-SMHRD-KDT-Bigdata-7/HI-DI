@@ -172,13 +172,12 @@
       <div class="container">
          <div class="row justify-content-center">
             <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-               <span class="subheading">I am grat at</span>
-               <h2 class="mb-4">We do awesome services for our clients</h2>
-               <p>Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia</p>
+               <span class="subheading"></span>
+               <h2 class="mb-4">건강 & 식품</h2>
+               <a href = "#"><p>건강 기능 식품</p></a><a href = "#"><p> 식품 </p></a>
             </div>
          </div>
-         <!-- a태그 달아줌 성수 -->
+         <!-- a태그, 이미지 달아줌 성수 -->
          <div class="row">
             <div class="col-md-6 col-lg-3">
                <div
@@ -188,9 +187,7 @@
                   </div>
                   <a href="#">
                      <div class="media-body">
-                        <h3 class="heading mb-3">Web Design</h3>
-                        <p>A small river named Duden flows by their place and
-                           supplies.</p>
+                       <img src ="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDAyMjhfMTA2%2FMDAxNTgyODIxODE0NjA2.8yPG1OZW2nyPeaEkebVbUfuSF1SGdhxc-MafoB1jGUcg.UxR9uVmPHAnJ0fZDQSB6RKylGuXXJDVMIX5LhYqDO_kg.JPEG.htyj%2FSAM_9465.JPG&type=a340">
                      </div>
                   </a>
                </div>
@@ -204,9 +201,7 @@
                   </div>
                   <a href="#">
                      <div class="media-body">
-                        <h3 class="heading mb-3">Web Application</h3>
-                        <p>A small river named Duden flows by their place and
-                           supplies.</p>
+                        <img src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAxMjdfMjE3%2FMDAxNjExNzEyNDY0MDIx.qBokE2Xg_yLLyZgaufFy54sXPyipuqVyU9-Sytnp0gog.Tem8vNv1OLv_dBfWsJhhKx_rYJyeVbP3cQl9fi_48ZQg.JPEG.yooree890%2FIMG_0243.jpg&type=a340">
                      </div>
                   </a>
                </div>
@@ -220,9 +215,7 @@
                   </div>
                   <a href="#">
                      <div class="media-body">
-                        <h3 class="heading mb-3">Web Development</h3>
-                        <p>A small river named Duden flows by their place and
-                           supplies.</p>
+                        <img src = "#">
                      </div>
                   </a>
                </div>
@@ -236,9 +229,7 @@
                   </div>
                   <a href="#">
                      <div class="media-body">
-                        <h3 class="heading mb-3">Banner Design</h3>
-                        <p>A small river named Duden flows by their place and
-                           supplies.</p>
+                        <img src = "#">
                      </div>
                   </a>
                </div>
@@ -255,9 +246,7 @@
                   </div>
                   <a href="#">
                      <div class="media-body">
-                        <h3 class="heading mb-3">Branding</h3>
-                        <p>A small river named Duden flows by their place and
-                           supplies.</p>
+                        <img src = "#">
                      </div>
                   </a>
                </div>
@@ -271,9 +260,7 @@
                   </div>
                   <a href="#">
                      <div class="media-body">
-                        <h3 class="heading mb-3">Icon Design</h3>
-                        <p>A small river named Duden flows by their place and
-                           supplies.</p>
+                        <img src = "#">
                      </div>
                   </a>
                </div>
@@ -287,9 +274,7 @@
                   </div>
                   <a href="#">
                      <div class="media-body">
-                        <h3 class="heading mb-3">Graphic Design</h3>
-                        <p>A small river named Duden flows by their place and
-                           supplies.</p>
+                        <img src = "#">
                      </div>
                   </a>
                </div>
@@ -303,9 +288,7 @@
                   </div>
                   <a href="#">
                      <div class="media-body">
-                        <h3 class="heading mb-3">SEO</h3>
-                        <p>A small river named Duden flows by their place and
-                           supplies.</p>
+                        <img src = "#">
                      </div>
                   </a>
                </div>
