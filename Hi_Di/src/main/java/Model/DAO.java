@@ -153,9 +153,10 @@ public class DAO {
 				checklist.add(cvo);
 
 			}
-
+			System.out.println("체크리스트 불러오기");
 		} catch (Exception e) {
 
+			System.out.println("체크리스트 불러오기 실패");
 			e.printStackTrace();
 
 		} finally {
