@@ -25,7 +25,10 @@
 
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/slide.css">
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="css/slidecss.css">
+
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
    data-offset="300">
@@ -69,7 +72,7 @@
 
          <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav nav ml-auto">
-               <li class="nav-item"><a href="SelectChecklistService" class="nav-link"><span>자가진단</span></a></li>
+               <li class="nav-item"><a href="test.jsp" class="nav-link"><span>자가진단</span></a></li>
                <li class="nav-item"><a href="#" class="nav-link"><span>질병검색</span></a></li>
                <li class="nav-item"><a href="#" class="nav-link"><span>식품검색</span></a></li>
                <li class="nav-item"><a href="#" class="nav-link"><span>설문</span></a></li>
@@ -80,23 +83,89 @@
          </div>
       </div>
    </nav>
+   
    <div id="home-section">
-      <div class="gallery">
-         <div class="gallery-container">
-            <a href="#"><img class="gallery-item gallery-item-1"
-               src="http://fakeimg.pl/300/?text=1" data-index="1"></a> <a
-               href="#"><img class="gallery-item gallery-item-2"
-               src="http://fakeimg.pl/300/?text=2" data-index="2"></a> <a
-               href="checklist.jsp"><img class="gallery-item gallery-item-3"
-               src="images/bg_1.jpg" data-index="3"></a> <a href="#"><img
-               class="gallery-item gallery-item-4"
-               src="http://fakeimg.pl/300/?text=4" data-index="4"></a> <a
-               href="#"><img class="gallery-item gallery-item-5"
-               src="http://fakeimg.pl/300/?text=5" data-index="5"></a>
-         </div>
-         <div class="gallery-controls"></div>
-      </div>
-   </div>
+		<main>
+			<section class="slides"> 
+			  
+			  <section class="slides-nav">
+				<nav class="slides-nav__nav">
+				  <button class="slides-nav__prev js-prev">Prev</button>
+				  <button class="slides-nav__next js-next">Next</button>
+				</nav>
+			  </section>
+			
+			  <section class="slide is-active">
+				<div class="slide__content">
+				  <figure class="slide__figure"><div class="slide__img" style="background-image: url(https://source.unsplash.com/nfTA8pdaq9A/2000x1100)"></div></figure>
+				  <header class="slide__header">
+					<h2 class="slide__title">
+					  <span class="title-line"><span>hidi로 자신의 건강정보를 </span></span>
+					  <span class="title-line"><span>체크해보자</span></span>
+					</h2>
+					<h2 class="slide__title_info slide__title">
+						<span class="title-line"><span>hidi의 자가진단은 정확하고 빠르게 당신의 질병을</span></span>
+						<span class="title-line"><span>진단할 수 있습니다. HiDi만의 보다 질 좋은 정보를</span></span>
+						<span class="title-line"><span>얻어 보세요!</span></span>
+					  </h2>
+					<div class="slide-go">
+						바로가기
+					</div>
+				  </header>
+				</div>
+			  </section>
+			
+			  <section class="slide">
+				<div class="slide__content">
+				  <figure class="slide__figure"><div class="slide__img" style="background-image: url(https://source.unsplash.com/okmtVMuBzkQ/2000x1100)"></div></figure>
+				  <header class="slide__header">
+					<h2 class="slide__title">
+					  <span class="title-line"><span>당신의 건강하고 행복한 </span></span>
+					  <span class="title-line"><span>삶을 위한 건강 지식</span></span>
+					</h2>
+				  </header>
+				</div>
+			  </section>
+			
+			  <section class="slide">
+				<div class="slide__content">
+				  <figure class="slide__figure"><div class="slide__img" style="background-image: url(https://source.unsplash.com/WuQME0I_oZA/2000x1100)"></div></figure>
+				  <header class="slide__header">
+					<h2 class="slide__title">
+					  <span class="title-line"><span>자기관리를 위한 식품</span></span>
+					  <span class="title-line"><span>정보를 한곳에-</span></span>
+					</h2>
+				  </header>
+				</div>
+			  </section>
+			
+			  <section class="slide">
+				<div class="slide__content">
+				  <figure class="slide__figure"><div class="slide__img" style="background-image: url(https://source.unsplash.com/NsWcRlBT_74/2000x1100)"></div></figure>
+				  <header class="slide__header">
+					<h2 class="slide__title">
+					  <span class="title-line"><span>고객의 건강을 위한 </span></span>
+					  <span class="title-line"><span>설문조사 플랫폼</span></span>
+					</h2>
+				  </header>
+				</div>
+			  </section>
+		
+			  <section class="slide">
+				<div class="slide__content">
+				  <figure class="slide__figure"><div class="slide__img" style="background-image: url(https://source.unsplash.com/NsWcRlBT_74/2000x1100)"></div></figure>
+				  <header class="slide__header">
+					<h2 class="slide__title">
+					  <span class="title-line"><span>자가진단의 결과를 통계로 </span></span>
+					  <span class="title-line"><span>한눈에 알아보자</span></span>
+					</h2>
+					
+				  </header>
+				</div>
+			  </section>
+			</section>
+			</main>
+	</div>
 
    <section class="ftco-counter img bg-light" id="section-counter">
       <div class="container">
@@ -745,6 +814,6 @@
    <script src="js/script.js"></script>
 
    <script src="js/main.js"></script>
-   <script src="js/slide.js"></script>
+   <script src="js/slidejs.js"></script>
 </body>
 </html>
