@@ -206,21 +206,21 @@ public class DAO {
 	//===================================================================
 	
 	//연령으로 검색해 체크리스트 호출
-	public ChecklistVO SelectCheckAge(String check_name) {
+	public ArrayList<ChecklistVO> SelectCheckAge(String check_age) {
 		try {
 			connection();
 			//sql문
-			String sql = "select * from t_checklist where check_name = ?";
+			String sql = "select * from t_checklist where check_age = ?";
 			psmt = conn.prepareStatement(sql);
 
 			//바인드 변수 채우기
-			psmt.setString(1, check_name);
+			psmt.setString(1, check_age);
 			
 			//실행
 			rs = psmt.executeQuery();
 
 			//cvo에 체크리스트 저장
-			if(rs.next() == true) {
+			while(rs.next() == true) {
 				int checkSeq = rs.getInt(1);
 				String checkAge = rs.getString(2);
 				String checkName = rs.getString(3);
@@ -230,6 +230,7 @@ public class DAO {
 				String reg_date = rs.getString(7);
 
 				cvo = new ChecklistVO(checkSeq, checkAge, checkName, disCode, checkItem, checkStd, reg_date);
+				checklist.add(cvo);
 			}
 
 		} catch (Exception e) {
@@ -240,6 +241,6 @@ public class DAO {
 			close();
 		}
 		
-		return cvo;
+		return checklist;
 	}
 }
