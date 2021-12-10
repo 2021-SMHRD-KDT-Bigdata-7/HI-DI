@@ -422,12 +422,10 @@
 			<div class="row justify-content-between">
 				<div class="col-md-8 col-lg-8 d-flex align-items-center">
 					<div class="w-100 py-4">
-						<h2>Have a project on your mind.</h2>
-						<p>A small river named Duden flows by their place and supplies
-							it with the necessary regelialia. It is a paradisematic country,
-							in which roasted parts of sentences fly.</p>
+						<h2>질병 정보 알아보기</h2>
+						<p>알맞춤 정보들을 얻고 싶으시다면 이용해주세요!</p>
 						<p class="mb-0">
-							<a href="#" class="btn btn-white py-3 px-4">Contact me</a>
+							<a href="#" id="dInfo-btn" class="btn btn-white py-3 px-4">바로가기</a>
 						</p>
 					</div>
 				</div>
