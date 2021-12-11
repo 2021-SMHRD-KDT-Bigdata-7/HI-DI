@@ -12,8 +12,46 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script src="js/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #radio_area {
+            width: 600px;
+            height: 820px;
+            background-color: lightgray;
+            padding: 10px;
+
+            display: none;
+        }
+
+        #text_area {
+            width: 80%;
+            float: left;
+            display: block;
+        }
+
+        #btn_area {
+            width: 20%;
+            float: right;
+            text-align: right;
+            display: block;
+        }
+
+        .display_score {
+            float: right;
+            font-size: 0.7em;
+            font-style: italic;
+            text-align: right;
+        }
+
+        #end_btn {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
+  
 	<%
 	//메소드 사용하기 위해 dao객체 생성
 	DAO dao = new DAO();
@@ -34,7 +72,6 @@
 	Random rd = new Random();
 	
 	int num = rd.nextInt(mb_checklist.size()+1);
-
 	
 	
 	//질병 전체 데이터에서 질병명 중복없이 출력
@@ -50,10 +87,44 @@
 	}
 	HashSet<String> name2 = new HashSet<String>(name);
 	disname = new ArrayList<String>(name2);
+	
+	
+	//질병코드 중복없이 출력
+	ArrayList<String> code = new ArrayList<String>();
+	ArrayList<String> discode = new ArrayList<String>();
+	if(checklist != null){
+		for(int i=0; i<checklist.size(); i++){
+			code.add(checklist.get(i).getDis_code());
+		}
+	}
+	HashSet<String> code2 = new HashSet<String>(code);
+	discode = new ArrayList<String>(code2);
+	
 	%>
+	<%=discode %>
+	
+    <h2>우울증 자가 진단</h2>
+    <button id="start_btn" onclick="create_radio_button()">진단 시작</button>
+    <br><br>
+    <div id="radio_area">
+    	<div class="display_score">
+            * 답변 방법<br>
+            예(1) / 아니오(0)
+        </div>
+    	<br><br>
+        <div id="text_area"></div> <!-- 문제 출력 div -->
+        <div id="btn_area"></div> <!-- 라디오 버튼 출력 div -->
+    </div>
+    <br>
+    <button id="end_btn" onclick="check_gloomy()">결과 보기</button>
+	
+	
+	
 	<div id="wrapper">
 		<!-- Menu -->
 		<nav id="Update">
+		
+		
 			<table>
 				<caption>
 					<h2>자가진단</h2>
@@ -120,5 +191,8 @@
 		</nav>
 		<a href="main.jsp" class="button next scrolly">되돌아가기</a>
 	</div>
+	
+
+	
 </body>
 </html>
