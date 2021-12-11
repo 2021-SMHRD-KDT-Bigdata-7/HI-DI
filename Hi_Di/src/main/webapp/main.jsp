@@ -32,7 +32,7 @@
 
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300" >
+	data-offset="300">
 
 	<!-- MemberVO, DAO 객체생성(진기현) -->
 	<%
@@ -74,7 +74,8 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="SelectAllService" class="nav-link" ><span>자가진단</span></a></li>
+					<li class="nav-item"><a href="SelectAllService"
+						class="nav-link"><span>자가진단</span></a></li>
 					<li class="nav-item"><a href="#" class="nav-link"><span>질병검색</span></a></li>
 					<li class="nav-item"><a href="#" class="nav-link"><span>식품검색</span></a></li>
 					<li class="nav-item"><a href="#" class="nav-link"><span>설문</span></a></li>
@@ -99,7 +100,7 @@
 				<section class="slide is-active">
 					<div class="slide__content">
 						<figure class="slide__figure">
-							<div class="slide__img"
+							<div class="slide__img slide__img1"
 								style="background-image: url(https://source.unsplash.com/nfTA8pdaq9A/2000x1100)"></div>
 						</figure>
 						<header class="slide__header">
@@ -108,14 +109,11 @@
 									class="title-line"><span>체크해보자</span></span>
 							</h2>
 							<h2 class="slide__title_info slide__title">
-								<span class="title-line">
-									<span>hidi의 자가진단은 정확하고 빠르게 당신의 </span>
-								</span> 
-								<span class="title-line">
-									<span>질병을 진단할 수 있습니다. HiDi만의 보다 </span>
-								</span> 
-								<span class="title-line">
-									<span>질 좋은 정보를 얻어보세요!</span>
+								<span class="title-line"> <span>hidi의 자가진단은 정확하고
+										빠르게 당신의 </span>
+								</span> <span class="title-line"> <span>질병을 진단할 수 있습니다.
+										HiDi만의 보다 </span>
+								</span> <span class="title-line"> <span>질 좋은 정보를 얻어보세요!</span>
 								</span>
 							</h2>
 							<div class="slide-go">바로가기</div>
@@ -126,8 +124,8 @@
 				<section class="slide">
 					<div class="slide__content">
 						<figure class="slide__figure">
-							<div class="slide__img"
-								style="background-image: url(https://source.unsplash.com/okmtVMuBzkQ/2000x1100)"></div>
+							<div class="slide__img slide__img2"
+								style="background: url(./images/slide2.jpg) no-repeat center/cover;"></div>
 						</figure>
 						<header class="slide__header">
 							<h2 class="slide__title">
@@ -135,15 +133,12 @@
 									class="title-line"><span>삶을 위한 건강 지식</span></span>
 							</h2>
 							<h2 class="slide__title_info slide__title">
-								<span class="title-line">
-									<span>당신이 찾는 모든 질병에 대한 정보들,</span>
-								</span> 
-								<span class="title-line">
-									<span>여기에서 얻을 수 있습니다. 원하는</span>
+								<span class="title-line"> <span>당신이 찾는 모든 질병에 대한
+										정보들,</span>
+								</span> <span class="title-line"> <span>여기에서 얻을 수 있습니다.
+										원하는</span>
+								</span> <span class="title-line"> <span>정보를 한눈에 찾아보세요!</span>
 								</span>
-								<span class="title-line">
-									<span>정보를 한눈에 찾아보세요!</span>
-								</span> 
 							</h2>
 							<div class="slide-go">바로가기</div>
 						</header>
@@ -153,8 +148,8 @@
 				<section class="slide">
 					<div class="slide__content">
 						<figure class="slide__figure">
-							<div class="slide__img"
-								style="background-image: url(https://source.unsplash.com/WuQME0I_oZA/2000x1100)"></div>
+							<div class="slide__img slide__img3"
+								style="background: url(./images/slide3.jpeg) no-repeat center/cover; transform: scaleX(-1);"></div>
 						</figure>
 						<header class="slide__header">
 							<h2 class="slide__title">
@@ -162,15 +157,12 @@
 									class="title-line"><span>정보를 한곳에-</span></span>
 							</h2>
 							<h2 class="slide__title_info slide__title">
-								<span class="title-line">
-									<span>건강한 식단에 행복한 일상이 깃듭니다.</span>
-								</span> 
-								<span class="title-line">
-									<span>영양가 있고 건강한 식단을 원하시면</span>
+								<span class="title-line"> <span>건강한 식단에 행복한 일상이
+										깃듭니다.</span>
+								</span> <span class="title-line"> <span>영양가 있고 건강한 식단을
+										원하시면</span>
+								</span> <span class="title-line"> <span>HiDi가 도와드리겠습니다.</span>
 								</span>
-								<span class="title-line">
-									<span>HiDi가 도와드리겠습니다.</span>
-								</span> 
 							</h2>
 							<div class="slide-go">바로가기</div>
 						</header>
@@ -180,8 +172,8 @@
 				<section class="slide">
 					<div class="slide__content">
 						<figure class="slide__figure">
-							<div class="slide__img"
-								style="background-image: url(https://source.unsplash.com/NsWcRlBT_74/2000x1100)"></div>
+							<div class="slide__img slide__img4"
+								style="background: url(./images/slide4.jpg) no-repeat center/cover;"></div>
 						</figure>
 						<header class="slide__header">
 							<h2 class="slide__title">
@@ -189,15 +181,11 @@
 									class="title-line"><span>설문조사 플랫폼</span></span>
 							</h2>
 							<h2 class="slide__title_info slide__title">
-								<span class="title-line">
-									<span>본인이 필요한 의료정보라면 무엇이든!</span>
-								</span> 
-								<span class="title-line">
-									<span>알맞춤 정보들을 얻고 싶으시다면</span>
+								<span class="title-line"> <span>본인이 필요한 의료정보라면
+										무엇이든!</span>
+								</span> <span class="title-line"> <span>알맞춤 정보들을 얻고 싶으시다면</span>
+								</span> <span class="title-line"> <span>이용해주십시오.</span>
 								</span>
-								<span class="title-line">
-									<span>이용해주십시오.</span>
-								</span> 
 							</h2>
 							<div class="slide-go">바로가기</div>
 						</header>
@@ -207,8 +195,8 @@
 				<section class="slide">
 					<div class="slide__content">
 						<figure class="slide__figure">
-							<div class="slide__img"
-								style="background-image: url(https://source.unsplash.com/NsWcRlBT_74/2000x1100)"></div>
+							<div class="slide__img slide__img5"
+								style="background: url(./images/slide5.jpg) no-repeat center/cover;"></div>
 						</figure>
 						<header class="slide__header">
 							<h2 class="slide__title">
@@ -216,15 +204,10 @@
 									class="title-line"><span>한눈에 알아보자</span></span>
 							</h2>
 							<h2 class="slide__title_info slide__title">
-								<span class="title-line">
-									<span>자가진단의 결과를 통해 </span>
-								</span> 
-								<span class="title-line">
-									<span>정확한 정보를 얻고 싶으시다면</span>
+								<span class="title-line"> <span>자가진단의 결과를 통해 </span>
+								</span> <span class="title-line"> <span>정확한 정보를 얻고 싶으시다면</span>
+								</span> <span class="title-line"> <span>이용해주십시오.</span>
 								</span>
-								<span class="title-line">
-									<span>이용해주십시오.</span>
-								</span> 
 							</h2>
 							<div class="slide-go">바로가기</div>
 						</header>
@@ -304,21 +287,22 @@
 		</div>
 	</section>
 
-	<section class="ftco-section" id="services-section">
-		<div class="container">
-			<div class="row justify-content-center">
+	<!-- <section class="ftco-section" id="services-section">
+		<div class="containercheck">
+			<div class="justify-content-center">
 				<div class="col-md-12 heading-section text-center ftco-animate mb-5">
 					<span class="subheading"></span>
 					<h2 class="mb-4">자가진단</h2>
 					<p>hidi로 자신의 건강정보를 체크해보자</p>
 				</div>
 			</div>
-			<!-- a태그, 이미지 달아줌 성수 -->
-			<div class="row">
+			a태그, 이미지 달아줌 성수
+			<div class="rowcheck">
 				<div class="col-md-6 col-lg-3">
 					<form action="#">
 						<div
-							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate"
+							style="background-image : url(./images/check1.jpg); background-size:cover;">
 							<div
 								class="icon d-flex align-items-center justify-content-center">
 								<span class="flaticon-3d-design"></span>
@@ -333,7 +317,8 @@
 				<div class="col-md-6 col-lg-3">
 					<form action="#">
 						<div
-							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate"
+							style="background-image : url(./images/check2.jpg); background-size:cover;">
 							<div
 								class="icon d-flex align-items-center justify-content-center">
 								<span class="flaticon-3d-design"></span>
@@ -348,7 +333,8 @@
 				<div class="col-md-6 col-lg-3">
 					<form action="#">
 						<div
-							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate"
+							style="background-image : url(./images/check3.jpg); background-size:cover;">
 							<div
 								class="icon d-flex align-items-center justify-content-center">
 								<span class="flaticon-3d-design"></span>
@@ -364,11 +350,12 @@
 
 			</div>
 
-			<div class="row">
+			<div class="rowcheck">
 				<div class="col-md-6 col-lg-3">
 					<form action="#">
 						<div
-							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate"
+							style="background-image : url(./images/check4.jpg); background-size:cover;">
 							<div
 								class="icon d-flex align-items-center justify-content-center">
 								<span class="flaticon-3d-design"></span>
@@ -384,7 +371,8 @@
 				<div class="col-md-6 col-lg-3">
 					<form action="#">
 						<div
-							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate"
+							style="background-image : url(./images/check5.jpg); background-size:cover;">
 							<div
 								class="icon d-flex align-items-center justify-content-center">
 								<span class="flaticon-3d-design"></span>
@@ -400,7 +388,8 @@
 				<div class="col-md-6 col-lg-3">
 					<form action="#">
 						<div
-							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+							class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate"
+							style="background-image : url(./images/check6.jpg); background-size:cover;">
 							<div
 								class="icon d-flex align-items-center justify-content-center">
 								<span class="flaticon-3d-design"></span>
@@ -412,6 +401,111 @@
 						</div>
 					</form>
 
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+	<section class="ftco-section testimony-section bg-primary">
+		<div class="container">
+			<div class="row justify-content-center pb-5">
+				<div
+					class="col-md-12 heading-section heading-section-white text-center ftco-animate">
+					<span class="subheading"></span>
+					<h2 class="mb-4">자가진단</h2>
+					<p>hidi로 자신의 건강정보를 체크해보자</p>
+				</div>
+			</div>
+			<div class="row ftco-animate">
+				<div class="col-md-12">
+					<div class="carousel-testimony owl-carousel">
+						<div class="item " style="background-image: url(./images/check1.jpg); background-size:cover;">
+							<div class="testimony-wrap py-4 tw-1">
+								<div class="text">
+									<div class="d-flex align-items-center">
+										<!-- <div class="user-img" style="background-image: url()"></div> -->
+										<div class="pl-3">
+											<p class="name">코로나</p>
+											<span class="position">Covid19</span>
+										</div>
+									</div>
+									<p class="mb-4 pl-5">코로나에 대한 간단한 설문으로 감염여부를 측정할 수 있습니다.</p>
+
+								</div>
+							</div>
+						</div>
+						<div class="item" style="background-image: url(./images/check2.jpg); background-size:cover;">
+							<div class="testimony-wrap py-4 tw-2">
+								<div class="text">
+									<div class="d-flex align-items-center">
+										<!-- <div class="user-img" style="background-image: url()"></div> -->
+										<div class="pl-3">
+											<p class="name">폐암</p>
+											<span class="position">lung cancer</span>
+										</div>
+									</div>
+									<p class="mb-4 pl-5">폐암에 대한 간단한 설문으로 증상여부를 측정할 수 있습니다.</p>
+
+								</div>
+							</div>
+						</div>
+						<div class="item" style="background-image: url(./images/check3.jpg); background-size:cover;">
+							<div class="testimony-wrap py-4 tw-3">
+								<div class="text">
+									<div class="d-flex align-items-center">
+										<!-- <div class="user-img" style="background-image: url()"></div> -->
+										<div class="pl-3">
+											<p class="name">자궁경부암 </p>
+											<span class="position">cervical cancer</span>
+										</div>
+									</div>
+									<p class="mb-4 pl-5">자궁경부암에 대한 간단한 설문으로 증상여부를 측정할 수 있습니다.</p>
+								</div>
+							</div>
+						</div>
+						<div class="item" style="background-image: url(./images/check4.jpg); background-size:cover;">
+							<div class="testimony-wrap py-4 tw-4">
+								<div class="text">
+									<div class="d-flex align-items-center">
+										<!-- <div class="user-img" style="background-image: url()"></div> -->
+										<div class="pl-3">
+											<p class="name">위암</p>
+											<span class="position">stomach cancer</span>
+										</div>
+									</div>
+									<p class="mb-4 pl-5">위암에 대한 간단한 설문으로 증상여부를 측정할 수 있습니다.</p>
+								</div>
+							</div>
+						</div>
+						<div class="item" style="background-image: url(./images/check5.jpg); background-size:cover;">
+							<div class="testimony-wrap py-4 tw-5">
+								<div class="text">
+									<div class="d-flex align-items-center">
+										<!-- <div class="user-img" style="background-image: url()"></div> -->
+										<div class="pl-3">
+											<p class="name">대장암</p>
+											<span class="position">colorectal cancer</span>
+										</div>
+									</div>
+									<p class="mb-4 pl-5">대장암에 대한 간단한 설문으로 증상여부를 측정할 수 있습니다.</p>
+								</div>
+							</div>
+						</div>
+						<div class="item" style="background-image: url(./images/check6.jpg); background-size:cover;">
+							<div class="testimony-wrap py-4 tw-6">
+								<div class="text">
+									<div class="d-flex align-items-center">
+										<!-- <div class="user-img" style="background-image: url()"></div> -->
+										<div class="pl-3">
+											<p class="name">간암</p>
+											<span class="position">liver cancer</span>
+										</div>
+									</div>
+									<p class="mb-4 pl-5">간암에 대한 간단한 설문으로 증상여부를 측정할 수 있습니다.</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -430,7 +524,8 @@
 					</div>
 				</div>
 				<div class="col-md-4 col-lg-4 d-flex align-items-end">
-					<img src="images/author.png" class="img-fluid" alt="">
+					<img src="images/doctor.png" class="img-fluid" alt="">
+					<!-- <a href="#" style="background-image:url(images/doctor.png)"></a> -->
 				</div>
 			</div>
 		</div>
@@ -440,10 +535,9 @@
 		<div class="container-fluid px-md-4">
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
-					<span class="subheading">Accomplishments</span>
-					<h2 class="mb-4">Our Projects</h2>
-					<p>Far far away, behind the word mountains, far from the
-						countries Vokalia and Consonantia</p>
+					<!-- <span class="subheading">Accomplishments</span> -->
+					<h2 class="mb-4">건강 & 식품</h2>
+					<p>건강하고 균형잡힌 식사를 위한 선택</p>
 				</div>
 			</div>
 			<div class="row">
