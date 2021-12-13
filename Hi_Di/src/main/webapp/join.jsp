@@ -9,7 +9,11 @@
 <style>
     li{
         list-style: none;
+		color: black;
     }
+	ul{
+		list-style:none;
+	}
 </style>
 </head>
 <body>
@@ -20,10 +24,8 @@
             <li><input name="pw" type="password"  placeholder="PW를 입력하세요"></li>
             <li><input name="email" type="text"  placeholder="이메일를 입력하세요"></li>
             <li><input name="name" type="text"  placeholder="이름을 입력하세요"></li>
-            <li >
-            	<p>남</p><input type="radio" name="gender" value="m">
-                <p>여</p><input type="radio" name="gender" value="w">
-            </li>
+            <li id="m">남<input type="radio" name="gender" value="m">
+            여<input type="radio" name="gender" value="w"></li>
             <li><input name="phone" type="text"  placeholder="전화번호를 입력하세요"></li>
             <li><input name="birthdate" type="date"  placeholder="생일 입력하세요"></li>
             <li><input name="addr" type="text"  placeholder="주소를 입력하세요"></li>
