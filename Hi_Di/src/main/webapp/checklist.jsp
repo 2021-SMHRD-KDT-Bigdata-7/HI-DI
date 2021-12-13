@@ -94,7 +94,7 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
 					<li class="nav-item"><a href="index.html#home-section"
-						class="nav-link"><span>자가진단단</span></a></li>
+						class="nav-link"><span>자가진단</span></a></li>
 					<li class="nav-item"><a href="index.html#about-section"
 						class="nav-link"><span>질병검색</span></a></li>
 					<li class="nav-item"><a href="index.html#skills-section"
