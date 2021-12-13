@@ -48,10 +48,56 @@
 	
 %>
 
+	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
+		id="ftco-navbar">
+		<div class="container">
+			<!-- 로고 hidi로 바꾸기 -->
+			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+				type="button" data-toggle="collapse" data-target="#ftco-nav"
+				aria-controls="ftco-nav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> 회원가입 <span class="oi oi-menu"></span>
+				로그인
+			</button>
+			<!-- 상단 메뉴 -->
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a href="SelectAllService"
+						class="nav-link"><span>자가진단</span></a></li>
+					<li class="nav-item"><a href="disease.jsp"
+						class="nav-link"><span>질병검색</span></a></li>
+					<li class="nav-item"><a href="foodall.jsp"
+						class="nav-link"><span>식품검색</span></a></li>
+					<li class="nav-item"><a href="poll.jsp"
+						class="nav-link"><span>설문</span></a></li>
+					<li class="nav-item"><a href="statistics.jsp"
+						class="nav-link"><span>질병통계</span></a></li>
+					<li class="nav-item"><a href="mypage.jsp"
+						class="nav-link"><span>마이페이지</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- 배너 -->
+	<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');" data-stellar-background-ratio="0.5">
+	  <div class="overlay"></div>
+	  <div class="container">
+	    <div class="row no-gutters slider-text align-items-end justify-content-center">
+	      <div class="col-md-9 ftco-animate pb-5 text-center">
+	        <h1 class="mb-0 bread">진단 결과</h1>
+	        <p class="breadcrumbs">진단 결과를 확인 하세용</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
 
 <!-- 지도 띄우기 -->
 <%if(hoslist != null){ %>
-	<div id="map" style="width: 100%; height: 800px;"></div>
+	<div id="map" style="width: 50%; height: 400px; top: 300px; position:relative; left:50%; transform : translate(-50%,0)"></div>
 	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0b3a32b355a4dc98f4a07c93f17a9fb"></script>
@@ -167,55 +213,7 @@
 	</script>
 <%} %>
 	<!-- 지도 끝 -->
-	
-	
-	
-	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
-	<nav
-		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
-		id="ftco-navbar">
-		<div class="container">
-			<!-- 로고 hidi로 바꾸기 -->
-			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
-			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
-				type="button" data-toggle="collapse" data-target="#ftco-nav"
-				aria-controls="ftco-nav" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> 회원가입 <span class="oi oi-menu"></span>
-				로그인
-			</button>
-			<!-- 상단 메뉴 -->
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="SelectAllService"
-						class="nav-link"><span>자가진단</span></a></li>
-					<li class="nav-item"><a href="disease.jsp"
-						class="nav-link"><span>질병검색</span></a></li>
-					<li class="nav-item"><a href="foodall.jsp"
-						class="nav-link"><span>식품검색</span></a></li>
-					<li class="nav-item"><a href="poll.jsp"
-						class="nav-link"><span>설문</span></a></li>
-					<li class="nav-item"><a href="statistics.jsp"
-						class="nav-link"><span>질병통계</span></a></li>
-					<li class="nav-item"><a href="mypage.jsp"
-						class="nav-link"><span>마이페이지</span></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 
-	<!-- 배너 -->
-	<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');" data-stellar-background-ratio="0.5">
-	  <div class="overlay"></div>
-	  <div class="container">
-	    <div class="row no-gutters slider-text align-items-end justify-content-center">
-	      <div class="col-md-9 ftco-animate pb-5 text-center">
-	        <h1 class="mb-0 bread">질병검색</h1>
-	        <p class="breadcrumbs">당신의 건강하고 행복한 삶을 위한 건강 지식</p>
-	      </div>
-	    </div>
-	  </div>
-	</section>
 
 	
 	<!-- loader -->
