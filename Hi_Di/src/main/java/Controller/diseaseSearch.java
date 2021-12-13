@@ -19,7 +19,7 @@ import Model.DiseaseVO;
 public class diseaseSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		int dis_seq=Integer.parseInt(request.getParameter("dis_seq"));
+//		int dis_seq=Integer.parseInt(request.getParameter("dis_seq"))1;
 //	String dis_code=request.getParameter("dis_code");
 		String dis_name=request.getParameter("searchText");
 //		String dis_content=request.getParameter("dis_content");

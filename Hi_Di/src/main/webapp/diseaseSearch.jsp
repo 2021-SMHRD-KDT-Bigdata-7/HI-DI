@@ -9,6 +9,7 @@
 </head>
 <body>
 	<% DiseaseVO dvo=(DiseaseVO)request.getAttribute("dvo"); 
+	//1
 	%>
 	<ul>
 		<li>질병 순번 : <%=dvo.getDis_seq() %></li>

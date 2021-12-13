@@ -114,7 +114,7 @@
 	</section>
 	
 	
-	<!-- 검색기능 --> 	
+	<!-- 검색기능1 --> 	
 	<div class="container">
 		<div class="row">
 			<form id = "frm" action="diseaseSearch">
