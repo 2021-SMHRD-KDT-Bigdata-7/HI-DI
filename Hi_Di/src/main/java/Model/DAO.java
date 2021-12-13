@@ -433,7 +433,7 @@ public class DAO {
 			try {
 				connection();
 
-				String sql = "select * from t_hospital WHERE hos_dpt = ?";
+				String sql = "select * from t_hospital WHERE hos_dpt='а╬гу' or hos_dpt = ?";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, hos_dpt);
