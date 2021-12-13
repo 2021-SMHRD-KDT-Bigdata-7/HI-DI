@@ -8931,7 +8931,7 @@ h1, h2, h3, h4, h5,
 }
 .d-flex.align-items-center{
 	position:relative;
-	top:4vh;
+	/* top:4vh; */
 }
 .aside-stretch {
   background: #c7c9b1; }
@@ -9655,4 +9655,24 @@ textarea.form-control {
 }
 .tw-1{
 	background-image:url(./images/check1.jpg);
+}
+
+/* 건강기능식품&식품css */
+
+.f_section{
+	width:100%;
+	display:none;
+}
+.f_section.on{
+	display:block;
+}
+.f_tab{
+	width:100%;
+	height:20vh;
+}
+.f_tab a:nth-child(2){
+	margin-left:80px;
+}
+.f_section .row>h2{
+	width:100%;
 }
