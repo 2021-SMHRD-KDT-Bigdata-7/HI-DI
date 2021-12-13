@@ -115,11 +115,6 @@
 	<script src="js/js_main.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-<<<<<<< HEAD
 	<script type="text/javascript">
-	
-=======
-	<script type="text/javascript"></script>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/HI-DI.git
 </body>
 </html>
