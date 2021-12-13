@@ -426,7 +426,7 @@
 									<div class="d-flex align-items-center">
 										<!-- <div class="user-img" style="background-image: url()"></div> -->
 										<div class="pl-3">
-											<p class="name">코로나</p>
+											<a class="name" href="checkAll.jsp?name=코로나">코로나</a>
 											<span class="position">Covid19</span>
 										</div>
 									</div>
@@ -442,7 +442,7 @@
 									<div class="d-flex align-items-center">
 										<!-- <div class="user-img" style="background-image: url()"></div> -->
 										<div class="pl-3">
-											<p class="name">폐암</p>
+											<a class="name" href="checkAll.jsp?name=폐암">폐암</a>
 											<span class="position">lung cancer</span>
 										</div>
 									</div>
@@ -458,7 +458,7 @@
 									<div class="d-flex align-items-center">
 										<!-- <div class="user-img" style="background-image: url()"></div> -->
 										<div class="pl-3">
-											<p class="name">자궁경부암</p>
+											<a class="name" href="checkAll.jsp?name=자궁경부암">자궁경부암</a>
 											<span class="position">cervical cancer</span>
 										</div>
 									</div>
@@ -473,7 +473,7 @@
 									<div class="d-flex align-items-center">
 										<!-- <div class="user-img" style="background-image: url()"></div> -->
 										<div class="pl-3">
-											<p class="name">위암</p>
+											<a class="name" href="checkAll.jsp?name=위암">위암</a>
 											<span class="position">stomach cancer</span>
 										</div>
 									</div>
@@ -488,7 +488,7 @@
 									<div class="d-flex align-items-center">
 										<!-- <div class="user-img" style="background-image: url()"></div> -->
 										<div class="pl-3">
-											<p class="name">대장암</p>
+											<a class="name" href="checkAll.jsp?name=대장암">대장암</a>
 											<span class="position">colorectal cancer</span>
 										</div>
 									</div>
@@ -503,7 +503,7 @@
 									<div class="d-flex align-items-center">
 										<!-- <div class="user-img" style="background-image: url()"></div> -->
 										<div class="pl-3">
-											<p class="name">간암</p>
+											<a class="name" href="checkAll.jsp?name=간암">간암</a>
 											<span class="position">liver cancer</span>
 										</div>
 									</div>

@@ -68,20 +68,14 @@
 	
 	//질병 명, 질병 코드 중복없이 출력
 	ArrayList<String> name = new ArrayList<String>();
-	ArrayList<String> code = new ArrayList<String>();
 	ArrayList<String> disname = new ArrayList<String>();
-	ArrayList<String> discode = new ArrayList<String>();
 	if(checklist != null){
 		for(int i=0; i<checklist.size(); i++){
 			name.add(checklist.get(i).getCheck_name());
-			code.add(checklist.get(i).getDis_code());
 		}
 	}
 	HashSet<String> name2 = new HashSet<String>(name);
-	HashSet<String> code2 = new HashSet<String>(code);
 	disname = new ArrayList<String>(name2);
-	discode = new ArrayList<String>(code2);
-
 	%>
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -197,32 +191,8 @@
 				</div>
 				<div class="cl_b_content">
 					<%for(int i=0; i<disname.size(); i++){ %>
-					<%ChecklistVO cvo = dao.SelectCheckName(disname.get(i)); %>
-					<%String[] check_arr = cvo.getCheck_item().split("/"); %>
-					<button id="start_btn" onclick="create_button()"><%=disname.get(i) %> 자가진단 </button>
-					<div class="checklist" id="<%=cvo.getDis_code() %>" style="display : none">
-						<table>
-							<tr>
-								<th><%= disname.get(i) %></th>
-							</tr>
-							<tr>
-								<td>질문</td>
-								<td>예</td>
-								<td>아니오</td>
-							</tr>
-
-							<%for(int j=0; j<check_arr.length; j++){ %>
-							<tr>
-								<td><%= check_arr[j]%></td>
-								<td><input type="radio" name="<%= "no"+j %>" value="1">
-								</td>
-								<td><input type="radio" name="<%= "no"+j %>" value="0">
-								</td>
-							</tr>
-							<%} %>
-						</table>
-						<button type="button" id="submit">결과보기</button>
-					</div>
+					<a href="checkAll.jsp?name=<%=disname.get(i) %>" ><%=disname.get(i) %> 자가진단 </a>
+				
 					<br>
 					<br>
 					<%} %>
@@ -266,7 +236,7 @@
 			let cnt = 0;
 			
 			let radios = $('input[type="radio"]');
-			
+
 			for(let i = 0; i < radios.length; i++){
 				if($(radios[i]).prop('checked')){
 					cnt++;
@@ -325,35 +295,7 @@
 			console.log(num);
  			num = 0;
 		});
-		
-		//전체 자가진단 이름누르면 나오게
-	    <%-- function create_button(){
-	        var con = document.getElementsByClassName("checklist");
-	        for (let i=0; i<con.length; i++){
-	        	for(let j=0; j<<%discode.length%>; j++){
-	        		if(con[i].id == discode.get(j)){
-	        			console.log(con[i].id)
-	        			console.log(<%discode.length%>)
-	        			
-			        	if(con[i].style.display=='none'){
-					    	con[i].style.display = 'block';
-					    }else{
-					        con[i].style.display = 'none';
-					    }	        				        				
-	        		}else{
-	        			console.log("실패")
-	        		}
-	        	}
-	        }
-	    } --%>
-	        	
-	        	/* 
-		        if(con.style.display=='none'){
-		            con.style.display = 'block';
-		        }else{
-		            con.style.display = 'none';
-		        } */
-	    }	
+
 	</script>
 
 
