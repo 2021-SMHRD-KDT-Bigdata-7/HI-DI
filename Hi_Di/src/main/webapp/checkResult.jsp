@@ -1,3 +1,6 @@
+<%@page import="Model.DiseaseVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.DAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -24,12 +27,15 @@
 <body>
 <%
 	String name = request.getParameter("name");
-
-	out.print(name);
 	
 	String code = request.getParameter("code");
+
+	DAO dao = new DAO();
 	
-	out.print(code);
+	DiseaseVO disease =  dao.SelectDiseaseCode(code);
+	if(disease != null){
+		out.print(disease.getDis_dpt());		
+	}
 %>
 
 <nav

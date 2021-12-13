@@ -252,7 +252,7 @@ public class DAO {
 	// ================================================================
 	
 	// 질병코드로 검색해 질병정보 호출
-	public ArrayList<DiseaseVO> SelectDiseaseCode(String dis_code) {
+	public DiseaseVO SelectDiseaseCode(String dis_code) {
 		try {
 			connection();
 			// sql문
@@ -266,7 +266,7 @@ public class DAO {
 			rs = psmt.executeQuery();
 
 			// dvo에 체크리스트 저장
-			while (rs.next() == true) {
+			if (rs.next() == true) {
 				int disseq = rs.getInt(1);
 				String discode = rs.getString(2);
 				String disname = rs.getString(3);
@@ -278,7 +278,6 @@ public class DAO {
 				String dispic = rs.getString(9);
 
 				dvo = new DiseaseVO(disseq, discode, disname, discontent, dissymptom, disdpt, distag, mbid, dispic);
-				disease.add(dvo);
 			}
 
 		} catch (Exception e) {
@@ -289,12 +288,12 @@ public class DAO {
 			close();
 		}
 
-		return disease;
+		return dvo;
 	}
 	// ================================================================
 	
 	// 질병이름으로 검색해 질병정보 호출
-	public ArrayList<DiseaseVO> SelectDiseaseName(String dis_name) {
+	public DiseaseVO SelectDiseaseName(String dis_name) {
 		try {
 			connection();
 			// sql문
@@ -308,7 +307,7 @@ public class DAO {
 			rs = psmt.executeQuery();
 
 			// dvo에 체크리스트 저장
-			while (rs.next() == true) {
+			if (rs.next() == true) {
 				int disseq = rs.getInt(1);
 				String discode = rs.getString(2);
 				String disname = rs.getString(3);
@@ -320,7 +319,6 @@ public class DAO {
 				String dispic = rs.getString(9);
 
 				dvo = new DiseaseVO(disseq, discode, disname, discontent, dissymptom, disdpt, distag, mbid, dispic);
-				disease.add(dvo);
 			}
 
 		} catch (Exception e) {
@@ -331,7 +329,7 @@ public class DAO {
 			close();
 		}
 
-		return disease;
+		return dvo;
 	}
 
 }
