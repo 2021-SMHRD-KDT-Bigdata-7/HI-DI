@@ -41,39 +41,47 @@
 	<%
 	//메소드 사용하기 위해 dao객체 생성
 	DAO dao = new DAO();
-	
 
-	
 	//연령을 받아오기 위한 객체생성
 	MemberVO vo = (MemberVO)session.getAttribute("vo");
 	
 	LocalDate now = LocalDate.now();	// 현재 날짜
-	
 	int year = now.getYear();	// 연도만 가져옴
+	
 	int mb_age = Integer.parseInt(vo.getMb_birthdate().substring(0,4));	// 사용자의 출생년도
-	String check_age = Integer.toString((year - mb_age)/10)+"0대";
-	ArrayList<ChecklistVO> mb_checklist = dao.SelectCheckAge(check_age);
+	String check_age = Integer.toString((year - mb_age)/10)+"0대";	//연령대 생성
+	ArrayList<ChecklistVO> mb_checklist = dao.SelectCheckAge(check_age);	//연령대에 맞는 체크리스트 생성
 	
 	//연령별 랜덤으로 체크리스트 출력을 위해 랜덤 수 생성
 	Random rd = new Random();
-	
 	int num = rd.nextInt(mb_checklist.size()+1);
+	
+	String check_name = mb_checklist.get(num).getCheck_name();	//랜덤 질병명
+	int check_std = mb_checklist.get(num).getCheck_std();	//랜덤 체크기준
+	String dis_code = mb_checklist.get(num).getDis_code();	//랜덤 질병 코드
+	String[] mb_arr = mb_checklist.get(num).getCheck_item().split("/");	//랜덤 체크리스트
 
 	
 	
 	//질병 전체 데이터에서 질병명 중복없이 출력
 	ArrayList<ChecklistVO> checklist = (ArrayList<ChecklistVO>) request.getAttribute("checklist");
 	
-	//질병 명 중복없이 출력
+	//질병 명, 질병 코드 중복없이 출력
 	ArrayList<String> name = new ArrayList<String>();
+	ArrayList<String> code = new ArrayList<String>();
 	ArrayList<String> disname = new ArrayList<String>();
+	ArrayList<String> discode = new ArrayList<String>();
 	if(checklist != null){
 		for(int i=0; i<checklist.size(); i++){
 			name.add(checklist.get(i).getCheck_name());
+			code.add(checklist.get(i).getDis_code());
 		}
 	}
 	HashSet<String> name2 = new HashSet<String>(name);
+	HashSet<String> code2 = new HashSet<String>(code);
 	disname = new ArrayList<String>(name2);
+	discode = new ArrayList<String>(code2);
+
 	%>
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -147,11 +155,7 @@
 						데일리체크의 iframe이 들어갈 자리
 						<from action="#">
 						<table>
-							<% 
-								String check_name = mb_checklist.get(num).getCheck_name();
-								int check_std = mb_checklist.get(num).getCheck_std();
-								String dis_code = mb_checklist.get(num).getDis_code();
-								String[] mb_arr = mb_checklist.get(num).getCheck_item().split("/"); %>
+
 							<tr>
 								<th><%= check_name %></th>
 							</tr>
@@ -162,14 +166,10 @@
 							</tr>
 							<%for(int j=0; j<mb_arr.length; j++){ %>
 							<tr>
-								<td>
-									<%= mb_arr[j]%>
+								<td><%= mb_arr[j]%></td>
+								<td><input type="radio" name="<%= "no"+j %>" value="1">
 								</td>
-								<td>
-									<input type="radio" name="<%= "no"+j %>" value="1">
-								</td>
-								<td>
-									<input type="radio" name="<%= "no"+j %>" value="0">
+								<td><input type="radio" name="<%= "no"+j %>" value="0">
 								</td>
 
 							</tr>
@@ -196,10 +196,40 @@
 					</section>
 				</div>
 				<div class="cl_b_content">
-					<div>자가진단의 iframe이 들어갈 자리</div>
+					<%for(int i=0; i<disname.size(); i++){ %>
+					<%ChecklistVO cvo = dao.SelectCheckName(disname.get(i)); %>
+					<%String[] check_arr = cvo.getCheck_item().split("/"); %>
+					<button id="start_btn" onclick="create_button()"><%=disname.get(i) %> 자가진단 </button>
+					<div class="checklist" id="<%=cvo.getDis_code() %>" style="display : none">
+						<table>
+							<tr>
+								<th><%= disname.get(i) %></th>
+							</tr>
+							<tr>
+								<td>질문</td>
+								<td>예</td>
+								<td>아니오</td>
+							</tr>
+
+							<%for(int j=0; j<check_arr.length; j++){ %>
+							<tr>
+								<td><%= check_arr[j]%></td>
+								<td><input type="radio" name="<%= "no"+j %>" value="1">
+								</td>
+								<td><input type="radio" name="<%= "no"+j %>" value="0">
+								</td>
+							</tr>
+							<%} %>
+						</table>
+						<button type="button" id="submit">결과보기</button>
+					</div>
+					<br>
+					<br>
+					<%} %>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 
 
@@ -231,7 +261,7 @@
 	<script src="js/js_main.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript">
+	<script type="text/javascript">		
 		let radioChecked = function(){
 			let cnt = 0;
 			
@@ -295,7 +325,35 @@
 			console.log(num);
  			num = 0;
 		});
-	
+		
+		//전체 자가진단 이름누르면 나오게
+	    <%-- function create_button(){
+	        var con = document.getElementsByClassName("checklist");
+	        for (let i=0; i<con.length; i++){
+	        	for(let j=0; j<<%discode.length%>; j++){
+	        		if(con[i].id == discode.get(j)){
+	        			console.log(con[i].id)
+	        			console.log(<%discode.length%>)
+	        			
+			        	if(con[i].style.display=='none'){
+					    	con[i].style.display = 'block';
+					    }else{
+					        con[i].style.display = 'none';
+					    }	        				        				
+	        		}else{
+	        			console.log("실패")
+	        		}
+	        	}
+	        }
+	    } --%>
+	        	
+	        	/* 
+		        if(con.style.display=='none'){
+		            con.style.display = 'block';
+		        }else{
+		            con.style.display = 'none';
+		        } */
+	    }	
 	</script>
 
 
