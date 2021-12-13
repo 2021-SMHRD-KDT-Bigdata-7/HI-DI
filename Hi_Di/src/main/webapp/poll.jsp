@@ -80,10 +80,8 @@
 			<div
 				class="row no-gutters slider-text align-items-end justify-content-center">
 				<div class="col-md-9 ftco-animate pb-5 text-center">
-
-					<h1 class="mb-0 bread">
-						원하는 모든 질병정보를 <br> 알아보자
-					</h1>
+					<h1 class="mb-0 bread">설문</h1>
+			        <p class="breadcrumbs">고객의 건강을 위한 설문조사 플랫폼</p>
 				</div>
 			</div>
 		</div>

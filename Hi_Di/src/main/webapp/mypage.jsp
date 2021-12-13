@@ -80,15 +80,11 @@
 			<div
 				class="row no-gutters slider-text align-items-end justify-content-center">
 				<div class="col-md-9 ftco-animate pb-5 text-center">
-
-					<h1 class="mb-0 bread">
-						원하는 모든 질병정보를 <br> 알아보자
-					</h1>
+					<h1 class="mb-0 bread">마이페이지</h1>
 				</div>
 			</div>
 		</div>
 	</section>
-
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">

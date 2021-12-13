@@ -64,7 +64,7 @@
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html"><span>HI-DI</span></a>
+			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
 				type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false"
@@ -426,7 +426,7 @@
 									<div class="d-flex align-items-center">
 										<!-- <div class="user-img" style="background-image: url()"></div> -->
 										<div class="pl-3">
-											<a class="name" href="checkAll.jsp?name=코로나">코로나</a>
+											<a class="name" href="checkAll.jsp?name=코로나19">코로나19</a>
 											<span class="position">Covid19</span>
 										</div>
 									</div>
