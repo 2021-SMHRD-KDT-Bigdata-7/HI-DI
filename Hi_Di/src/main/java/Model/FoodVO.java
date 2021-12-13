@@ -15,7 +15,7 @@ public class FoodVO {
 	private float food_cholesterol;		// 콜레스테롤
 	private float food_saturated_fatty; // 포화지방산
 	private float food_transfat;		// 트랜스지방
-	private String reg_date; 				// 날짜?
+	private String reg_date; 			// 날짜?
 	private String food_pic2;			// 식품사진
 	public FoodVO(int food_seq, String food_name, int food_year, String food_source, float food_calory,
 			float food_carvohydrate, float food_protein, float food_fat, float food_sugars, float food_sodium,
