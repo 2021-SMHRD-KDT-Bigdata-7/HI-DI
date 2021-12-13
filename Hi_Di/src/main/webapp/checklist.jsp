@@ -443,10 +443,6 @@
    <script src="js/jquery.magnific-popup.min.js"></script>
    <script src="js/jquery.animateNumber.min.js"></script>
    <script src="js/scrollax.min.js"></script>
-   <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-   <script src="js/google-map.js"></script>
-
    <script src="js/js_main.js"></script>
    <script src="js/script.js"></script>
    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
