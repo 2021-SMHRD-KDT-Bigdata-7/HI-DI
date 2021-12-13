@@ -43,7 +43,7 @@
 		id="ftco-navbar">
 		<div class="container">
 			<!-- 로고 hidi로 바꾸기 -->
-			<a class="navbar-brand" href="index.html"><span>HI-DI</span></a>
+			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
 				type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false"
@@ -54,17 +54,17 @@
 			<!-- 상단 메뉴 -->
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="index.html#home-section"
+					<li class="nav-item"><a href="SelectAllService"
 						class="nav-link"><span>자가진단</span></a></li>
-					<li class="nav-item"><a href="index.html#about-section"
+					<li class="nav-item"><a href="disease.jsp"
 						class="nav-link"><span>질병검색</span></a></li>
-					<li class="nav-item"><a href="index.html#skills-section"
+					<li class="nav-item"><a href="foodall.jsp"
 						class="nav-link"><span>식품검색</span></a></li>
-					<li class="nav-item"><a href="index.html#services-section"
+					<li class="nav-item"><a href="poll.jsp"
 						class="nav-link"><span>설문</span></a></li>
-					<li class="nav-item"><a href="index.html#projects-section"
+					<li class="nav-item"><a href="statistics.jsp"
 						class="nav-link"><span>질병통계</span></a></li>
-					<li class="nav-item"><a href="index.html#blog-section"
+					<li class="nav-item"><a href="mypage.jsp"
 						class="nav-link"><span>마이페이지</span></a></li>
 				</ul>
 			</div>
@@ -80,10 +80,8 @@
 			<div
 				class="row no-gutters slider-text align-items-end justify-content-center">
 				<div class="col-md-9 ftco-animate pb-5 text-center">
-
-					<h1 class="mb-0 bread">
-						원하는 모든 질병정보를 <br> 알아보자
-					</h1>
+					<h1 class="mb-0 bread">설문</h1>
+			        <p class="breadcrumbs">고객의 건강을 위한 설문조사 플랫폼</p>
 				</div>
 			</div>
 		</div>
@@ -117,6 +115,6 @@
 	<script src="js/js_main.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript">
+	<script type="text/javascript"></script>
 </body>
 </html>
