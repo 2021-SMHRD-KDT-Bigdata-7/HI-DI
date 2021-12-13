@@ -1,8 +1,9 @@
+<%@page import="Model.HospitalVO"%>
 <%@page import="Model.DiseaseVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.DAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,27 +23,279 @@
 <link rel="stylesheet" href="css/magnific-popup.css">
 
 <link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
-<%
+	<%
 	String name = request.getParameter("name");
 	
 	String code = request.getParameter("code");
 
 	DAO dao = new DAO();
+	ArrayList<HospitalVO> hoslist = dao.HospitalAll("내과");
+
 	
-	DiseaseVO disease =  dao.SelectDiseaseCode(code);
+	
+	/* DiseaseVO disease =  dao.SelectDiseaseCode(code);
+	ArrayList<HospitalVO> hoslist = null;
 	if(disease != null){
-		out.print(disease.getDis_dpt());		
-	}
+		out.print(disease.getDis_dpt());
+		
+		hoslist = dao.HospitalAll(disease.getDis_dpt());
+		
+		out.print(hoslist.get(0).getHos_latitude());
+	}else{
+		out.print("진료과 없음");
+	} */
+	
+	
 %>
 
-<nav
+<div id="map" style="width: 100%; height: 800px;"></div>
+
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0b3a32b355a4dc98f4a07c93f17a9fb"></script>
+
+	<div id="map" style="width: 100%; height: 350px;"></div>
+
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0b3a32b355a4dc98f4a07c93f17a9fb"></script>
+
+	<script>
+
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(35.11154588685366, 126.87755807671306), // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+ 
+// 마커를 표시할 위치와 title , cotnents 객체 배열입니다 
+var lat = null;
+var lon = null;
+var positions = [];
+var title = [];
+var content=[{}];
+
+
+// positions에 push메서드로 객체 넣어주기
+<%for (int i = 0; i < hoslist.size(); i++) {%>
+positions.push({
+			title : '<%=hoslist.get(i).getHos_name()%>',
+			latlng : new kakao.maps.LatLng(
+											<%=hoslist.get(i).getHos_longitude()%>,
+											<%=hoslist.get(i).getHos_latitude()%>
+		)
+		})
+		
+	<%}%>
+	
+
+
+	
+		// 마커 이미지의 이미지 주소입니다
+		var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png";
+
+		for (var i = 0; i < positions.length; i++) {
+
+			// 마커 이미지의 이미지 크기 입니다
+			var imageSize = new kakao.maps.Size(24, 35);
+
+			// 마커 이미지를 생성합니다    
+			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+			// 마커를 생성합니다
+			var marker = new kakao.maps.Marker({
+				map : map, // 마커를 표시할 지도
+				position : positions[i].latlng, // 마커를 표시할 위치
+				title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+				image : markerImage
+			// 마커 이미지 
+			});
+		};
+		
+				
+		//HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+		if (navigator.geolocation) {
+
+			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+			navigator.geolocation.getCurrentPosition(function(position) {
+
+				lat = position.coords.latitude, // 위도
+				lon = position.coords.longitude; // 경도
+			
+				var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+				message = '<div style="padding:3px;">현재위치</div>'; // 인포윈도우에 표시될 내용입니다
+								
+				// 마커와 인포윈도우를 표시합니다
+				displayMarker(locPosition, message);
+				
+			});
+			
+		
+		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+			var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = 'geolocation을 사용할수 없어요..'
+
+			displayMarker(locPosition, message);
+		}
+
+		// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+		function displayMarker(locPosition, message) {
+
+			// 마커를 생성합니다
+			var marker = new kakao.maps.Marker({
+				map : map,
+				position : locPosition
+			});
+
+			var iwContent = message, // 인포윈도우에 표시할 내용
+			iwRemoveable = true;
+	
+			// 인포윈도우를 생성합니다
+			var infowindow = new kakao.maps.InfoWindow({
+				content : iwContent,
+				removable : iwRemoveable
+			});
+			
+			// 인포윈도우를 마커위에 표시합니다 
+			infowindow.open(map, marker);
+			
+			// 지도 중심좌표를 접속위치로 변경합니다
+			map.setCenter(locPosition);
+			
+		}
+		
+		
+		
+	</script>
+
+<%-- <!-- 지도 띄우기 -->
+<%if(hoslist != null){ %>
+	<div id="map" style="width: 100%; height: 800px;"></div>
+	
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0b3a32b355a4dc98f4a07c93f17a9fb"></script>
+	
+	<div id="map" style="width: 100%; height: 350px;"></div>
+	
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0b3a32b355a4dc98f4a07c93f17a9fb"></script>
+
+
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+	    	mapOption = { 
+	        	center: new kakao.maps.LatLng(35.11154588685366, 126.87755807671306), // 지도의 중심좌표
+	        	level: 5 // 지도의 확대 레벨
+	    	};
+	
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	 
+		// 마커를 표시할 위치와 title , cotnents 객체 배열입니다 
+		var lat = null;
+		var lon = null;
+		var positions = [];
+		var title = [];
+		var content=[{}];
+	
+		
+		// positions에 push메서드로 객체 넣어주기
+		<%for (int i = 0; i < hoslist.size(); i++) {%>
+			positions.push({
+				title : '<%=hoslist.get(i).getHos_name()%>',
+				latlng : new kakao.maps.LatLng(
+					<%=hoslist.get(i).getHos_longitude()%>,
+					<%=hoslist.get(i).getHos_latitude()%>
+				)
+			})
+		<%}%>
+		
+		// 마커 이미지의 이미지 주소입니다
+		var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png";
+	
+		for (var i = 0; i < positions.length; i++) {
+	
+			// 마커 이미지의 이미지 크기 입니다
+			var imageSize = new kakao.maps.Size(24, 35);
+	
+			// 마커 이미지를 생성합니다    
+			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+	
+			// 마커를 생성합니다
+			var marker = new kakao.maps.Marker({
+				map : map, // 마커를 표시할 지도
+				position : positions[i].latlng, // 마커를 표시할 위치
+				title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+				image : markerImage
+				// 마커 이미지 
+				});
+			};
+			
+					
+		//HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+		if (navigator.geolocation) {
+	
+			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+			navigator.geolocation.getCurrentPosition(function(position) {
+	
+				lat = position.coords.latitude, // 위도
+				lon = position.coords.longitude; // 경도
+				
+				var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+				message = '<div style="padding:3px;">현재위치</div>'; // 인포윈도우에 표시될 내용입니다
+									
+				// 마커와 인포윈도우를 표시합니다
+				displayMarker(locPosition, message);
+					
+			});
+		} else { 
+			// HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+	
+			var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = 'geolocation을 사용할수 없어요..'
+	
+				displayMarker(locPosition, message);
+		}
+	
+		// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+		function displayMarker(locPosition, message) {
+	
+			// 마커를 생성합니다
+			var marker = new kakao.maps.Marker({
+				map : map,
+				position : locPosition
+			});
+	
+			var iwContent = message, // 인포윈도우에 표시할 내용
+			iwRemoveable = true;
+		
+			// 인포윈도우를 생성합니다
+			var infowindow = new kakao.maps.InfoWindow({
+				content : iwContent,
+				removable : iwRemoveable
+			});
+				
+			// 인포윈도우를 마커위에 표시합니다 
+			infowindow.open(map, marker);
+				
+			// 지도 중심좌표를 접속위치로 변경합니다
+			map.setCenter(locPosition);
+				
+		}
+		
+		
+		
+	</script>
+<%} %>
+	<!-- 지도 끝 -->
+ --%>
+ 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
 		<div class="container">
-			<!-- 로고 hidi로 바꾸기 -->
+			로고 hidi로 바꾸기
 			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
 				type="button" data-toggle="collapse" data-target="#ftco-nav"
@@ -51,27 +304,22 @@
 				<span class="oi oi-menu"></span> 회원가입 <span class="oi oi-menu"></span>
 				로그인
 			</button>
-			<!-- 상단 메뉴 -->
+			상단 메뉴
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
 					<li class="nav-item"><a href="SelectAllService"
 						class="nav-link"><span>자가진단</span></a></li>
-					<li class="nav-item"><a href="disease.jsp"
-						class="nav-link"><span>질병검색</span></a></li>
-					<li class="nav-item"><a href="foodall.jsp"
-						class="nav-link"><span>식품검색</span></a></li>
-					<li class="nav-item"><a href="poll.jsp"
-						class="nav-link"><span>설문</span></a></li>
-					<li class="nav-item"><a href="statistics.jsp"
-						class="nav-link"><span>질병통계</span></a></li>
-					<li class="nav-item"><a href="mypage.jsp"
-						class="nav-link"><span>마이페이지</span></a></li>
+					<li class="nav-item"><a href="disease.jsp" class="nav-link"><span>질병검색</span></a></li>
+					<li class="nav-item"><a href="foodall.jsp" class="nav-link"><span>식품검색</span></a></li>
+					<li class="nav-item"><a href="poll.jsp" class="nav-link"><span>설문</span></a></li>
+					<li class="nav-item"><a href="statistics.jsp" class="nav-link"><span>질병통계</span></a></li>
+					<li class="nav-item"><a href="mypage.jsp" class="nav-link"><span>마이페이지</span></a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-	<!-- 배너 -->
+	배너
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('images/bg_4.jpg');"
 		data-stellar-background-ratio="0.5">
@@ -100,10 +348,10 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
-	<script
+<!-- 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
-	
+	<script src="js/google-map.js"></script> -->
+
 	<script src="js/js_main.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
