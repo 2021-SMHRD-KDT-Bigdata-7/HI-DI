@@ -290,8 +290,8 @@
         <ul id="ul3">
             <li> 체중감소 </a></li>
             <li> 건망증과 혼돈 </a></li>
-            <li><a href="#"> 기침 </a></li>
-            <li><a href="#"> 가슴 두근거림 </a></li>
+            <li><a href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 기침 </a></li>
+            <li><a href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 가슴 두근거림 </a></li>
         </ul>
         <br>
         <ul id="ul4">
