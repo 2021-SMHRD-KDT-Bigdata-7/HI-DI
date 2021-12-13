@@ -13,7 +13,7 @@ public class DiseaseVO {
 	private String dis_pic1; // 질병사진
 	
 	
-	// 생성자3
+	// 생성자4
 	public DiseaseVO(int dis_seq, String dis_code, String dis_name, String dis_content, String dis_symptom,
 			String dis_dpt, String dis_tag, String mB_ID, String dis_pic1) {
 		super();

@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public class DAO {
 	
-	// 梓端 持失
+	// 梓端 持失1
 	MemberVO vo = null;
 	DiseaseVO dvo = null;
 	ArrayList<DiseaseVO> disease = new ArrayList<DiseaseVO>();
