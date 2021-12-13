@@ -20,6 +20,7 @@ public class DAO {
 	int cnt = 0;
 	ArrayList<ChecklistVO> checklist = new ArrayList<ChecklistVO>();
 	FoodVO fvo = null;
+	ArrayList<HospitalVO> hoslist = new ArrayList<HospitalVO>();
 
 	// DB연결
 	public void connection() {
@@ -428,4 +429,50 @@ public class DAO {
 			return fvo;
 		}
 
+		public ArrayList<HospitalVO> HospitalAll(String hos_dpt) {
+			try {
+				connection();
+
+				String sql = "select * from t_hospital WHERE hos_dpt = ?";
+				psmt = conn.prepareStatement(sql);
+
+				psmt.setString(1, hos_dpt);
+
+				rs = psmt.executeQuery();
+
+				while (rs.next() == true) {
+
+					int hos_seq = rs.getInt(1);
+					String hos_name = rs.getString(2);
+					String hos_addr = rs.getString(3);
+					String hos_phone = rs.getString(4);
+					double hos_latitude = rs.getDouble(5);
+					double hos_longitude = rs.getDouble(6);
+					String hos_facilities = rs.getString(7);
+					String userhos_dpt = rs.getString(8);
+					int hos_time1 = rs.getInt(9);
+					int hos_time2 = rs.getInt(10);
+					int hos_time3 = rs.getInt(11);
+					int hos_time4 = rs.getInt(12);
+					int hos_time5 = rs.getInt(13);
+					String mb_id = rs.getString(14);
+
+					HospitalVO hvo = new HospitalVO(hos_seq, hos_name, hos_addr, hos_phone, hos_latitude, hos_longitude,
+							hos_facilities, userhos_dpt, hos_time1, hos_time2, hos_time3, hos_time4, hos_time5, mb_id);
+
+					hoslist.add(hvo);
+
+				}
+				System.out.println("병원 불러오기");
+			} catch (Exception e) {
+
+				System.out.println("병원 불러오기 실패");
+				e.printStackTrace();
+
+			} finally {
+				close();
+			}
+
+			return hoslist;
+		}
 }
