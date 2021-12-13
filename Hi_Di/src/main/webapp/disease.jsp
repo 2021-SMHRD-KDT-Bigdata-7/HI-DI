@@ -1,3 +1,4 @@
+<%@page import="Model.DiseaseVO"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.time.LocalDate"%>
@@ -37,13 +38,36 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
+
+	
+	<%
+	//메소드 사용하기 위해 dao객체 생성
+	DAO dao = new DAO();
+	
+	//질병 전체 데이터에서 질병명 중복없이 출력
+	ArrayList<DiseaseVO> diseaselist = (ArrayList<DiseaseVO>) request.getAttribute("diseaselist"); 
+		
+		
+	//질병 명 중복없이 출력
+	ArrayList<String> name = new ArrayList<String>();
+	ArrayList<String> disname = new ArrayList<String>();
+		if(diseaselist != null){
+			for(int i=0; i<diseaselist.size(); i++){
+				name.add(diseaselist.get(i).getDis_code());
+			}
+		}
+		HashSet<String> name2 = new HashSet<String>(name);
+		disname = new ArrayList<String>(name2);
+	%>
+	
+	
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
 		<div class="container">
 			<!-- 로고 hidi로 바꾸기 -->
-			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
+			<a class="navbar-brand" href="index.html"><span>HI-DI</span></a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
 				type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false"
@@ -54,17 +78,17 @@
 			<!-- 상단 메뉴 -->
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="SelectAllService"
+					<li class="nav-item"><a href="index.html#home-section"
 						class="nav-link"><span>자가진단</span></a></li>
-					<li class="nav-item"><a href="disease.jsp"
+					<li class="nav-item"><a href="index.html#about-section"
 						class="nav-link"><span>질병검색</span></a></li>
-					<li class="nav-item"><a href="foodall.jsp"
+					<li class="nav-item"><a href="index.html#skills-section"
 						class="nav-link"><span>식품검색</span></a></li>
-					<li class="nav-item"><a href="poll.jsp"
+					<li class="nav-item"><a href="index.html#services-section"
 						class="nav-link"><span>설문</span></a></li>
-					<li class="nav-item"><a href="statistics.jsp"
+					<li class="nav-item"><a href="index.html#projects-section"
 						class="nav-link"><span>질병통계</span></a></li>
-					<li class="nav-item"><a href="mypage.jsp"
+					<li class="nav-item"><a href="index.html#blog-section"
 						class="nav-link"><span>마이페이지</span></a></li>
 				</ul>
 			</div>
@@ -72,19 +96,44 @@
 	</nav>
 
 	<!-- 배너 -->
-	<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');" data-stellar-background-ratio="0.5">
-	  <div class="overlay"></div>
-	  <div class="container">
-	    <div class="row no-gutters slider-text align-items-end justify-content-center">
-	      <div class="col-md-9 ftco-animate pb-5 text-center">
-	        <h1 class="mb-0 bread">질병검색</h1>
-	        <p class="breadcrumbs">당신의 건강하고 행복한 삶을 위한 건강 지식</p>
-	      </div>
-	    </div>
-	  </div>
-	</section>
+	<section class="hero-wrap hero-wrap-2"
+		style="background-image: url('images/bg_4.jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 ftco-animate pb-5 text-center">
 
+					<h1 class="mb-0 bread">
+						원하는 모든 질병정보를 <br> 알아보자
+					</h1>
+				</div>
+			</div>
+		</div>
+	</section>
 	
+	
+	<!-- 검색기능1 --> 	
+	<div class="container">
+		<div class="row">
+			<form id = "frm" action="diseaseSearch">
+				<table class="pull-right">
+					<tr>									
+						<td>
+							<input type="text" class="form-control"
+							placeholder="질병 명 입력" name="searchText" maxlength="100"></td>
+						<td>
+							<input type="submit" value="검색">
+						</td>
+					</tr>
+
+				</table>
+			</form>
+		</div>
+	</div>
+
+
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
@@ -106,9 +155,43 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+
 	<script src="js/js_main.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+
+	
+	$(document).ready(function(){
+		$("#submit").click(function(){
+			
+			if($("#id").val() == ''){
+				
+				return;
+			}
+			$("#frm").attr("action", "diseaseSearch.jsp"); // attribute setting
+			$("#frm").submit();
+		});
+	});
+	
+	
+	//옵션에서 값 받아오고
+<%--	let code = $(".form-control").text();
+	console.log(code);
+
+	
+	 	$('#submit').on('click', function(){
+		<% 	ArrayList<DiseaseVO> disNameList = dao.SelectDiseaseName(null);%>
+		
+		<% 	ArrayList<DiseaseVO> disCodeList = dao.SelectDiseaseName(null);%>
+		
+	
+	} --%>
+	
+	</script>
+	
 </body>
 </html>
