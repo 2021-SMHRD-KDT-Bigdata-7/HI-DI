@@ -11,6 +11,8 @@ public class DAO {
 	
 	// 객체 생성
 	MemberVO vo = null;
+	DiseaseVO dvo = null;
+	ArrayList<DiseaseVO> disease = new ArrayList<DiseaseVO>();
 	ChecklistVO cvo = null;
 	Connection conn = null;
 	PreparedStatement psmt = null;
@@ -244,4 +246,89 @@ public class DAO {
 		
 		return checklist;
 	}
+	// ================================================================ 
+		// 질병코드로 검색해 질병정보 호출
+		
+		public ArrayList<DiseaseVO> SelectDiseaseCode(String dis_code) {
+			try {
+				connection();
+				//sql문
+				String sql = "select * from t_disease where dis_code = ?";
+				psmt = conn.prepareStatement(sql);
+
+				//바인드 변수 채우기
+				psmt.setString(1, dis_code);
+				
+				//실행
+				rs = psmt.executeQuery();
+
+				//dvo에 체크리스트 저장
+				while(rs.next() == true) {
+					int disseq = rs.getInt(1);
+					String discode = rs.getString(2);
+					String disname = rs.getString(3);
+					String discontent = rs.getString(4);
+					String dissymptom = rs.getString(5);
+					String disdpt = rs.getString(6);
+					String distag = rs.getString(7);
+					String mbid = rs.getString(8);
+					String dispic = rs.getString(9);
+
+					dvo = new DiseaseVO(disseq, discode, disname, discontent, dissymptom, disdpt, distag, mbid, dispic);
+					disease.add(dvo);
+				}
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+			} finally {
+				close();
+			}
+			
+			return disease;
+		}
+		// ================================================================ 
+		// 질병이름으로 검색해 질병정보 호출
+			
+			public ArrayList<DiseaseVO> SelectDiseaseName(String dis_name) {
+				try {
+					connection();
+					//sql문
+					String sql = "select * from t_disease where dis_name = ?";
+					psmt = conn.prepareStatement(sql);
+
+					//바인드 변수 채우기
+					psmt.setString(1, dis_name);
+					
+					//실행
+					rs = psmt.executeQuery();
+
+					//dvo에 체크리스트 저장
+					while(rs.next() == true) {
+						int disseq = rs.getInt(1);
+						String discode = rs.getString(2);
+						String disname = rs.getString(3);
+						String discontent = rs.getString(4);
+						String dissymptom = rs.getString(5);
+						String disdpt = rs.getString(6);
+						String distag = rs.getString(7);
+						String mbid = rs.getString(8);
+						String dispic = rs.getString(9);
+
+						dvo = new DiseaseVO(disseq, discode, disname, discontent, dissymptom, disdpt, distag, mbid, dispic);
+						disease.add(dvo);
+					}
+
+				} catch (Exception e) {
+
+					e.printStackTrace();
+
+				} finally {
+					close();
+				}
+				
+				return disease;
+			}
+
 }

@@ -89,6 +89,24 @@
 		</div>
 	</section>
 
+	<!-- 검색기능 --> 	
+	<div class="container">
+		<div class="row">
+			<form name="search" action="#">
+				<table class="pull-right">
+					<tr>
+						<td><input type="text" class="form-control"
+							placeholder="검색어 입력" name="searchText" maxlength="100"></td>
+						<td><button type="submit" class="btn btn-success">검색</button></td>
+					</tr>
+
+				</table>
+			</form>
+		</div>
+	</div>
+
+
+
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
