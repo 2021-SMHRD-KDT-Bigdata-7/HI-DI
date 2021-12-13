@@ -142,6 +142,9 @@
            list-style-type: none; float: left; margin-left: 30px; width: 162px;
             list-style-type: disc;
         }
+         a {
+        	color:black;
+        }
         
         
         ul.ml-auto > li {
