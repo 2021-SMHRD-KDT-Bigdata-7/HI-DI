@@ -75,11 +75,11 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
 					<li class="nav-item"><a href="SelectAllService" class="nav-link"><span>자가진단</span></a></li>
-					<li class="nav-item"><a href="#" class="nav-link"><span>질병검색</span></a></li>
-					<li class="nav-item"><a href="#" class="nav-link"><span>식품검색</span></a></li>
-					<li class="nav-item"><a href="#" class="nav-link"><span>설문</span></a></li>
-					<li class="nav-item"><a href="#" class="nav-link"><span>질병통계</span></a></li>
-					<li class="nav-item"><a href="#" class="nav-link"><span>마이페이지</span></a></li>
+					<li class="nav-item"><a href="disease.jsp" class="nav-link"><span>질병검색</span></a></li>
+					<li class="nav-item"><a href="foodall.jsp" class="nav-link"><span>식품검색</span></a></li>
+					<li class="nav-item"><a href="poll.jsp" class="nav-link"><span>설문</span></a></li>
+					<li class="nav-item"><a href="statistics.jsp" class="nav-link"><span>질병통계</span></a></li>
+					<li class="nav-item"><a href="mypage.jsp" class="nav-link"><span>마이페이지</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -115,7 +115,7 @@
 								</span> <span class="title-line"> <span>질 좋은 정보를 얻어보세요!</span>
 								</span>
 							</h2>
-							<a href="#" class="slide-go">바로가기</a>
+							<a href="SelectAllService" class="slide-go">바로가기</a>
 						</header>
 					</div>
 				</section>
@@ -139,7 +139,7 @@
 								</span> <span class="title-line"> <span>정보를 한눈에 찾아보세요!</span>
 								</span>
 							</h2>
-							<div class="slide-go"><a href="#">바로가기</a></div>
+							<div class="slide-go"><a href="disease.jsp">바로가기</a></div>
 						</header>
 					</div>
 				</section>
@@ -163,7 +163,7 @@
 								</span> <span class="title-line"> <span>HiDi가 도와드리겠습니다.</span>
 								</span>
 							</h2>
-							<div class="slide-go"><a href="#">바로가기</a></div>
+							<div class="slide-go"><a href="foodall.jsp">바로가기</a></div>
 						</header>
 					</div>
 				</section>
@@ -186,7 +186,7 @@
 								</span> <span class="title-line"> <span>이용해주십시오.</span>
 								</span>
 							</h2>
-							<div class="slide-go"><a href="#">바로가기</a></div>
+							<div class="slide-go"><a href="poll.jsp">바로가기</a></div>
 						</header>
 					</div>
 				</section>
@@ -208,7 +208,7 @@
 								</span> <span class="title-line"> <span>이용해주십시오.</span>
 								</span>
 							</h2>
-							<div class="slide-go"><a href="#">바로가기</a></div>
+							<div class="slide-go"><a href="statistics.jsp">바로가기</a></div>
 						</header>
 					</div>
 				</section>
@@ -525,7 +525,7 @@
 						<h2>질병 정보 알아보기</h2>
 						<p>알맞춤 정보들을 얻고 싶으시다면 이용해주세요!</p>
 						<p class="mb-0">
-							<a href="#" id="dInfo-btn" class="btn btn-white py-3 px-4">바로가기</a>
+							<a href="disease.jsp" id="dInfo-btn" class="btn btn-white py-3 px-4">바로가기</a>
 						</p>
 					</div>
 				</div>
