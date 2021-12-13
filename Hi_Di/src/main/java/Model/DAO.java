@@ -19,6 +19,7 @@ public class DAO {
 	ResultSet rs = null;
 	int cnt = 0;
 	ArrayList<ChecklistVO> checklist = new ArrayList<ChecklistVO>();
+	FoodVO fvo = null;
 
 	// DB연결
 	public void connection() {
@@ -331,5 +332,100 @@ public class DAO {
 
 		return dvo;
 	}
+	// =================================================================================================================================
+		// 식품명으로 일부 검색
+		public FoodVO Searchfood(String food_name) {
+
+			try {
+				connection();
+				// sql문
+				String sql = "select * from t_food where food_name = %?%";
+				psmt = conn.prepareStatement(sql);
+
+				// 바인드 변수 채우기
+				psmt.setString(1, food_name);
+
+				// 실행
+				rs = psmt.executeQuery();
+
+				// fvo에 식품 저장
+				if (rs.next() == true) {
+					int foodSeq = rs.getInt(1);
+					String foodName = rs.getString(2); // 식품 명
+					int foodYear = rs.getInt(3); // 조사년도
+					String foodSource = rs.getString(4); // 자료출처
+					float foodCalory = rs.getFloat(5); // 열량
+					float foodCarvohydrate = rs.getFloat(6); // 탄수화물
+					float foodProtein = rs.getFloat(7); // 단백질
+					float foodFat = rs.getFloat(8); // 지방
+					float foodSugars = rs.getFloat(9); // 당류
+					float foodSodium = rs.getFloat(10); // 나트륨
+					float foodCholesterol = rs.getFloat(11); // 콜레스테롤
+					float foodSaturated_fatty = rs.getFloat(12); // 포화지방산
+					float foodTransfat = rs.getFloat(13); // 트랜스지방
+					String regDate = rs.getString(14); // 날짜?
+					String foodPic2 = rs.getString(15); // 식품사진
+
+					FoodVO fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
+							foodProtein, foodFat, foodSugars, foodSodium, foodCholesterol, foodSaturated_fatty,
+							foodTransfat, regDate, foodPic2);
+
+				}
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+			} finally {
+				close();
+			}
+			return fvo;
+		}
+	// =====================================================================================================================================
+		// 식품 전체 불러오기
+		public FoodVO SelectAllfood() {
+
+			try {
+				connection();
+				// sql문
+				String sql = "select * from t_food";
+				psmt = conn.prepareStatement(sql);
+
+				// 실행
+				rs = psmt.executeQuery();
+
+				// fvo에 식품 저장
+				if (rs.next() == true) {
+					int foodSeq = rs.getInt(1);
+					String foodName = rs.getString(2); // 식품 명
+					int foodYear = rs.getInt(3); // 조사년도
+					String foodSource = rs.getString(4); // 자료출처
+					float foodCalory = rs.getFloat(5); // 열량
+					float foodCarvohydrate = rs.getFloat(6); // 탄수화물
+					float foodProtein = rs.getFloat(7); // 단백질
+					float foodFat = rs.getFloat(8); // 지방
+					float foodSugars = rs.getFloat(9); // 당류
+					float foodSodium = rs.getFloat(10); // 나트륨
+					float foodCholesterol = rs.getFloat(11); // 콜레스테롤
+					float foodSaturated_fatty = rs.getFloat(12); // 포화지방산
+					float foodTransfat = rs.getFloat(13); // 트랜스지방
+					String regDate = rs.getString(14); // 날짜?
+					String foodPic2 = rs.getString(15); // 식품사진
+
+					FoodVO fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
+							foodProtein, foodFat, foodSugars, foodSodium, foodCholesterol, foodSaturated_fatty,
+							foodTransfat, regDate, foodPic2);
+
+				}
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+			} finally {
+				close();
+			}
+			return fvo;
+		}
 
 }
