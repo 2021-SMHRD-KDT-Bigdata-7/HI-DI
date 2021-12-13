@@ -1,3 +1,4 @@
+<%@page import="Model.RawVO"%>
 <%@page import="Model.HospitalVO"%>
 <%@page import="Model.DiseaseVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -33,18 +34,15 @@
 
 	DAO dao = new DAO();
 	
-	DiseaseVO disease =  dao.SelectDiseaseCode(code);
+	DiseaseVO dvo =  dao.SelectDiseaseCode(code);
 	ArrayList<HospitalVO> hoslist = null;
-	if(disease != null){
-		out.print(disease.getDis_dpt());
-		
-		hoslist = dao.HospitalAll(disease.getDis_dpt());
-		
-		out.print(hoslist.get(0).getHos_latitude());
+	if(dvo != null){		
+		hoslist = dao.HospitalAll(dvo.getDis_dpt());
 	}else{
 		out.print("진료과 없음");
 	}
 	
+	ArrayList<RawVO> rawlist = dao.RawSelect(dvo.getDis_tag());
 	
 %>
 
@@ -94,6 +92,27 @@
 	    </div>
 	  </div>
 	</section>
+
+
+<!-- 질병 이름 출력 -->
+<span> <%= name %> (이)가 의심 됩니다.</span><br>
+
+<span><%= name %>는 <%=dvo.getDis_content() %> 이고</span><br>
+<span><%=dvo.getDis_symptom() %> 과 같은 증상이 있을 수 있습니다.</span><br>
+<%-- <span>도움이 되는 영양 성분으로는 
+	<%for(int i=0; i<rawlist.size(); i++){ %>
+		<%=rawlist.get(i).getRaw_name() %> 이 있고
+		그 기능은 <%= rawlist.get(i).getRaw_func()%> 입니다.
+	<%} %>
+</span><br> --%>
+
+<span><%=dvo.getDis_dpt() %> 에 방문 하는 것을 추천 합니다.</span><br>
+
+
+
+
+
+
 
 <!-- 지도 띄우기 -->
 <%if(hoslist != null){ %>
