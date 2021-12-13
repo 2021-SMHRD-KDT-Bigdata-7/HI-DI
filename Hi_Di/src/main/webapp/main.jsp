@@ -74,8 +74,7 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="SelectAllService"
-						class="nav-link"><span>자가진단</span></a></li>
+					<li class="nav-item"><a href="SelectAllService" class="nav-link"><span>자가진단</span></a></li>
 					<li class="nav-item"><a href="#" class="nav-link"><span>질병검색</span></a></li>
 					<li class="nav-item"><a href="#" class="nav-link"><span>식품검색</span></a></li>
 					<li class="nav-item"><a href="#" class="nav-link"><span>설문</span></a></li>
@@ -116,7 +115,7 @@
 								</span> <span class="title-line"> <span>질 좋은 정보를 얻어보세요!</span>
 								</span>
 							</h2>
-							<div class="slide-go">바로가기</div>
+							<a href="#" class="slide-go">바로가기</a>
 						</header>
 					</div>
 				</section>
@@ -140,7 +139,7 @@
 								</span> <span class="title-line"> <span>정보를 한눈에 찾아보세요!</span>
 								</span>
 							</h2>
-							<div class="slide-go">바로가기</div>
+							<div class="slide-go"><a href="#">바로가기</a></div>
 						</header>
 					</div>
 				</section>
@@ -164,7 +163,7 @@
 								</span> <span class="title-line"> <span>HiDi가 도와드리겠습니다.</span>
 								</span>
 							</h2>
-							<div class="slide-go">바로가기</div>
+							<div class="slide-go"><a href="#">바로가기</a></div>
 						</header>
 					</div>
 				</section>
@@ -187,7 +186,7 @@
 								</span> <span class="title-line"> <span>이용해주십시오.</span>
 								</span>
 							</h2>
-							<div class="slide-go">바로가기</div>
+							<div class="slide-go"><a href="#">바로가기</a></div>
 						</header>
 					</div>
 				</section>
@@ -209,7 +208,7 @@
 								</span> <span class="title-line"> <span>이용해주십시오.</span>
 								</span>
 							</h2>
-							<div class="slide-go">바로가기</div>
+							<div class="slide-go"><a href="#">바로가기</a></div>
 						</header>
 					</div>
 				</section>
@@ -412,6 +411,7 @@
 				<div
 					class="col-md-12 heading-section heading-section-white text-center ftco-animate">
 					<span class="subheading"></span>
+					<span class="subheading">Diagnosis</span>
 					<h2 class="mb-4">자가진단</h2>
 					<p>hidi로 자신의 건강정보를 체크해보자</p>
 				</div>
@@ -419,7 +419,8 @@
 			<div class="row ftco-animate">
 				<div class="col-md-12">
 					<div class="carousel-testimony owl-carousel">
-						<div class="item " style="background-image: url(./images/check1.jpg); background-size:cover;">
+						<div class="item "
+							style="background-image: url(./images/check1.jpg); background-size: cover;">
 							<div class="testimony-wrap py-4 tw-1">
 								<div class="text">
 									<div class="d-flex align-items-center">
@@ -434,7 +435,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="item" style="background-image: url(./images/check2.jpg); background-size:cover;">
+						<div class="item"
+							style="background-image: url(./images/check2.jpg); background-size: cover;">
 							<div class="testimony-wrap py-4 tw-2">
 								<div class="text">
 									<div class="d-flex align-items-center">
@@ -449,13 +451,14 @@
 								</div>
 							</div>
 						</div>
-						<div class="item" style="background-image: url(./images/check3.jpg); background-size:cover;">
+						<div class="item"
+							style="background-image: url(./images/check3.jpg); background-size: cover;">
 							<div class="testimony-wrap py-4 tw-3">
 								<div class="text">
 									<div class="d-flex align-items-center">
 										<!-- <div class="user-img" style="background-image: url()"></div> -->
 										<div class="pl-3">
-											<p class="name">자궁경부암 </p>
+											<p class="name">자궁경부암</p>
 											<span class="position">cervical cancer</span>
 										</div>
 									</div>
@@ -463,7 +466,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="item" style="background-image: url(./images/check4.jpg); background-size:cover;">
+						<div class="item"
+							style="background-image: url(./images/check4.jpg); background-size: cover;">
 							<div class="testimony-wrap py-4 tw-4">
 								<div class="text">
 									<div class="d-flex align-items-center">
@@ -477,7 +481,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="item" style="background-image: url(./images/check5.jpg); background-size:cover;">
+						<div class="item"
+							style="background-image: url(./images/check5.jpg); background-size: cover;">
 							<div class="testimony-wrap py-4 tw-5">
 								<div class="text">
 									<div class="d-flex align-items-center">
@@ -491,7 +496,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="item" style="background-image: url(./images/check6.jpg); background-size:cover;">
+						<div class="item"
+							style="background-image: url(./images/check6.jpg); background-size: cover;">
 							<div class="testimony-wrap py-4 tw-6">
 								<div class="text">
 									<div class="d-flex align-items-center">
@@ -535,117 +541,142 @@
 		<div class="container-fluid px-md-4">
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
-					<!-- <span class="subheading">Accomplishments</span> -->
+					<span class="subheading">Nutritious</span>
 					<h2 class="mb-4">건강 & 식품</h2>
 					<p>건강하고 균형잡힌 식사를 위한 선택</p>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<div
-						class="project img shadow ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-1.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3>
-								<a href="#">Branding &amp; Illustration Design</a>
-							</h3>
-							<span>Web Design</span>
+			<div id="food_body">
+				<!-- <section class="f_tab">
+					<div>
+						<a href="#none" class="t_on">건강기능식품</a>
+						<a href="#none">식품</a>
+					</div>
+				</section>
+				<section class="health_con f_section on">
+					<div class="row">
+						<h2>건강기능식품</h2>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<div class="overlay"></div>
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<div class="overlay"></div>
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<div class="overlay"></div>
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<div class="overlay"></div>
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<div class="overlay"></div>
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<div class="overlay"></div>
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<div class="overlay"></div>
+							
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<div class="overlay"></div>
+							
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div
-						class="project img shadow ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-2.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3>
-								<a href="#">Branding &amp; Illustration Design</a>
-							</h3>
-							<span>Web Design</span>
+				</section> -->
+				<section class="food_con f_section on">
+					<div class="row">
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+							
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+							
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+							
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+							
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+							
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+							
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+								
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div
-						class="project img shadow ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-3.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3>
-								<a href="#">Branding &amp; Illustration Design</a>
-							</h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div
-						class="project img shadow ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-4.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3>
-								<a href="#">Branding &amp; Illustration Design</a>
-							</h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div
-						class="project img shadow ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-5.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3>
-								<a href="#">Branding &amp; Illustration Design</a>
-							</h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div
-						class="project img shadow ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-6.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3>
-								<a href="#">Branding &amp; Illustration Design</a>
-							</h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div
-						class="project img shadow ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-7.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3>
-								<a href="#">Branding &amp; Illustration Design</a>
-							</h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div
-						class="project img shadow ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-8.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3>
-								<a href="#">Branding &amp; Illustration Design</a>
-							</h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
+				</section>
 			</div>
+
+
 		</div>
 	</section>
 
@@ -747,75 +778,9 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-5">
 				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Blog</span>
-					<h2 class="mb-4">Our Blog</h2>
-					<p>Far far away, behind the word mountains, far from the
-						countries Vokalia and Consonantia</p>
-				</div>
-			</div>
-			<div class="row d-flex">
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<a href="single.html" class="block-20"
-							style="background-image: url('images/image_1.jpg');"> </a>
-						<div class="text mt-3 float-right d-block">
-							<div class="d-flex align-items-center mb-3 meta">
-								<p class="mb-0">
-									<span class="mr-2">July 03, 2020</span> <a href="#"
-										class="mr-2">Admin</a> <a href="#" class="meta-chat"><span
-										class="icon-chat"></span> 3</a>
-								</p>
-							</div>
-							<h3 class="heading">
-								<a href="single.html">Why Lead Generation is Key for
-									Business Growth</a>
-							</h3>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<a href="single.html" class="block-20"
-							style="background-image: url('images/image_2.jpg');"> </a>
-						<div class="text mt-3 float-right d-block">
-							<div class="d-flex align-items-center mb-3 meta">
-								<p class="mb-0">
-									<span class="mr-2">July 03, 2020</span> <a href="#"
-										class="mr-2">Admin</a> <a href="#" class="meta-chat"><span
-										class="icon-chat"></span> 3</a>
-								</p>
-							</div>
-							<h3 class="heading">
-								<a href="single.html">Why Lead Generation is Key for
-									Business Growth</a>
-							</h3>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry">
-						<a href="single.html" class="block-20"
-							style="background-image: url('images/image_3.jpg');"> </a>
-						<div class="text mt-3 float-right d-block">
-							<div class="d-flex align-items-center mb-3 meta">
-								<p class="mb-0">
-									<span class="mr-2">July 03, 2020</span> <a href="#"
-										class="mr-2">Admin</a> <a href="#" class="meta-chat"><span
-										class="icon-chat"></span> 3</a>
-								</p>
-							</div>
-							<h3 class="heading">
-								<a href="single.html">Why Lead Generation is Key for
-									Business Growth</a>
-							</h3>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia.</p>
-						</div>
-					</div>
+					<span class="subheading">statistics</span>
+					<h2 class="mb-4">질병 통계</h2>
+					<p>사람들의 질병 현황을 확인하고 싶다면 HiDi로!</p>
 				</div>
 			</div>
 		</div>

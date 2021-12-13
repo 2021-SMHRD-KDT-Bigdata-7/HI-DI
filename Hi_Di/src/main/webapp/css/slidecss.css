@@ -155,6 +155,7 @@
     font-size: 1em !important;
     top:23%; 
     left:-34%;
+    display : block;
   }
   /* ::-webkit-scrollbar { display: none;} */
   @media (min-width: 54em) {
