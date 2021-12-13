@@ -34,3 +34,18 @@ $(".f_tab a:nth-child(2)").click(
 		$(".food_con").addClass("on");
 	}
 );
+
+$(".f_tab a:nth-child(1)").click(
+	function(){
+		$(".f_tab a:nth-child(1)").removeClass("on");
+		$(".f_tab a:nth-child(2)").removeClass("on");
+		$(".f_tab a:nth-child(1)").addClass("on");
+	}
+);
+$(".f_tab a:nth-child(2)").click(
+	function(){
+		$(".f_tab a:nth-child(1)").removeClass("t_on");
+		$(".f_tab a:nth-child(2)").removeClass("t_on");
+		$(".f_tab a:nth-child(2)").addClass("t_on");
+	}
+);
