@@ -1,3 +1,4 @@
+<%@page import="Model.MemberVO"%>
 <%@page import="Model.RawVO"%>
 <%@page import="Model.HospitalVO"%>
 <%@page import="Model.DiseaseVO"%>
@@ -28,11 +29,30 @@
 </head>
 <body>
 	<%
+	DAO dao = new DAO();
+	
+	//세션에서 아이디 받아오기
+	HttpSession session2 = request.getSession();
+	MemberVO vo = (MemberVO)session2.getAttribute("vo");
+	
+	//시퀀스 받아오기
+	int seq = 0;
+	try{
+		seq = Integer.parseInt(request.getParameter("seq"));
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+	//result값 받아오기
+	String result = request.getParameter("result");
+	
+	//체크 결과 db에 저장
+	dao.InsertCheck(seq, result, vo.getMb_id());
+
+	
+	//이름값 받아오기
 	String name = request.getParameter("name");
 	
-	String code = request.getParameter("code");
-
-	DAO dao = new DAO();
 	ArrayList<HospitalVO> hoslist = null;
 	ArrayList<RawVO> rawlist = null;
 	
@@ -41,7 +61,9 @@
 	if(dvo != null){		
 		hoslist = dao.HospitalAll(dvo.getDis_dpt());
 		rawlist = dao.RawSelect(dvo.getDis_tag());
-	}	
+	}else{
+		out.print("지도 로딩 실패");
+	}
 %>
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->

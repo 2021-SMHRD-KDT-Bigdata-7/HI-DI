@@ -37,7 +37,6 @@
 
 	<!-- 체크리스트 불러오기 -->
 	<%
-	
 	//메소드 사용하기 위해 dao객체 생성
 	DAO dao = new DAO();
 	//이전페이지에서 질병 명 받아옴	
@@ -126,7 +125,7 @@
 				</div>
 				<div class="cl_b_content">
 					<div>
-						<from action="InsertCheckService" method="post">
+						<from action="#" method="post">
 						<table>
 
 							<tr>
@@ -220,26 +219,48 @@
 				}
 				
 				//체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
+				
  				if(num >= <%= cvo.getCheck_std() %>){
-					// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
-					$.ajax({
-						type: "post", // get / post 
-						url:"checkResult.jsp",
-						success : function(res){
-							// res : Servlet에서 돌려준 값
-							// 이 안에 처리할 로직
-							// page이동이 일어나는 경우
-							// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
-							// window.location : 현재 페이지 주소
-							// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
-							window.location = 'checkResult.jsp?name=<%= cvo.getCheck_name() %>&code=<%= cvo.getDis_code()%>';
-						},
-						error : function() {
-							alert('전송 실패');
-						}
-						
-					})
-				}
+ 					// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
+ 					$.ajax({
+ 						type: "post", // get / post 
+ 						url:"checkResult.jsp",
+ 						success : function(res){
+ 							// res : Servlet에서 돌려준 값
+ 							// 이 안에 처리할 로직
+ 							// page이동이 일어나는 경우
+ 							// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
+ 							// window.location : 현재 페이지 주소
+ 							// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
+ 							window.location = 'checkResult.jsp?name=<%= cvo.getCheck_name() %>&seq=<%= cvo.getCheck_seq() %>&result=y';
+ 						},
+ 						error : function() {
+ 							alert('전송 실패');
+ 						}					
+ 					})
+ 				}else{
+ 					// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
+ 					$.ajax({
+ 						type: "post", // get / post 
+ 						url:"checkResult.jsp",
+ 						success : function(res){
+ 							// res : Servlet에서 돌려준 값
+ 							// 이 안에 처리할 로직
+ 							// page이동이 일어나는 경우
+ 							// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
+ 							// window.location : 현재 페이지 주소
+ 							// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
+ 							window.location = 'checkResult.jsp?name=<%= cvo.getCheck_name() %>&seq=<%= cvo.getCheck_seq() %>&result=n';
+ 						},
+ 						error : function() {
+ 							alert('전송 실패');
+ 						}					
+ 					})
+ 				}
+				
+				
+				
+				
 				
 			}else{
 				alert('모든 문항을 체크하세요.');
