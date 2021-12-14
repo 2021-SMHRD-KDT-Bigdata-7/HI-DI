@@ -106,16 +106,21 @@
 				<div class="mp_b_content">
 					<h5>개인정보수정</h5>
 					<ul>
-						<li>이름  : <%=vo.getMb_name() %></li>
-						<li>ID  : <%=vo.getMb_id() %></li>
-						<li>PW  : <%=vo.getMb_pw() %></li>
-						<li>E-mail  : <%=vo.getMb_email() %></li>
-						<li>성별  : <%=vo.getMb_gender() %></li>
-						<li>전화번호  : <%=vo.getMb_phone() %></li>
-						<li>생일  : <%=vo.getMb_birthdate() %></li>
-						<li>주소  : <%=vo.getMb_addr() %></li>
+						<form action="UpdateService" method="post">
+							<li><input name="name" type="text"  placeholder="이름을 입력하세요"></li>
+							<li><%=vo.getMb_id() %></li>
+							<li><input name="pw" type="password"  placeholder="PW를 입력하세요"></li>
+							<li><input name="email" type="text"  placeholder="이메일을 입력하세요"></li>
+							<li id="m">
+								남<input type="radio" name="gender" value="m">
+            					여<input type="radio" name="gender" value="w">
+            				</li>
+							<li><input name="tel" type="text"  placeholder="전화번호를 입력하세요"></li>
+							<li><input name="birthdate" type="date"  placeholder="생일을 입력하세요"></li>
+							<li><input name="address" type="text"  placeholder="집주소를 입력하세요"></li>
+							<li><input type="submit" value="JoinUs" class="mp_check_go"></li>
+						</form>
 					</ul>
-					<a href="mypage_check.jsp" class="mp_check_go">수정</a>
 				</div>
 			</div>
 		</div>
