@@ -21,6 +21,9 @@ public class DAO {
 	ArrayList<ChecklistVO> checklist = new ArrayList<ChecklistVO>();
 	FoodVO fvo = null;
 	ArrayList<HospitalVO> hoslist = new ArrayList<HospitalVO>();
+	RawVO rvo = null;
+	ArrayList<RawVO> rawlist = new ArrayList<RawVO>();
+	
 
 	// DB연결
 	public void connection() {
@@ -212,7 +215,7 @@ public class DAO {
 	}
 
 	// ===================================================================
-	
+
 	// 연령으로 검색해 체크리스트 호출
 	public ArrayList<ChecklistVO> SelectCheckAge(String check_age) {
 		try {
@@ -252,7 +255,7 @@ public class DAO {
 		return checklist;
 	}
 	// ================================================================
-	
+
 	// 질병코드로 검색해 질병정보 호출
 	public DiseaseVO SelectDiseaseCode(String dis_code) {
 		try {
@@ -293,7 +296,7 @@ public class DAO {
 		return dvo;
 	}
 	// ================================================================
-	
+
 	// 질병이름으로 검색해 질병정보 호출
 	public DiseaseVO SelectDiseaseName(String dis_name) {
 		try {
@@ -333,146 +336,188 @@ public class DAO {
 
 		return dvo;
 	}
+
 	// =================================================================================================================================
-		// 식품명으로 일부 검색
-		public FoodVO Searchfood(String food_name) {
+	// 식품명으로 일부 검색
+	public FoodVO Searchfood(String food_name) {
 
-			try {
-				connection();
-				// sql문
-				String sql = "select * from t_food where food_name = %?%";
-				psmt = conn.prepareStatement(sql);
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_food where food_name = %?%";
+			psmt = conn.prepareStatement(sql);
 
-				// 바인드 변수 채우기
-				psmt.setString(1, food_name);
+			// 바인드 변수 채우기
+			psmt.setString(1, food_name);
 
-				// 실행
-				rs = psmt.executeQuery();
+			// 실행
+			rs = psmt.executeQuery();
 
-				// fvo에 식품 저장
-				if (rs.next() == true) {
-					int foodSeq = rs.getInt(1);
-					String foodName = rs.getString(2); // 식품 명
-					int foodYear = rs.getInt(3); // 조사년도
-					String foodSource = rs.getString(4); // 자료출처
-					float foodCalory = rs.getFloat(5); // 열량
-					float foodCarvohydrate = rs.getFloat(6); // 탄수화물
-					float foodProtein = rs.getFloat(7); // 단백질
-					float foodFat = rs.getFloat(8); // 지방
-					float foodSugars = rs.getFloat(9); // 당류
-					float foodSodium = rs.getFloat(10); // 나트륨
-					float foodCholesterol = rs.getFloat(11); // 콜레스테롤
-					float foodSaturated_fatty = rs.getFloat(12); // 포화지방산
-					float foodTransfat = rs.getFloat(13); // 트랜스지방
-					String regDate = rs.getString(14); // 날짜?
-					String foodPic2 = rs.getString(15); // 식품사진
+			// fvo에 식품 저장
+			if (rs.next() == true) {
+				int foodSeq = rs.getInt(1);
+				String foodName = rs.getString(2); // 식품 명
+				int foodYear = rs.getInt(3); // 조사년도
+				String foodSource = rs.getString(4); // 자료출처
+				float foodCalory = rs.getFloat(5); // 열량
+				float foodCarvohydrate = rs.getFloat(6); // 탄수화물
+				float foodProtein = rs.getFloat(7); // 단백질
+				float foodFat = rs.getFloat(8); // 지방
+				float foodSugars = rs.getFloat(9); // 당류
+				float foodSodium = rs.getFloat(10); // 나트륨
+				float foodCholesterol = rs.getFloat(11); // 콜레스테롤
+				float foodSaturated_fatty = rs.getFloat(12); // 포화지방산
+				float foodTransfat = rs.getFloat(13); // 트랜스지방
+				String regDate = rs.getString(14); // 날짜?
+				String foodPic2 = rs.getString(15); // 식품사진
 
-					FoodVO fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
-							foodProtein, foodFat, foodSugars, foodSodium, foodCholesterol, foodSaturated_fatty,
-							foodTransfat, regDate, foodPic2);
+				FoodVO fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
+						foodProtein, foodFat, foodSugars, foodSodium, foodCholesterol, foodSaturated_fatty,
+						foodTransfat, regDate, foodPic2);
 
-				}
-
-			} catch (Exception e) {
-
-				e.printStackTrace();
-
-			} finally {
-				close();
 			}
-			return fvo;
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
 		}
+		return fvo;
+	}
+
 	// =====================================================================================================================================
-		// 식품 전체 불러오기
-		public FoodVO SelectAllfood() {
+	// 식품 전체 불러오기
+	public FoodVO SelectAllfood() {
 
-			try {
-				connection();
-				// sql문
-				String sql = "select * from t_food";
-				psmt = conn.prepareStatement(sql);
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_food";
+			psmt = conn.prepareStatement(sql);
 
-				// 실행
-				rs = psmt.executeQuery();
+			// 실행
+			rs = psmt.executeQuery();
 
-				// fvo에 식품 저장
-				if (rs.next() == true) {
-					int foodSeq = rs.getInt(1);
-					String foodName = rs.getString(2); // 식품 명
-					int foodYear = rs.getInt(3); // 조사년도
-					String foodSource = rs.getString(4); // 자료출처
-					float foodCalory = rs.getFloat(5); // 열량
-					float foodCarvohydrate = rs.getFloat(6); // 탄수화물
-					float foodProtein = rs.getFloat(7); // 단백질
-					float foodFat = rs.getFloat(8); // 지방
-					float foodSugars = rs.getFloat(9); // 당류
-					float foodSodium = rs.getFloat(10); // 나트륨
-					float foodCholesterol = rs.getFloat(11); // 콜레스테롤
-					float foodSaturated_fatty = rs.getFloat(12); // 포화지방산
-					float foodTransfat = rs.getFloat(13); // 트랜스지방
-					String regDate = rs.getString(14); // 날짜?
-					String foodPic2 = rs.getString(15); // 식품사진
+			// fvo에 식품 저장
+			if (rs.next() == true) {
+				int foodSeq = rs.getInt(1);
+				String foodName = rs.getString(2); // 식품 명
+				int foodYear = rs.getInt(3); // 조사년도
+				String foodSource = rs.getString(4); // 자료출처
+				float foodCalory = rs.getFloat(5); // 열량
+				float foodCarvohydrate = rs.getFloat(6); // 탄수화물
+				float foodProtein = rs.getFloat(7); // 단백질
+				float foodFat = rs.getFloat(8); // 지방
+				float foodSugars = rs.getFloat(9); // 당류
+				float foodSodium = rs.getFloat(10); // 나트륨
+				float foodCholesterol = rs.getFloat(11); // 콜레스테롤
+				float foodSaturated_fatty = rs.getFloat(12); // 포화지방산
+				float foodTransfat = rs.getFloat(13); // 트랜스지방
+				String regDate = rs.getString(14); // 날짜?
+				String foodPic2 = rs.getString(15); // 식품사진
 
-					FoodVO fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
-							foodProtein, foodFat, foodSugars, foodSodium, foodCholesterol, foodSaturated_fatty,
-							foodTransfat, regDate, foodPic2);
+				FoodVO fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
+						foodProtein, foodFat, foodSugars, foodSodium, foodCholesterol, foodSaturated_fatty,
+						foodTransfat, regDate, foodPic2);
 
-				}
-
-			} catch (Exception e) {
-
-				e.printStackTrace();
-
-			} finally {
-				close();
-			}
-			return fvo;
-		}
-
-		public ArrayList<HospitalVO> HospitalAll(String hos_dpt) {
-			try {
-				connection();
-
-				String sql = "select * from t_hospital WHERE hos_dpt = ?";
-				psmt = conn.prepareStatement(sql);
-
-				psmt.setString(1, hos_dpt);
-
-				rs = psmt.executeQuery();
-
-				while (rs.next() == true) {
-
-					int hos_seq = rs.getInt(1);
-					String hos_name = rs.getString(2);
-					String hos_addr = rs.getString(3);
-					String hos_phone = rs.getString(4);
-					double hos_latitude = rs.getDouble(5);
-					double hos_longitude = rs.getDouble(6);
-					String hos_facilities = rs.getString(7);
-					String userhos_dpt = rs.getString(8);
-					int hos_time1 = rs.getInt(9);
-					int hos_time2 = rs.getInt(10);
-					int hos_time3 = rs.getInt(11);
-					int hos_time4 = rs.getInt(12);
-					int hos_time5 = rs.getInt(13);
-					String mb_id = rs.getString(14);
-
-					HospitalVO hvo = new HospitalVO(hos_seq, hos_name, hos_addr, hos_phone, hos_latitude, hos_longitude,
-							hos_facilities, userhos_dpt, hos_time1, hos_time2, hos_time3, hos_time4, hos_time5, mb_id);
-
-					hoslist.add(hvo);
-
-				}
-				System.out.println("병원 불러오기");
-			} catch (Exception e) {
-
-				System.out.println("병원 불러오기 실패");
-				e.printStackTrace();
-
-			} finally {
-				close();
 			}
 
-			return hoslist;
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
 		}
+		return fvo;
+	}
+
+	// =====================================================================================================================================
+	// 병원정보 불러오기	
+	public ArrayList<HospitalVO> HospitalAll(String hos_dpt) {
+		try {
+			connection();
+
+			String sql = "select * from t_hospital WHERE hos_dpt='종합' or hos_dpt = ?";
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, hos_dpt);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next() == true) {
+
+				int hos_seq = rs.getInt(1);
+				String hos_name = rs.getString(2);
+				String hos_addr = rs.getString(3);
+				String hos_phone = rs.getString(4);
+				double hos_latitude = rs.getDouble(5);
+				double hos_longitude = rs.getDouble(6);
+				String hos_facilities = rs.getString(7);
+				String userhos_dpt = rs.getString(8);
+				int hos_time1 = rs.getInt(9);
+				int hos_time2 = rs.getInt(10);
+				int hos_time3 = rs.getInt(11);
+				int hos_time4 = rs.getInt(12);
+				int hos_time5 = rs.getInt(13);
+				String mb_id = rs.getString(14);
+
+				HospitalVO hvo = new HospitalVO(hos_seq, hos_name, hos_addr, hos_phone, hos_latitude, hos_longitude,
+						hos_facilities, userhos_dpt, hos_time1, hos_time2, hos_time3, hos_time4, hos_time5, mb_id);
+
+				hoslist.add(hvo);
+
+			}
+			System.out.println("병원 불러오기");
+		} catch (Exception e) {
+
+			System.out.println("병원 불러오기 실패");
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+
+		return hoslist;
+	}
+
+	// =====================================================================================================================================
+	// 건강기능 식품 불러오기
+	public ArrayList<RawVO> RawSelect(String dis_tag){try {
+		connection();
+
+		String sql = "select * from t_raw WHERE dis_tag= ?";
+		psmt = conn.prepareStatement(sql);
+
+		psmt.setString(1, dis_tag);
+
+		rs = psmt.executeQuery();
+
+		while (rs.next() == true) {
+			
+			int seq = rs.getInt(1);
+			String company = rs.getString(2);
+			String name = rs.getString(3);
+			String func = rs.getString(4);
+			String tag = rs.getString(5);
+			
+			RawVO rvo = new RawVO(seq, company, name, func, tag);
+
+			rawlist.add(rvo);
+
+		}
+		System.out.println("건강기능식품 불러오기");
+	} catch (Exception e) {
+
+		System.out.println("건강기능식품 불러오기 실패");
+		e.printStackTrace();
+
+	} finally {
+		close();
+	}
+
+	return rawlist;
+	}
 }

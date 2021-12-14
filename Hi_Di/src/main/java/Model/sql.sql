@@ -3,7 +3,7 @@ select * from T_CHECKLIST;
 select * from T_DISEASE;
 select check_name from t_checklist
 
-select * from t_disease where dis_code = 'A00';
+select * from t_disease where dis_code = 'G47';
 
 
 

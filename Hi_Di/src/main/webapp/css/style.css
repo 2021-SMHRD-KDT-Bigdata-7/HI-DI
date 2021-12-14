@@ -9716,7 +9716,8 @@ textarea.form-control {
   .hero-wrap.hero-wrap-2 {
     height: 400px;
     position: relative;
-    background-position: top center; }
+    background-position: center;
+    color:#fff; }
     .hero-wrap.hero-wrap-2 .overlay {
       width: 100%;
       opacity: 0;
