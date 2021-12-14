@@ -6,6 +6,7 @@ public class RawVO {
 	private String raw_name;
 	private String raw_func;
 	private String dis_tag;
+	
 	public RawVO(int raw_seq, String raw_company, String raw_name, String raw_func, String dis_tag) {
 		super();
 		this.raw_seq = raw_seq;
@@ -14,6 +15,7 @@ public class RawVO {
 		this.raw_func = raw_func;
 		this.dis_tag = dis_tag;
 	}
+	
 	public int getRaw_seq() {
 		return raw_seq;
 	}

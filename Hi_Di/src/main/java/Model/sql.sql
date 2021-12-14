@@ -1,7 +1,9 @@
 select * from T_member;
 select * from T_CHECKLIST;
 select * from T_DISEASE;
+select * from T_raw;
 select check_name from t_checklist
+select * from t_hospital WHERE hos_dpt='а╬гу' or hos_dpt = null;
 
 select * from t_disease where dis_code = 'G47';
 
