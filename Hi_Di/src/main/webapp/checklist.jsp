@@ -236,7 +236,8 @@ ul.ml-auto>li {
    //연령별 랜덤으로 체크리스트 출력을 위해 랜덤 수 생성
    Random rd = new Random();
    int num = rd.nextInt(mb_checklist.size()+1);
-   
+
+   int check_seq = mb_checklist.get(num).getCheck_seq();	//랜덤 시퀀스
    String check_name = mb_checklist.get(num).getCheck_name();   //랜덤 질병명
    int check_std = mb_checklist.get(num).getCheck_std();   //랜덤 체크기준
    String dis_code = mb_checklist.get(num).getDis_code();   //랜덤 질병 코드
@@ -540,36 +541,58 @@ ul.ml-auto>li {
                console.log("병원방문")
             }
             
-            //체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
-             if(num >= <%= check_std %>){
-               // ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
-               $.ajax({
-                  type: "post", // get / post 
-                  url:"checkResult.jsp",
-                  success : function(res){
-                     // res : Servlet에서 돌려준 값
-                     // 이 안에 처리할 로직
-                     // page이동이 일어나는 경우
-                     // window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
-                     // window.location : 현재 페이지 주소
-                     // window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
-                     window.location = 'checkResult.jsp?name=<%= check_name %>&code=<%= dis_code%>';
-                  },
-                  error : function() {
-                     alert('전송 실패');
-                  }
-                  
-               })
-            }
-            
-         }else{
-            alert('모든 문항을 체크하세요.');
-         }
-         console.log(num);
-          num = 0;
-      });
-      
-   </script>
+          //체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
+			
+			if(num >= <%= check_std %>){
+				// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
+				$.ajax({
+					type: "post", // get / post 
+					url:"checkResult.jsp",
+					success : function(res){
+						// res : Servlet에서 돌려준 값
+						// 이 안에 처리할 로직
+						// page이동이 일어나는 경우
+						// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
+						// window.location : 현재 페이지 주소
+						// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
+						window.location = 'checkResult.jsp?name=<%= check_name %>&seq=<%= check_seq %>&result=y';
+					},
+					error : function() {
+						alert('전송 실패');
+					}					
+				})
+			}else{
+				// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
+				$.ajax({
+					type: "post", // get / post 
+					url:"checkResult.jsp",
+					success : function(res){
+						// res : Servlet에서 돌려준 값
+						// 이 안에 처리할 로직
+						// page이동이 일어나는 경우
+						// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
+						// window.location : 현재 페이지 주소
+						// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
+						window.location = 'checkResult.jsp?name=<%= check_name %>&seq=<%= check_seq %>&result=n';
+					},
+					error : function() {
+						alert('전송 실패');
+					}					
+				})
+			}
+		
+		
+		
+		
+		
+	}else{
+		alert('모든 문항을 체크하세요.');
+	}
+	console.log(num);
+		num = 0;
+  });
+  
+</script>
 
 
 </body>

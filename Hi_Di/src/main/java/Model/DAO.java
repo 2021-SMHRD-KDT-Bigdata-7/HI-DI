@@ -257,18 +257,18 @@ public class DAO {
 	// ================================================================
 
 	// 사용자가 자가진단하면 체크리스트에 저장
-	public int InsertCheck(String check_seq, String user_check_result, String mb_id) {
+	public int InsertCheck(int check_seq, String user_check_result, String mb_id) {
 
 		// try문
 		try {
 			connection(); // DB연결
 
-			String sql = "insert into t_member(check_seq, user_check_result, mb_id) values ( ?, ?, ?)";
+			String sql = "insert into t_user_check(check_seq, user_check_result, reg_date, mb_id) values (?, ?, SYSDATE, ?)";
 
 			psmt = conn.prepareStatement(sql);
 
 			// 바인드 변수 채우기
-			psmt.setString(1, check_seq);
+			psmt.setInt(1, check_seq);
 			psmt.setString(2, user_check_result);
 			psmt.setString(3, mb_id);
 			
