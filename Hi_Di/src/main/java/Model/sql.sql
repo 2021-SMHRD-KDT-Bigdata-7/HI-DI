@@ -4,6 +4,7 @@ select * from T_DISEASE;
 select * from T_raw;
 select check_name from t_checklist
 select * from t_hospital WHERE hos_dpt='종합' or hos_dpt = null;
+select * from T_POLL;
 
 select * from t_disease where dis_code = 'G47';
 
@@ -138,7 +139,10 @@ insert into t_poll(poll_title,poll_content)
 values ('코로나19 바이러스 설문지','본 설문지는 코로나19에 대해 감염여부를 판단하기 위해 실시하는 설문지 입니다.');
 
 insert into t_poll(poll_title,poll_content)
-values ('','')
+values ('암 설문지','본 설문지는 암에 대해 진단을 하기 위해 실시하는 설문지 입니다.');
+
+insert into t_poll(poll_title,poll_content)
+values ('뇌졸중 설문지','본 설문지는 뇌졸중에 대한 설문지 양식입니다. 뇌졸중 환자에게 질문할 여러가지 사항이 설문 형식으로 구성되어 있습니다.');
 
 CREATE SEQUENCE t_poll_SEQ
 START WITH 1
