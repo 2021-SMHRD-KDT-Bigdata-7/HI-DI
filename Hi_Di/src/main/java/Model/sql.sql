@@ -134,6 +134,12 @@ CREATE TABLE t_poll
 )
 /
 
+insert into t_poll(poll_title,poll_content)
+values ('코로나19 바이러스 설문지','본 설문지는 코로나19에 대해 감염여부를 판단하기 위해 실시하는 설문지 입니다.');
+
+insert into t_poll(poll_title,poll_content)
+values ('','')
+
 CREATE SEQUENCE t_poll_SEQ
 START WITH 1
 INCREMENT BY 1
@@ -173,6 +179,7 @@ COMMENT ON COLUMN t_poll.mb_id IS '등록자 아이디'
 
 COMMENT ON COLUMN t_poll.reg_date IS '등록 일자'
 /
+
 
 
 -- t_checklist Table Create SQL
