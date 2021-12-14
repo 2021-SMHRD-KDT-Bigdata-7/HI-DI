@@ -256,6 +256,34 @@ public class DAO {
 	}
 	// ================================================================
 
+	// 사용자가 자가진단하면 체크리스트에 저장
+	public int InsertCheck(String check_seq, String user_check_result, String mb_id) {
+
+		// try문
+		try {
+			connection(); // DB연결
+
+			String sql = "insert into t_member(check_seq, user_check_result, mb_id) values ( ?, ?, ?)";
+
+			psmt = conn.prepareStatement(sql);
+
+			// 바인드 변수 채우기
+			psmt.setString(1, check_seq);
+			psmt.setString(2, user_check_result);
+			psmt.setString(3, mb_id);
+			
+			cnt = psmt.executeUpdate(); // insert문 이므로 executeUpdate() --> return int
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
 	// 질병이름으로 검색해 질병정보 호출
 	public DiseaseVO SelectDiseaseName(String dis_name) {
 		try {

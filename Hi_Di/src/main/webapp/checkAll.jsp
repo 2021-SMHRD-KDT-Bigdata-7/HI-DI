@@ -126,7 +126,7 @@
 				</div>
 				<div class="cl_b_content">
 					<div>
-						<from action="#">
+						<from action="InsertCheckService" method="post">
 						<table>
 
 							<tr>
