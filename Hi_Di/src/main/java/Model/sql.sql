@@ -1,9 +1,14 @@
 select * from T_member;
 select * from T_CHECKLIST;
 select * from T_DISEASE;
+select * from T_raw;
 select check_name from t_checklist
+select * from t_hospital WHERE hos_dpt='종합' or hos_dpt = null;
+select * from T_POLL;
 
 select * from t_disease where dis_code = 'G47';
+
+
 
 -- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
 
@@ -130,6 +135,15 @@ CREATE TABLE t_poll
 )
 /
 
+insert into t_poll(poll_title,poll_content)
+values ('코로나19 바이러스 설문지','본 설문지는 코로나19에 대해 감염여부를 판단하기 위해 실시하는 설문지 입니다.');
+
+insert into t_poll(poll_title,poll_content)
+values ('암 설문지','본 설문지는 암에 대해 진단을 하기 위해 실시하는 설문지 입니다.');
+
+insert into t_poll(poll_title,poll_content)
+values ('뇌졸중 설문지','본 설문지는 뇌졸중에 대한 설문지 양식입니다. 뇌졸중 환자에게 질문할 여러가지 사항이 설문 형식으로 구성되어 있습니다.');
+
 CREATE SEQUENCE t_poll_SEQ
 START WITH 1
 INCREMENT BY 1
@@ -169,6 +183,7 @@ COMMENT ON COLUMN t_poll.mb_id IS '등록자 아이디'
 
 COMMENT ON COLUMN t_poll.reg_date IS '등록 일자'
 /
+
 
 
 -- t_checklist Table Create SQL
@@ -836,5 +851,7 @@ ALTER TABLE t_user_check
     ADD CONSTRAINT FK_t_user_check_mb_id_t_member FOREIGN KEY (mb_id)
         REFERENCES t_member (mb_id)
 /
+
+
 
 

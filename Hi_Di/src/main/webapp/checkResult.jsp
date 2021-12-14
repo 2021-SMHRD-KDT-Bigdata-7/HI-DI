@@ -33,17 +33,15 @@
 	String code = request.getParameter("code");
 
 	DAO dao = new DAO();
-	
-	DiseaseVO dvo =  dao.SelectDiseaseCode(code);
 	ArrayList<HospitalVO> hoslist = null;
+	ArrayList<RawVO> rawlist = null;
+	
+	DiseaseVO dvo =  dao.SelectDiseaseName(name);
+	
 	if(dvo != null){		
 		hoslist = dao.HospitalAll(dvo.getDis_dpt());
-	}else{
-		out.print("진료과 없음");
-	}
-	
-	ArrayList<RawVO> rawlist = dao.RawSelect(dvo.getDis_tag());
-	
+		rawlist = dao.RawSelect(dvo.getDis_tag());
+	}	
 %>
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -93,29 +91,29 @@
 	  </div>
 	</section>
 
-
-<!-- 질병 이름 출력 -->
+<!-- 자가진단 결과 출력 -->
 <span> <%= name %> (이)가 의심 됩니다.</span><br>
-
-<span><%= name %>는 <%=dvo.getDis_content() %> 이고</span><br>
-<span><%=dvo.getDis_symptom() %> 과 같은 증상이 있을 수 있습니다.</span><br>
-<%-- <span>도움이 되는 영양 성분으로는 
-	<%for(int i=0; i<rawlist.size(); i++){ %>
-		<%=rawlist.get(i).getRaw_name() %> 이 있고
-		그 기능은 <%= rawlist.get(i).getRaw_func()%> 입니다.
-	<%} %>
-</span><br> --%>
-
-<span><%=dvo.getDis_dpt() %> 에 방문 하는 것을 추천 합니다.</span><br>
-
-
-
-
-
+<%if(dvo != null){ %>	
+	<span><%= name %>는 <%=dvo.getDis_content() %> 이고</span><br>
+	<span><%=dvo.getDis_symptom() %> 과 같은 증상이 있을 수 있습니다.</span><br>
+	<%if(rawlist != null){ %>
+		<span>도움이 되는 영양 성분으로는 
+			<%for(int i=0; i<rawlist.size(); i++){ %>
+				<%=rawlist.get(i).getRaw_name() %> 이 있고
+				그 기능은 <%= rawlist.get(i).getRaw_func()%> 입니다.
+			<%} %>
+		</span><br>
+	<%} %>		
+	
+	<span><%=dvo.getDis_dpt() %> 에 방문 하는 것을 추천 합니다.</span><br>
+<%}else{ %>
+	<span>병원에 방문 하는 것을 추천 합니다.</span>
+<%} %>
 
 
 <!-- 지도 띄우기 -->
 <%if(hoslist != null){ %>
+
 	<div id="map" style="width: 50%; height: 400px; top: 300px; position:relative; left:50%; transform : translate(-50%,0)"></div>
 	
 	<script type="text/javascript"

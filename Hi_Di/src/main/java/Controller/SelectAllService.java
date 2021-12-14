@@ -38,12 +38,16 @@ public class SelectAllService extends HttpServlet {
 		// request의 주머니에 데이터를 담아준다.
 		request.setAttribute("checklist", checklist);
 		
+		/*if(checklist != null){*/
+		
 		//Forward 방식
 		RequestDispatcher rd = request.getRequestDispatcher("checklist.jsp");
 		
 		//출발
 		rd.forward(request, response);
-		
+		/*
+		 * }else { response.sendRedirect("login.jsp"); }
+		 */
 	
 	}
 

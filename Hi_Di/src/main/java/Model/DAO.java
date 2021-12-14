@@ -256,34 +256,23 @@ public class DAO {
 	}
 	// ================================================================
 
-	// 질병코드로 검색해 질병정보 호출
-	public DiseaseVO SelectDiseaseCode(String dis_code) {
+	// 사용자가 자가진단하면 체크리스트에 저장
+	public int InsertCheck(String check_seq, String user_check_result, String mb_id) {
+
+		// try문
 		try {
-			connection();
-			// sql문
-			String sql = "select * from t_disease where dis_code = ?";
+			connection(); // DB연결
+
+			String sql = "insert into t_member(check_seq, user_check_result, mb_id) values ( ?, ?, ?)";
+
 			psmt = conn.prepareStatement(sql);
 
 			// 바인드 변수 채우기
-			psmt.setString(1, dis_code);
-
-			// 실행
-			rs = psmt.executeQuery();
-
-			// dvo에 체크리스트 저장
-			if (rs.next() == true) {
-				int disseq = rs.getInt(1);
-				String discode = rs.getString(2);
-				String disname = rs.getString(3);
-				String discontent = rs.getString(4);
-				String dissymptom = rs.getString(5);
-				String disdpt = rs.getString(6);
-				String distag = rs.getString(7);
-				String mbid = rs.getString(8);
-				String dispic = rs.getString(9);
-
-				dvo = new DiseaseVO(disseq, discode, disname, discontent, dissymptom, disdpt, distag, mbid, dispic);
-			}
+			psmt.setString(1, check_seq);
+			psmt.setString(2, user_check_result);
+			psmt.setString(3, mb_id);
+			
+			cnt = psmt.executeUpdate(); // insert문 이므로 executeUpdate() --> return int
 
 		} catch (Exception e) {
 
@@ -292,11 +281,9 @@ public class DAO {
 		} finally {
 			close();
 		}
-
-		return dvo;
+		return cnt;
 	}
-	// ================================================================
-
+	
 	// 질병이름으로 검색해 질병정보 호출
 	public DiseaseVO SelectDiseaseName(String dis_name) {
 		try {
