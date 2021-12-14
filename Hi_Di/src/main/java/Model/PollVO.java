@@ -2,13 +2,14 @@ package Model;
 
 public class PollVO {
 
-	private int poll_seq;
-	private String poll_title;
-	private String poll_content;
-	private String mb_id;
-	private String reg_date;
+	// 설문 VO
+	private int poll_seq; // 설문 아이템 순번
+	private String poll_title; // 설문 제목
+	private String poll_content; // 설문 설명
+	private String mb_id;  // 등록자 아이디
+	private String reg_date; // 등록 일자
 	
-	
+	// 설문 생성자 생성
 	public PollVO(int poll_seq, String poll_title, String poll_content, String mb_id, String reg_date) {
 		super();
 		this.poll_seq = poll_seq;
@@ -18,7 +19,7 @@ public class PollVO {
 		this.reg_date = reg_date;
 	}
 
-
+	// 설문 getter & setter
 	public int getPoll_seq() {
 		return poll_seq;
 	}

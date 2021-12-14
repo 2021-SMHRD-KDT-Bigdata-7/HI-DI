@@ -1,3 +1,4 @@
+<%@page import="Model.PollVO"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.time.LocalDate"%>
@@ -36,7 +37,19 @@
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
+	
+	<%
+   //메소드 사용하기 위해 dao객체 생성
+   DAO dao = new DAO();
 
+   //연령을 받아오기 위한 객체생성
+   PollVO vo = (PollVO)session.getAttribute("vo");
+   
+   //설문 전체 데이터에서 설문명 중복없이 출력
+   ArrayList<PollVO> poll = (ArrayList<PollVO>) request.getAttribute("poll");
+      %>
+	
+	
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
