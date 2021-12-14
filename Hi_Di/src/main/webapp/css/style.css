@@ -9639,6 +9639,38 @@ textarea.form-control {
 	width: 80%;
 }
 
+/*마이페이지 css*/
+.mypageMain{
+	display:none;
+	color:#111;
+}
+.mypageMain.open{
+	display:block;
+}
+
+.mp_word{
+	width:100%;
+	height:25vh;
+	border-bottom : 1px #aaa solid;
+}
+.mp_word h3{
+	font-size : 3em;
+	position:relative;
+	top:50%;
+	left:10vw;
+	transform:translate(0,-50%);
+}
+.mp_body{
+	width:100%;
+	display:flex;
+}
+.mp_b_menu{
+	width: 20%;
+}
+.mp_b_content{
+	width: 80%;
+}
+
 /* main.jsp 자가진단 */
 
 .mb-4.pl-5{

@@ -30,6 +30,13 @@
 
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
+
+<script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+<script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+
+<script src="/js/jquery-3.6.0.min"></script>
+	
 <style>
 	.mp_check_go{
 		display:block;
@@ -104,18 +111,16 @@
 					</section>
 				</div>
 				<div class="mp_b_content">
-					<h5>개인정보수정</h5>
+					<h5>아이디 / 비밀번호 확인</h5>
 					<ul>
-						<li>이름  : <%=vo.getMb_name() %></li>
-						<li>ID  : <%=vo.getMb_id() %></li>
-						<li>PW  : <%=vo.getMb_pw() %></li>
-						<li>E-mail  : <%=vo.getMb_email() %></li>
-						<li>성별  : <%=vo.getMb_gender() %></li>
-						<li>전화번호  : <%=vo.getMb_phone() %></li>
-						<li>생일  : <%=vo.getMb_birthdate() %></li>
-						<li>주소  : <%=vo.getMb_addr() %></li>
+						<li>
+							<input id = "id" name="id" type="text" placeholder="ID를 입력하세요">
+						</li>
+						<li>
+							<input id="pw" name="pw" type="password" placeholder="PW를 입력하세요">
+						</li>
 					</ul>
-					<a href="mypage_check.jsp" class="mp_check_go">수정</a>
+					<a href="#" class="mp_check_go">수정</a>
 				</div>
 			</div>
 		</div>
@@ -146,6 +151,35 @@
 	<script src="js/js_main.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+	//0.수정 버튼 tag 가져오기
+	$(".mp_check_go").click(
+		function(){
+			//1. 버튼을 클릭했을 때 처리해줄 function 달아주기
+			
+			//2. input tag id, pw tag가져오기
+			var idText = $("#id").val();
+			var pwText = $("#pw").val();
+			//3. tag안에 있는 text 가져오기
+			
+			//4. vo 있는값과 가져온 text 값이 같은 지 비교하기
+			var idVo = "<%=vo.getMb_id()%>";
+			var pwVo = <%=vo.getMb_pw()%>;
+			
+			//5. 만약 같다면 UpdateService 이동
+			if(idText == idVo && pwText == pwVo){
+				window.location.href = "mypage_final.jsp";
+				console.log("정보수정 가능");
+			}else{
+				window.location.href = "mypage_check.jsp";
+				alert("다시 입력하세요.");
+				console.log("정보수정 불가능");
+			}			
+			
+			//6. 같지않다면 mypage_check로 이동
+		}		
+	);
+	
+	</script>
 </body>
 </html>	

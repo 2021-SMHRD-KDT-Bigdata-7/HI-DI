@@ -507,4 +507,43 @@ public class DAO {
 
 	return rawlist;
 	}
+	
+	// =====================================================================================================================================
+	// 회원정보수정
+	public int Update(String name, String id, String pw, String email, String gender, String tel, String birthdate, String addr) {
+		// try문
+		// JDBC 코드는 문법이 맞더라도, 실행중에 발생하는 오류(런타임 오류) 처리 필요
+		try {
+			
+			connection();
+			
+			// 3. sql문 준비
+			String sql = "update t_member set mb_name =?, mb_pw=?, mb_email=?, mb_gender=?, mb_phone=?, mb_birthdate=?, mb_addr=? where mb_id = ?";
+			psmt = conn.prepareStatement(sql);
+
+			// 4. 바인드 변수 채우기
+			psmt.setString(1, name);
+			psmt.setString(2, pw);
+			psmt.setString(3, email);
+			psmt.setString(4, gender);
+			psmt.setString(5, tel);
+			psmt.setString(6, birthdate);
+			psmt.setString(7, addr);
+			psmt.setString(8, id);
+
+			// 5. 실행
+			// select -> executeQuery() --> return ResultSet
+			// insert, delete, update -> executeUpdate() --> return int(몇 행이 성공했는지)
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+
+		}
+		return cnt;
+	}
 }
