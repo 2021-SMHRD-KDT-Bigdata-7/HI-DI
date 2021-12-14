@@ -57,9 +57,9 @@
 	ArrayList<RawVO> rawlist = null;
 	
 	DiseaseVO dvo =  dao.SelectDiseaseName(name);
-	
 	if(dvo != null){		
 		hoslist = dao.HospitalAll(dvo.getDis_dpt());
+		String[] tags = dvo.getDis_tag().split(",");
 		rawlist = dao.RawSelect(dvo.getDis_tag());
 	}else{
 		out.print("지도 로딩 실패");
