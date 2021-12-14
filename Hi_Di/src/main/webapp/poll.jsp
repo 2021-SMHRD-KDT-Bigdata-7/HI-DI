@@ -1,3 +1,4 @@
+<%@page import="Model.PollitemsVO"%>
 <%@page import="Model.PollVO"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random"%>
@@ -38,16 +39,18 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 	
-	<%
-   //메소드 사용하기 위해 dao객체 생성
-   DAO dao = new DAO();
+<%
+	//메소드 사용하기 위해 dao객체 생성
+	DAO dao = new DAO();
 
-   //연령을 받아오기 위한 객체생성
-   PollVO vo = (PollVO)session.getAttribute("vo");
-   
-   //설문 전체 데이터에서 설문명 중복없이 출력
-   ArrayList<PollVO> poll = (ArrayList<PollVO>) request.getAttribute("poll");
-      %>
+	PollVO pvo = dao.SelectPoll("코로나19 바이러스 설문지");
+	
+	ArrayList<PollitemsVO> itemslist = dao.SelectPollItems(pvo.getPoll_seq());
+	
+	out.print(pvo.getPoll_title());
+	out.print(pvo.getPoll_content());
+
+%>
 	
 	
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -99,7 +102,12 @@
 			</div>
 		</div>
 	</section>
-
+	
+	<%= pvo.getPoll_title() %>
+	<%= pvo.getPoll_content() %>
+	<%=itemslist.get(0).getItem_content() %>
+	
+	
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">

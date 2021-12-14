@@ -1,6 +1,6 @@
 package Model;
 
-public class Poll_itemsVO {
+public class PollitemsVO {
 
 	// 설문 아이템 VO
 	private int item_seq; // 설문 아이템 순번
@@ -9,7 +9,7 @@ public class Poll_itemsVO {
 	private String item_content; // 아이템 보충설명
 	
 	// 설문 아이템 생성자 생성
-	public Poll_itemsVO(int item_seq, int poll_seq, String item_name, String item_content) {
+	public PollitemsVO(int item_seq, int poll_seq, String item_name, String item_content) {
 		super();
 		this.item_seq = item_seq;
 		this.poll_seq = poll_seq;
