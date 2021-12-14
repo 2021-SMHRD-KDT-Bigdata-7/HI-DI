@@ -33,24 +33,30 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
+
+	#s1 {
+	color:black;
+	position: absolute;
+	weight:300px;
+	height:300px;
+	text-align:center;
+	}
+	
+	#s1 > #s2 {
+	text-align:center;
+	}
+	
+	#d1 {
+	color:black;
+	text-align:center;
+	}
+	
 </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 	
-<%
-	//메소드 사용하기 위해 dao객체 생성
-	DAO dao = new DAO();
-
-	PollVO pvo = dao.SelectPoll("코로나19 바이러스 설문지");
-	
-	ArrayList<PollitemsVO> itemslist = dao.SelectPollItems(pvo.getPoll_seq());
-	
-	out.print(pvo.getPoll_title());
-	out.print(pvo.getPoll_content());
-
-%>
 	
 	
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -102,11 +108,42 @@
 			</div>
 		</div>
 	</section>
+	<br>
+	<br>
+	<br>
+	<br>
+<div id = d1>
+<%
+	//메소드 사용하기 위해 dao객체 생성
+	DAO dao = new DAO();
+
+	PollVO pvo = dao.SelectPoll("코로나19 바이러스 설문지");
 	
-	<%= pvo.getPoll_title() %>
+	ArrayList<PollitemsVO> itemslist = dao.SelectPollItems(pvo.getPoll_seq());
+	
+	out.print(pvo.getPoll_title());
+	out.print(pvo.getPoll_content());
+
+%>
+</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<div id= s1>
+	
+	<strong id = s2><%= pvo.getPoll_title() %></strong>
+	<br>
 	<%= pvo.getPoll_content() %>
+	<br>
 	<%=itemslist.get(0).getItem_content() %>
-	
+	</div>
 	
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
