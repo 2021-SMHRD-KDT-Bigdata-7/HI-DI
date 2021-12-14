@@ -263,8 +263,12 @@ public class DAO {
 		try {
 			connection(); // DB연결
 
-			String sql = "insert into t_user_check(check_seq, user_check_result, reg_date, mb_id) values (?, ?, SYSDATE, ?)";
-
+			String sql = "insert into t_user_check values (T_USER_CHECK_SEQ.nextval, ?, ?, SYSDATE, ?)";
+			/*
+			 * String sql =
+			 * "insert into t_user_check(check_seq, user_check_result, reg_date, mb_id) values (?, ?, SYSDATE, ?)"
+			 * ;
+			 */
 			psmt = conn.prepareStatement(sql);
 
 			// 바인드 변수 채우기
