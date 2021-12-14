@@ -49,3 +49,5 @@ $(".f_tab a:nth-child(2)").click(
 		$(".f_tab a:nth-child(2)").addClass("t_on");
 	}
 );
+
+
