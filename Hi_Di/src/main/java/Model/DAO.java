@@ -256,47 +256,6 @@ public class DAO {
 	}
 	// ================================================================
 
-	// 질병코드로 검색해 질병정보 호출
-	public DiseaseVO SelectDiseaseCode(String dis_code) {
-		try {
-			connection();
-			// sql문
-			String sql = "select * from t_disease where dis_code = ?";
-			psmt = conn.prepareStatement(sql);
-
-			// 바인드 변수 채우기
-			psmt.setString(1, dis_code);
-
-			// 실행
-			rs = psmt.executeQuery();
-
-			// dvo에 체크리스트 저장
-			if (rs.next() == true) {
-				int disseq = rs.getInt(1);
-				String discode = rs.getString(2);
-				String disname = rs.getString(3);
-				String discontent = rs.getString(4);
-				String dissymptom = rs.getString(5);
-				String disdpt = rs.getString(6);
-				String distag = rs.getString(7);
-				String mbid = rs.getString(8);
-				String dispic = rs.getString(9);
-
-				dvo = new DiseaseVO(disseq, discode, disname, discontent, dissymptom, disdpt, distag, mbid, dispic);
-			}
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		} finally {
-			close();
-		}
-
-		return dvo;
-	}
-	// ================================================================
-
 	// 질병이름으로 검색해 질병정보 호출
 	public DiseaseVO SelectDiseaseName(String dis_name) {
 		try {

@@ -1,6 +1,7 @@
 select * from T_member;
 select * from T_CHECKLIST;
 select * from T_DISEASE;
+select * from T_raw;
 select check_name from t_checklist
 
 select * from t_disease where dis_code = 'G47';
