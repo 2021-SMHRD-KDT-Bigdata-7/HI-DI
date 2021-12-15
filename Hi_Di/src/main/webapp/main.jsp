@@ -693,7 +693,6 @@
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-							
 							</div>
 						</div>
 						<div class="col-md-3">
