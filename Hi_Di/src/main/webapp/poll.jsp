@@ -33,32 +33,30 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-
-	#s1 {
-	color:black;
+#s1 {
+	color: black;
 	position: absolute;
-	weight:300px;
-	height:300px;
-	text-align:center;
-	}
-	
-	#s1 > #s2 {
-	text-align:center;
-	}
-	
-	#d1 {
-	color:black;
-	text-align:center;
-	}
-	
+	weight: 300px;
+	height: 300px;
+	text-align: center;
+}
+
+#s1>#s2 {
+	text-align: center;
+}
+
+#d1 {
+	color: black;
+	text-align: center;
+}
 </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
-	
-	
-	
+
+
+
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
@@ -78,16 +76,11 @@
 				<ul class="navbar-nav nav ml-auto">
 					<li class="nav-item"><a href="SelectAllService"
 						class="nav-link"><span>자가진단</span></a></li>
-					<li class="nav-item"><a href="disease.jsp"
-						class="nav-link"><span>질병검색</span></a></li>
-					<li class="nav-item"><a href="foodall.jsp"
-						class="nav-link"><span>식품검색</span></a></li>
-					<li class="nav-item"><a href="poll.jsp"
-						class="nav-link"><span>설문</span></a></li>
-					<li class="nav-item"><a href="statistics.jsp"
-						class="nav-link"><span>질병통계</span></a></li>
-					<li class="nav-item"><a href="mypage.jsp"
-						class="nav-link"><span>마이페이지</span></a></li>
+					<li class="nav-item"><a href="disease.jsp" class="nav-link"><span>질병검색</span></a></li>
+					<li class="nav-item"><a href="foodall.jsp" class="nav-link"><span>식품검색</span></a></li>
+					<li class="nav-item"><a href="poll.jsp" class="nav-link"><span>설문</span></a></li>
+					<li class="nav-item"><a href="statistics.jsp" class="nav-link"><span>질병통계</span></a></li>
+					<li class="nav-item"><a href="mypage.jsp" class="nav-link"><span>마이페이지</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -103,7 +96,7 @@
 				class="row no-gutters slider-text align-items-end justify-content-center">
 				<div class="col-md-9 ftco-animate pb-5 text-center">
 					<h1 class="mb-0 bread">설문</h1>
-			        <p class="breadcrumbs">고객의 건강을 위한 설문조사 플랫폼</p>
+					<p class="breadcrumbs">고객의 건강을 위한 설문조사 플랫폼</p>
 				</div>
 			</div>
 		</div>
@@ -112,8 +105,8 @@
 	<br>
 	<br>
 	<br>
-<div id = d1>
-<%
+	<div id=d1>
+		<%
 	//메소드 사용하기 위해 dao객체 생성
 	DAO dao = new DAO();
 
@@ -125,26 +118,111 @@
 	out.print(pvo.getPoll_content());
 
 %>
-</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	
-	<div id= s1>
-	
-	<strong id = s2><%= pvo.getPoll_title() %></strong>
-	<br>
-	<%= pvo.getPoll_content() %>
-	<br>
-	<%=itemslist.get(0).getItem_content() %>
 	</div>
-	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div id=s1>
+
+		<strong id=s2><%= pvo.getPoll_title() %></strong> <br>
+		<%= pvo.getPoll_content() %>
+		<br>
+		<%=itemslist.get(0).getItem_content() %>
+	</div>
+
+	<footer class="ftco-footer ftco-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Lets talk about</h2>
+						<p>Far far away, behind the word mountains, far from the
+							countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Learn more</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-4">
+						<h2 class="ftco-heading-2">Links</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Home</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Services</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Projects</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Services</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
+									Design</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
+									Development</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Business
+									Strategy</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Data
+									Analysis</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Graphic
+									Design</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon fa fa-map marker"></span><span
+									class="text">203 Fake St. Mountain View, San Francisco,
+										California, USA</span></li>
+								<li><a href="#"><span class="icon fa fa-phone"></span><span
+										class="text">+2 392 3929 210</span></a></li>
+								<li><a href="#"><span
+										class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+							</ul>
+						</div>
+						<ul class="ftco-footer-social list-unstyled mt-2">
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="fa fa-heart" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">

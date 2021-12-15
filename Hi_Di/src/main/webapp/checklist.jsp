@@ -220,45 +220,43 @@ ul.ml-auto>li {
 
 	<!-- 체크리스트 불러오기 -->
 	<%
-   //메소드 사용하기 위해 dao객체 생성
-   DAO dao = new DAO();
+	//메소드 사용하기 위해 dao객체 생성
+	DAO dao = new DAO();
 
-   //연령을 받아오기 위한 객체생성
-   MemberVO vo = (MemberVO)session.getAttribute("vo");
-   
-   LocalDate now = LocalDate.now();   // 현재 날짜
-   int year = now.getYear();   // 연도만 가져옴
-   
-   int mb_age = Integer.parseInt(vo.getMb_birthdate().substring(0,4));   // 사용자의 출생년도
-   String check_age = Integer.toString((year - mb_age)/10)+"0대";   //연령대 생성
-   ArrayList<ChecklistVO> mb_checklist = dao.SelectCheckAge(check_age);   //연령대에 맞는 체크리스트 생성
-   
-   //연령별 랜덤으로 체크리스트 출력을 위해 랜덤 수 생성
-   Random rd = new Random();
-   int num = rd.nextInt(mb_checklist.size()+1);
+	//연령을 받아오기 위한 객체생성
+	MemberVO vo = (MemberVO) session.getAttribute("vo");
 
-   int check_seq = mb_checklist.get(num).getCheck_seq();	//랜덤 시퀀스
-   String check_name = mb_checklist.get(num).getCheck_name();   //랜덤 질병명
-   int check_std = mb_checklist.get(num).getCheck_std();   //랜덤 체크기준
-   String dis_code = mb_checklist.get(num).getDis_code();   //랜덤 질병 코드
-   String[] mb_arr = mb_checklist.get(num).getCheck_item().split("/");   //랜덤 체크리스트
+	LocalDate now = LocalDate.now(); // 현재 날짜
+	int year = now.getYear(); // 연도만 가져옴
 
-   
-   
-   //질병 전체 데이터에서 질병명 중복없이 출력
-   ArrayList<ChecklistVO> checklist = (ArrayList<ChecklistVO>) request.getAttribute("checklist");
-   
-   //질병 명, 질병 코드 중복없이 출력
-   ArrayList<String> name = new ArrayList<String>();
-      ArrayList<String> disname = new ArrayList<String>();
-      if(checklist != null){
-         for(int i=0; i<checklist.size(); i++){
-            name.add(checklist.get(i).getCheck_name());
-         }
-      }
-      HashSet<String> name2 = new HashSet<String>(name);
-      disname = new ArrayList<String>(name2);
-      %>
+	int mb_age = Integer.parseInt(vo.getMb_birthdate().substring(0, 4)); // 사용자의 출생년도
+	String check_age = Integer.toString((year - mb_age) / 10) + "0대"; //연령대 생성
+	ArrayList<ChecklistVO> mb_checklist = dao.SelectCheckAge(check_age); //연령대에 맞는 체크리스트 생성
+
+	//연령별 랜덤으로 체크리스트 출력을 위해 랜덤 수 생성
+	Random rd = new Random();
+	int num = rd.nextInt(mb_checklist.size() + 1);
+
+	int check_seq = mb_checklist.get(num).getCheck_seq(); //랜덤 시퀀스
+	String check_name = mb_checklist.get(num).getCheck_name(); //랜덤 질병명
+	int check_std = mb_checklist.get(num).getCheck_std(); //랜덤 체크기준
+	String dis_code = mb_checklist.get(num).getDis_code(); //랜덤 질병 코드
+	String[] mb_arr = mb_checklist.get(num).getCheck_item().split("/"); //랜덤 체크리스트
+
+	//질병 전체 데이터에서 질병명 중복없이 출력
+	ArrayList<ChecklistVO> checklist = (ArrayList<ChecklistVO>) request.getAttribute("checklist");
+
+	//질병 명, 질병 코드 중복없이 출력
+	ArrayList<String> name = new ArrayList<String>();
+	ArrayList<String> disname = new ArrayList<String>();
+	if (checklist != null) {
+		for (int i = 0; i < checklist.size(); i++) {
+			name.add(checklist.get(i).getCheck_name());
+		}
+	}
+	HashSet<String> name2 = new HashSet<String>(name);
+	disname = new ArrayList<String>(name2);
+	%>
 
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -431,23 +429,27 @@ ul.ml-auto>li {
 						<table>
 
 							<tr>
-								<th><%= check_name %></th>
+								<th><%=check_name%></th>
 							</tr>
 							<tr>
 								<td>질문</td>
 								<td>예</td>
 								<td>아니오</td>
 							</tr>
-							<%for(int j=0; j<mb_arr.length; j++){ %>
+							<%
+							for (int j = 0; j < mb_arr.length; j++) {
+							%>
 							<tr>
-								<td><%= mb_arr[j]%></td>
-								<td><input type="radio" name="<%= "no"+j %>" value="1">
+								<td><%=mb_arr[j]%></td>
+								<td><input type="radio" name="<%="no" + j%>" value="1">
 								</td>
-								<td><input type="radio" name="<%= "no"+j %>" value="0">
+								<td><input type="radio" name="<%="no" + j%>" value="0">
 								</td>
 
 							</tr>
-							<%} %>
+							<%
+							}
+							%>
 						</table>
 						<button type="button" id="submit">결과보기</button>
 						</from>
@@ -470,15 +472,105 @@ ul.ml-auto>li {
 					</section>
 				</div>
 				<div class="cl_b_content">
-					<%for(int i=0; i<disname.size(); i++){ %>
-					<a href="checkAll.jsp?name=<%=disname.get(i) %>"><%=disname.get(i) %>
+					<%
+					for (int i = 0; i < disname.size(); i++) {
+					%>
+					<a href="checkAll.jsp?name=<%=disname.get(i)%>"><%=disname.get(i)%>
 						자가진단 </a> <br> <br>
-					<%} %>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
 	</div>
 	</div>
+
+	<footer class="ftco-footer ftco-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Lets talk about</h2>
+						<p>Far far away, behind the word mountains, far from the
+							countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Learn more</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-4">
+						<h2 class="ftco-heading-2">Links</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Home</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Services</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Projects</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Services</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
+									Design</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
+									Development</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Business
+									Strategy</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Data
+									Analysis</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Graphic
+									Design</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon fa fa-map marker"></span><span
+									class="text">203 Fake St. Mountain View, San Francisco,
+										California, USA</span></li>
+								<li><a href="#"><span class="icon fa fa-phone"></span><span
+										class="text">+2 392 3929 210</span></a></li>
+								<li><a href="#"><span
+										class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+							</ul>
+						</div>
+						<ul class="ftco-footer-social list-unstyled mt-2">
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="fa fa-heart" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 
 	<!-- loader -->
@@ -526,7 +618,7 @@ ul.ml-auto>li {
          
          // 라디오 태그 전부 가져오기
          let radios = $('input[type="radio"]');
-         if(radioChecked() >= <%=mb_arr.length %>){
+         if(radioChecked() >= <%=mb_arr.length%>){
             
             for(let i = 0; i < radios.length; i++){
                
@@ -543,7 +635,7 @@ ul.ml-auto>li {
             
           //체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
 			
-			if(num >= <%= check_std %>){
+			if(num >= <%=check_std%>){
 				// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
 				$.ajax({
 					type: "post", // get / post 
@@ -555,7 +647,7 @@ ul.ml-auto>li {
 						// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
 						// window.location : 현재 페이지 주소
 						// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
-						window.location = 'checkResult.jsp?name=<%= check_name %>&seq=<%= check_seq %>&result=y';
+						window.location = 'checkResult.jsp?name=<%=check_name%>&seq=<%=check_seq%>&result=y';
 					},
 					error : function() {
 						alert('전송 실패');
@@ -573,26 +665,22 @@ ul.ml-auto>li {
 						// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
 						// window.location : 현재 페이지 주소
 						// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
-						window.location = 'checkResult.jsp?name=<%= check_name %>&seq=<%= check_seq %>&result=n';
-					},
-					error : function() {
-						alert('전송 실패');
-					}					
-				})
-			}
-		
-		
-		
-		
-		
-	}else{
-		alert('모든 문항을 체크하세요.');
-	}
-	console.log(num);
-		num = 0;
-  });
-  
-</script>
+						window.location = 'checkResult.jsp?name=<%=check_name%>&seq=<%=check_seq%>
+		&result=n';
+												},
+												error : function() {
+													alert('전송 실패');
+												}
+											})
+								}
+
+							} else {
+								alert('모든 문항을 체크하세요.');
+							}
+							console.log(num);
+							num = 0;
+						});
+	</script>
 
 
 </body>
