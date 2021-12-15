@@ -1,14 +1,15 @@
 package Model;
 
-public class Poll_itemsVO {
+public class PollitemsVO {
 
-	private int item_seq;
-	private int poll_seq;
-	private String item_name;
-	private String item_content;
+	// 설문 아이템 VO
+	private int item_seq; // 설문 아이템 순번
+	private int poll_seq; // 설문 순번
+	private String item_name; // 아이템 항목
+	private String item_content; // 아이템 보충설명
 	
-	
-	public Poll_itemsVO(int item_seq, int poll_seq, String item_name, String item_content) {
+	// 설문 아이템 생성자 생성
+	public PollitemsVO(int item_seq, int poll_seq, String item_name, String item_content) {
 		super();
 		this.item_seq = item_seq;
 		this.poll_seq = poll_seq;
@@ -16,7 +17,7 @@ public class Poll_itemsVO {
 		this.item_content = item_content;
 	}
 
-
+	// 설문 아이템 getter & setter
 	public int getItem_seq() {
 		return item_seq;
 	}

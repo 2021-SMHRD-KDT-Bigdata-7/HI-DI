@@ -8212,51 +8212,135 @@ h1, h2, h3, h4, h5,
 
 /* login page */
 #loginBody{
-  width: 40vw;
+  width: 25vw;
   /* height:50vh; */
-  background: #acacac;
   position: absolute;
   top: 50%;
   left:50%;
   transform: translate(-50%,-50%);
 }
+.logoWord{
+	text-align : center;
+	font-size:2.5vw !important;
+	font-weight: 800 !important;
+  color:#111;
+}
 .loginWord{
   text-align: center;
+  font-size:1vw !important;
+  position: relative;
+  margin-top:6vh;
+  left: 50%;
+  transform: translate(-50%,0);
+  width: 80%;
 }
-.loginWord h5{
-  font-size: 40px;
-  margin: 5vh 0;
+.loginWord p::after{
+  content: "";
+  width:7vw;
+  height : 1px;
+  background:#999;
+  position:absolute;
+  top:50%;
+  left:0;
+  transform: translate(0,-50%);
 }
+.loginWord p::before{
+  content: "";
+  width:7vw;
+  height : 1px;
+  background:#999;
+  position:absolute;
+  top:50%;
+  right:0;
+  transform: translate(0,-50%);
+}
+
 .LoginService{
   text-align: center;
 }
-.LoginService li:nth-child(3){
+.LoginService li input{
+  width:80%;
+  padding: 8px;
+}
+.LoginService li:nth-child(1){
+  margin:4vh 0 2vh 0;
+}
+.LoginService li:nth-child(3) input{
   margin: 5vh 0;
+  background: #111;
+  color:#fff;
 }
 
 /* join page*/
 #joinBody{
-  width: 40vw;
+  width: 25vw;
   /* height:50vh; */
-  background: #acacac;
   position: absolute;
   top: 50%;
   left:50%;
   transform: translate(-50%,-50%);
 }
+
 .joinWord{
   text-align: center;
+  font-size:1vw !important;
+  position: relative;
+  margin-top:4vh;
+  margin-bottom : 4vh;
+  left: 50%;
+  transform: translate(-50%,0);
+  width: 80%;
 }
-.joinWord h5{
-  font-size: 40px;
-  margin: 5vh 0;
+.joinWord p::after{
+  content: "";
+  width:7vw;
+  height : 1px;
+  background:#999;
+  position:absolute;
+  top:50%;
+  left:0;
+  transform: translate(0,-50%);
 }
+.joinWord p::before{
+  content: "";
+  width:7vw;
+  height : 1px;
+  background:#999;
+  position:absolute;
+  top:50%;
+  right:0;
+  transform: translate(0,-50%);
+}
+
 .joinService{
   text-align: center;
 }
-.joinService li:nth-child(5){
-  margin: 5vh 0;
+.joinService li input{
+  width:80%;
+  padding: 8px;
+  margin : 5px;
 }
+.joinService #m{
+	width:100%;
+	padding : 0 10%;
+	margin:5px 0 10px 0; 
+}
+.joinService #m p{
+	width:10%;
+	float:left;
+	padding:0 !important;
+	margin : 0 !important;
+}
+.joinService #m input{
+	width:10%;
+	float:left;
+}
+.joinService li:nth-child(9) input{
+  margin-top: 3vh;
+  background: #111;
+  color:#fff;
+}
+
 
 /* ³×ºñ */
 .ftco-navbar-light {

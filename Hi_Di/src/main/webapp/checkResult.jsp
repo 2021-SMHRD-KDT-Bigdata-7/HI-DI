@@ -54,13 +54,27 @@
 	String name = request.getParameter("name");
 	
 	ArrayList<HospitalVO> hoslist = null;
-	ArrayList<RawVO> rawlist = null;
+	ArrayList<RawVO> rawlist = dao.RawSelect();
 	
+	//받아온 질병이름으로 질병 전체 정보 받아오기
 	DiseaseVO dvo =  dao.SelectDiseaseName(name);
+	
 	if(dvo != null){		
 		hoslist = dao.HospitalAll(dvo.getDis_dpt());
+		
+		out.print("tag  "+dvo.getDis_tag());
+		
 		String[] tags = dvo.getDis_tag().split(",");
-		rawlist = dao.RawSelect(dvo.getDis_tag());
+		
+		for(int i =0; i<tags.length; i++){
+			out.print(tags[i]);
+			for(int j=0; j<rawlist.size(); j++){
+				String taglist = rawlist.get(j).getDis_tag();
+				taglist.contains(tags[i]);
+				out.print(rawlist.get(j).getRaw_name());
+			}
+		}
+		
 	}else{
 		out.print("지도 로딩 실패");
 	}
@@ -119,10 +133,10 @@
 	<span><%= name %>는 <%=dvo.getDis_content() %> 이고</span><br>
 	<span><%=dvo.getDis_symptom() %> 과 같은 증상이 있을 수 있습니다.</span><br>
 	<%if(rawlist != null){ %>
-		<span>도움이 되는 영양 성분으로는 
+		<span>도움이 되는 영양 성분은 
 			<%for(int i=0; i<rawlist.size(); i++){ %>
-				<%=rawlist.get(i).getRaw_name() %> 이 있고
-				그 기능은 <%= rawlist.get(i).getRaw_func()%> 입니다.
+				<%=rawlist.get(i).getRaw_name() %>
+				(기능 : <%= rawlist.get(i).getRaw_func()%>) 입니다.       
 			<%} %>
 		</span><br>
 	<%} %>		

@@ -30,189 +30,64 @@
 
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
-<style>
-<!--
-서울대 병원 병명 박스 스타일 --> /* 서울대 병원 박스 생성 */ #div1 {
-	width: 900px;
-	height: 530px;
-	border: 1px solid;
-	background-image: url("C:/Users/smhrd/Desktop/HTML/CSS/이미징.jpg");
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;
-	padding: 50px 0;
-}
-/* div에서 ul태그로 상속 */
-#div1>#ul1 {
-	list-style: none;
-}
+    <style>
+        #div1 {
+            width: 900px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    
+        #div2 {
+            width: 900px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        
+        /* div에서 ul태그로 상속 */
+        #div1> ul {
+            list-style: none;
+        }
+        
+        .checktitle {
+            color: #81A3AA;
+            font-size: 20px;
+            margin-left: 30px;
+        }
 
-#div1>#ul2 {
-	list-style: none;
-}
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            border-top: 2px solid #81A3AA;
+            border-bottom: 2px solid #81A3AA;
+            border-collapse: collapse;
+        }
+        .disname, .checklist {
+            border-top: 1px solid #81A3AA;
+            border-bottom: 1px solid #81A3AA;
+            border-left: 1px solid #81A3AA;
+            padding: 10px;
+        }
+        
+        .disname:first-child, .checklist:first-child {
+            border-left: none;
+        }
 
-#div1>#ul3 {
-	list-style: none;
-}
+        
+        .sysmtom > li {
+            list-style-type: none;
+            float: left;
+            margin-left: 30px;
+            width: 162px;
+            list-style-type: disc;
+        }
+        
+        a {
+            color: black;
+        }
+        
 
-#div1>#ul4 {
-	list-style: none;
-}
-
-#div1>#ul5 {
-	list-style: none;
-}
-
-#div1>#ul6 {
-	list-style: none;
-}
-
-#div1>#ul7 {
-	list-style: none;
-}
-
-#div1>#ul8 {
-	list-style: none;
-}
-
-#div1>#ul9 {
-	list-style: none;
-}
-
-#div1>#ul10 {
-	list-style: none;
-}
-
-#div1>#ul11 {
-	list-style: none;
-}
-
-#div1>#ul12 {
-	list-style: none;
-}
-
-#div1>#ul13 {
-	list-style: none;
-}
-
-#strong1 {
-	color: blue;
-	font-size: 20px;
-	margin-left: 36px;
-}
-
-#ul1>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul2>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul3>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul4>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul5>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul6>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul7>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul8>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul9>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul10>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul11>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul12>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul13>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-a {
-	color: black;
-}
-
-ul.ml-auto>li {
-	
-}
-</style>
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -220,45 +95,43 @@ ul.ml-auto>li {
 
 	<!-- 체크리스트 불러오기 -->
 	<%
-   //메소드 사용하기 위해 dao객체 생성
-   DAO dao = new DAO();
+	//메소드 사용하기 위해 dao객체 생성
+	DAO dao = new DAO();
 
-   //연령을 받아오기 위한 객체생성
-   MemberVO vo = (MemberVO)session.getAttribute("vo");
-   
-   LocalDate now = LocalDate.now();   // 현재 날짜
-   int year = now.getYear();   // 연도만 가져옴
-   
-   int mb_age = Integer.parseInt(vo.getMb_birthdate().substring(0,4));   // 사용자의 출생년도
-   String check_age = Integer.toString((year - mb_age)/10)+"0대";   //연령대 생성
-   ArrayList<ChecklistVO> mb_checklist = dao.SelectCheckAge(check_age);   //연령대에 맞는 체크리스트 생성
-   
-   //연령별 랜덤으로 체크리스트 출력을 위해 랜덤 수 생성
-   Random rd = new Random();
-   int num = rd.nextInt(mb_checklist.size()+1);
+	//연령을 받아오기 위한 객체생성
+	MemberVO vo = (MemberVO) session.getAttribute("vo");
 
-   int check_seq = mb_checklist.get(num).getCheck_seq();	//랜덤 시퀀스
-   String check_name = mb_checklist.get(num).getCheck_name();   //랜덤 질병명
-   int check_std = mb_checklist.get(num).getCheck_std();   //랜덤 체크기준
-   String dis_code = mb_checklist.get(num).getDis_code();   //랜덤 질병 코드
-   String[] mb_arr = mb_checklist.get(num).getCheck_item().split("/");   //랜덤 체크리스트
+	LocalDate now = LocalDate.now(); // 현재 날짜
+	int year = now.getYear(); // 연도만 가져옴
 
-   
-   
-   //질병 전체 데이터에서 질병명 중복없이 출력
-   ArrayList<ChecklistVO> checklist = (ArrayList<ChecklistVO>) request.getAttribute("checklist");
-   
-   //질병 명, 질병 코드 중복없이 출력
-   ArrayList<String> name = new ArrayList<String>();
-      ArrayList<String> disname = new ArrayList<String>();
-      if(checklist != null){
-         for(int i=0; i<checklist.size(); i++){
-            name.add(checklist.get(i).getCheck_name());
-         }
-      }
-      HashSet<String> name2 = new HashSet<String>(name);
-      disname = new ArrayList<String>(name2);
-      %>
+	int mb_age = Integer.parseInt(vo.getMb_birthdate().substring(0, 4)); // 사용자의 출생년도
+	String check_age = Integer.toString((year - mb_age) / 10) + "0대"; //연령대 생성
+	ArrayList<ChecklistVO> mb_checklist = dao.SelectCheckAge(check_age); //연령대에 맞는 체크리스트 생성
+
+	//연령별 랜덤으로 체크리스트 출력을 위해 랜덤 수 생성
+	Random rd = new Random();
+	int num = rd.nextInt(mb_checklist.size() + 1);
+
+	int check_seq = mb_checklist.get(num).getCheck_seq(); //랜덤 시퀀스
+	String check_name = mb_checklist.get(num).getCheck_name(); //랜덤 질병명
+	int check_std = mb_checklist.get(num).getCheck_std(); //랜덤 체크기준
+	String dis_code = mb_checklist.get(num).getDis_code(); //랜덤 질병 코드
+	String[] mb_arr = mb_checklist.get(num).getCheck_item().split("/"); //랜덤 체크리스트
+
+	//질병 전체 데이터에서 질병명 중복없이 출력
+	ArrayList<ChecklistVO> checklist = (ArrayList<ChecklistVO>) request.getAttribute("checklist");
+
+	//질병 명, 질병 코드 중복없이 출력
+	ArrayList<String> name = new ArrayList<String>();
+	ArrayList<String> disname = new ArrayList<String>();
+	if (checklist != null) {
+		for (int i = 0; i < checklist.size(); i++) {
+			name.add(checklist.get(i).getCheck_name());
+		}
+	}
+	HashSet<String> name2 = new HashSet<String>(name);
+	disname = new ArrayList<String>(name2);
+	%>
 
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -328,130 +201,135 @@ ul.ml-auto>li {
 						<!-- 자가진단 서울대병원 -->
 						<!-- div 아이디, strong 아이디, ul 아이디 값 주고 value값 작성함 -->
 						<hr>
-						<div id="div1">
-							<strong id="strong1"> 일반적인 증상 </strong> <br> <br>
-							<ul id="ul1">
-								<li id="l1">불편감</li>
-								<li>얼굴 통증</li>
-								<li>인후통(목의통증)</li>
-								<li>변비</li>
-							</ul>
-							<br>
-							<ul id="ul2">
-								<li>피로감</li>
-								<li>언어 장애</li>
-								<li>목쉼과 목소리 소실</li>
-								<li>흉통</li>
-							</ul>
-							<br>
-							<ul id="ul3">
-								<li>체중감소 </a></li>
-								<li>건망증과 혼돈 </a></li>
-								<li><a
-									href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 기침
-								</a></li>
-								<li><a
-									href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 가슴
-										두근거림 </a></li>
-							</ul>
-							<br>
-							<ul id="ul4">
-								<li>체중증가</li>
-								<li>우울증</li>
-								<li>가쁜 호흡</li>
-								<li>배뇨 조절 곤란</li>
-							</ul>
-							<br>
-							<ul id="ul5">
-								<li>수면 장애</li>
-								<li>불안감</li>
-								<li>천명음</li>
-								<li>빈뇨</li>
-							</ul>
-							<br>
-							<ul id="ul6">
-								<li>열</li>
-								<li>가려움증</li>
-								<li>삼키기 장애</li>
-								<li>배뇨통</li>
-							</ul>
-							<br>
-							<ul id="ul7">
-								<li>과도한 땀 흘림</li>
-								<li>전반적인 피부문제</li>
-								<li>구토</li>
-								<li>요통</li>
-							</ul>
-							<br>
-							<ul id="ul8">
-								<li>종괴</li>
-								<li>열이 있는 발진</li>
-								<li>재발성 구토</li>
-								<li>목의 통증 또는 경직</li>
-							</ul>
-							<br>
-							<ul id="ul9">
-								<li>실신감과 기절</li>
-								<li>두발과 두피의 문제</li>
-								<li>복통</li>
-								<li>팔이나 손의 통증</li>
-							</ul>
-							<br>
-							<ul id="ul10">
-								<li>두통</li>
-								<li>눈의 통증이나 자극</li>
-								<li>재발성 복통</li>
-								<li>다리의 통증</li>
-							</ul>
-							<br>
-							<ul id="ul11">
-								<li>어지럼증</li>
-								<li>시력 장애 또는 소실</li>
-								<li>복부 팽만</li>
-								<li>관절통</li>
-							</ul>
-							<br>
-							<ul id="ul12">
-								<li>감각이 없고 저린 증상</li>
-								<li>청력 장애 또는 소실</li>
-								<li>항문과 직장 문제</li>
-								<li>발목 종창</li>
-							</ul>
-							<br>
-							<ul id="ul13">
-								<li>경련과 떨림</li>
-								<li>귀의 통증</li>
-								<li>설사</li>
-								<li>없음</li>
-							</ul>
+					    <div id="div1">
+					        <h2 class="checktitle"> 일반적인 증상 </h2> <br> <br>
+					        <ul class="sysmtom">
+					            <li id="l1">불편감</li>
+					            <li>얼굴 통증</li>
+					            <li>인후통(목의통증)</li>
+					            <li>변비</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>피로감</li>
+					            <li>언어 장애</li>
+					            <li>목쉼과 목소리 소실</li>
+					            <li>흉통</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>체중감소 </a></li>
+					            <li>건망증과 혼돈 </a></li>
+					            <li><a
+					                href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 기침
+					            </a></li>
+					            <li><a
+					                href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 가슴
+					                    두근거림 </a></li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>체중증가</li>
+					            <li>우울증</li>
+					            <li>가쁜 호흡</li>
+					            <li>배뇨 조절 곤란</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>수면 장애</li>
+					            <li>불안감</li>
+					            <li>천명음</li>
+					            <li>빈뇨</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>열</li>
+					            <li>가려움증</li>
+					            <li>삼키기 장애</li>
+					            <li>배뇨통</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>과도한 땀 흘림</li>
+					            <li>전반적인 피부문제</li>
+					            <li>구토</li>
+					            <li>요통</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>종괴</li>
+					            <li>열이 있는 발진</li>
+					            <li>재발성 구토</li>
+					            <li>목의 통증 또는 경직</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>실신감과 기절</li>
+					            <li>두발과 두피의 문제</li>
+					            <li>복통</li>
+					            <li>팔이나 손의 통증</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>두통</li>
+					            <li>눈의 통증이나 자극</li>
+					            <li>재발성 복통</li>
+					            <li>다리의 통증</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>어지럼증</li>
+					            <li>시력 장애 또는 소실</li>
+					            <li>복부 팽만</li>
+					            <li>관절통</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>감각이 없고 저린 증상</li>
+					            <li>청력 장애 또는 소실</li>
+					            <li>항문과 직장 문제</li>
+					            <li>발목 종창</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>경련과 떨림</li>
+					            <li>귀의 통증</li>
+					            <li>설사</li>
+					            <li>없음</li>
+					        </ul>
+					    </div>
+					    <br><br>
+					    <hr style="float:left; width: 900px;">
+					    <br><br>
+					    <!-- 체크리스트 -->
+						<div id="div2">
+							<h2 class="checktitle"> 체크리스트 </h2> <br> <br>
+							<table>
+								<tr>
+									<th class="disname" align="center" colspan=""><%= check_name %></th>
+								</tr>
+								<tr style="font-size: x-small;">
+									<td class="checklist" align="right">질문</td>
+									<td class="checklist" align="center">예</td>
+									<td class="checklist" align="center">아니오</td>
+								</tr>
+								<%for(int j=0; j<mb_arr.length; j++){ %>
+								<tr>
+									<td class="checklist"><%= mb_arr[j]%></td>
+									<td class="checklist" align="center"><input type="radio" name="<%= "no"+j %>" value="1">
+									</td>
+									<td class="checklist" align="center"><input type="radio" name="<%= "no"+j %>" value="0">
+									</td>
+	
+								</tr>
+								<%} %>
+								<tr>
+									<td colspan="3" align="center">
+                    					<button type="button" id="submit">결과보기</button>
+                					</td>
+								</tr>
+							</table>
 						</div>
-
-						<!--  -->
-						<from action="#">
-						<table>
-
-							<tr>
-								<th><%= check_name %></th>
-							</tr>
-							<tr>
-								<td>질문</td>
-								<td>예</td>
-								<td>아니오</td>
-							</tr>
-							<%for(int j=0; j<mb_arr.length; j++){ %>
-							<tr>
-								<td><%= mb_arr[j]%></td>
-								<td><input type="radio" name="<%= "no"+j %>" value="1">
-								</td>
-								<td><input type="radio" name="<%= "no"+j %>" value="0">
-								</td>
-
-							</tr>
-							<%} %>
-						</table>
-						<button type="button" id="submit">결과보기</button>
-						</from>
-
 					</div>
 				</div>
 			</div>
@@ -470,15 +348,105 @@ ul.ml-auto>li {
 					</section>
 				</div>
 				<div class="cl_b_content">
-					<%for(int i=0; i<disname.size(); i++){ %>
-					<a href="checkAll.jsp?name=<%=disname.get(i) %>"><%=disname.get(i) %>
+					<%
+					for (int i = 0; i < disname.size(); i++) {
+					%>
+					<a href="checkAll.jsp?name=<%=disname.get(i)%>"><%=disname.get(i)%>
 						자가진단 </a> <br> <br>
-					<%} %>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
 	</div>
 	</div>
+
+	<footer class="ftco-footer ftco-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Lets talk about</h2>
+						<p>Far far away, behind the word mountains, far from the
+							countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Learn more</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-4">
+						<h2 class="ftco-heading-2">Links</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Home</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Services</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Projects</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Services</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
+									Design</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
+									Development</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Business
+									Strategy</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Data
+									Analysis</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Graphic
+									Design</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon fa fa-map marker"></span><span
+									class="text">203 Fake St. Mountain View, San Francisco,
+										California, USA</span></li>
+								<li><a href="#"><span class="icon fa fa-phone"></span><span
+										class="text">+2 392 3929 210</span></a></li>
+								<li><a href="#"><span
+										class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+							</ul>
+						</div>
+						<ul class="ftco-footer-social list-unstyled mt-2">
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="fa fa-heart" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 
 	<!-- loader -->
@@ -526,7 +494,7 @@ ul.ml-auto>li {
          
          // 라디오 태그 전부 가져오기
          let radios = $('input[type="radio"]');
-         if(radioChecked() >= <%=mb_arr.length %>){
+         if(radioChecked() >= <%=mb_arr.length%>){
             
             for(let i = 0; i < radios.length; i++){
                
@@ -536,14 +504,8 @@ ul.ml-auto>li {
                }
                
             }
-            
-            if(num >= <%=check_std%>){
-               console.log("병원방문")
-            }
-            
           //체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
-			
-			if(num >= <%= check_std %>){
+			if(num >= <%=check_std%>){
 				// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
 				$.ajax({
 					type: "post", // get / post 
@@ -555,7 +517,7 @@ ul.ml-auto>li {
 						// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
 						// window.location : 현재 페이지 주소
 						// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
-						window.location = 'checkResult.jsp?name=<%= check_name %>&seq=<%= check_seq %>&result=y';
+						window.location = 'checkResult.jsp?name=<%=check_name%>&seq=<%=check_seq%>&result=y';
 					},
 					error : function() {
 						alert('전송 실패');
@@ -580,19 +542,14 @@ ul.ml-auto>li {
 					}					
 				})
 			}
-		
-		
-		
-		
-		
-	}else{
-		alert('모든 문항을 체크하세요.');
-	}
-	console.log(num);
-		num = 0;
-  });
-  
-</script>
+		}else{
+			alert('모든 문항을 체크하세요.');
+		}
+		console.log(num);
+			num = 0;
+  	});
+
+	</script>
 
 
 </body>

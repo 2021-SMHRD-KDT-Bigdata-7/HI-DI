@@ -23,7 +23,9 @@ public class DAO {
 	ArrayList<HospitalVO> hoslist = new ArrayList<HospitalVO>();
 	RawVO rvo = null;
 	ArrayList<RawVO> rawlist = new ArrayList<RawVO>();
-	
+	PollVO pvo = null;
+	PollitemsVO pivo = null;
+	ArrayList<PollitemsVO> itemslist = new ArrayList<PollitemsVO>();
 
 	// DB연결
 	public void connection() {
@@ -275,7 +277,7 @@ public class DAO {
 			psmt.setInt(1, check_seq);
 			psmt.setString(2, user_check_result);
 			psmt.setString(3, mb_id);
-			
+
 			cnt = psmt.executeUpdate(); // insert문 이므로 executeUpdate() --> return int
 
 		} catch (Exception e) {
@@ -287,7 +289,7 @@ public class DAO {
 		}
 		return cnt;
 	}
-	
+
 	// 질병이름으로 검색해 질병정보 호출
 	public DiseaseVO SelectDiseaseName(String dis_name) {
 		try {
@@ -426,7 +428,7 @@ public class DAO {
 	}
 
 	// =====================================================================================================================================
-	// 병원정보 불러오기	
+	// 병원정보 불러오기
 	public ArrayList<HospitalVO> HospitalAll(String hos_dpt) {
 		try {
 			connection();
@@ -476,51 +478,51 @@ public class DAO {
 
 	// =====================================================================================================================================
 	// 건강기능 식품 불러오기
-	public ArrayList<RawVO> RawSelect(String dis_tag){try {
-		connection();
+	public ArrayList<RawVO> RawSelect() {
+		try {
+			connection();
 
-		String sql = "select * from t_raw WHERE dis_tag= ?";
-		psmt = conn.prepareStatement(sql);
+			String sql = "select * from t_raw";
+			psmt = conn.prepareStatement(sql);
 
-		psmt.setString(1, dis_tag);
+			rs = psmt.executeQuery();
 
-		rs = psmt.executeQuery();
+			while (rs.next() == true) {
 
-		while (rs.next() == true) {
-			
-			int seq = rs.getInt(1);
-			String company = rs.getString(2);
-			String name = rs.getString(3);
-			String func = rs.getString(4);
-			String tag = rs.getString(5);
-			
-			RawVO rvo = new RawVO(seq, company, name, func, tag);
+				int seq = rs.getInt(1);
+				String company = rs.getString(2);
+				String name = rs.getString(3);
+				String func = rs.getString(4);
+				String tag = rs.getString(5);
 
-			rawlist.add(rvo);
+				RawVO rvo = new RawVO(seq, company, name, func, tag);
 
+				rawlist.add(rvo);
+
+			}
+			System.out.println("건강기능식품 불러오기");
+		} catch (Exception e) {
+
+			System.out.println("건강기능식품 불러오기 실패");
+			e.printStackTrace();
+
+		} finally {
+			close();
 		}
-		System.out.println("건강기능식품 불러오기");
-	} catch (Exception e) {
 
-		System.out.println("건강기능식품 불러오기 실패");
-		e.printStackTrace();
-
-	} finally {
-		close();
+		return rawlist;
 	}
 
-	return rawlist;
-	}
-	
 	// =====================================================================================================================================
 	// 회원정보수정
-	public int Update(String name, String id, String pw, String email, String gender, String tel, String birthdate, String addr) {
+	public int Update(String name, String id, String pw, String email, String gender, String tel, String birthdate,
+			String addr) {
 		// try문
 		// JDBC 코드는 문법이 맞더라도, 실행중에 발생하는 오류(런타임 오류) 처리 필요
 		try {
-			
+
 			connection();
-			
+
 			// 3. sql문 준비
 			String sql = "update t_member set mb_name =?, mb_pw=?, mb_email=?, mb_gender=?, mb_phone=?, mb_birthdate=?, mb_addr=? where mb_id = ?";
 			psmt = conn.prepareStatement(sql);
@@ -549,5 +551,77 @@ public class DAO {
 
 		}
 		return cnt;
+	}
+	// =====================================================================================================================================
+
+	// 설문지 가져오기
+	public PollVO SelectPoll(String poll_title) {
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_poll where poll_title = ?";
+			psmt = conn.prepareStatement(sql);
+
+			// 바인드 변수 채우기
+			psmt.setString(1, poll_title);
+
+			// 실행
+			rs = psmt.executeQuery();
+
+			// cvo에 체크리스트 저장
+			if (rs.next() == true) {
+				int pollSeq = rs.getInt(1);
+				String polltitle = rs.getString(2);
+				String pollcontent = rs.getString(3);
+				String mb_id = rs.getString(4);
+				String reg_date = rs.getString(5);
+
+				pvo = new PollVO(pollSeq, polltitle, pollcontent, mb_id, reg_date);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+
+		return pvo;
+	}
+
+	// =============================================================================================
+	public ArrayList<PollitemsVO> SelectPollItems(int poll_seq) {
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_poll_items where poll_seq = ?";
+			psmt = conn.prepareStatement(sql);
+
+			// 바인드 변수 채우기
+			psmt.setInt(1, poll_seq);
+
+			// 실행
+			rs = psmt.executeQuery();
+
+			// cvo에 체크리스트 저장
+			while (rs.next() == true) {
+				int itemSeq = rs.getInt(1);
+				int pollSeq = rs.getInt(2);
+				String itemName = rs.getString(3);
+				String itemContent = rs.getString(4);
+
+				pivo = new PollitemsVO(itemSeq, pollSeq, itemName, itemContent);
+				itemslist.add(pivo);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		return itemslist;
 	}
 }

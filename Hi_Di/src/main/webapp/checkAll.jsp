@@ -29,7 +29,38 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-</style>
+        #div2 {
+            width: 900px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .checktitle {
+            color: #81A3AA;
+            font-size: 20px;
+            margin-left: 30px;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            border-top: 2px solid #81A3AA;
+            border-bottom: 2px solid #81A3AA;
+            border-collapse: collapse;
+        }
+        .disname, .checklist {
+            border-top: 1px solid #81A3AA;
+            border-bottom: 1px solid #81A3AA;
+            border-left: 1px solid #81A3AA;
+            padding: 10px;
+        }
+        
+        .disname:first-child, .checklist:first-child {
+            border-left: none;
+        }
+        
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -124,7 +155,36 @@
 					</section>
 				</div>
 				<div class="cl_b_content">
-					<div>
+					<div id="div2">
+							<h2 class="checktitle"> 체크리스트 </h2> <br> <br>
+							<table>
+								<tr>
+									<th class="disname" align="center" colspan=""><%= getname %></th>
+								</tr>
+								<tr style="font-size: x-small;">
+									<td class="checklist" align="right">질문</td>
+									<td class="checklist" align="center">예</td>
+									<td class="checklist" align="center">아니오</td>
+								</tr>
+								<%for(int j=0; j<get_arr.length; j++){ %>
+								<tr>
+									<td class="checklist"><%= get_arr[j]%></td>
+									<td class="checklist" align="center"><input type="radio" name="<%= "no"+j %>" value="1">
+									</td>
+									<td class="checklist" align="center"><input type="radio" name="<%= "no"+j %>" value="0">
+									</td>
+	
+								</tr>
+								<%} %>
+								<tr>
+									<td colspan="3" align="center">
+                    					<button type="button" id="submit">결과보기</button>
+                					</td>
+								</tr>
+							</table>
+						</div><!--  -->
+				
+					<%-- <div>
 						<from action="#" method="post">
 						<table>
 
@@ -150,7 +210,7 @@
 						<button type="button" id="submit">결과보기</button>
 						</from>
 
-					</div>
+					</div><!--  --> --%>
 				</div>
 			</div>
 		</div>
