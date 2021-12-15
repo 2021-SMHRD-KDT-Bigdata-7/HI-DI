@@ -54,7 +54,9 @@
 	String name = request.getParameter("name");
 	
 	ArrayList<HospitalVO> hoslist = null;
-	ArrayList<RawVO> rawlist = dao.RawSelect();
+	ArrayList<RawVO> rawlist = dao.RawSelect();	//영양성분 정보 출력
+	ArrayList<String> raw_name = new ArrayList<String>();	//영양성분 이름
+	ArrayList<String> raw_func = new ArrayList<String>();	//영양성분 기능
 	
 	//받아온 질병이름으로 질병 전체 정보 받아오기
 	DiseaseVO dvo =  dao.SelectDiseaseName(name);
@@ -62,17 +64,34 @@
 	if(dvo != null){		
 		hoslist = dao.HospitalAll(dvo.getDis_dpt());
 		
-		out.print("tag  "+dvo.getDis_tag());
+		String[] tags = dvo.getDis_tag().replace(" ", "").split(",");	//태그가 여러개일 때 한개씩 배열에 저장
+
+		out.print(tags.length+"/");	//삭제가능
 		
-		String[] tags = dvo.getDis_tag().split(",");
+		for(int i=0; i<tags.length;i++){
+			out.print(tags[i]+"/");
+			
+		}	//삭제
 		
-		for(int i =0; i<tags.length; i++){
-			out.print(tags[i]);
-			for(int j=0; j<rawlist.size(); j++){
+
+		
+		
+		for(int i =0; i<tags.length; i++){	//질병에 대한 태그 검색하기 위한 tag
+			
+			for(int j=0; j<rawlist.size(); j++){	//전체 영양성분에서 질병에 대한 tag 찾기
+				
 				String taglist = rawlist.get(j).getDis_tag();
-				taglist.contains(tags[i]);
-				out.print(rawlist.get(j).getRaw_name());
+				
+				if(taglist.contains(tags[i])==true){
+					out.print(tags[i]+"/");
+					out.print(rawlist.get(j).getRaw_name());
+					raw_name.add(rawlist.get(j).getRaw_name());
+					raw_func.add(rawlist.get(j).getRaw_func());
+					
+					
+				}
 			}
+			
 		}
 		
 	}else{
@@ -134,10 +153,14 @@
 	<span><%=dvo.getDis_symptom() %> 과 같은 증상이 있을 수 있습니다.</span><br>
 	<%if(rawlist != null){ %>
 		<span>도움이 되는 영양 성분은 
-			<%for(int i=0; i<rawlist.size(); i++){ %>
-				<%=rawlist.get(i).getRaw_name() %>
-				(기능 : <%= rawlist.get(i).getRaw_func()%>) 입니다.       
+		<!-- 
+		raw_name.add(rawlist.get(j).getRaw_name());
+		raw_func.add(rawlist.get(j).getRaw_func()); -->
+			<%for(int i=0; i<raw_name.size(); i++){ %>
+				<%=raw_name.get(i) %>
+				(기능 : <%= raw_func.get(i)%>),<br>       
 			<%} %>
+			입니다.
 		</span><br>
 	<%} %>		
 	
