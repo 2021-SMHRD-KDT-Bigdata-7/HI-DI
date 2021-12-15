@@ -10,7 +10,6 @@
     li{
         list-style: none;
     }
-    /* 지워도 되는 주석 */
 </style>
 </head>
 <body>
