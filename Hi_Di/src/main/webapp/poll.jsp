@@ -34,47 +34,47 @@
 <link rel="stylesheet" href="css/style.css">
 <style>
 	#s1 {
-	color:black;
-	position: absolute;
-	weight:300px;
-	height:300px;
-	text-align:center;
-	}
-	
-	#s1 > #s2 {
-	text-align:center;
-	}
-	
-	#d1 {
-	color:black;
-	text-align:center;
-	}
-	
-	#d3 {
-	text-align:center;
-	position: center;
-	}
-	
-	#d5 > #d4 {
-	 border:1px solid;
-	 weight: 100px;
-	 width: 800px;
-  	 padding: 100px;
- 	 border-width: 2px;
- 	 position:relative;
- 	 margin: 0 auto;
-	}
-	
-	#d5 {
-		border:1px solid;
-		position: relative; 
-		left: 225px; 
-		top: 200px;
-	}
-	
-	#d5 > #d6 {
-		left:300px;
-	}
+   color:black;
+   /* position: absolute; */
+   weight:300px;
+   /* height:300px; */
+   text-align:center;
+   }
+   
+   #s1 > #s2 {
+   text-align:center;
+   }
+   
+   #d1 {
+   color:black;
+   text-align:center;
+   }
+   
+   #d3 {
+   text-align:center;
+   position: center;
+   }
+   
+   #d5 > #d4 {
+    border:1px solid;
+    weight: 100px;
+    width: 800px;
+      padding: 100px;
+     border-width: 2px;
+     position:relative;
+     margin: 0 auto;
+   }
+   
+   #d5 {
+      border:1px solid;
+      position: relative; 
+      left: 225px; 
+      /* top: 200px; */
+   }
+   
+   #d5 > #d6 {
+      left:300px;
+   }
 </style>
 </head>
 
