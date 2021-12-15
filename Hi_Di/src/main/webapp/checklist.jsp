@@ -452,39 +452,6 @@ ul.ml-auto>li {
 							</table>
 							<button type="button" id="submit">결과보기</button>
 						</div>
-=======
-
-						<!--  -->
-						<from action="#">
-						<table>
-
-							<tr>
-								<th><%=check_name%></th>
-							</tr>
-							<tr>
-								<td>질문</td>
-								<td>예</td>
-								<td>아니오</td>
-							</tr>
-							<%
-							for (int j = 0; j < mb_arr.length; j++) {
-							%>
-							<tr>
-								<td><%=mb_arr[j]%></td>
-								<td><input type="radio" name="<%="no" + j%>" value="1">
-								</td>
-								<td><input type="radio" name="<%="no" + j%>" value="0">
-								</td>
-
-							</tr>
-							<%
-							}
-							%>
-						</table>
-						<button type="button" id="submit">결과보기</button>
-						</from>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/HI-DI.git
-
 					</div>
 				</div>
 			</div>
@@ -659,19 +626,8 @@ ul.ml-auto>li {
                }
                
             }
-            
-            if(num >= <%=check_std%>){
-               console.log("병원방문")
-            }
-            
-<<<<<<< HEAD
-          	//체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
-			if(num >= <%= check_std %>){
-=======
           //체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
-			
 			if(num >= <%=check_std%>){
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/HI-DI.git
 				// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
 				$.ajax({
 					type: "post", // get / post 
@@ -701,7 +657,6 @@ ul.ml-auto>li {
 						// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
 						// window.location : 현재 페이지 주소
 						// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
-<<<<<<< HEAD
 						window.location = 'checkResult.jsp?name=<%= check_name %>&seq=<%= check_seq %>&result=n';
 					},
 					error : function() {
@@ -715,26 +670,7 @@ ul.ml-auto>li {
 		console.log(num);
 			num = 0;
   	});
-      
-      
-      //데일리체크 페이지
-=======
-						window.location = 'checkResult.jsp?name=<%=check_name%>&seq=<%=check_seq%>
-		&result=n';
-												},
-												error : function() {
-													alert('전송 실패');
-												}
-											})
-								}
 
-							} else {
-								alert('모든 문항을 체크하세요.');
-							}
-							console.log(num);
-							num = 0;
-						});
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/HI-DI.git
 	</script>
 
 
