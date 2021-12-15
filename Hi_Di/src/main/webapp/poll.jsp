@@ -33,28 +33,53 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-#s1 {
-	color: black;
+	#s1 {
+	color:black;
 	position: absolute;
-	weight: 300px;
-	height: 300px;
-	text-align: center;
-}
-
-#s1>#s2 {
-	text-align: center;
-}
-
-#d1 {
-	color: black;
-	text-align: center;
-}
+	weight:300px;
+	height:300px;
+	text-align:center;
+	}
+	
+	#s1 > #s2 {
+	text-align:center;
+	}
+	
+	#d1 {
+	color:black;
+	text-align:center;
+	}
+	
+	#d3 {
+	text-align:center;
+	position: center;
+	}
+	
+	#d5 > #d4 {
+	 border:1px solid;
+	 weight: 100px;
+	 width: 800px;
+  	 padding: 100px;
+ 	 border-width: 2px;
+ 	 position:relative;
+ 	 margin: 0 auto;
+	}
+	
+	#d5 {
+		border:1px solid;
+		position: relative; 
+		left: 225px; 
+		top: 200px;
+	}
+	
+	#d5 > #d6 {
+		left:300px;
+	}
 </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
-
 
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -86,6 +111,7 @@
 		</div>
 	</nav>
 
+
 	<!-- 배너 -->
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('images/bg_4.jpg');"
@@ -101,41 +127,46 @@
 			</div>
 		</div>
 	</section>
+	
 	<br>
 	<br>
 	<br>
 	<br>
-	<div id=d1>
-		<%
+	<%
 	//메소드 사용하기 위해 dao객체 생성
-	DAO dao = new DAO();
+		DAO dao = new DAO();
+		out.print("asdfsadfasdfasdf");
+		PollVO pvo = dao.SelectPoll("코로나19 바이러스 설문지");
+		
+		ArrayList<PollitemsVO> itemslist = dao.SelectPollItems(pvo.getPoll_seq());
 
-	PollVO pvo = dao.SelectPoll("코로나19 바이러스 설문지");
+	%>
+
+
+	<div id= s1 style="white-space:pre;"><br>
+
+		<div id = d3>
+		<strong id = s2><%= pvo.getPoll_title() %></strong>
+			<%= pvo.getPoll_content() %>
+			<br>
+			<%=itemslist.get(0).getItem_content() %>
+		</div>
 	
-	ArrayList<PollitemsVO> itemslist = dao.SelectPollItems(pvo.getPoll_seq());
-	
-	out.print(pvo.getPoll_title());
-	out.print(pvo.getPoll_content());
+		<!-- 설문페이지 박스 부분 -->
 
-%>
-	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<div id=s1>
-
-		<strong id=s2><%= pvo.getPoll_title() %></strong> <br>
 		<%= pvo.getPoll_content() %>
-		<br>
-		<%=itemslist.get(0).getItem_content() %>
+		<%for(int i=0; i<itemslist.size(); i++){ %>
+			<div id = d5>
+				<ol type="1"  id= d6>
+					<li><%=itemslist.get(i).getItem_name() %></li>
+				</ol>
+				-<%=itemslist.get(i).getItem_content() %>
+				<div id = d4>
+				</div>
+			</div>
+		<%} %>	
 	</div>
+	<br><br><br><br><br><br>
 
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
