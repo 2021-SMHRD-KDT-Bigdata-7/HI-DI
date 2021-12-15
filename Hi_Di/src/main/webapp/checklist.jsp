@@ -86,9 +86,7 @@
             color: black;
         }
         
-        /* ul.ml-auto>li {
-            
-        } */
+
     </style>
 </head>
 

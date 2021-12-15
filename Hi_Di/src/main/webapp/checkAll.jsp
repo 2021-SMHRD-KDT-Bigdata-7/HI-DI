@@ -59,6 +59,7 @@
         .disname:first-child, .checklist:first-child {
             border-left: none;
         }
+        
     </style>
 </head>
 
