@@ -30,190 +30,66 @@
 
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
-<style>
-<!--
-서울대 병원 병명 박스 스타일 --> /* 서울대 병원 박스 생성 */ 
-#div1 {
-	width: 900px;
-	height: 530px;
-	border: 1px solid;
-	background-image: url("C:/Users/smhrd/Desktop/HTML/CSS/이미징.jpg");
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;
-	padding: 50px 0;
-}
-/* div에서 ul태그로 상속 */
-#div1>#ul1 {
-	list-style: none;
-}
+    <style>
+        #div1 {
+            width: 900px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    
+        #div2 {
+            width: 900px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        
+        /* div에서 ul태그로 상속 */
+        #div1> ul {
+            list-style: none;
+        }
+        
+        .checktitle {
+            color: #81A3AA;
+            font-size: 20px;
+            margin-left: 30px;
+        }
 
-#div1>#ul2 {
-	list-style: none;
-}
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            border-top: 2px solid #81A3AA;
+            border-bottom: 2px solid #81A3AA;
+            border-collapse: collapse;
+        }
+        .disname, .checklist {
+            border-top: 1px solid #81A3AA;
+            border-bottom: 1px solid #81A3AA;
+            border-left: 1px solid #81A3AA;
+            padding: 10px;
+        }
+        
+        .disname:first-child, .checklist:first-child {
+            border-left: none;
+        }
 
-#div1>#ul3 {
-	list-style: none;
-}
-
-#div1>#ul4 {
-	list-style: none;
-}
-
-#div1>#ul5 {
-	list-style: none;
-}
-
-#div1>#ul6 {
-	list-style: none;
-}
-
-#div1>#ul7 {
-	list-style: none;
-}
-
-#div1>#ul8 {
-	list-style: none;
-}
-
-#div1>#ul9 {
-	list-style: none;
-}
-
-#div1>#ul10 {
-	list-style: none;
-}
-
-#div1>#ul11 {
-	list-style: none;
-}
-
-#div1>#ul12 {
-	list-style: none;
-}
-
-#div1>#ul13 {
-	list-style: none;
-}
-
-#strong1 {
-	color: blue;
-	font-size: 20px;
-	margin-left: 36px;
-}
-
-#ul1>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul2>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul3>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul4>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul5>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul6>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul7>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul8>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul9>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul10>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul11>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul12>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-#ul13>li {
-	list-style-type: none;
-	float: left;
-	margin-left: 30px;
-	width: 162px;
-	list-style-type: disc;
-}
-
-a {
-	color: black;
-}
-
-ul.ml-auto>li {
-	
-}
-</style>
+        
+        .sysmtom > li {
+            list-style-type: none;
+            float: left;
+            margin-left: 30px;
+            width: 162px;
+            list-style-type: disc;
+        }
+        
+        a {
+            color: black;
+        }
+        
+        /* ul.ml-auto>li {
+            
+        } */
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -327,130 +203,134 @@ ul.ml-auto>li {
 						<!-- 자가진단 서울대병원 -->
 						<!-- div 아이디, strong 아이디, ul 아이디 값 주고 value값 작성함 -->
 						<hr>
-						<div id="div1">
-							<strong id="strong1"> 일반적인 증상 </strong> <br> <br>
-							<ul id="ul1">
-								<li id="l1">불편감</li>
-								<li>얼굴 통증</li>
-								<li>인후통(목의통증)</li>
-								<li>변비</li>
-							</ul>
-							<br>
-							<ul id="ul2">
-								<li>피로감</li>
-								<li>언어 장애</li>
-								<li>목쉼과 목소리 소실</li>
-								<li>흉통</li>
-							</ul>
-							<br>
-							<ul id="ul3">
-								<li>체중감소 </a></li>
-								<li>건망증과 혼돈 </a></li>
-								<li><a
-									href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 기침
-								</a></li>
-								<li><a
-									href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 가슴
-										두근거림 </a></li>
-							</ul>
-							<br>
-							<ul id="ul4">
-								<li>체중증가</li>
-								<li>우울증</li>
-								<li>가쁜 호흡</li>
-								<li>배뇨 조절 곤란</li>
-							</ul>
-							<br>
-							<ul id="ul5">
-								<li>수면 장애</li>
-								<li>불안감</li>
-								<li>천명음</li>
-								<li>빈뇨</li>
-							</ul>
-							<br>
-							<ul id="ul6">
-								<li>열</li>
-								<li>가려움증</li>
-								<li>삼키기 장애</li>
-								<li>배뇨통</li>
-							</ul>
-							<br>
-							<ul id="ul7">
-								<li>과도한 땀 흘림</li>
-								<li>전반적인 피부문제</li>
-								<li>구토</li>
-								<li>요통</li>
-							</ul>
-							<br>
-							<ul id="ul8">
-								<li>종괴</li>
-								<li>열이 있는 발진</li>
-								<li>재발성 구토</li>
-								<li>목의 통증 또는 경직</li>
-							</ul>
-							<br>
-							<ul id="ul9">
-								<li>실신감과 기절</li>
-								<li>두발과 두피의 문제</li>
-								<li>복통</li>
-								<li>팔이나 손의 통증</li>
-							</ul>
-							<br>
-							<ul id="ul10">
-								<li>두통</li>
-								<li>눈의 통증이나 자극</li>
-								<li>재발성 복통</li>
-								<li>다리의 통증</li>
-							</ul>
-							<br>
-							<ul id="ul11">
-								<li>어지럼증</li>
-								<li>시력 장애 또는 소실</li>
-								<li>복부 팽만</li>
-								<li>관절통</li>
-							</ul>
-							<br>
-							<ul id="ul12">
-								<li>감각이 없고 저린 증상</li>
-								<li>청력 장애 또는 소실</li>
-								<li>항문과 직장 문제</li>
-								<li>발목 종창</li>
-							</ul>
-							<br>
-							<ul id="ul13">
-								<li>경련과 떨림</li>
-								<li>귀의 통증</li>
-								<li>설사</li>
-								<li>없음</li>
-							</ul>
-						</div>
-<<<<<<< HEAD
-						<br><br><br><br>
-						
-						<!-- 체크리스트 -->
+					    <div id="div1">
+					        <h2 class="checktitle"> 일반적인 증상 </h2> <br> <br>
+					        <ul class="sysmtom">
+					            <li id="l1">불편감</li>
+					            <li>얼굴 통증</li>
+					            <li>인후통(목의통증)</li>
+					            <li>변비</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>피로감</li>
+					            <li>언어 장애</li>
+					            <li>목쉼과 목소리 소실</li>
+					            <li>흉통</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>체중감소 </a></li>
+					            <li>건망증과 혼돈 </a></li>
+					            <li><a
+					                href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 기침
+					            </a></li>
+					            <li><a
+					                href="http://www.snuh.org/health/SelfDgs/chart/Ch47.do"> 가슴
+					                    두근거림 </a></li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>체중증가</li>
+					            <li>우울증</li>
+					            <li>가쁜 호흡</li>
+					            <li>배뇨 조절 곤란</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>수면 장애</li>
+					            <li>불안감</li>
+					            <li>천명음</li>
+					            <li>빈뇨</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>열</li>
+					            <li>가려움증</li>
+					            <li>삼키기 장애</li>
+					            <li>배뇨통</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>과도한 땀 흘림</li>
+					            <li>전반적인 피부문제</li>
+					            <li>구토</li>
+					            <li>요통</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>종괴</li>
+					            <li>열이 있는 발진</li>
+					            <li>재발성 구토</li>
+					            <li>목의 통증 또는 경직</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>실신감과 기절</li>
+					            <li>두발과 두피의 문제</li>
+					            <li>복통</li>
+					            <li>팔이나 손의 통증</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>두통</li>
+					            <li>눈의 통증이나 자극</li>
+					            <li>재발성 복통</li>
+					            <li>다리의 통증</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>어지럼증</li>
+					            <li>시력 장애 또는 소실</li>
+					            <li>복부 팽만</li>
+					            <li>관절통</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>감각이 없고 저린 증상</li>
+					            <li>청력 장애 또는 소실</li>
+					            <li>항문과 직장 문제</li>
+					            <li>발목 종창</li>
+					        </ul>
+					        <br>
+					        <ul class="sysmtom">
+					            <li>경련과 떨림</li>
+					            <li>귀의 통증</li>
+					            <li>설사</li>
+					            <li>없음</li>
+					        </ul>
+					    </div>
+					    <br><br>
+					    <hr style="float:left; width: 900px;">
+					    <br><br>
+					    <!-- 체크리스트 -->
 						<div id="div2">
-							<strong id="strong2"> 체크리스트 </strong> <br> <br>
+							<h2 class="checktitle"> 체크리스트 </h2> <br> <br>
 							<table>
 								<tr>
-									<th><%= check_name %></th>
+									<th class="disname" align="center" colspan=""><%= check_name %></th>
 								</tr>
-								<tr>
-									<td>질문</td>
-									<td>예</td>
-									<td>아니오</td>
+								<tr style="font-size: x-small;">
+									<td class="checklist" align="right">질문</td>
+									<td class="checklist" align="center">예</td>
+									<td class="checklist" align="center">아니오</td>
 								</tr>
 								<%for(int j=0; j<mb_arr.length; j++){ %>
 								<tr>
-									<td><%= mb_arr[j]%></td>
-									<td><input type="radio" name="<%= "no"+j %>" value="1">
+									<td class="checklist"><%= mb_arr[j]%></td>
+									<td class="checklist" align="center"><input type="radio" name="<%= "no"+j %>" value="1">
 									</td>
-									<td><input type="radio" name="<%= "no"+j %>" value="0">
+									<td class="checklist" align="center"><input type="radio" name="<%= "no"+j %>" value="0">
 									</td>
 	
 								</tr>
 								<%} %>
+								<tr>
+									<td colspan="3" align="center">
+                    					<button type="button" id="submit">결과보기</button>
+                					</td>
+								</tr>
 							</table>
-							<button type="button" id="submit">결과보기</button>
 						</div>
 					</div>
 				</div>
