@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-	#s1 {
+   #s1 {
    color:black;
    /* position: absolute; */
    weight:300px;
@@ -45,35 +45,35 @@
    text-align:center;
    }
    
-   #d1 {
-   color:black;
-   text-align:center;
-   }
    
-   #d3 {
+   #title1 {
    text-align:center;
    position: center;
+   
    }
    
-   #d5 > #d4 {
+   #d1 > #d2 {
     border:1px solid;
     weight: 100px;
     width: 800px;
-      padding: 100px;
-     border-width: 2px;
-     position:relative;
-     margin: 0 auto;
+    padding: 100px;
+    border-width: 2px;
+    position:relative;
+    margin: 0 auto;
    }
    
-   #d5 {
+   #s1 > #d1 {
       border:1px solid;
       position: relative; 
-      left: 225px; 
+      text-align:center;
+      width: 1000px;
+      height: 800px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      padding-left: 0px;
+      padding-right: 30px;
+      margin: auto;
       /* top: 200px; */
-   }
-   
-   #d5 > #d6 {
-      left:300px;
    }
 </style>
 </head>
@@ -127,41 +127,27 @@
 			</div>
 		</div>
 	</section>
-	
-	<br>
-	<br>
-	<br>
-	<br>
 	<%
 	//메소드 사용하기 위해 dao객체 생성
 		DAO dao = new DAO();
-		out.print("asdfsadfasdfasdf");
-		PollVO pvo = dao.SelectPoll("코로나19 바이러스 설문지");
+		
+	 	PollVO pvo = dao.SelectPoll("코로나19 바이러스 설문지");
 		
 		ArrayList<PollitemsVO> itemslist = dao.SelectPollItems(pvo.getPoll_seq());
 
 	%>
-
-
 	<div id= s1 style="white-space:pre;"><br>
-
-		<div id = d3>
+		<div id = title1>
 		<strong id = s2><%= pvo.getPoll_title() %></strong>
 			<%= pvo.getPoll_content() %>
-			<br>
-			<%=itemslist.get(0).getItem_content() %>
-		</div>
-	
+		</div>	
 		<!-- 설문페이지 박스 부분 -->
-
-		<%= pvo.getPoll_content() %>
 		<%for(int i=0; i<itemslist.size(); i++){ %>
-			<div id = d5>
-				<ol type="1"  id= d6>
-					<li><%=itemslist.get(i).getItem_name() %></li>
-				</ol>
+			<div id = d1>
+				<%=itemslist.get(i).getItem_name() %>
+				<br>
 				-<%=itemslist.get(i).getItem_content() %>
-				<div id = d4>
+				<div id = d2>
 				</div>
 			</div>
 		<%} %>	
