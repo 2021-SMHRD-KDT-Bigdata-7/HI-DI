@@ -14,7 +14,8 @@
 </head>
 <body>
 	<div id="loginBody">
-        <li class="loginWord"><h5>LOGIN</h5></li>
+		<div class="logoWord"><p>HI - DI</p></div>
+        <div class="loginWord"><p>LOGIN</p></div>
         <form action="LoginService" method="post" class="LoginService">
             <li><input name="id" type="text"  placeholder="ID을 입력하세요"></li>
             <li><input name="pw" type="password"  placeholder="PW를 입력하세요"></li>
