@@ -26,6 +26,115 @@
 
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css"> 
+<style>
+.wrap {
+   position: absolute;
+   left: 0;
+   bottom: 40px;
+   width: 288px;
+   height: 132px;
+   margin-left: -144px;
+   text-align: left;
+   overflow: hidden;
+   font-size: 12px;
+   font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+   line-height: 1.5;
+}
+
+.wrap * {
+   padding: 0;
+   margin: 0;
+}
+
+.wrap .info {
+   width: 286px;
+   height: 120px;
+   border-radius: 5px;
+   border-bottom: 2px solid #ccc;
+   border-right: 1px solid #ccc;
+   overflow: hidden;
+   background: #fff;
+}
+
+.wrap .info:nth-child(1) {
+   border: 0;
+   box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+   padding: 5px 0 0 10px;
+   height: 30px;
+   background: #eee;
+   border-bottom: 1px solid #ddd;
+   font-size: 18px;
+   font-weight: bold;
+}
+
+.info .close {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   color: #888;
+   width: 17px;
+   height: 17px;
+   background:
+      url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+   cursor: pointer;
+}
+
+.info .body {
+   position: relative;
+   overflow: hidden;
+}
+
+.info .desc {
+   position: relative;
+   margin: 13px 0 0 90px;
+   height: 75px;
+}
+
+.desc .ellipsis {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+.desc .jibun {
+   font-size: 11px;
+   color: #888;
+   margin-top: -2px;
+}
+
+.info .img {
+   position: absolute;
+   top: 6px;
+   left: 5px;
+   width: 73px;
+   height: 71px;
+   border: 1px solid #ddd;
+   color: #888;
+   overflow: hidden;
+}
+
+.info:after {
+   content: '';
+   position: absolute;
+   margin-left: -12px;
+   left: 50%;
+   bottom: 0;
+   width: 22px;
+   height: 12px;
+   background:
+      url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+   color: #5085BB;
+}
+</style>
 </head>
 <body>
 	<%
@@ -178,13 +287,11 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0b3a32b355a4dc98f4a07c93f17a9fb"></script>
 	
-	<div id="map" style="width: 100%; height: 350px;"></div>
-	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0b3a32b355a4dc98f4a07c93f17a9fb"></script>
 
 
-	<script>
+	<script type="text/javascript">
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	    	mapOption = { 
 	        	center: new kakao.maps.LatLng(35.11154588685366, 126.87755807671306), // 지도의 중심좌표
@@ -198,95 +305,129 @@
 		var lon = null;
 		var positions = [];
 		var title = [];
-		var content=[{}];
+		var content = [];
+		var overlay = [];
+		var marker = [];
+		var markerImage = [];   //마커 이미지+크기 배열
+		var imageSize = new kakao.maps.Size(30, 30);   //마커크기
+		var dpt = ["안과", "종합", "내과", "마치통증의학과", "산부인과", "성형외과", "소아과", "소아청소년과", "비뇨기과", "비뇨의학과", "신경과", "신경외과", "외과",
+		   "영상의학과", "정신과", "정형외과", "치과", "피부과", "한방과"];
 	
+		//마커 이미지의 이미지 주소입니다
+		for(let i=1; i<20; i++){
+		   var imageSrc = "./mapimages/hospital"+i+".png";
+		   markerImage[i-1] = new kakao.maps.MarkerImage(imageSrc, imageSize);
+		}
 		
 		// positions에 push메서드로 객체 넣어주기
-		<%for (int i = 0; i < hoslist.size(); i++) {%>
-			positions.push({
-				title : '<%=hoslist.get(i).getHos_name()%>',
-				latlng : new kakao.maps.LatLng(
-					<%=hoslist.get(i).getHos_longitude()%>,
-					<%=hoslist.get(i).getHos_latitude()%>
-				)
-			})
+		<%for (int j = 0; j < hoslist.size(); j++) {%>
+
+		      positions.push({
+		               title : '<%=hoslist.get(j).getHos_name()%>',
+		               latlng : new kakao.maps.LatLng( <%=hoslist.get(j).getHos_longitude()%>, <%=hoslist.get(j).getHos_latitude()%>)
+		         });
+
+		      //커스텀 오버레이에 표시할 컨텐츠
+		      content[<%=j%>]='<div class="wrap">' + 
+		                '    <div class="info">' + 
+		                '        <div class="title">' + 
+		                '            <%=hoslist.get(j).getHos_name()%>' + 
+		                '            <div class="close" title="닫기"></div>' + 
+		                '        </div>' + 
+		                '        <div class="body">' +
+		                '            <div class="desc">' + 
+		                '                <div class="ellipsis"><%=hoslist.get(j).getHos_addr()%></div>' + 
+		                '                <div class="jibun ellipsis"><%=hoslist.get(j).getHos_phone()%></div>' + 
+		                '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+		                '            </div>' + 
+		                '        </div>' + 
+		                '    </div>' +    
+		                '</div>';
+		         
+		         // 마커를 생성합니다
+		         for(let i=0; i<19; i++){
+		            if("<%=hoslist.get(j).getHos_dpt()%>" == dpt[i]){
+		               marker[<%=j%>] = new kakao.maps.Marker({
+		                  map : map, // 마커를 표시할 지도
+		                  position : positions[<%=j%>].latlng, // 마커를 표시할 위치
+		                  title : positions[<%=j%>].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+		                  
+		                  image : markerImage[i]
+		               // image : markerImage // 마커 이미지 
+		               });            
+		            }            
+		         }
+		         // 마커 위에 커스텀오버레이를 표시합니다
+		         // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+		         overlay[<%=j%>] = new kakao.maps.CustomOverlay({
+		            content : content[<%=j%>],
+		            map : map,
+		            position : marker[<%=j%>].getPosition()
+		         });
+		         overlay[<%=j%>].setMap(null)
+		         
+		         
+		         // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+		         kakao.maps.event.addListener(marker[<%=j%>], 'mouseover', function() {
+		            overlay[<%=j%>].setMap(map);
+		         });
+		         kakao.maps.event.addListener(marker[<%=j%>], 'mouseout', function() {
+		            overlay[<%=j%>].setMap(null);
+		         });
+		      
+		         
 		<%}%>
-		
-		// 마커 이미지의 이미지 주소입니다
-		var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png";
-	
-		for (var i = 0; i < positions.length; i++) {
-	
-			// 마커 이미지의 이미지 크기 입니다
-			var imageSize = new kakao.maps.Size(24, 35);
-	
-			// 마커 이미지를 생성합니다    
-			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-	
-			// 마커를 생성합니다
-			var marker = new kakao.maps.Marker({
-				map : map, // 마커를 표시할 지도
-				position : positions[i].latlng, // 마커를 표시할 위치
-				title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-				image : markerImage
-				// 마커 이미지 
-				});
-			};
-			
-					
-		//HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-		if (navigator.geolocation) {
-	
-			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
-			navigator.geolocation.getCurrentPosition(function(position) {
-	
-				lat = position.coords.latitude, // 위도
-				lon = position.coords.longitude; // 경도
-				
-				var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-				message = '<div style="padding:3px;">현재위치</div>'; // 인포윈도우에 표시될 내용입니다
-									
-				// 마커와 인포윈도우를 표시합니다
-				displayMarker(locPosition, message);
-					
-			});
-		} else { 
-			// HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-	
-			var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = 'geolocation을 사용할수 없어요..'
-	
-				displayMarker(locPosition, message);
-		}
-	
-		// 지도에 마커와 인포윈도우를 표시하는 함수입니다
-		function displayMarker(locPosition, message) {
-	
-			// 마커를 생성합니다
-			var marker = new kakao.maps.Marker({
-				map : map,
-				position : locPosition
-			});
-	
-			var iwContent = message, // 인포윈도우에 표시할 내용
-			iwRemoveable = true;
-		
-			// 인포윈도우를 생성합니다
-			var infowindow = new kakao.maps.InfoWindow({
-				content : iwContent,
-				removable : iwRemoveable
-			});
-				
-			// 인포윈도우를 마커위에 표시합니다 
-			infowindow.open(map, marker);
-				
-			// 지도 중심좌표를 접속위치로 변경합니다
-			map.setCenter(locPosition);
-				
-		}
-		
-		
-		
-	</script>
+
+		      
+		      //HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+		      if (navigator.geolocation) {
+
+		         // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+		         navigator.geolocation.getCurrentPosition(function(position) {
+
+		            lat = position.coords.latitude; // 위도
+		            lon = position.coords.longitude; // 경도
+
+		            var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+		            message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
+
+		            // 마커와 인포윈도우를 표시합니다
+		            displayMarker(locPosition, message);
+
+		         });
+
+		      } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+		         var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = 'geolocation을 사용할수 없어요..'
+
+		         displayMarker(locPosition, message);
+		      }
+
+		      // 지도에 마커와 인포윈도우를 표시하는 함수입니다
+		      function displayMarker(locPosition, message) {
+
+		         // 마커를 생성합니다
+		         var marker = new kakao.maps.Marker({
+		            map : map,
+		            position : locPosition
+		         });
+
+		         var iwContent = message, // 인포윈도우에 표시할 내용
+		         iwRemoveable = true;
+
+		         // 인포윈도우를 생성합니다
+		         var infowindow = new kakao.maps.InfoWindow({
+		            content : iwContent,
+		            removable : iwRemoveable
+		         });
+
+		         // 인포윈도우를 마커위에 표시합니다 
+		         infowindow.open(map, marker);
+
+		         // 지도 중심좌표를 접속위치로 변경합니다
+		         map.setCenter(locPosition);
+		      }
+		   </script>
 <%} %>
 	<!-- 지도 끝 -->
 
