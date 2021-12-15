@@ -54,13 +54,27 @@
 	String name = request.getParameter("name");
 	
 	ArrayList<HospitalVO> hoslist = null;
-	ArrayList<RawVO> rawlist = null;
+	ArrayList<RawVO> rawlist = dao.RawSelect();
 	
+	//받아온 질병이름으로 질병 전체 정보 받아오기
 	DiseaseVO dvo =  dao.SelectDiseaseName(name);
+	
 	if(dvo != null){		
 		hoslist = dao.HospitalAll(dvo.getDis_dpt());
+		
+		out.print("tag  "+dvo.getDis_tag());
+		
 		String[] tags = dvo.getDis_tag().split(",");
-		rawlist = dao.RawSelect(dvo.getDis_tag());
+		
+		for(int i =0; i<tags.length; i++){
+			out.print(tags[i]);
+			for(int j=0; j<rawlist.size(); j++){
+				String taglist = rawlist.get(j).getDis_tag();
+				taglist.contains(tags[i]);
+				out.print(rawlist.get(j).getRaw_name());
+			}
+		}
+		
 	}else{
 		out.print("지도 로딩 실패");
 	}
