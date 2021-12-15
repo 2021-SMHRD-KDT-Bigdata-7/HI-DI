@@ -32,7 +32,8 @@
 <link rel="stylesheet" href="css/style.css">
 <style>
 <!--
-서울대 병원 병명 박스 스타일 --> /* 서울대 병원 박스 생성 */ #div1 {
+서울대 병원 병명 박스 스타일 --> /* 서울대 병원 박스 생성 */ 
+#div1 {
 	width: 900px;
 	height: 530px;
 	border: 1px solid;
@@ -425,32 +426,33 @@ ul.ml-auto>li {
 								<li>없음</li>
 							</ul>
 						</div>
-
-						<!--  -->
-						<from action="#">
-						<table>
-
-							<tr>
-								<th><%= check_name %></th>
-							</tr>
-							<tr>
-								<td>질문</td>
-								<td>예</td>
-								<td>아니오</td>
-							</tr>
-							<%for(int j=0; j<mb_arr.length; j++){ %>
-							<tr>
-								<td><%= mb_arr[j]%></td>
-								<td><input type="radio" name="<%= "no"+j %>" value="1">
-								</td>
-								<td><input type="radio" name="<%= "no"+j %>" value="0">
-								</td>
-
-							</tr>
-							<%} %>
-						</table>
-						<button type="button" id="submit">결과보기</button>
-						</from>
+						<br><br><br><br>
+						
+						<!-- 체크리스트 -->
+						<div id="div2">
+							<strong id="strong2"> 체크리스트 </strong> <br> <br>
+							<table>
+								<tr>
+									<th><%= check_name %></th>
+								</tr>
+								<tr>
+									<td>질문</td>
+									<td>예</td>
+									<td>아니오</td>
+								</tr>
+								<%for(int j=0; j<mb_arr.length; j++){ %>
+								<tr>
+									<td><%= mb_arr[j]%></td>
+									<td><input type="radio" name="<%= "no"+j %>" value="1">
+									</td>
+									<td><input type="radio" name="<%= "no"+j %>" value="0">
+									</td>
+	
+								</tr>
+								<%} %>
+							</table>
+							<button type="button" id="submit">결과보기</button>
+						</div>
 
 					</div>
 				</div>
@@ -541,8 +543,7 @@ ul.ml-auto>li {
                console.log("병원방문")
             }
             
-          //체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
-			
+          	//체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
 			if(num >= <%= check_std %>){
 				// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
 				$.ajax({
@@ -580,19 +581,16 @@ ul.ml-auto>li {
 					}					
 				})
 			}
-		
-		
-		
-		
-		
-	}else{
-		alert('모든 문항을 체크하세요.');
-	}
-	console.log(num);
-		num = 0;
-  });
-  
-</script>
+		}else{
+			alert('모든 문항을 체크하세요.');
+		}
+		console.log(num);
+			num = 0;
+  	});
+      
+      
+      //데일리체크 페이지
+	</script>
 
 
 </body>
