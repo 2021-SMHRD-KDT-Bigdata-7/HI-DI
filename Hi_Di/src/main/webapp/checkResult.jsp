@@ -119,10 +119,10 @@
 	<span><%= name %>는 <%=dvo.getDis_content() %> 이고</span><br>
 	<span><%=dvo.getDis_symptom() %> 과 같은 증상이 있을 수 있습니다.</span><br>
 	<%if(rawlist != null){ %>
-		<span>도움이 되는 영양 성분으로는 
+		<span>도움이 되는 영양 성분은 
 			<%for(int i=0; i<rawlist.size(); i++){ %>
-				<%=rawlist.get(i).getRaw_name() %> 이 있고
-				그 기능은 <%= rawlist.get(i).getRaw_func()%> 입니다.
+				<%=rawlist.get(i).getRaw_name() %>
+				(기능 : <%= rawlist.get(i).getRaw_func()%>) 입니다.       
 			<%} %>
 		</span><br>
 	<%} %>		
