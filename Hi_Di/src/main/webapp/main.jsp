@@ -38,7 +38,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<!-- MemberVO, DAO 按眉积己(柳扁泅) -->
 	<%
-	//mebervo按眉 积己
+	//mebervo按眉 积己窃
 	MemberVO vo = (MemberVO) session.getAttribute("vo");
 
 	//DAO按眉 积己
