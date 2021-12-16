@@ -9794,8 +9794,8 @@ textarea.form-control {
     margin: 9vh 0 3vh 5vw;
 }
 #div2 .checktitle{
-	font-size: 1.7rem;
-	font-weight: 600;
+	font-size: 1.7rem;	/* 유은씨 여기요 */
+	font-weight: 600;	/* 유은씨 여기요 */
 	margin-bottom:4vh;
 }
 #div2 table{
