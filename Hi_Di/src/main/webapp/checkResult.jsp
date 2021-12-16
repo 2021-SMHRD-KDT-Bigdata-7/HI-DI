@@ -174,16 +174,6 @@
 		hoslist = dao.HospitalAll(dvo.getDis_dpt());
 		
 		String[] tags = dvo.getDis_tag().replace(" ", "").split(",");	//태그가 여러개일 때 한개씩 배열에 저장
-
-		out.print(tags.length+"/");	//삭제가능
-		
-		for(int i=0; i<tags.length;i++){
-			out.print(tags[i]+"/");
-			
-		}	//삭제
-		
-
-		
 		
 		for(int i =0; i<tags.length; i++){	//질병에 대한 태그 검색하기 위한 tag
 			
@@ -192,12 +182,8 @@
 				String taglist = rawlist.get(j).getDis_tag();
 				
 				if(taglist.contains(tags[i])==true){
-					out.print(tags[i]+"/");
-					out.print(rawlist.get(j).getRaw_name());
 					raw_name.add(rawlist.get(j).getRaw_name());
 					raw_func.add(rawlist.get(j).getRaw_func());
-					
-					
 				}
 			}
 			

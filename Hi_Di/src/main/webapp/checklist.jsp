@@ -303,7 +303,7 @@
 					    <br><br>
 					    <!-- 체크리스트 -->
 						<div id="div2">
-							<h2 class="checktitle"> 체크리스트 </h2> <br> <br>
+							<h2 class="checktitle"> 체크리스트 </h2>
 							<table>
 								<tr>
 									<th class="disname" align="center" colspan=""><%= check_name %></th>
