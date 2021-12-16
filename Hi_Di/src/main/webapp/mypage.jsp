@@ -15,6 +15,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<link href='./FullCalendar/main.css' rel='stylesheet' />
+
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
@@ -31,7 +33,17 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
+#nosibal {
+	margin: 40px 10px;
+	padding: 0;
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-size: 14px;
+}
 
+#calendar {
+	max-width: 1100px;
+	margin: 0 auto;
+}
 </style>
 </head>
 
@@ -129,9 +141,11 @@
 						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
 					</section>
 				</div>
-				<div class="mp_b_content">
-					<h5>MyCalendar</h5>
-					<a href="MyCalendar.jsp" class="mp_check_go"></a>
+				<h5>MyCalendar</h5>
+				<div id = "nosibal">
+					<div id = "calendar" class="mp_b_content">
+	
+					</div>
 				</div>
 			</div>
 		</div>
@@ -232,7 +246,7 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
 		</svg>
 	</div>
-
+	<script src='./FullCalendar/main.js'></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -248,5 +262,34 @@
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript"></script>
+	<!-- 캘린더 -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+    	var calendarEl = document.getElementById('calendar');
+
+    	var calendar = new FullCalendar.Calendar(calendarEl, {
+      		headerToolbar: {
+        	left: 'prevYear,prev,next,nextYear today',
+        	center: 'title',
+        	right: 'dayGridMonth,dayGridWeek,dayGridDay'
+      	},
+   		//  initialDate: '2020-09-12',
+      	navLinks: true, // can click day/week names to navigate views
+      	editable: true,
+      	dayMaxEvents: true, // allow "more" link when too many events
+      	events: [
+        
+    	  // 이벤트 들어갈 자리 ex) 자가진단 질병명 같은거
+    	  
+      	]
+    		});
+
+    	calendar.render();
+  		});
+	</script>
+	<!-- 캘린더 -->
+	
+	<!-- 풀 캘린더 -->
+	<div id='calendar'></div>
 </body>
 </html>	
