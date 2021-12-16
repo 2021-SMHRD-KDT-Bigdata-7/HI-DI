@@ -95,6 +95,9 @@
 					<section>
 						<a href="#" class="mp1_click"><p>개인정보수정</p></a>
 					</section>
+					<section>
+						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
+					</section>
 				</div>
 				<div class="mp_b_content">
 					<h5>개인정보수정</h5>
@@ -109,6 +112,26 @@
 						<li>주소  : <%=vo.getMb_addr() %></li>
 					</ul>
 					<a href="mypage_check.jsp" class="mp_check_go">수정</a>
+				</div>
+			</div>
+		</div>
+		
+		<div id="mypage2" class="mypageMain">
+			<div class="mp_word">
+				<h3>Calendar</h3>
+			</div>
+			<div class="mp_body">
+				<div class="mp_b_menu">
+					<section>
+						<a href="#" class="mp1_click"><p>개인정보수정</p></a>
+					</section>
+					<section>
+						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
+					</section>
+				</div>
+				<div class="mp_b_content">
+					<h5>MyCalendar</h5>
+					<a href="MyCalendar.jsp" class="mp_check_go"></a>
 				</div>
 			</div>
 		</div>

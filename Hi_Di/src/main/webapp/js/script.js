@@ -77,5 +77,20 @@ $(".poll3_click").click(
 	}
 );
 
+// 마이페이지 탭메뉴 js
+$(".mp1_click").click(
+	function(){
+		$("#mypage1").addClass("open");
+		$("#mypage2").removeClass("open");
+	}
+);
+$(".mp2_click").click(
+	function(){
+		$("#mypage1").removeClass("open");
+		$("#mypage2").addClass("open");
+	}
+);
+
+
 
 
