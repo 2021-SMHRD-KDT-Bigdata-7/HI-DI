@@ -290,11 +290,10 @@
 						<div class="list_content">
 							<ul class="symall">
 								<%for(int i=0; i<disname.size(); i++){ %>
-								
 									<li>
 										<a href="checkAll.jsp?name=<%=disname.get(i)%>" style="color:black"><%=disname.get(i)%>자가진단</a>
 									</li>
-									<%if((i+1)%5==0 && i>0){ %>
+									<%if((i+1)%4==0 && i>0){ %>
 										</ul><ul class="symall">
 									<%} %>
 								<%} %>						

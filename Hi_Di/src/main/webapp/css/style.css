@@ -9876,12 +9876,11 @@ textarea.form-control {
 	left:4%; */
 	flex-wrap: wrap;
 }
-/*
 .symall li{
 	width:24%;
 	line-height:7vh;
 	font-size:1.1rem;
-} */
+}
 /*마이페이지 css*/
 .mypageMain{
 	display:none;
