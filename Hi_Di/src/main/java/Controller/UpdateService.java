@@ -49,7 +49,8 @@ public class UpdateService extends HttpServlet {
 			System.out.println("수정 성공");
 			
 			// 같은 이름으로 다른 데이터를 집어넣으면 덮어쓰기된다.
-			session.setAttribute("vo", new MemberVO(name, id, pw, email, gender, tel, birthdate, addr));
+			session.setAttribute("vo", new MemberVO(id, pw, email,name, gender, tel, birthdate, addr));
+			System.out.println("음?" + name);
 		} else {
 			// 실패
 			System.out.println("수정 실패");

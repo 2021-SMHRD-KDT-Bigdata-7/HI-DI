@@ -33,48 +33,46 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-   #s1 {
-   color:black;
-   /* position: absolute; */
-   weight:300px;
-   /* height:300px; */
-   text-align:center;
-   }
-   
-   #s1 > #s2 {
-   text-align:center;
-   }
-   
-   
-   #title1 {
-   text-align:center;
-   position: center;
-   
-   }
-   
-   #d1 > #d2 {
-    border:1px solid;
-    weight: 100px;
-    width: 800px;
-    padding: 100px;
-    border-width: 2px;
-    position:relative;
-    margin: 0 auto;
-   }
-   
-   #s1 > #d1 {
-      border:1px solid;
-      position: relative; 
-      text-align:center;
-      width: 1000px;
-      height: 800px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      padding-left: 0px;
-      padding-right: 30px;
-      margin: auto;
-      /* top: 200px; */
-   }
+#s1 {
+	color: black;
+	/* position: absolute; */
+	weight: 300px;
+	/* height:300px; */
+	text-align: center;
+}
+
+#s1>#s2 {
+	text-align: center;
+}
+
+#title1 {
+	text-align: center;
+	position: center;
+}
+
+#d1>#d2 {
+	border: 1px solid;
+	weight: 100px;
+	width: 800px;
+	padding: 100px;
+	border-width: 2px;
+	position: relative;
+	margin: 0 auto;
+}
+
+#s1>#d1 {
+	border: 1px solid;
+	position: relative;
+	text-align: center;
+	width: 1000px;
+	height: 800px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	padding-left: 0px;
+	padding-right: 30px;
+	margin: auto;
+	/* top: 200px; */
+}
 </style>
 </head>
 
@@ -127,6 +125,7 @@
 			</div>
 		</div>
 	</section>
+	
 	<%
 	//메소드 사용하기 위해 dao객체 생성
 		DAO dao = new DAO();
@@ -136,23 +135,24 @@
 		ArrayList<PollitemsVO> itemslist = dao.SelectPollItems(pvo.getPoll_seq());
 
 	%>
-	<div id= s1 style="white-space:pre;"><br>
-		<div id = title1>
-		<strong id = s2><%= pvo.getPoll_title() %></strong>
-			<%= pvo.getPoll_content() %>
-		</div>	
-		<!-- 설문페이지 박스 부분 -->
-		<%for(int i=0; i<itemslist.size(); i++){ %>
-			<div id = d1>
-				<%=itemslist.get(i).getItem_name() %>
-				<br>
-				-<%=itemslist.get(i).getItem_content() %>
-				<div id = d2>
+
+	<div id="poll_body">
+		<div id="poll1" class="open pollMain">
+			<div class="cl_word">
+				<h3>설문</h3>
+			</div>
+			<div class="poll_body">
+				<div class="poll_b_menu">
+					<section>
+						<a href="#" class="p1_click"><p>데일리체크</p></a>
+					</section>
+				</div>
+				<div class="cl_b_content">
+					<!-- 설문 내용 입력하세용 -->
 				</div>
 			</div>
-		<%} %>	
+		</div>
 	</div>
-	<br><br><br><br><br><br>
 
 	<footer class="ftco-footer ftco-section">
 		<div class="container">

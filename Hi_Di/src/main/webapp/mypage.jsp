@@ -39,6 +39,7 @@
 	data-offset="300">
 	<%
 	MemberVO vo = (MemberVO) session.getAttribute("vo");
+	System.out.println(vo.getMb_name());
 	%>
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
