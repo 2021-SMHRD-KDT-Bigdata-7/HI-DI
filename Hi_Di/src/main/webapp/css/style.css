@@ -10293,9 +10293,6 @@ textarea.form-control {
 #ds_list table tr td:nth-child(2){
 	border-left:2px #efefef solid;
 }
-#ds_list table tr:last-child{
-	border-bottom: none;
-}
 #ds_list table tr:last-child td{
     padding-top: 4vh;
 }
