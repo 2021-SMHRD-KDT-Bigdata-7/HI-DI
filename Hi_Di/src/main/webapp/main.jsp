@@ -34,7 +34,7 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-	<!--  차트 가져오기 (형호) -->
+	<!--  차트 가져오기 (형호짱짱맨) -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<!-- MemberVO, DAO 객체생성(진기현) -->
 	<%

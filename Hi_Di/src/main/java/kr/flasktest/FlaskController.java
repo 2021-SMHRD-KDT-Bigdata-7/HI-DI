@@ -15,7 +15,8 @@ public class FlaskController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		// ÇüÈ£
 		String corona = request.getParameter("corona");
 		String corona1 = request.getParameter("corona1");
 		String corona2 = request.getParameter("corona2");
