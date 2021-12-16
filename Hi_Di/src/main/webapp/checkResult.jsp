@@ -375,13 +375,13 @@
 		// positions에 push메서드로 객체 넣어주기
 		<%for (int j = 0; j < hoslist.size(); j++) {%>
 
-		      positions.push({
-		               title : '<%=hoslist.get(j).getHos_name()%>',
-		               latlng : new kakao.maps.LatLng( <%=hoslist.get(j).getHos_longitude()%>, <%=hoslist.get(j).getHos_latitude()%>)
-		         });
+			positions.push({
+				title : '<%=hoslist.get(j).getHos_name()%>',
+				latlng : new kakao.maps.LatLng( <%=hoslist.get(j).getHos_longitude()%>, <%=hoslist.get(j).getHos_latitude()%>)
+			});
 
-		      //커스텀 오버레이에 표시할 컨텐츠
-		      content[<%=j%>]='<div class="wrap">' + 
+			//커스텀 오버레이에 표시할 컨텐츠
+			content[<%=j%>]='<div class="wrap">' + 
 		                '    <div class="info">' + 
 		                '        <div class="title">' + 
 		                '            <%=hoslist.get(j).getHos_name()%>' + 
@@ -397,59 +397,37 @@
 		                '    </div>' +    
 		                '</div>';
 		         
-		         // 마커를 생성합니다
-		         for(let i=0; i<19; i++){
-		            if("<%=hoslist.get(j).getHos_dpt()%>
-		" == dpt[i]) {
-				marker[
-	<%=j%>
-		] = new kakao.maps.Marker({
-					map : map, // 마커를 표시할 지도
-					position : positions[
-	<%=j%>
-		].latlng, // 마커를 표시할 위치
-					title : positions[
-	<%=j%>
-		].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-
-					image : markerImage[i]
-				// image : markerImage // 마커 이미지 
-				});
+			// 마커를 생성합니다
+			for(let i=0; i<19; i++){
+				if("<%=hoslist.get(j).getHos_dpt()%>" == dpt[i]) {
+					marker[<%=j%>] = new kakao.maps.Marker({
+						map : map, // 마커를 표시할 지도
+						position : positions[<%=j%>].latlng, 
+						// 마커를 표시할 위치
+						title : positions[<%=j%>].title, 
+						// 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+						image : markerImage[i]
+						// image : markerImage // 마커 이미지 
+					});
+				}				
 			}
-		}
-		// 마커 위에 커스텀오버레이를 표시합니다
-		// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-		overlay[
-	<%=j%>
-		] = new kakao.maps.CustomOverlay({
-			content : content[
-	<%=j%>
-		],
-			map : map,
-			position : marker[
-	<%=j%>
-		].getPosition()
-		});
-		overlay[
-	<%=j%>
-		].setMap(null)
+			// 마커 위에 커스텀오버레이를 표시합니다
+			// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+			overlay[<%=j%>] = new kakao.maps.CustomOverlay({
+				content : content[<%=j%>],
+				map : map,
+				position : marker[<%=j%>].getPosition()
+			});
+			overlay[<%=j%>].setMap(null);
 
-		// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-		kakao.maps.event.addListener(marker[
-	<%=j%>
-		], 'mouseover', function() {
-			overlay[
-	<%=j%>
-		].setMap(map);
-		});
-		kakao.maps.event.addListener(marker[
-	<%=j%>
-		], 'mouseout', function() {
-			overlay[
-	<%=j%>
-		].setMap(null);
-		});
-	<%}%>
+			// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+			kakao.maps.event.addListener(marker[<%=j%>], 'mouseover', function() {
+				overlay[<%=j%>].setMap(map);
+			});
+			kakao.maps.event.addListener(marker[<%=j%>], 'mouseout', function() {
+				overlay[<%=j%>].setMap(null);
+			});
+		<%}%>
 		//HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 		if (navigator.geolocation) {
 
@@ -499,9 +477,7 @@
 			map.setCenter(locPosition);
 		}
 	</script>
-	<%
-	}
-	%>
+<%}%>
 	<!-- 지도 끝 -->
 	
 
