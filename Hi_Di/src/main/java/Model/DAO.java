@@ -26,6 +26,7 @@ public class DAO {
 	PollVO pvo = null;
 	PollitemsVO pivo = null;
 	ArrayList<PollitemsVO> itemslist = new ArrayList<PollitemsVO>();
+	ArrayList<FoodVO> foodlist = new ArrayList<FoodVO>();
 
 	// DB연결
 	public void connection() {
@@ -364,7 +365,7 @@ public class DAO {
 				String regDate = rs.getString(14); // 날짜?
 				String foodPic2 = rs.getString(15); // 식품사진
 
-				FoodVO fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
+				fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
 						foodProtein, foodFat, foodSugars, foodSodium, foodCholesterol, foodSaturated_fatty,
 						foodTransfat, regDate, foodPic2);
 
@@ -379,11 +380,10 @@ public class DAO {
 		}
 		return fvo;
 	}
-
-	// =====================================================================================================================================
+// =====================================================================================================================================
 	// 식품 전체 불러오기
-	public FoodVO SelectAllfood() {
-
+	public ArrayList<FoodVO> SelectAllfood() {
+		int i = 0;
 		try {
 			connection();
 			// sql문
@@ -394,7 +394,11 @@ public class DAO {
 			rs = psmt.executeQuery();
 
 			// fvo에 식품 저장
-			if (rs.next() == true) {
+			while (rs.next()) {
+				i++;
+				if(i > 30) {
+					break;
+				}
 				int foodSeq = rs.getInt(1);
 				String foodName = rs.getString(2); // 식품 명
 				int foodYear = rs.getInt(3); // 조사년도
@@ -411,9 +415,10 @@ public class DAO {
 				String regDate = rs.getString(14); // 날짜?
 				String foodPic2 = rs.getString(15); // 식품사진
 
-				FoodVO fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
+				fvo = new FoodVO(foodSeq, foodName, foodYear, foodSource, foodCalory, foodCarvohydrate,
 						foodProtein, foodFat, foodSugars, foodSodium, foodCholesterol, foodSaturated_fatty,
 						foodTransfat, regDate, foodPic2);
+				foodlist.add(fvo);
 
 			}
 
@@ -424,7 +429,7 @@ public class DAO {
 		} finally {
 			close();
 		}
-		return fvo;
+		return foodlist;
 	}
 
 	// =====================================================================================================================================

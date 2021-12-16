@@ -1,3 +1,4 @@
+<%@page import="Model.FoodVO"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.time.LocalDate"%>
@@ -31,11 +32,113 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
+body {
+	color: #111 !important;
+}
+
+#foodtb {
+	width: 90%;
+	margin: 5%;
+	position:relative;
+}
+
+.f_t_name {
+	border-top: 2px #1303ee solid;
+	background: #fafafa;
+}
+#foodtb{
+text-align: center;
+}
+#foodtb tr {
+	border-bottom: 1px #ddd solid;
+}
+#foodtb td{
+	line-height:5vh;
+}
+#foodtb .f_t_name th{
+	line-height:7vh;
+}
+#foodtb th,td{
+	font-size: 1rem;
+}
+#foodtb .f_t_name th:nth-child(1) {
+	width: 5%;
+}
+
+#foodtb .f_t_name th:nth-child(2) {
+	width: 7%;
+}
+
+#foodtb .f_t_name th:nth-child(3) {
+	width: 8%;
+}
+
+#foodtb .f_t_name th:nth-child(4) {
+	width: 10%;
+}
+
+#foodtb .f_t_name th:nth-child(5) {
+	width: 5%;
+}
+
+#foodtb .f_t_name th:nth-child(6) {
+	width: 5%;
+}
+
+#foodtb .f_t_name th:nth-child(7) {
+	width: 5%;
+}
+
+#foodtb .f_t_name th:nth-child(8) {
+	width: 5%;
+}
+
+#foodtb .f_t_name th:nth-child(9) {
+	width: 5%;
+}
+
+#foodtb .f_t_name th:nth-child(10) {
+	width: 5%;
+}
+
+#foodtb .f_t_name th:nth-child(11) {
+	width: 8%;
+}
+
+#foodtb .f_t_name th:nth-child(12) {
+	width: 7%;
+}
+
+#foodtb .f_t_name th:nth-child(13) {
+	width: 7%;
+}
+
+#foodtb::after{
+	content:"< 1회 제공량 >";
+	position:absolute;
+	top:-3.5vh;
+	right:0;
+	color:#111;
+	font-size: 0.9rem;
+}
+
 </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
+	<%
+	DAO dao = new DAO();
+	ArrayList<FoodVO> foods = dao.SelectAllfood();
+%>
+	<%
+	String select = "";
+		if (request.getParameter("food")!=null){
+			select = request.getParameter("food");
+		}
+%>
+
+
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
 	<nav
@@ -56,16 +159,11 @@
 				<ul class="navbar-nav nav ml-auto">
 					<li class="nav-item"><a href="SelectAllService"
 						class="nav-link"><span>자가진단</span></a></li>
-					<li class="nav-item"><a href="disease.jsp"
-						class="nav-link"><span>질병검색</span></a></li>
-					<li class="nav-item"><a href="foodall.jsp"
-						class="nav-link"><span>식품검색</span></a></li>
-					<li class="nav-item"><a href="poll.jsp"
-						class="nav-link"><span>설문</span></a></li>
-					<li class="nav-item"><a href="statistics.jsp"
-						class="nav-link"><span>질병통계</span></a></li>
-					<li class="nav-item"><a href="mypage.jsp"
-						class="nav-link"><span>마이페이지</span></a></li>
+					<li class="nav-item"><a href="disease.jsp" class="nav-link"><span>질병검색</span></a></li>
+					<li class="nav-item"><a href="foodall.jsp" class="nav-link"><span>식품검색</span></a></li>
+					<li class="nav-item"><a href="poll.jsp" class="nav-link"><span>설문</span></a></li>
+					<li class="nav-item"><a href="statistics.jsp" class="nav-link"><span>질병통계</span></a></li>
+					<li class="nav-item"><a href="mypage.jsp" class="nav-link"><span>마이페이지</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -81,12 +179,82 @@
 				class="row no-gutters slider-text align-items-end justify-content-center">
 				<div class="col-md-9 ftco-animate pb-5 text-center">
 					<h1 class="mb-0 bread">식품검색</h1>
-			        <p class="breadcrumbs">자기관리를 위한 식품정보들은 모두 여기에</p>
+					<p class="breadcrumbs">자기관리를 위한 식품정보들은 모두 여기에</p>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!-- ==================================== 추천페이지 ========================================= -->
+
+
+	<!-- ================================ 검색창 ========================================= -->
+	<form action="foodall.jsp" align="center">
+		<div>
+			<input name="food" type="text" placeholder="식품명을 입력하세요.">
+			<button id="searchBtn" type="submit">검색</button>
+		</div>
+	</form>
+	<!-- ============================식품데이터 불러오기======================================== -->
 	
+	<div id="fooddiv">
+		<table id="foodtb">
+
+			<tr class="f_t_name">
+				<th id="col">번호</th>
+				<th id="col">식품이름</th>
+				<th id="col">조사년도</th>
+				<th id="col">자료출처</th>
+				<th id="col">열량(kcal)</th>
+				<th id="col">탄수화물(g)</th>
+				<th id="col">단백질(g)</th>
+				<th id="col">지방(g)</th>
+				<th id="col">당류(g)</th>
+				<th id="col">나트륨(mg)</th>
+				<th id="col">콜레스테롤(mg)</th>
+				<th id="col">포화지방산(g)</th>
+				<th id="col">트랜스지방(g)</th>
+			</tr>
+			<% for( FoodVO fvo : foods ){
+						if (fvo.getFood_name().contains(select)){
+				%>
+			<tr>
+				<td id="row"><%= fvo.getFood_seq() %></td>
+				<td id="row"><%= fvo.getFood_name() %></td>
+				<td id="row"><%= fvo.getFood_year() %></td>
+				<td id="row"><%= fvo.getFood_source() %></td>
+				<td id="row"><%= fvo.getFood_calory() %></td>
+				<td id="row"><%= fvo.getFood_carvohydrate() %></td>
+				<td id="row"><%= fvo.getFood_protein()%></td>
+				<td id="row"><%= fvo.getFood_fat()%></td>
+				<td id="row"><%= fvo.getFood_sugars()%></td>
+				<td id="row"><%= fvo.getFood_sodium()%></td>
+				<td id="row"><%= fvo.getFood_cholesterol()%></td>
+				<td id="row"><%= fvo.getFood_saturated_fatty()%></td>
+				<td id="row"><%= fvo.getFood_transfat()%></td>
+			</tr>
+			<% }} %>
+		</table>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- ================================================================================== -->
+
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">
