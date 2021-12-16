@@ -10102,12 +10102,12 @@ textarea.form-control {
 #poll_body{
 	margin : 10vh 10%;
 }
-.cl_word{
+.poll_word{
 	width:100%;
 	height:10vh;
 	border-bottom : 2px #ddd solid;
 }
-.cl_word h3{
+.poll_word h3{
 	font-size : 2.2em;
 	position:relative;
 	top:50%;
@@ -10144,7 +10144,7 @@ textarea.form-control {
 	color:#111;
 	transform:translate(0,-50%);
 }
-.cl_b_content{
+.poll_b_content{
 	width: 85%;
 	margin-top:5vh;
 }
@@ -10263,4 +10263,36 @@ textarea.form-control {
 .ds_b_content{
 	width: 85%;
 	margin-top:5vh;
+}
+#ds_list{
+    margin: 4vh 0 3vh 5vw;
+}
+#ds_list .checktitle{
+	font-size: 1.7rem;
+	font-weight: 600;
+	margin-bottom:4vh;
+}
+#ds_list table{
+	width:100%;
+}
+#ds_list table tr:nth-child(4){
+	border-bottom: 3px #748CAA solid;
+}
+#ds_list table tr{
+	line-height:5vh;
+	border-bottom: 2px #efefef solid;
+	width:100%;
+}
+#ds_list table tr:nth-child(1){
+	border-top: 3px #748CAA solid;
+}
+#ds_list table tr td:nth-child(1){
+	background: #FaFaFa;
+	text-align: center;
+}
+#ds_list table tr td:nth-child(2){
+	border-left:2px #efefef solid;
+}
+#ds_list table tr:last-child td{
+    padding-top: 4vh;
 }

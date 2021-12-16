@@ -50,4 +50,32 @@ $(".f_tab a:nth-child(2)").click(
 	}
 );
 
+// 설문 탭메뉴 js
+$(".poll1_click").click(
+	function(){
+		$("#poll1").addClass("open");
+		$("#poll2").removeClass("open");
+		$("#poll3").removeClass("open");
+	}
+);
+$(".poll2_click").click(
+	function(){
+		$("#poll1").removeClass("open");
+		$("#poll2").addClass("open");
+		$("#poll3").removeClass("open");
+		
+		
+	}
+);
+$(".poll3_click").click(
+	function(){
+		$("#poll1").removeClass("open");
+		$("#poll2").removeClass("open");
+		$("#poll3").addClass("open");
+		
+		
+	}
+);
+
+
 
