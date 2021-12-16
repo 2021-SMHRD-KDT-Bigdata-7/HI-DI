@@ -420,7 +420,6 @@
    
       let num = 0;
       $('#submit').on('click', function(){
-         
          // 라디오 태그 전부 가져오기
          let radios = $('input[type="radio"]');
          if(radioChecked() >= <%=mb_arr.length%>){
@@ -453,23 +452,9 @@
                }               
             })
          }else{
-            // ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
-            $.ajax({
-               type: "post", // get / post 
-               url:"checkResult.jsp",
-               success : function(res){
-                  // res : Servlet에서 돌려준 값
-                  // 이 안에 처리할 로직
-                  // page이동이 일어나는 경우
-                  // window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
-                  // window.location : 현재 페이지 주소
-                  // window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
-                  window.location = 'checkResult.jsp?name=<%= check_name %>&seq=<%= check_seq %>&result=n';
-               },
-               error : function() {
-                  alert('전송 실패');
-               }               
-            })
+        	//체크 결과 db에 저장
+        	<%=dao.InsertCheck(check_seq, "n", vo.getMb_id())%>
+        	alert('진단결과 정상입니다.');
          }
       }else{
          alert('모든 문항을 체크하세요.');
