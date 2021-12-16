@@ -34,6 +34,8 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
+	<!--  차트 가져오기 (형호) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<!-- MemberVO, DAO 객체생성(진기현) -->
 	<%
 	//mebervo객체 생성
@@ -261,6 +263,32 @@
 		</main>
 	</div>
 
+	<%
+	
+	// session에 다 담아줌
+	String Controller = (String)session.getAttribute("corona");
+	String Controller1 = (String)session.getAttribute("corona1");
+	String Controller2 = (String)session.getAttribute("corona2");
+	String Controller3 = (String)session.getAttribute("corona3");
+	
+	String day1 = (String)session.getAttribute("day1");
+	String day2 = (String)session.getAttribute("day2");
+	String day3 = (String)session.getAttribute("day3");
+	String day4 = (String)session.getAttribute("day4");
+	String day5 = (String)session.getAttribute("day5");
+	String day6 = (String)session.getAttribute("day6");
+	String day7 = (String)session.getAttribute("day7");
+	
+	String day_increase1 = (String)session.getAttribute("day_increase1");
+	String day_increase2 = (String)session.getAttribute("day_increase2");
+	String day_increase3 = (String)session.getAttribute("day_increase3");
+	String day_increase4 = (String)session.getAttribute("day_increase4");
+	String day_increase5 = (String)session.getAttribute("day_increase5");
+	String day_increase6 = (String)session.getAttribute("day_increase6");
+	String day_increase7 = (String)session.getAttribute("day_increase7");
+
+	%>
+
 	<section class="ftco-counter img bg-light" id="section-counter">
 		<div class="container">
 			<div class="row">
@@ -271,8 +299,8 @@
 							<span class="flaticon-suitcase"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="750">0</strong> <span>Covid
-								19</span>
+							<strong class="number"><%=Controller%>
+								</strong> <span>Covid 19</span>
 						</div>
 					</div>
 				</div>
@@ -283,7 +311,7 @@
 							<span class="flaticon-loyalty"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="568">0</strong> <span>확진자
+							<strong class="number" ><%=Controller1%></strong> <span>확진자
 								수</span>
 						</div>
 					</div>
@@ -295,25 +323,69 @@
 							<span class="flaticon-coffee"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="478">0</strong> <span>사망자
+							<strong class="number" ><%=Controller2%></strong> <span>사망자
 								수</span>
 						</div>
 					</div>
 				</div>
-				<div
-					class="col-md-3 justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 d-flex">
-						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-calendar"></span>
-						</div>
-						<div class="text">
-							<strong class="number" data-number="780">0</strong> <span>고혈압</span>
-						</div>
+				<div class="col-md-3 justify-content-center counter-wrap ftco-animate">
+					<div style="width: 400px">
+						<canvas id="myChart"></canvas>
 					</div>
+
+				<script>
+					// 우선 컨텍스트를 가져옵니다. 
+					var ctx = document.getElementById("myChart").getContext('2d');
+					/*
+					- Chart를 생성하면서, 
+					- ctx를 첫번째 argument로 넘겨주고, 
+					- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+					*/
+					var myChart = new Chart(ctx, {
+					    type: 'bar',
+					    data: {
+					        labels: [<%=day1%>, <%=day2%>, <%=day3%>, <%=day4%>, <%=day5%>, <%=day6%>, <%=day7%>],
+					        datasets: [{
+					            label: '코로나 주간현황',
+					            data: [<%=day_increase1%>, <%=day_increase2%>, <%=day_increase3%>, <%=day_increase4%>, <%=day_increase5%>, <%=day_increase6%>, <%=day_increase7%>],
+					            backgroundColor: [
+					                'red',
+					                'red',
+					                'red',
+					                'red',
+					                'red',
+					                'red',
+					                'red'
+					            ],
+					            borderColor: [
+					                'rgba(255,99,132,1)',
+					                'rgba(54, 162, 235, 1)',
+					                'rgba(255, 206, 86, 1)',
+					                'rgba(75, 192, 192, 1)',
+					                'rgba(153, 102, 255, 1)',
+					                'rgba(75, 102, 255, 1)',
+					                'rgba(255, 159, 64, 1)'
+					            ],
+					            borderWidth: 1
+					        }]
+					    },
+					    options: {
+					        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+					        scales: {
+					            yAxes: [{
+					                ticks: {
+					                    beginAtZero:true
+					                }
+					            }]
+					        }
+					    }
+					});
+				</script>
 				</div>
 			</div>
 		</div>
 	</section>
+
 
 	<section class="ftco-about ftco-section ftco-no-pt ftco-no-pb"
 		id="about-section">
