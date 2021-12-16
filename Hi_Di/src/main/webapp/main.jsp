@@ -324,11 +324,22 @@
 						</div>
 						<div class="text">
 							<strong class="number" ><%=Controller2%></strong> <span>사망자
+								현황</span>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-3 justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 d-flex">
+						<div class="icon d-flex justify-content-center align-items-center">
+							<span class="flaticon-coffee"></span>
+						</div>
+						<div class="text">
+							<strong class="number" ><%=Controller3%></strong> <span>사망자
 								수</span>
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	</section>
