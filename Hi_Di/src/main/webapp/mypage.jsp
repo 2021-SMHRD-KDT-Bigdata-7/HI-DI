@@ -31,14 +31,7 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-	.mp_check_go{
-		display:block;
-		width:150px;
-	    line-height:50px;
-	    text-align: center;
-	    background:#111;
-	    color:#fff !important;
-	}
+
 </style>
 </head>
 
@@ -52,7 +45,7 @@
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
-		<div class="container">
+		<div class="container sub_container">
 			<!-- 로고 hidi로 바꾸기 -->
 			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
@@ -79,8 +72,7 @@
 
 	<!-- 배너 -->
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('images/bg_4.jpg');"
-		data-stellar-background-ratio="0.5">
+		style="background-image: url('images/bg_4.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div
@@ -106,7 +98,7 @@
 				<div class="mp_b_content">
 					<h5>개인정보수정</h5>
 					<ul>
-						<li>이름  : <%=vo.getMb_name() %></li>
+						<li>이름  : <%=vo.getMb_name() %> </li>
 						<li>ID  : <%=vo.getMb_id() %></li>
 						<li>PW  : <%=vo.getMb_pw() %></li>
 						<li>E-mail  : <%=vo.getMb_email() %></li>

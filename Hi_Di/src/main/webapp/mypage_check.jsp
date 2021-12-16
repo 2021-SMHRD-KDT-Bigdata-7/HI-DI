@@ -1,4 +1,4 @@
-<%@page import="java.util.HashSet"%>
+ <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="Model.DAO"%>
@@ -59,7 +59,7 @@
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
-		<div class="container">
+		<div class="container sub_container">
 			<!-- 로고 hidi로 바꾸기 -->
 			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
@@ -86,8 +86,7 @@
 
 	<!-- 배너 -->
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('images/bg_4.jpg');"
-		data-stellar-background-ratio="0.5">
+		style="background-image: url('images/bg_4.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div
@@ -110,7 +109,7 @@
 						<a href="#" class="mp1_click"><p>개인정보수정</p></a>
 					</section>
 				</div>
-				<div class="mp_b_content">
+				<div class="mp_b_c_content">
 					<h5>아이디 / 비밀번호 확인</h5>
 					<ul>
 						<li>
@@ -120,7 +119,7 @@
 							<input id="pw" name="pw" type="password" placeholder="PW를 입력하세요">
 						</li>
 					</ul>
-					<a href="#" class="mp_check_go">수정</a>
+					<a href="#" class="mp_final_go">확인</a>
 				</div>
 			</div>
 		</div>
@@ -239,7 +238,7 @@
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
 	//0.수정 버튼 tag 가져오기
-	$(".mp_check_go").click(
+	$(".mp_final_go").click(
 		function(){
 			//1. 버튼을 클릭했을 때 처리해줄 function 달아주기
 			
