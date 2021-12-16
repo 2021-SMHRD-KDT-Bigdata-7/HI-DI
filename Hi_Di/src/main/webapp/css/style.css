@@ -10102,12 +10102,12 @@ textarea.form-control {
 #poll_body{
 	margin : 10vh 10%;
 }
-.cl_word{
+.poll_word{
 	width:100%;
 	height:10vh;
 	border-bottom : 2px #ddd solid;
 }
-.cl_word h3{
+.poll_word h3{
 	font-size : 2.2em;
 	position:relative;
 	top:50%;
@@ -10144,7 +10144,7 @@ textarea.form-control {
 	color:#111;
 	transform:translate(0,-50%);
 }
-.cl_b_content{
+.poll_b_content{
 	width: 85%;
 	margin-top:5vh;
 }

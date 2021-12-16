@@ -137,18 +137,72 @@
 	%>
 
 	<div id="poll_body">
+		<!-- 코로나 -->
 		<div id="poll1" class="open pollMain">
-			<div class="cl_word">
+			<div class="poll_word">
 				<h3>설문</h3>
 			</div>
 			<div class="poll_body">
 				<div class="poll_b_menu">
 					<section>
-						<a href="#" class="p1_click"><p>데일리체크</p></a>
+						<a href="#" class="poll1_click"><p>코로나</p></a>
+					</section>
+					<section>
+						<a href="#" class="poll2_click"><p>암</p></a>
+					</section>
+					<section>
+						<a href="#" class="poll3_click"><p>뇌졸증</p></a>
 					</section>
 				</div>
 				<div class="cl_b_content">
 					<!-- 설문 내용 입력하세용 -->
+					<p>코로나</p>
+				</div>
+			</div>
+		</div>
+		<!-- 암 -->
+		<div id="poll2" class="pollMain">
+			<div class="poll_word">
+				<h3>설문</h3>
+			</div>
+			<div class="poll_body">
+				<div class="poll_b_menu">
+					<section>
+						<a href="#" class="poll1_click"><p>코로나</p></a>
+					</section>
+					<section>
+						<a href="#" class="poll2_click"><p>암</p></a>
+					</section>
+					<section>
+						<a href="#" class="poll3_click"><p>뇌졸증</p></a>
+					</section>
+				</div>
+				<div class="cl_b_content">
+					<!-- 설문 내용 입력하세용 -->
+					<p>암</p>
+				</div>
+			</div>
+		</div>
+		<!-- 뇌졸증 -->
+		<div id="poll3" class="pollMain">
+			<div class="poll_word">
+				<h3>설문</h3>
+			</div>
+			<div class="poll_body">
+				<div class="poll_b_menu">
+					<section>
+						<a href="#" class="poll1_click"><p>코로나</p></a>
+					</section>
+					<section>
+						<a href="#" class="poll2_click"><p>암</p></a>
+					</section>
+					<section>
+						<a href="#" class="poll3_click"><p>뇌졸증</p></a>
+					</section>
+				</div>
+				<div class="cl_b_content">
+					<!-- 설문 내용 입력하세용 -->
+					<p>뇌졸증</p>
 				</div>
 			</div>
 		</div>
