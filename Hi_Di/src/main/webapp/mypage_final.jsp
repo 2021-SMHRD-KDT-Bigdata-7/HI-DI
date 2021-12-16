@@ -52,7 +52,7 @@
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
-		<div class="container">
+		<div class="container sub_container">
 			<!-- 로고 hidi로 바꾸기 -->
 			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
@@ -79,8 +79,7 @@
 
 	<!-- 배너 -->
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('images/bg_4.jpg');"
-		data-stellar-background-ratio="0.5">
+		style="background-image: url('images/bg_4.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div
@@ -103,22 +102,22 @@
 						<a href="#" class="mp1_click"><p>개인정보수정</p></a>
 					</section>
 				</div>
-				<div class="mp_b_content">
+				<div class="mp_b_content mp_final">
 					<h5>개인정보수정</h5>
 					<ul>
 						<form action="UpdateService" method="post">
-							<li><input name="name" type="text"  placeholder="이름을 입력하세요"></li>
-							<li><%=vo.getMb_id() %></li>
-							<li><input name="pw" type="password"  placeholder="PW를 입력하세요"></li>
-							<li><input name="email" type="text"  placeholder="이메일을 입력하세요"></li>
+							<li><p>이름 : </p><input name="name" type="text"  placeholder="이름을 입력하세요"></li>
+							<li><p>ID : </p><%=vo.getMb_id() %></li>
+							<li><p>PW : </p><input name="pw" type="password"  placeholder="PW를 입력하세요"></li>
+							<li><p>E-mail</p><input name="email" type="text"  placeholder="이메일을 입력하세요"></li>
 							<li id="m">
-								남<input type="radio" name="gender" value="m">
-            					여<input type="radio" name="gender" value="w">
+								<p>남</p><input type="radio" name="gender" value="m">
+            					<p>여</p><input type="radio" name="gender" value="w">
             				</li>
-							<li><input name="tel" type="text"  placeholder="전화번호를 입력하세요"></li>
-							<li><input name="birthdate" type="date"  placeholder="생일을 입력하세요"></li>
-							<li><input name="address" type="text"  placeholder="집주소를 입력하세요"></li>
-							<li><input type="submit" value="JoinUs" class="mp_check_go"></li>
+							<li><p>전화번호</p><input name="tel" type="text"  placeholder="전화번호를 입력하세요"></li>
+							<li><p>생일</p><input name="birthdate" type="date"  placeholder="생일을 입력하세요"></li>
+							<li><p>주소</p><input name="address" type="text"  placeholder="집주소를 입력하세요"></li>
+							<li style="border:none; margin-top:5vh;"><input type="submit" value="JoinUs" class="mp_go"></li>
 						</form>
 					</ul>
 				</div>

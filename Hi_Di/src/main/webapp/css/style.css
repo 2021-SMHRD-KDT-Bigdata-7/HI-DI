@@ -8471,7 +8471,7 @@ h1, h2, h3, h4, h5,
       color: #81A3AA;
       outline: none !important; }
   .ftco-navbar-light.scrolled {
-    position: fixed;
+    /* position: fixed; */
     z-index:9999999999;
     right: 0;
     left: 0;
@@ -9699,28 +9699,98 @@ textarea.form-control {
 .checklistMain.open{
 	display:block;
 }
-
+#checklist1{
+	margin : 10vh 10%;
+}
+#checklist2{
+	margin : 10vh 10%;
+}
 .cl_word{
 	width:100%;
-	height:25vh;
-	border-bottom : 1px #aaa solid;
+	height:10vh;
+	border-bottom : 2px #ddd solid;
 }
 .cl_word h3{
-	font-size : 3em;
+	font-size : 2.2em;
 	position:relative;
 	top:50%;
-	left:10vw;
+	/* left:10vw; */
 	transform:translate(0,-50%);
+	font-weight: 600;
 }
+
 .cl_body{
 	width:100%;
 	display:flex;
 }
 .cl_b_menu{
-	width: 20%;
+	width: 15%;
+}
+.cl_b_menu section{
+	margin-top:5vh;
+	position:relative;
+}
+.cl_b_menu section a p{
+	line-height:5vh;
+	margin:0;
+	color:#111;
+	border-bottom : 2px #ddd solid;
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+.cl_b_menu section a p::after{
+	content:">";
+	font-size: 1.1rem;
+	font-weight: 600;
+	position:absolute;
+	right:10px;
+	top:50%;
+	color:#111;
+	transform:translate(0,-50%);
 }
 .cl_b_content{
-	width: 80%;
+	width: 85%;
+	margin-top:5vh;
+	
+}
+#div1{
+    margin: 3vh 0 3vh 5vw;
+}
+#div1 .checktitle{
+	font-size: 1.7rem;
+	font-weight: 600;
+	margin-bottom:4vh;
+}
+.check_content{
+	padding:5vh 3vw;
+	background:#FaFaFa;
+}
+.check_content .sysmtom:nth-child(11){
+	width:26.2% !important;
+}
+.sysmtom{
+	padding:0;
+	margin:0;
+	width:100%;
+	/* overflow: hidden; */
+	display:flex;
+	justify-content: space-between;
+	list-style-type : disc;
+	position:relative;
+	left:4%;
+}
+.sysmtom li{
+	width:24%;
+	line-height:7vh;
+	font-size:1.1rem;
+}
+#div2{
+    margin: 3vh 0 3vh 5vw;
+}
+#div2 .checktitle{
+	font-size: 1.7rem;
+	font-weight: 600;
+	margin-bottom:4vh;
 }
 
 /*마이페이지 css*/
@@ -9731,28 +9801,148 @@ textarea.form-control {
 .mypageMain.open{
 	display:block;
 }
-
+#mypage_body{
+	margin : 10vh 10%;
+}
 .mp_word{
 	width:100%;
-	height:25vh;
-	border-bottom : 1px #aaa solid;
+	height:10vh;
+	border-bottom : 2px #ddd solid;
 }
 .mp_word h3{
-	font-size : 3em;
+	font-size : 2.2em;
 	position:relative;
 	top:50%;
-	left:10vw;
+	/* left:10vw; */
 	transform:translate(0,-50%);
+	font-weight: 600;
 }
 .mp_body{
 	width:100%;
 	display:flex;
 }
 .mp_b_menu{
-	width: 20%;
+	width: 15%;
+}
+.mp_b_menu section{
+	margin-top:5vh;
+	position:relative;
+}
+.mp_b_menu section a p{
+	line-height:5vh;
+	margin:0;
+	color:#111;
+	border-bottom : 2px #ddd solid;
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+.mp_b_menu section a p::after{
+	content:">";
+	font-size: 1.1rem;
+	font-weight: 600;
+	position:absolute;
+	right:10px;
+	top:50%;
+	color:#111;
+	transform:translate(0,-50%);
 }
 .mp_b_content{
-	width: 80%;
+	width: 85%;
+	margin-top:5vh;
+}
+.mp_b_content>h5{
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin: 3vh 5vw
+}
+.mp_b_content ul{
+	padding:0;
+	margin-left:5vw;
+	border-top:3px #748CAA solid;
+}
+.mp_b_content ul li{
+	line-height:5vh;
+	border-bottom: 1px #ddd solid;
+}
+
+.mp_check_go{
+	display:block;
+	width:150px;
+    line-height:50px;
+    text-align: center;
+    background:#111;
+    color:#fff !important;
+    margin:5vh 0 0 5vw;
+}
+
+/*마이페이지 체크 css*/
+.mp_b_c_content{
+	width: 85%;
+	margin-top:5vh;
+}
+.mp_b_c_content>h5{
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin: 9vh 0 4vh 0;
+	text-align: center;
+}
+.mp_b_c_content ul{
+	width: 17vw;
+	padding:0;
+	position:relative;
+	left:50%;
+	transform:translate(-50%,0);
+}
+.mp_b_c_content ul li{
+	margin-bottom:1.5vh;
+}
+
+.mp_b_c_content ul li input{
+	width: 17vw;
+	line-height : 4vh;
+}
+.mp_final_go{
+	display:block;
+	width:150px;
+    line-height:50px;
+    text-align: center;
+    background:#111;
+    color:#fff !important;
+    position:relative;
+	left:50%;
+	transform:translate(-50%,0);
+	margin:5vh 0;
+}
+
+/* 마이페이지 파이널 css */
+.mp_b_content.mp_final input{
+	width:40%;
+	float:left;
+	padding:0;
+}
+.mp_b_content.mp_final li{
+	width:100%;
+	overflow: hidden;
+}
+.mp_b_content.mp_final p{
+	float:left;
+	width:10%;
+	margin:0;
+	line-height: 5vh;
+}
+.mp_b_content.mp_final li:nth-child(5) p{
+	width:1% !important;
+}
+.mp_b_content.mp_final li:nth-child(5) input{
+	width:5%;
+	position:relative;
+	top:50%;
+	transform: translate(0,130%);
+}
+.mp_go{
+	background:#111;
+	color:#fff;
+	width:20% !important;
 }
 
 /* main.jsp 자가진단 */
@@ -9814,6 +10004,15 @@ textarea.form-control {
 }
 
 /* 서브페이지 배너 */
+.sub_container{
+	color:#fff !important;
+}
+.sub_container .navbar-brand span{
+	color:#fff;
+}
+.sub_container .nav-item a{
+	color:#fff !important;	
+}
 .hero-wrap {
   width: 100%;
   height: 100%;
@@ -9832,8 +10031,11 @@ textarea.form-control {
   .hero-wrap.hero-wrap-2 {
     height: 400px;
     position: relative;
-    background-position: center;
-    color:#fff; }
+    background-position: center -50px;
+    color:#fff; 
+    background-attachment: fixed;
+    background-size : cover;
+    }
     .hero-wrap.hero-wrap-2 .overlay {
       width: 100%;
       opacity: 0;
