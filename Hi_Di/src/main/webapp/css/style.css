@@ -9798,7 +9798,49 @@ textarea.form-control {
 	font-weight: 600;
 	margin-bottom:4vh;
 }
-
+#div2 table{
+	width:100%;
+}
+#div2 table .disname{
+	widht:100%;
+	font-size:1.2rem;
+}
+#div2 table tr{
+	line-height:5vh;
+	border-bottom: 2px #efefef solid;
+	width:100%;
+}
+#div2 table tr:nth-child(2){
+	border-top: 3px #748CAA solid;	
+	line-height:5vh;
+    background: #FaFaFa;
+	border-bottom: none;
+}
+#div2 table tr:nth-child(2) td{
+	text-align:center !important;
+}
+#div2 table tr td:nth-child(2){
+	border-left:2px #efefef solid;
+	width:8%;
+}
+#div2 table tr td:nth-child(3){
+	width:8%;
+	border-left:2px #efefef solid;
+}
+#div2 table tr:last-child{
+	border-bottom: none;
+}
+#div2 table tr:last-child td{
+    padding-top: 4vh;
+}
+#div2 table tr:last-child #submit{
+	display: block;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    background: #111;
+    color: #fff !important;
+}
 /*마이페이지 css*/
 .mypageMain{
 	display:none;

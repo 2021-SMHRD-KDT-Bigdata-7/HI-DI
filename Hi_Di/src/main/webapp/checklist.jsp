@@ -251,7 +251,7 @@
 								</tr>
 								<%} %>
 								<tr>
-									<td colspan="3" align="center">
+									<td colspan="3" align="right">
 										<button type="button" id="submit">결과보기</button>
 									</td>
 								</tr>
