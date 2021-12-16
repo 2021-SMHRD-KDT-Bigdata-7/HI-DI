@@ -32,6 +32,17 @@
 <link rel="stylesheet" href="css/style.css">
 <style>
 
+	#div2 {
+	font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 4vh;
+    }
+    
+    .cl_b_content {
+    	
+    }
+    
+	
 </style>
 </head>
 
@@ -275,14 +286,23 @@
 					</section>
 				</div>
 				<div class="cl_b_content">
+					<div id = "div2">
+					<strong class="checktitle"> 자가진단 </strong>
 					<%
-               for (int i = 0; i < disname.size(); i++) {
-               %>
-					<a href="checkAll.jsp?name=<%=disname.get(i)%>"><%=disname.get(i)%>
+               		for (int i = 0; i < disname.size(); i++) {
+               		%>
+					<div id = "div3">
+					<ul>
+					●<a href="checkAll.jsp?name=<%=disname.get(i)%>" style="color:black"><%=disname.get(i)%>
 						자가진단 </a> <br> <br>
+
+               		</ul>
+               		</div>
 					<%
-               }
-               %>
+               		}
+               		%>
+               		</div>
+               <% out.print("asgeawgeawgewagewagweagewgewagsdgdsagweagewagsdagdsagwegweagsagsdgwegwegwadgwegewagdsgasgewagwa"); %>
 				</div>
 			</div>
 		</div>
