@@ -84,6 +84,24 @@
 	  </div>
 	</section>
 	
+	<div id="statis_body">
+		<div id="statis1" class="open statis">
+			<div class="st_word">
+				<h3>질병통계</h3>
+			</div>
+			<div class="st_body">
+				<div class="st_b_menu">
+					<section>
+						<a href="#" class="st1_click"><p>질병통계</p></a>
+					</section>
+				</div>
+				<div class="st_b_content">
+					<!-- 질병통계 내용 입력하세용 -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">

@@ -10148,3 +10148,61 @@ textarea.form-control {
 	width: 85%;
 	margin-top:5vh;
 }
+
+/*질병통계 css*/
+.statisMain{
+	display:none;
+	color:#111;
+}
+.statisMain.open{
+	display:block;
+}
+#statis_body{
+	margin : 10vh 10%;
+}
+.st_word{
+	width:100%;
+	height:10vh;
+	border-bottom : 2px #ddd solid;
+}
+.st_word h3{
+	font-size : 2.2em;
+	position:relative;
+	top:50%;
+	/* left:10vw; */
+	transform:translate(0,-50%);
+	font-weight: 600;
+}
+.st_body{
+	width:100%;
+	display:flex;
+}
+.st_b_menu{
+	width: 15%;
+}
+.st_b_menu section{
+	margin-top:5vh;
+	position:relative;
+}
+.st_b_menu section a p{
+	line-height:5vh;
+	margin:0;
+	color:#111;
+	border-bottom : 2px #ddd solid;
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+.st_b_menu section a p::after{
+	content:">";
+	font-size: 1.1rem;
+	font-weight: 600;
+	position:absolute;
+	right:10px;
+	top:50%;
+	color:#111;
+	transform:translate(0,-50%);
+}
+.st_b_content{
+	width: 85%;
+	margin-top:5vh;
+}
