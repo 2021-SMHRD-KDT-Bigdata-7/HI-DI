@@ -77,7 +77,7 @@
    //질병 전체 데이터에서 질병명 중복없이 출력
    ArrayList<ChecklistVO> checklist = (ArrayList<ChecklistVO>) request.getAttribute("checklist");
 
-   //질병 명, 질병 코드 중복없이 출력
+   //질병 명 중복없이 출력
    ArrayList<String> name = new ArrayList<String>();
    ArrayList<String> disname = new ArrayList<String>();
    if (checklist != null) {
@@ -153,7 +153,6 @@
 				</div>
 				<div class="cl_b_content">
 					<div>
-
 						<!-- 자가진단 서울대병원 -->
 						<!-- div 아이디, strong 아이디, ul 아이디 값 주고 value값 작성함 -->
 						<div id="div1">
@@ -286,27 +285,26 @@
 					</section>
 				</div>
 				<div class="cl_b_content">
-					<div id = "div2">
-					<strong class="checktitle"> 자가진단 </strong>
-					<%
-               		for (int i = 0; i < disname.size(); i++) {
-               		%>
-					<div id = "div3">
-					<ul>
-					●<a href="checkAll.jsp?name=<%=disname.get(i)%>" style="color:black"><%=disname.get(i)%>
-						자가진단 </a> <br> <br>
+					<div id="div3">
+						<h2 class="selfchecktitle">자가진단</h2>
+						<div class="list_content">
+							<ul class="symall">
+								<%for(int i=0; i<disname.size(); i++){ %>
+								
+									<li>
+										<a href="checkAll.jsp?name=<%=disname.get(i)%>" style="color:black"><%=disname.get(i)%>자가진단</a>
+									</li>
+									<%if((i+1)%5==0 && i>0){ %>
+										</ul><ul class="symall">
+									<%} %>
+								<%} %>						
+							</ul>
+						</div>
+					</div>
 
-               		</ul>
-               		</div>
-					<%
-               		}
-               		%>
-               		</div>
-               <% out.print("asgeawgeawgewagewagweagewgewagsdgdsagweagewagsdagdsagwegweagsagsdgwegwegwadgwegewagdsgasgewagwa"); %>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 
 	<footer class="ftco-footer ftco-section">
