@@ -10264,3 +10264,38 @@ textarea.form-control {
 	width: 85%;
 	margin-top:5vh;
 }
+#ds_list{
+    margin: 4vh 0 3vh 5vw;
+}
+#ds_list .checktitle{
+	font-size: 1.7rem;
+	font-weight: 600;
+	margin-bottom:4vh;
+}
+#ds_list table{
+	width:100%;
+}
+#ds_list table tr:nth-child(4){
+	border-bottom: 3px #748CAA solid;
+}
+#ds_list table tr{
+	line-height:5vh;
+	border-bottom: 2px #efefef solid;
+	width:100%;
+}
+#ds_list table tr:nth-child(1){
+	border-top: 3px #748CAA solid;
+}
+#ds_list table tr td:nth-child(1){
+	background: #FaFaFa;
+	text-align: center;
+}
+#ds_list table tr td:nth-child(2){
+	border-left:2px #efefef solid;
+}
+#ds_list table tr:last-child{
+	border-bottom: none;
+}
+#ds_list table tr:last-child td{
+    padding-top: 4vh;
+}

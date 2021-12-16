@@ -98,6 +98,12 @@
 		</div>
 	</section>
 
+<%
+	DiseaseVO dvo = (DiseaseVO) request.getAttribute("dvo");
+	ArrayList<String> raw_name = (ArrayList<String>)request.getAttribute("raw_name");
+	ArrayList<String> raw_func = (ArrayList<String>)request.getAttribute("raw_func");						
+%>
+
 	<div id="dese_body">
 		<div id="dese1" class="open deseMain">
 			<div class="ds_word">
@@ -106,33 +112,38 @@
 			<div class="ds_body">
 				<div class="ds_b_menu">
 					<section>
-						<a href="#" class="ds1_click"><p>질병검색</p></a>
+						<a href="#" class="ds1_click"><p><%= dvo.getDis_name() %> 검색결과</p></a>
 					</section>
 				</div>
 				<div class="ds_b_content">
 					<!-- 질병검색 내용 입력하세용 -->
-					<div class="ds_list">
-						<%
-						DiseaseVO dvo = (DiseaseVO) request.getAttribute("dvo");
-						%>
-						<h4>질병 통합 정보</h4>
-						<hr>
-						<p>
-							<span class="dis_seq">질병 순번 : </sapn> <%=dvo.getDis_seq()%>
-						</p>
-						<p>
-							<span class="dis_code">질병 코드 : </span><%=dvo.getDis_code()%></p>
-						<p>
-							<span class="dis_name">질병 명 : </sapn><%=dvo.getDis_name()%>
-						</p>
-						<p>
-							<span class="dis_content">질병 설명 : </sapn><%=dvo.getDis_content()%>
-						</p>
-						<p>
-							<span class="dis_symptom">질병 증상 : </sapn><%=dvo.getDis_symptom()%>
-						</p>
-
+					<div id="ds_list">
+						<table>
+							<tr>
+								<td class="dislist">질병 명</td>
+								<td class="dislist"><%=dvo.getDis_name()%>(<%=dvo.getDis_code()%>)</td>
+							</tr>
+							<tr>
+								<td class="dislist">질병 설명</td>
+								<td class="dislist"><%=dvo.getDis_content()%></td>
+							</tr>
+							<tr>
+								<td class="dislist">질병 증상</td>
+								<td class="dislist"><%=dvo.getDis_symptom()%></td>
+							</tr>
+							<tr>
+								<td class="dislist">추천 영양 성분</td>
+								<td class="dislist">
+									<% for(int i=0; i<raw_name.size(); i++){ %>
+									<%=raw_name.get(i)%>(기능 : <%= raw_name.get(i) %>)
+									<br>
+									<%} %>
+								</td>
+							</tr>
+						</table>
 					</div>
+					<!-- 질병검색 끝 -->
+					
 				</div>
 			</div>
 		</div>
