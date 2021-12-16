@@ -25,7 +25,8 @@
 <link rel="stylesheet" href="css/magnific-popup.css">
 
 <link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/style.css"> 
+<link rel="stylesheet" href="css/style.css">
+<script src="jquery-3.6.0.min.js"></script>
 <style>
 .wrap {
    position: absolute;
@@ -247,22 +248,38 @@
 	<span><%= name %>는 <%=dvo.getDis_content() %> 이고</span><br>
 	<span><%=dvo.getDis_symptom() %> 과 같은 증상이 있을 수 있습니다.</span><br>
 	<%if(rawlist != null){ %>
-		<span>도움이 되는 영양 성분은 
-		<!-- 
-		raw_name.add(rawlist.get(j).getRaw_name());
-		raw_func.add(rawlist.get(j).getRaw_func()); -->
-			<%for(int i=0; i<raw_name.size(); i++){ %>
-				<%=raw_name.get(i) %>
-				(기능 : <%= raw_func.get(i)%>),<br>       
-			<%} %>
-			입니다.
-		</span><br>
+		<span>도움이 되는 영양 성분을 보려면 더보기를 누르세요</span>
+<!-- style="display:none;" -->
+		<button type="button" id="show">더보기</button>
+			<table id="raw" style="display: none;">
+				<%for(int i=0; i<raw_name.size(); i++){ %>
+					<tr>
+						<td><%=raw_name.get(i) %></td>
+						<td><%=raw_func.get(i) %></td>
+					</tr>
+				<%} %>
+				<tr>
+					<td colspan="2"><button type="button" id="hide">숨기기</button></td>
+				</tr>
+			</table>
 	<%} %>		
-	
-	<span><%=dvo.getDis_dpt() %> 에 방문 하는 것을 추천 합니다.</span><br>
+	<br>
+	<span><%=dvo.getDis_dpt() %> 에 방문 하는 것을 추천 합니다.</span>
 <%}else{ %>
 	<span>병원에 방문 하는 것을 추천 합니다.</span>
 <%} %>
+
+<!-- 영양성분 정보 숨기기 -->
+	<script type="text/javascript">
+		document.getElementById("show").addEventListener("click",function(){
+			document.getElementById("raw").style.display="";
+		})
+		
+		document.getElementById("hide").addEventListener("click",function(){
+			document.getElementById("raw").style.display="none";
+		})
+	</script>
+<!-- 영양성분 정보 숨기기 끝-->
 
 
 <!-- 지도 띄우기 -->
@@ -415,9 +432,7 @@
 		      }
 		   </script>
 <%} %>
-	<!-- 지도 끝 -->
-
-
+<!-- 지도 끝 -->
 	
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
