@@ -32,20 +32,17 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
+.dis_list {
+	position: relative;
+	left: 20%;
+	transform: translate(-50%, 0);
+	width: 300px;
+}
 
-	.dis_list{
-		position:relative;
-		left:20%;
-		transform:translate(-50%,0);
-	    width: 300px;
-	}
-
-	.dis_list{
-		font-size: 20px;
-		font-weight: bold;
-	}
-
-
+.dis_list {
+	font-size: 20px;
+	font-weight: bold;
+}
 </style>
 </head>
 
@@ -53,7 +50,7 @@
 	data-offset="300">
 
 
-	
+
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
@@ -100,22 +97,46 @@
 			</div>
 		</div>
 	</section>
-	
-	<div class="dis_list">
-		<% DiseaseVO dvo=(DiseaseVO)request.getAttribute("dvo"); 
-		%>
-			<h4>질병 통합 정보</h4>
-			<hr>
-			<p><span class="dis_seq">질병 순번 : </sapn> <%=dvo.getDis_seq() %></p>
-			<p><span class="dis_code">질병 코드 : </span><%=dvo.getDis_code() %></p>
-			<p><span class="dis_name">질병 명 : </sapn><%=dvo.getDis_name() %></p>
-			<p><span class="dis_content">질병 설명 : </sapn><%=dvo.getDis_content() %></p>
-			<p><span class="dis_symptom">질병 증상 : </sapn><%=dvo.getDis_symptom() %></p>
-			<p><span class="dis_dpt">질병 진료과 : </sapn><%=dvo.getDis_dpt() %></p>
-		
-	
+
+	<div id="dese_body">
+		<div id="dese1" class="open deseMain">
+			<div class="ds_word">
+				<h3>질병검색</h3>
+			</div>
+			<div class="ds_body">
+				<div class="ds_b_menu">
+					<section>
+						<a href="#" class="ds1_click"><p>질병검색</p></a>
+					</section>
+				</div>
+				<div class="ds_b_content">
+					<!-- 질병검색 내용 입력하세용 -->
+					<div class="ds_list">
+						<%
+						DiseaseVO dvo = (DiseaseVO) request.getAttribute("dvo");
+						%>
+						<h4>질병 통합 정보</h4>
+						<hr>
+						<p>
+							<span class="dis_seq">질병 순번 : </sapn> <%=dvo.getDis_seq()%>
+						</p>
+						<p>
+							<span class="dis_code">질병 코드 : </span><%=dvo.getDis_code()%></p>
+						<p>
+							<span class="dis_name">질병 명 : </sapn><%=dvo.getDis_name()%>
+						</p>
+						<p>
+							<span class="dis_content">질병 설명 : </sapn><%=dvo.getDis_content()%>
+						</p>
+						<p>
+							<span class="dis_symptom">질병 증상 : </sapn><%=dvo.getDis_symptom()%>
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	
 
 
 	<!-- loader -->
@@ -127,11 +148,21 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
 		</svg>
 	</div>
-	
-	
-	<br><br><br><br><br><br><br><br><br><br><br>
-	
-	
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">
@@ -161,16 +192,16 @@
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2">Services</h2>
 						<ul class="list-unstyled">
-							<li><a href="main.jsp"><span class="fa fa-chevron-right mr-2"></span>Home
-									</a></li>
+							<li><a href="main.jsp"><span
+									class="fa fa-chevron-right mr-2"></span>Home </a></li>
 							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>self-diagnosis
-									</a></li>
-							<li><a href="disease.jsp"><span class="fa fa-chevron-right mr-2"></span>disease-search
-									</a></li>
+							</a></li>
+							<li><a href="disease.jsp"><span
+									class="fa fa-chevron-right mr-2"></span>disease-search </a></li>
 							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>food-search
-									</a></li>
+							</a></li>
 							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>survey
-									</a></li>
+							</a></li>
 						</ul>
 					</div>
 				</div>
@@ -217,7 +248,7 @@
 			</div>
 		</div>
 	</footer>
-	
+
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -241,6 +272,6 @@
 
 
 	</script>
-	
+
 </body>
 </html>

@@ -85,7 +85,7 @@
 	</section>
 	
 	<div id="statis_body">
-		<div id="statis1" class="open statis">
+		<div id="statis1" class="open statisMain">
 			<div class="st_word">
 				<h3>질병통계</h3>
 			</div>
