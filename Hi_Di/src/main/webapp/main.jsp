@@ -328,60 +328,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 justify-content-center counter-wrap ftco-animate">
-					<div style="width: 400px">
-						<canvas id="myChart"></canvas>
-					</div>
-
-				<script>
-					// 우선 컨텍스트를 가져옵니다. 
-					var ctx = document.getElementById("myChart").getContext('2d');
-					/*
-					- Chart를 생성하면서, 
-					- ctx를 첫번째 argument로 넘겨주고, 
-					- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
-					*/
-					var myChart = new Chart(ctx, {
-					    type: 'bar',
-					    data: {
-					        labels: [<%=day1%>, <%=day2%>, <%=day3%>, <%=day4%>, <%=day5%>, <%=day6%>, <%=day7%>],
-					        datasets: [{
-					            label: '코로나 주간현황',
-					            data: [<%=day_increase1%>, <%=day_increase2%>, <%=day_increase3%>, <%=day_increase4%>, <%=day_increase5%>, <%=day_increase6%>, <%=day_increase7%>],
-					            backgroundColor: [
-					                'red',
-					                'red',
-					                'red',
-					                'red',
-					                'red',
-					                'red',
-					                'red'
-					            ],
-					            borderColor: [
-					                'rgba(255,99,132,1)',
-					                'rgba(54, 162, 235, 1)',
-					                'rgba(255, 206, 86, 1)',
-					                'rgba(75, 192, 192, 1)',
-					                'rgba(153, 102, 255, 1)',
-					                'rgba(75, 102, 255, 1)',
-					                'rgba(255, 159, 64, 1)'
-					            ],
-					            borderWidth: 1
-					        }]
-					    },
-					    options: {
-					        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
-					        scales: {
-					            yAxes: [{
-					                ticks: {
-					                    beginAtZero:true
-					                }
-					            }]
-					        }
-					    }
-					});
-				</script>
-				</div>
+				
 			</div>
 		</div>
 	</section>
@@ -897,6 +844,59 @@
 					<span class="subheading">statistics</span>
 					<h2 class="mb-4">질병 통계</h2>
 					<p>사람들의 질병 현황을 확인하고 싶다면 HiDi로!</p>
+					<div class="col-md-3 justify-content-center counter-wrap ftco-animate">
+					<div style="width: 400px">
+						<canvas id="myChart"></canvas>
+					</div>
+				</div>
+					<script>
+					// 우선 컨텍스트를 가져옵니다. 
+					var ctx = document.getElementById("myChart").getContext('2d');
+					/*
+					- Chart를 생성하면서, 
+					- ctx를 첫번째 argument로 넘겨주고, 
+					- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+					*/
+					var myChart = new Chart(ctx, {
+					    type: 'bar',
+					    data: {
+					        labels: [<%=day1%>, <%=day2%>, <%=day3%>, <%=day4%>, <%=day5%>, <%=day6%>, <%=day7%>],
+					        datasets: [{
+					            label: '코로나 주간현황',
+					            data: [<%=day_increase1%>, <%=day_increase2%>, <%=day_increase3%>, <%=day_increase4%>, <%=day_increase5%>, <%=day_increase6%>, <%=day_increase7%>],
+					            backgroundColor: [
+					                'red',
+					                'red',
+					                'red',
+					                'red',
+					                'red',
+					                'red',
+					                'red'
+					            ],
+					            borderColor: [
+					                'rgba(255,99,132,1)',
+					                'rgba(54, 162, 235, 1)',
+					                'rgba(255, 206, 86, 1)',
+					                'rgba(75, 192, 192, 1)',
+					                'rgba(153, 102, 255, 1)',
+					                'rgba(75, 102, 255, 1)',
+					                'rgba(255, 159, 64, 1)'
+					            ],
+					            borderWidth: 1
+					        }]
+					    },
+					    options: {
+					        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+					        scales: {
+					            yAxes: [{
+					                ticks: {
+					                    beginAtZero:true
+					                }
+					            }]
+					        }
+					    }
+					});
+				</script>
 				</div>
 			</div>
 		</div>
