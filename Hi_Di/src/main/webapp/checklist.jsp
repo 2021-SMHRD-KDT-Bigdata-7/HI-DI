@@ -145,7 +145,6 @@
 
 						<!-- 자가진단 서울대병원 -->
 						<!-- div 아이디, strong 아이디, ul 아이디 값 주고 value값 작성함 -->
-						<hr>
 						<div id="div1">
 							<h2 class="checktitle">일반적인 증상</h2>
 							<div class="check_content">
@@ -229,7 +228,6 @@
 								</ul>
 							</div>
 						</div>
-						<!-- <hr> -->
 						<!-- 체크리스트 -->
 						<div id="div2">
 							<h2 class="checktitle">체크리스트</h2>

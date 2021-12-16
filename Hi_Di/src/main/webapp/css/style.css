@@ -9753,7 +9753,6 @@ textarea.form-control {
 	margin-top:5vh;
 	
 }
-/*  */
 #div1{
     margin: 3vh 0 3vh 5vw;
 }
@@ -9765,6 +9764,12 @@ textarea.form-control {
 .check_content{
 	padding:5vh 3vw;
 	background:#FaFaFa;
+}
+.check_content a{
+	color:#111;
+}
+.check_content a:hover{
+	    color: #afc5c9;
 }
 .check_content .sysmtom:nth-child(11){
 	width:26.2% !important;
@@ -9786,7 +9791,7 @@ textarea.form-control {
 	font-size:1.1rem;
 }
 #div2{
-    margin: 3vh 0 3vh 5vw;
+    margin: 9vh 0 3vh 5vw;
 }
 #div2 .checktitle{
 	font-size: 1.7rem;
