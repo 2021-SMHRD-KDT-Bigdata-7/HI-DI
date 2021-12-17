@@ -30,7 +30,18 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="css/slidecss.css">
-
+<style>
+	.covidicon img{
+		width:35px !important;
+		position:relative;
+		top:-4px;
+	}
+	.row .counter-wrap:nth-child(4) .covidicon img{
+		width:35px !important;
+		position:relative;
+		top:-2px;
+	}
+</style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -278,9 +289,12 @@
 					class="col-md-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 d-flex">
 						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-suitcase"></span>
+							<span class="covidicon">
+								<img src="./images/covid1.png">
+							</span>
 						</div>
 						<div class="text">
+							
 							<strong class="number"><%=Controller%>
 								</strong> <span>Covid 19</span>
 						</div>
@@ -290,7 +304,9 @@
 					class="col-md-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 d-flex">
 						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-loyalty"></span>
+							<span class="covidicon">
+								<img src="./images/covid2.png">
+							</span>
 						</div>
 						<div class="text">
 							<strong class="number" ><%=Controller1%></strong> <span>È®ÁøÀÚ
@@ -302,7 +318,9 @@
 					class="col-md-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 d-flex">
 						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-coffee"></span>
+							<span class="covidicon">
+								<img src="./images/covid3.png">
+							</span>
 						</div>
 						<div class="text">
 							<strong class="number" ><%=Controller2%></strong> <span>»ç¸ÁÀÚ
@@ -314,7 +332,9 @@
 					class="col-md-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 d-flex">
 						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-coffee"></span>
+							<span class="covidicon">
+								<img src="./images/covid4.png">
+							</span>
 						</div>
 						<div class="text">
 							<strong class="number" ><%=Controller3%></strong> <span>»ç¸ÁÀÚ
