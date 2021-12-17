@@ -131,12 +131,53 @@ text-align: center;
 	data-offset="300">
 <%
 	DAO dao = new DAO();
-	ArrayList<FoodVO> foods = dao.SelectAllfood();
+	Random rd = new Random();
+
+	//연령받아오기 위해 vo 객체 생성
 	MemberVO vo = (MemberVO) session.getAttribute("vo");
-	RecommendVO rvo = (RecommendVO) session.getAttribute("rvo");
 	
-%>
-<%
+	ArrayList<String> recoAll = new ArrayList<String>();
+	
+	//중복없이 난수 4개 생성
+	int count = 4; // 난수 생성 갯수
+	int num[] = new int[count];
+	
+	if(vo!=null){
+		LocalDate now = LocalDate.now(); // 현재 날짜
+		int year = now.getYear(); // 연도만 가져옴
+		
+		int mb_age = Integer.parseInt(vo.getMb_birthdate().substring(0, 4)); // 사용자의 출생년도
+		String reco_age = Integer.toString((year - mb_age) / 10) + "0대"; //연령대 생성
+		ArrayList<RecommendVO> recolist = dao.SelectRecommand(reco_age); //연령대에 맞는 추천리스트 생성
+	
+		//연령에 맞는 모든 식품데이터 arraylist에 저장
+		
+		for(int i=0; i<recolist.size(); i++){
+			String[] reco_food = recolist.get(i).getReco_food().split(",");
+			for(int j=0; j<reco_food.length; j++){
+				recoAll.add(reco_food[j]);
+			}
+			out.print(recoAll.get(i));
+		}
+		
+		//난수 생성
+		for(int i=0; i<count; i++){
+			num[i] = rd.nextInt(recoAll.size()) + 1; // 추천식품 개수만큼 랜덤으로 난수 생성 
+			for(int j=0; j<i; j++){
+				if(num[i] == num[j]){
+					i--;
+				}
+			}
+		}
+	}
+	
+	/* Random rd = new Random();
+	int num = rd.nextInt(recoAll.size() + 1);
+	 */
+	 
+	 
+	
+	ArrayList<FoodVO> foods = dao.SelectAllfood();
 	String select = "";
 		if (request.getParameter("food")!=null){
 			select = request.getParameter("food");
@@ -203,33 +244,41 @@ text-align: center;
 				<section class="food_con f_section on">
 					<div class="row">
 						<div class="col-md-3">
+						<%String food = null; %>
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-							
-								<img src="./foodimg/<%=URLEncoder.encode("감귤.jpg", "euc-kr")%>"> 
-								
+								<!-- 랜덤으로 식품 추천 -->
+								<%food = recoAll.get(num[0])+".jpg"; %>
+								<img src="./foodimg/<%=URLEncoder.encode(food, "euc-kr")%>"> 								
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-							
+								<!-- 랜덤으로 식품 추천 -->
+								<%food = recoAll.get(num[1])+".jpg"; %>
+								<img src="./foodimg/<%=URLEncoder.encode(food, "euc-kr")%>"> 
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-							
+								<!-- 랜덤으로 식품 추천 -->
+								<%food = recoAll.get(num[2])+".jpg"; %>
+								<img src="./foodimg/<%=URLEncoder.encode(food, "euc-kr")%>">
 							</div>
 						</div>
 						
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
-							
+								<!-- <div class="overlay"></div> -->
+								<!-- 랜덤으로 식품 추천 -->
+								<%food = recoAll.get(num[3])+".jpg"; %>
+								<img src="./foodimg/<%=URLEncoder.encode(food, "euc-kr")%>">
 							</div>
 						</div>
 				</div>

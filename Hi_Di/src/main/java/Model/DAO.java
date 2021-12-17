@@ -27,6 +27,8 @@ public class DAO {
 	PollitemsVO pivo = null;
 	ArrayList<PollitemsVO> itemslist = new ArrayList<PollitemsVO>();
 	ArrayList<FoodVO> foodlist = new ArrayList<FoodVO>();
+	RecommendVO revo = null;
+	ArrayList<RecommendVO> recolist = new ArrayList<RecommendVO>();
 
 	// DB연결
 	public void connection() {
@@ -433,6 +435,44 @@ public class DAO {
 	}
 
 	// =====================================================================================================================================
+	
+	//연령별 추천식품 불러오기
+	public ArrayList<RecommendVO> SelectRecommand(String mb_age) {
+
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_recommend where reco_age = ?";
+			psmt = conn.prepareStatement(sql);
+
+			// 바인드 변수 채우기
+			psmt.setString(1, mb_age);
+
+			// 실행
+			rs = psmt.executeQuery();
+			
+			while (rs.next() == true) {
+				int recoSeq = rs.getInt(1);	//추천식품 순서
+				String recoAge = rs.getString(2); // 추천연령
+				String recoDise = rs.getString(3); // 추천질병
+				String recoFood = rs.getString(4); // 추천식품
+				String mbId = rs.getString(5); // 등록자아이디
+				String recoPic = rs.getString(6); // 추천사진
+
+				revo = new RecommendVO(recoSeq, recoAge, recoDise, recoFood, mbId, recoPic);
+				recolist.add(revo);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		return recolist;
+	}
+	//======================================================================================================================================
 	// 병원정보 불러오기
 	public ArrayList<HospitalVO> HospitalAll(String hos_dpt) {
 		try {
