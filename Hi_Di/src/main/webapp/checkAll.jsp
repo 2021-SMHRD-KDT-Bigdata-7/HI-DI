@@ -70,6 +70,9 @@
 	<%
 	//메소드 사용하기 위해 dao객체 생성
 	DAO dao = new DAO();
+	
+	MemberVO vo = (MemberVO) session.getAttribute("vo");
+	
 	//이전페이지에서 질병 명 받아옴	
 	String getname = request.getParameter("name");
 	
@@ -183,34 +186,6 @@
 								</tr>
 							</table>
 						</div><!--  -->
-				
-					<%-- <div>
-						<from action="#" method="post">
-						<table>
-
-							<tr>
-								<th><%= getname %></th>
-							</tr>
-							<tr>
-								<td>질문</td>
-								<td>예</td>
-								<td>아니오</td>
-							</tr>
-							<%for(int j=0; j<get_arr.length; j++){ %>
-							<tr>
-								<td><%= get_arr[j]%></td>
-								<td><input type="radio" name="<%= "no"+j %>" value="1">
-								</td>
-								<td><input type="radio" name="<%= "no"+j %>" value="0">
-								</td>
-
-							</tr>
-							<%} %>
-						</table>
-						<button type="button" id="submit">결과보기</button>
-						</from>
-
-					</div><!--  --> --%>
 				</div>
 			</div>
 		</div>
@@ -299,35 +274,16 @@
  						}					
  					})
  				}else{
- 					// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
- 					$.ajax({
- 						type: "post", // get / post 
- 						url:"checkResult.jsp",
- 						success : function(res){
- 							// res : Servlet에서 돌려준 값
- 							// 이 안에 처리할 로직
- 							// page이동이 일어나는 경우
- 							// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
- 							// window.location : 현재 페이지 주소
- 							// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
- 							window.location = 'checkResult.jsp?name=<%= cvo.getCheck_name() %>&seq=<%= cvo.getCheck_seq() %>&result=n';
- 						},
- 						error : function() {
- 							alert('전송 실패');
- 						}					
- 					})
- 				}
-				
-				
-				
-				
-				
-			}else{
-				alert('모든 문항을 체크하세요.');
-			}
-			console.log(num);
- 			num = 0;
-		});
+ 		        	//체크 결과 db에 저장
+ 		        	<%=dao.InsertCheck(cvo.getCheck_seq(), "n", vo.getMb_id())%>
+ 		        	alert('진단결과 정상입니다.');
+ 		         }
+ 		      }else{
+ 		         alert('모든 문항을 체크하세요.');
+ 		      }
+ 		      console.log(num);
+ 		         num = 0;
+ 		     });
 
 	</script>
 

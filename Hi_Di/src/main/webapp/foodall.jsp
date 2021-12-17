@@ -191,6 +191,7 @@ text-align: center;
 	</section>
 	<!-- ===================================== 추천페이지 ========================================= -->
 		<div class="container-fluid px-md-4">
+		
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<span class="subheading">Nutritious</span>
@@ -228,7 +229,13 @@ text-align: center;
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
-</section>
+							
+							</div>
+						</div>
+				</div>
+			</section>
+		</div>
+	</div>
 
 	<!-- ================================ 검색창 ========================================= -->
 	<form action="foodall.jsp" align="center">
