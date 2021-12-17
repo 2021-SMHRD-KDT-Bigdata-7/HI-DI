@@ -91,6 +91,12 @@ $(".mp2_click").click(
 	}
 );
 
+/* 자가진단 결과 팝업  */
+$(".result_nutri").on("click", function() { 
+	$("#popup").fadeIn(); 
+}); 
 
-
+$("#hide").on("click", function() { 
+	$("#popup").fadeOut(); 
+});
 

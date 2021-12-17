@@ -135,6 +135,106 @@
 .info .link {
 	color: #5085BB;
 }
+.cl_b_content{
+	padding:8vh 0 0 5vw;
+	margin:0;
+}
+.cl_con1 .cl_result{
+	font-size : 2.5rem;
+	font-weight: 600;
+	margin-bottom:20px;
+}
+.result_word{
+	font-size: 1.2rem;	
+}
+.result_nutri{
+	width:100%;
+	line-height:18vh;
+	background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ), url('./images/result_nutri.jpg');
+	background-size:cover;
+	background-position: 300px -20px;
+	display: block;
+	margin-top:6vh;
+	position: relative;
+	background-attachment: fixed;
+	transform: scaleX(-1);
+	padding-right:6vw;
+}
+
+.result_nutri p{
+	font-size: 1.7rem;
+	color:#6E8B91;
+	font-weight: 600;
+	transform: scaleX(-1);
+}
+.result_nutri:hover{
+	opacity:0.7;
+}
+#map{
+	width:100%;
+	height:40vh;
+}
+.cl_con2_word{
+	line-height: 10vh;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top:7vh;
+}
+#popup{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;	
+	background:rgba(0,0,0,.7);
+	width:100%;
+	height:100%;
+	z-index: 9999999999;
+}
+/* #popup.show{
+	display:block;
+} */
+.popupbody{
+	width: 50%;
+	/* height: 60%; */
+	padding:10vh 5vw 5vh 5vw;
+	background:#fff;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	border-radius: 5px
+}
+#raw{
+	width:100%;
+	border-top: 3px #748CAA solid;
+}
+#raw tr{
+	line-height:3vh;
+	border-bottom: 1px #ddd solid;
+}
+#raw tr td{
+	padding:10px 0 ;
+}
+#raw tr td:nth-child(1) {
+	text-align: center;
+	background:#fafafa;
+	padding:10px 15px;
+	width:30%;
+}
+#raw tr td:nth-child(2){
+	padding:10px 15px;
+}
+.outpopup{
+	line-height: 15vh;
+	text-align: center;
+}
+#hide{
+	width:10vw;
+	line-height:5vh;
+	background: #111;
+	border:none;
+	color:#fff;
+}
 </style>
 </head>
 <body>
@@ -253,56 +353,62 @@
 				<div class="cl_b_content">
 					<div class="cl_con1">
 						<!-- 자가진단 결과 출력 -->
-						<span> <%=name%> (이)가 의심 됩니다.
-						</span>
+						<div class="cl_result"> <%=name%> <p>(이)가 의심 됩니다.</p>
+						</div>
 
 						<%
 						if (dvo != null) {
 						%>
-						<span> <%=name%>는 <%=dvo.getDis_content()%> 이고
-						</span> <span> <%=dvo.getDis_symptom()%> 과 같은 증상이 있을 수 있습니다.
-						</span>
-						<%
-						if (rawlist != null) {
-						%>
-						<span> 도움이 되는 영양 성분을 보려면 더보기를 누르세요 </span>
-						<button type="button" id="show">더보기</button>
-						
-						<table id="raw" style="display: none;">
+							<div class="result_word"> 
+								<%=name%>는 <%=dvo.getDis_content()%> 이고 
+								<%=dvo.getDis_symptom()%> 과 같은 증상이 있을 수 있습니다.
+							</div>
+							<div class="result_word"> 
+								<strong><%=dvo.getDis_dpt()%></strong> 에 방문 하는 것을 추천 합니다.
+							</div>
 							<%
-							for (int i = 0; i < raw_name.size(); i++) {
+							if (rawlist != null) {
 							%>
-							<tr>
-								<td><%=raw_name.get(i)%></td>
-								<td><%=raw_func.get(i)%></td>
-							</tr>
+								<a href="#none" class="result_nutri"> <p>도움이 되는 영양 성분을 보려면 ></p> </a>
+								<div id="popup">
+									<div class="popupbody">
+										<table id="raw">
+											<%
+											for (int i = 0; i < raw_name.size(); i++) {
+											%>
+											<tr>
+												<td><%=raw_name.get(i)%></td>
+												<td><%=raw_func.get(i)%></td>
+											</tr>
+											<%
+											}
+											%>
+											
+										</table>
+										<div class="outpopup">
+											<td colspan="2"><button type="button" id="hide">나가기</button></td>
+										</div>
+									</div>
+								</div>
 							<%
 							}
 							%>
-							<tr>
-								<td colspan="2"><button type="button" id="hide">숨기기</button></td>
-							</tr>
-						</table>
-						<%
-						}
-						%>
-						<span> <%=dvo.getDis_dpt()%> 에 방문 하는 것을 추천 합니다.
-						</span>
+							
 						<%
 						} else {
 						%>
-						<span>병원에 방문 하는 것을 추천 합니다.</span>
+							<div>병원에 방문 하는 것을 추천 합니다.</div>
 						<%
 						}
 						%>
 					</div>
 					<div class="cl_con2">
+						<div class="cl_con2_word">병원 위치</div>
 						<!-- 지도 띄우기 -->
 						<%
 						if (hoslist != null) {
 						%>
-					
-						<div id="map" style="width: 50%; height: 400px; top: 300px; position: relative; left: 50%; transform: translate(-50%, 0)"></div>
+						<div id="map" ></div>
 					</div>
 				</div>
 			</div>
@@ -310,7 +416,91 @@
 	</div>
 
 
+	<footer class="ftco-footer ftco-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Lets talk about</h2>
+						<p>Far far away, behind the word mountains, far from the
+							countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Learn more</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-4">
+						<h2 class="ftco-heading-2">Links</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Home</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Services</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Projects</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Services</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
+									Design</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
+									Development</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Business
+									Strategy</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Data
+									Analysis</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Graphic
+									Design</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon fa fa-map marker"></span><span
+									class="text">203 Fake St. Mountain View, San Francisco,
+										California, USA</span></li>
+								<li><a href="#"><span class="icon fa fa-phone"></span><span
+										class="text">+2 392 3929 210</span></a></li>
+								<li><a href="#"><span
+										class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+							</ul>
+						</div>
+						<ul class="ftco-footer-social list-unstyled mt-2">
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="fa fa-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
 
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="fa fa-heart" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 	
 	
@@ -479,7 +669,6 @@
 	</script>
 <%}%>
 	<!-- 지도 끝 -->
-	
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
