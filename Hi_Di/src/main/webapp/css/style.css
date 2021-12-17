@@ -9725,9 +9725,10 @@ textarea.form-control {
 }
 .cl_b_menu{
 	width: 15%;
+	padding-top:3vh;
 }
 .cl_b_menu section{
-	margin-top:5vh;
+	margin-top:3vh;
 	position:relative;
 }
 .cl_b_menu section a p{
@@ -9911,10 +9912,11 @@ textarea.form-control {
 }
 .mp_b_menu{
 	width: 15%;
+	padding-top:3vh;
 }
 .mp_b_menu section{
-	margin-top:5vh;
 	position:relative;
+	margin-top:3vh;
 }
 .mp_b_menu section a p{
 	line-height:5vh;
@@ -10161,9 +10163,10 @@ textarea.form-control {
 }
 .poll_b_menu{
 	width: 15%;
+	padding-top:3vh;
 }
 .poll_b_menu section{
-	margin-top:5vh;
+	margin-top:3vh;
 	position:relative;
 }
 .poll_b_menu section a p{
