@@ -244,26 +244,19 @@
 								<ul class="sysmtom">
 									<!-- 기침 팝업창 HTML  -->
 									<li>
-										 <p><a href="#open">기침</a></p>
+										 <p><a href="http://www.snuh.org/health/SelfDgs/chart/Ch29.do">기침</a></p>
     										<div class="white_content" id="open">
-        									<div>
-            										<p> Q.기침을 한지 얼마나 되었나? 
-            											<a href="#close">닫기</a>
-            										</p>
-    										</div>
+            											<a href="#close">닫기</a>	
+            								</div>
 									</li>
 									<!-- 기침 팝업창 HTML 끝  -->
 									
 									<!-- 가슴 두근거림 HTML -->
 									<li>
-										<p><a href="#open1">가슴 두근거림</a></p>
+										<p><a href="http://www.snuh.org/health/SelfDgs/chart/Ch42.do">가슴 두근거림</a></p>
     										<div class="white_content1" id="open1">
-        										<div>
-            										<p>	Q.다음중 해당하는 증상이 있나?
-            											<a href="#close">닫기</a>
-            										</p>
-        										</div>
-    										</div>
+            									<a href="#close">닫기</a>
+            								</div>
 									</li>
 									<!-- 가슴 두근거림 HTML -->
 									<li>체중증가</li>
