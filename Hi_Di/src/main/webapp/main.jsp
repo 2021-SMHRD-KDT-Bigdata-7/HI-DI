@@ -1,3 +1,4 @@
+<%@page import="java.util.Random"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -43,6 +44,22 @@
 
 	//DAO按眉 积己
 	DAO dao = new DAO();
+	%>
+	<%
+	//Random 蔼 积己
+	Random random = new Random();
+	int[] imgArray = new int[8];
+	int temp;
+	for(int i=0; i<8;i++){
+		imgArray[i] = random.nextInt(119);
+
+		for(int j=0; j<i; j++){
+			if(imgArray[i] == imgArray[j]){
+				i--;
+				break;
+			}
+		}
+	}
 	%>
 
 
@@ -695,55 +712,56 @@
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-								
+								<img src="./mainfoodimg/<%=imgArray[0]%>.jpg">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-							
+								<img src="./mainfoodimg/<%=imgArray[1]%>.jpg">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-							
+								<img src="./mainfoodimg/<%=imgArray[2]%>.jpg">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-							
+								<img src="./mainfoodimg/<%=imgArray[3]%>.jpg">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
+								<img src="./mainfoodimg/<%=imgArray[4]%>.jpg">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-							
+								<img src="./mainfoodimg/<%=imgArray[5]%>.jpg">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-							
+								<img src="./mainfoodimg/<%=imgArray[6]%>.jpg">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div
 								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
 								<!-- <div class="overlay"></div> -->
-								
+								<img src="./mainfoodimg/<%=imgArray[7]%>.jpg">
 							</div>
 						</div>
 					</div>
