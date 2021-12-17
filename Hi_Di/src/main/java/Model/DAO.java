@@ -33,8 +33,8 @@ public class DAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-			String dbid = "hr";
-			String dbpw = "hr";
+			String dbid = "cgi_2_4_1215";
+			String dbpw = "smhrd4";
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
