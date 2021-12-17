@@ -189,7 +189,7 @@ text-align: center;
 			</div>
 		</div>
 	</section>
-	<!-- ==================================== 추천페이지 ========================================= -->
+	<!-- ===================================== 추천페이지 ========================================= -->
 		<div class="container-fluid px-md-4">
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
