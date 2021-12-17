@@ -162,7 +162,7 @@ text-align: center;
 		
 		//난수 생성
 		for(int i=0; i<count; i++){
-			num[i] = rd.nextInt(recoAll.size()) + 1; // 추천식품 개수만큼 랜덤으로 난수 생성 
+			num[i] = rd.nextInt(recoAll.size()); // 추천식품 개수만큼 랜덤으로 난수 생성 
 			for(int j=0; j<i; j++){
 				if(num[i] == num[j]){
 					i--;
@@ -170,11 +170,6 @@ text-align: center;
 			}
 		}
 	}
-	
-	/* Random rd = new Random();
-	int num = rd.nextInt(recoAll.size() + 1);
-	 */
-	 
 	 
 	
 	ArrayList<FoodVO> foods = dao.SelectAllfood();
