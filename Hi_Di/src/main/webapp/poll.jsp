@@ -32,48 +32,7 @@
 
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
-<style>
-#s1 {
-	color: black;
-	/* position: absolute; */
-	weight: 300px;
-	/* height:300px; */
-	text-align: center;
-}
 
-#s1>#s2 {
-	text-align: center;
-}
-
-#title1 {
-	text-align: center;
-	position: center;
-}
-
-#d1>#d2 {
-	border: 1px solid;
-	weight: 100px;
-	width: 800px;
-	padding: 100px;
-	border-width: 2px;
-	position: relative;
-	margin: 0 auto;
-}
-
-#s1>#d1 {
-	border: 1px solid;
-	position: relative;
-	text-align: center;
-	width: 1000px;
-	height: 800px;
-	padding-top: 50px;
-	padding-bottom: 50px;
-	padding-left: 0px;
-	padding-right: 30px;
-	margin: auto;
-	/* top: 200px; */
-}
-</style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -126,14 +85,14 @@
 		</div>
 	</section>
 	
-	<%
-	//메소드 사용하기 위해 dao객체 생성
-		DAO dao = new DAO();
-		
-	 	PollVO pvo = dao.SelectPoll("코로나19 바이러스 설문지");
-		
-		ArrayList<PollitemsVO> itemslist = dao.SelectPollItems(pvo.getPoll_seq());
-
+	<% 
+	DAO dao = new DAO();
+	PollVO pvo1 = dao.SelectPoll("코로나19 바이러스 설문지");
+	PollVO pvo2 = dao.SelectPoll("코로나19 바이러스 설문지");
+	PollVO pvo3 = dao.SelectPoll("코로나19 바이러스 설문지");
+	
+	ArrayList<PollitemsVO> itemslist = dao.SelectPollItems();
+	
 	%>
 
 	<div id="poll_body">
@@ -154,10 +113,31 @@
 						<a href="#" class="poll3_click"><p>뇌졸증</p></a>
 					</section>
 				</div>
-				<div class="cl_b_content">
-					<!-- 설문 내용 입력하세용 -->
-					<p>코로나</p>
+				<!-- 설문시작 -->
+				<div class="poll_b_content">
+					<div id="poll_list">
+					<h2 class="polltitle"><%=pvo1.getPoll_title() %></h2>
+					<h6 class="pollsub"><%=pvo1.getPoll_content() %></h6>
+					<br><br>
+						<table>
+							<%for(int i=0; i<=5; i++){ %>
+								<tr>
+									<td>
+										<p class="itemTitle"><%=itemslist.get(i).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(i).getItem_content() %>)</p>
+										<textarea class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+							<%} %>
+							<tr>
+								<td>
+									<button type="button" id="submit">제출</button>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
+				<!-- 설문시작 -->
 			</div>
 		</div>
 		<!-- 암 -->
@@ -177,10 +157,31 @@
 						<a href="#" class="poll3_click"><p>뇌졸증</p></a>
 					</section>
 				</div>
-				<div class="cl_b_content">
-					<!-- 설문 내용 입력하세용 -->
-					<p>암</p>
+				<!-- 설문시작 -->
+				<div class="poll_b_content">
+					<div id="poll_list">
+					<h2 class="polltitle"><%=pvo2.getPoll_title() %></h2>
+					<h6 class="pollsub"><%=pvo2.getPoll_content() %></h6>
+					<br><br>
+						<table>
+							<%for(int i=6; i<9; i++){ %>
+								<tr>
+									<td>
+										<p class="itemTitle"><%=itemslist.get(i).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(i).getItem_content() %>)</p>
+										<textarea class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+							<%} %>
+							<tr>
+								<td>
+									<button type="button" id="submit">제출</button>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
+				<!-- 설문시작 -->
 			</div>
 		</div>
 		<!-- 뇌졸증 -->
@@ -200,10 +201,31 @@
 						<a href="#" class="poll3_click"><p>뇌졸증</p></a>
 					</section>
 				</div>
-				<div class="cl_b_content">
-					<!-- 설문 내용 입력하세용 -->
-					<p>뇌졸증</p>
+				<!-- 설문시작 -->
+				<div class="poll_b_content">
+					<div id="poll_list">
+					<h2 class="polltitle"><%=pvo3.getPoll_title() %></h2>
+					<h6 class="pollsub"><%=pvo3.getPoll_content() %></h6>
+					<br><br>
+						<table>
+							<%for(int i=9; i<24; i++){ %>
+								<tr>
+									<td>
+										<p class="itemTitle"><%=itemslist.get(i).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(i).getItem_content() %>)</p>
+										<textarea class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+							<%} %>
+							<tr>
+								<td>
+									<button type="button" id="submit">제출</button>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
+				<!-- 설문시작 -->	
 			</div>
 		</div>
 	</div>

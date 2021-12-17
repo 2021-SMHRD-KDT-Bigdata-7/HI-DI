@@ -596,15 +596,12 @@ public class DAO {
 	}
 
 	// =============================================================================================
-	public ArrayList<PollitemsVO> SelectPollItems(int poll_seq) {
+	public ArrayList<PollitemsVO> SelectPollItems() {
 		try {
 			connection();
 			// sql문
-			String sql = "select * from t_poll_items where poll_seq = ?";
+			String sql = "select * from t_poll_items";
 			psmt = conn.prepareStatement(sql);
-
-			// 바인드 변수 채우기
-			psmt.setInt(1, poll_seq);
 
 			// 실행
 			rs = psmt.executeQuery();
