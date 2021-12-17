@@ -30,28 +30,15 @@
 <link rel="stylesheet" href="css/style.css">
 <style>
         #div2 {
-            width: 900px;
-            padding-top: 50px;
-            padding-bottom: 50px;
+            width: 85%;
+            margin:0;
         }
 
         .checktitle {
             color: #81A3AA;
-            font-size: 20px;
-            margin-left: 30px;
-        }
-
-        table {
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%;
-            border-top: 2px solid #81A3AA;
-            border-bottom: 2px solid #81A3AA;
-            border-collapse: collapse;
+            margin: 3vh 5vw;
         }
         .disname, .checklist {
-            border-top: 1px solid #81A3AA;
-            border-bottom: 1px solid #81A3AA;
             border-left: 1px solid #81A3AA;
             padding: 10px;
         }
@@ -59,7 +46,10 @@
         .disname:first-child, .checklist:first-child {
             border-left: none;
         }
-        
+        #div2 table{
+        	margin-left:5vw;
+        	width:100%;
+        }
     </style>
 </head>
 
@@ -159,12 +149,12 @@
 				</div>
 				<div class="cl_b_content">
 					<div id="div2">
-							<h2 class="checktitle"> 체크리스트 </h2> <br> <br>
+							<h2 class="checktitle"> 체크리스트 </h2>
 							<table>
 								<tr>
 									<th class="disname" align="center" colspan=""><%= getname %></th>
 								</tr>
-								<tr style="font-size: x-small;">
+								<tr>
 									<td class="checklist" align="right">질문</td>
 									<td class="checklist" align="center">예</td>
 									<td class="checklist" align="center">아니오</td>
