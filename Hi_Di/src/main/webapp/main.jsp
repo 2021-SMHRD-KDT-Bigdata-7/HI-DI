@@ -93,57 +93,22 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<%
-					if (vo == null) {
-					%>
+					<%if (vo == null) {%>
 						<li class="nav-item go-login"><a href="login.jsp" class="nav-link"><span>자가진단</span></a></li>
-					<%
-					} else {
-					%>
-						<li class="nav-item"><a href="SelectAllService" class="nav-link"><span>자가진단</span></a></li>
-					<%
-					}
-					%>
-					
-					<li class="nav-item"><a href="disease.jsp" class="nav-link"><span>질병검색</span></a></li>
-					<li class="nav-item"><a href="foodall.jsp" class="nav-link"><span>식품검색</span></a></li>
-					
-					<%
-					if (vo == null) {
-					%>
+						<li class="nav-item go-login"><a href="login.jsp" class="nav-link"><span>질병검색</span></a></li>
+						<li class="nav-item go-login"><a href="login.jsp" class="nav-link"><span>식품검색</span></a></li>					
 						<li class="nav-item go-login"><a href="login.jsp" class="nav-link"><span>설문</span></a></li>
-					<%
-					} else {
-					%>
-						<li class="nav-item"><a href="poll.jsp" class="nav-link"><span>설문</span></a></li>
-					<%
-					}
-					%>
-					
-					<%
-					if (vo == null) {
-					%>
 						<li class="nav-item go-login"><a href="login.jsp" class="nav-link"><span>질병통계</span></a></li>
-					<%
-					} else {
-					%>
-						<li class="nav-item"><a href="statistics.jsp" class="nav-link"><span>질병통계</span></a></li>
-					<%
-					}
-					%>
-					
-					<%
-					if (vo == null) {
-					%>
 						<li class="nav-item go-login"><a href="login.jsp" class="nav-link"><span>마이페이지</span></a></li>
-					<%
-					} else {
-					%>
-						<li class="nav-item"><a href="mypage.jsp" class="nav-link"><span>마이페이지</span></a></li>
-					<%
-					}
-					%>
 					
+					<%} else {%>
+						<li class="nav-item"><a href="SelectAllService" class="nav-link"><span>자가진단</span></a></li>
+						<li class="nav-item"><a href="disease.jsp" class="nav-link"><span>질병검색</span></a></li>
+						<li class="nav-item"><a href="foodall.jsp" class="nav-link"><span>식품검색</span></a></li>
+						<li class="nav-item"><a href="poll.jsp" class="nav-link"><span>설문</span></a></li>
+						<li class="nav-item"><a href="statistics.jsp" class="nav-link"><span>질병통계</span></a></li>
+						<li class="nav-item"><a href="mypage.jsp" class="nav-link"><span>마이페이지</span></a></li>
+					<%}%>
 				</ul>
 			</div>
 		</div>

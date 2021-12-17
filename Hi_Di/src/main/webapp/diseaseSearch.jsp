@@ -49,15 +49,13 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-
-
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
 		<div class="container">
 			<!-- 로고 hidi로 바꾸기 -->
-			<a class="navbar-brand" href="mypage.html"><span>HI-DI</span></a>
+			<a class="navbar-brand" href="main.jsp"><span>HI-DI</span></a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
 				type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false"
