@@ -10185,9 +10185,72 @@ textarea.form-control {
 	transform:translate(0,-50%);
 }
 .poll_b_content{
-	width: 85%;
+	width: 50%;
 	margin-top:5vh;
 }
+
+
+#poll_list{
+    margin: 4vh 0 3vh 10vw;
+    width:85%;
+}
+#poll_list table{
+	width:100%;
+}
+#poll_list table tr{
+	line-height: 3vh;
+	border-bottom: 2px #efefef solid;
+	width:100%;
+}
+#poll_list table tr:nth-child(1){
+	border-top: 3px #748CAA solid;
+}
+#poll_list table tr td{
+	padding-left: 10px;
+}
+#poll_list table tr td:nth-child(1){
+	background: #FaFaFa;
+	text-align: left;
+}
+#poll_list table tr td:nth-child(2){
+	border-left:2px #efefef solid;
+}
+#poll_list table tr:last-child td{
+    padding-top: 4vh;
+    border-bottom: 3px #748CAA solid;
+}
+#poll_list table tr .itemTitle{
+	font-size: 20px;
+	margin-left: 4vh;	
+}
+#poll_list table tr .itemSub{
+	font-size: 15px;
+	margin-bottom: 0;	
+	margin-left: 4vh;	
+}
+#poll_list table tr .answer{
+	margin-top: 1vh;
+	margin-bottom: 3vh;
+	margin-left: 4vh;
+}
+#poll_list table tr:last-child #submit{
+	display: block;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    background: #111;
+    color: #fff !important;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+
+/* #ds_list .checktitle{
+	font-size: 1.7rem;
+	font-weight: 600;
+	margin-bottom:4vh;
+} */
 
 /*질병통계 css*/
 .statisMain{
