@@ -32,12 +32,15 @@
 
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
+
+
+<!-- Ä¶¸°´õ -->
 <style>
 #nosibal {
-	margin: 40px 10px;
+	margin: 100px 200px;
 	padding: 0;
 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-	font-size: 14px;
+	font-size: 23px;
 }
 
 #calendar {
@@ -130,7 +133,7 @@
 		
 		<div id="mypage2" class="mypageMain">
 			<div class="mp_word">
-				<h3>Calendar</h3>
+				<h3>MyCalendar</h3>
 			</div>
 			<div class="mp_body">
 				<div class="mp_b_menu">
@@ -141,8 +144,8 @@
 						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
 					</section>
 				</div>
-				<h5>MyCalendar</h5>
 				<div id = "nosibal">
+				<h5>MyCalendar</h5>
 					<div id = "calendar" class="mp_b_content">
 	
 					</div>
@@ -268,7 +271,8 @@
     	var calendarEl = document.getElementById('calendar');
 
     	var calendar = new FullCalendar.Calendar(calendarEl, {
-      		headerToolbar: {
+    		
+    		headerToolbar: {
         	left: 'prevYear,prev,next,nextYear today',
         	center: 'title',
         	right: 'dayGridMonth,dayGridWeek,dayGridDay'
