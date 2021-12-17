@@ -396,7 +396,7 @@ public class DAO {
 			// fvo에 식품 저장
 			while (rs.next()) {
 				i++;
-				if(i > 30) {
+				if(i > 500) {
 					break;
 				}
 				int foodSeq = rs.getInt(1);

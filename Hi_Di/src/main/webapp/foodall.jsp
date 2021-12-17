@@ -1,3 +1,5 @@
+<%@page import="Model.RecommendVO"%>
+<%@page import="java.net.URLEncoder"%>
 <%@page import="Model.FoodVO"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random"%>
@@ -127,11 +129,14 @@ text-align: center;
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
-	<%
+<%
 	DAO dao = new DAO();
 	ArrayList<FoodVO> foods = dao.SelectAllfood();
+	MemberVO vo = (MemberVO) session.getAttribute("vo");
+	RecommendVO rvo = (RecommendVO) session.getAttribute("rvo");
+	
 %>
-	<%
+<%
 	String select = "";
 		if (request.getParameter("food")!=null){
 			select = request.getParameter("food");
@@ -185,7 +190,45 @@ text-align: center;
 		</div>
 	</section>
 	<!-- ==================================== 추천페이지 ========================================= -->
-
+		<div class="container-fluid px-md-4">
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<span class="subheading">Nutritious</span>
+					<h2 class="mb-4">추천식품</h2>
+					<p><%=vo.getMb_name() %>님의 추천 식품</p>
+				</div>
+			</div>
+			<div id="food_body">
+				<section class="food_con f_section on">
+					<div class="row">
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+							
+								<img src="./foodimg/<%=URLEncoder.encode("감귤.jpg", "euc-kr")%>"> 
+								
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+							
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+								<!-- <div class="overlay"></div> -->
+							
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div
+								class="project img shadow ftco-animate d-flex justify-content-center align-items-center">
+</section>
 
 	<!-- ================================ 검색창 ========================================= -->
 	<form action="foodall.jsp" align="center">
