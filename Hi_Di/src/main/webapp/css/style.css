@@ -10240,6 +10240,9 @@ textarea.form-control {
     text-align: center;
     background: #111;
     color: #fff !important;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 

@@ -88,8 +88,8 @@
 	<% 
 	DAO dao = new DAO();
 	PollVO pvo1 = dao.SelectPoll("코로나19 바이러스 설문지");
-	PollVO pvo2 = dao.SelectPoll("코로나19 바이러스 설문지");
-	PollVO pvo3 = dao.SelectPoll("코로나19 바이러스 설문지");
+	PollVO pvo2 = dao.SelectPoll("암 설문지");
+	PollVO pvo3 = dao.SelectPoll("뇌졸중 설문지");
 	
 	ArrayList<PollitemsVO> itemslist = dao.SelectPollItems();
 	
@@ -340,6 +340,11 @@
 	<script src="js/js_main.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+		$('#submit').on('click', function(){
+			alert('설문에 참여해 주셔서 감사합니다.');
+			location.href = 'main.jsp'
+		});
+	</script>
 </body>
 </html>
