@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="Model.RecommendVO"%>
 <%@page import="java.time.LocalDate"%>
@@ -252,27 +253,19 @@
 	MemberVO vo = (MemberVO) session2.getAttribute("vo");
 	String[] reco_food = null;
 	RecommendVO revo = null;
-	
-	//시퀀스 받아오기
-	int seq = 0;
-	try {
-		seq = Integer.parseInt(request.getParameter("seq"));
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
 
-	//result값 받아오기
-	String result = request.getParameter("result");
 
 	//체크 결과 db에 저장
-	dao.InsertCheck(seq, result, vo.getMb_id());
+	/* dao.InsertCheck(seq, result, vo.getMb_id()); */
 
 	//이름값 받아오기
-	String name = request.getParameter("name");
-
+	
+	String name = URLDecoder.decode(request.getParameter("name"), "euc-kr");
+	System.out.println(name);
+	
 	ArrayList<HospitalVO> hoslist = null;
 	ArrayList<RawVO> rawlist = dao.RawSelect(); //영양성분 정보 출력
-	ArrayList<String> raw_name = new ArrayList<String>(); //영양성분 이름
+	ArrayList<String> raw_name = new ArrayList< String>(); //영양성분 이름
 	ArrayList<String> raw_func = new ArrayList<String>(); //영양성분 기능
 
 	//받아온 질병이름으로 질병 전체 정보 받아오기
@@ -706,8 +699,8 @@
 				overlay[<%=j%>].setMap(null);
 			});
 		<%}%>
-		//HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-		if (navigator.geolocation) {
+		     //HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+		    if (navigator.geolocation) {
 
 			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
 			navigator.geolocation.getCurrentPosition(function(position) {

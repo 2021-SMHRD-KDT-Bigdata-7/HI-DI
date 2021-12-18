@@ -229,45 +229,30 @@
 			// 라디오 태그 전부 가져오기
 			let radios = $('input[type="radio"]');
 			if(radioChecked() >= <%=get_arr.length %>){
-				
 				for(let i = 0; i < radios.length; i++){
-					
 					if($(radios[i]).prop('checked')){
 						console.log($(radios[i]).val());
 						num += Number($(radios[i]).val());
 					}
-					
 				}
-				
 				if(num >= <%=cvo.getCheck_std()%>){
 					console.log("병원방문")
 				}
 				
+				console.log("num : "+num);
+				console.log("check_std : "+<%=cvo.getCheck_std()%>);
 				//체크리스트 기준을 넘어 섰을 때 다른페이지로 이동
+				let result = "";
+				if(num >= <%=cvo.getCheck_std()%>){
+					// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
+					result = "y";	
+				}else{
+					alert('진단결과 정상입니다.');
+					result = "n";
+				}
+				window.location = 'checkResultService?id=<%=vo.getMb_id()%>&name=<%=cvo.getCheck_name()%>&seq=<%=cvo.getCheck_seq()%>&result='+result;
 				
- 				if(num >= <%= cvo.getCheck_std() %>){
- 					// ajax 이용해서 저장해둔 num 값을 사용해줄 servlet으로 보내줌
- 					$.ajax({
- 						type: "post", // get / post 
- 						url:"checkResult.jsp",
- 						success : function(res){
- 							// res : Servlet에서 돌려준 값
- 							// 이 안에 처리할 로직
- 							// page이동이 일어나는 경우
- 							// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
- 							// window.location : 현재 페이지 주소
- 							// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
- 							window.location = 'checkResult.jsp?name=<%= cvo.getCheck_name() %>&seq=<%= cvo.getCheck_seq() %>&result=y';
- 						},
- 						error : function() {
- 							alert('전송 실패');
- 						}					
- 					})
- 				}else{
- 		        	//체크 결과 db에 저장
- 		        	<%=dao.InsertCheck(cvo.getCheck_seq(), "n", vo.getMb_id())%>
- 		        	alert('진단결과 정상입니다.');
- 		         }
+				
  		      }else{
  		         alert('모든 문항을 체크하세요.');
  		      }
