@@ -148,8 +148,8 @@ text-align: center;
 		
 		int mb_age = Integer.parseInt(vo.getMb_birthdate().substring(0, 4)); // 사용자의 출생년도
 		String reco_age = Integer.toString((year - mb_age) / 10) + "0대"; //연령대 생성
-		ArrayList<RecommendVO> recolist = dao.SelectRecommand(reco_age); //연령대에 맞는 추천리스트 생성
-	
+		ArrayList<RecommendVO> recolist = dao.SelectRecommend(reco_age); //연령대에 맞는 추천리스트 생성
+		
 		//연령에 맞는 모든 식품데이터 arraylist에 저장
 		
 		for(int i=0; i<recolist.size(); i++){

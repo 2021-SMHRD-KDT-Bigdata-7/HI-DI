@@ -303,9 +303,9 @@
 	//중복없이 난수 4개 생성
 	int count = 4; // 난수 생성 갯수
 	int num[] = new int[count];
-	
+
 	if(vo!=null){
-		reco_food = dao.SelectDisRecommand(name).getReco_food().split(",");
+		reco_food = dao.SelectDisRecommend(name).getReco_food().split(",");
 		
 		//난수 생성
 		for(int i=0; i<count; i++){
@@ -429,6 +429,7 @@
 					</div>
 <!-- 식품추천 -->
 <!-- ===================================== 추천페이지 ========================================= -->
+	<%if(reco_food != null){ %>
 		<div class="container-fluid px-md-4">
 		
 			<div class="row justify-content-center pb-5">
@@ -480,9 +481,10 @@
 							</div>
 						</div>
 				</div>
-			</section>
+				</section>
+			</div>
 		</div>
-	</div>
+	<%} %>
 <!--  -->		
 					<div class="cl_con2">
 						<div class="cl_con2_word">병원 위치</div>

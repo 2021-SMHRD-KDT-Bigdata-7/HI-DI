@@ -437,7 +437,7 @@ public class DAO {
 	// =====================================================================================================================================
 	
 	//연령별 추천식품 불러오기
-	public ArrayList<RecommendVO> SelectRecommand(String mb_age) {
+	public ArrayList<RecommendVO> SelectRecommend(String mb_age) {
 
 		try {
 			connection();
@@ -475,7 +475,7 @@ public class DAO {
 	//======================================================================================================================================
 
 	//질병별 추천식품 불러오기
-	public RecommendVO SelectDisRecommand(String dis_name) {
+	public RecommendVO SelectDisRecommend(String dis_name) {
 		
 		try {
 			connection();
@@ -702,5 +702,35 @@ public class DAO {
 			close();
 		}
 		return itemslist;
+	}
+	//=================================================================================================
+	
+	public int InsertPoll(int item_seq, String answer_result, String mb_id) {
+
+
+		// try문
+		try {
+			connection(); // DB연결
+
+			String sql = "insert into t_mb_answer values (answer_seq.nextval, ?, ?, SYSDATE, ?)";
+
+			psmt = conn.prepareStatement(sql);
+
+			// 바인드 변수 채우기
+			psmt.setInt(1, item_seq);
+			psmt.setString(2, answer_result);
+			psmt.setString(3, mb_id);
+
+			cnt = psmt.executeUpdate(); // insert문 이므로 executeUpdate() --> return int
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		return cnt;
+	
 	}
 }
