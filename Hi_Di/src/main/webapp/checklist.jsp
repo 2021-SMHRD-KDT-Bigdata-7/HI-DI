@@ -33,15 +33,9 @@
 <style>
 
 	#div2 {
-	font-size: 1.7rem;
-    font-weight: 600;
     margin-bottom: 4vh;
     }
-    
-    .cl_b_content {
-    	
-    }
-    
+   
     
     /* 기침 모달창 CSS */
     
