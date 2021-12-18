@@ -146,8 +146,8 @@
 				</div>
 				<div id = "nosibal">
 				<h5>MyCalendar</h5>
-					<div id = "calendar" class="mp_b_content">
-	
+					<div id='calendar-container'>
+						<div id='calendar' class="mp_b_content"></div>
 					</div>
 				</div>
 			</div>
@@ -267,33 +267,45 @@
 	<script type="text/javascript"></script>
 	<!-- 캘린더 -->
 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
     	var calendarEl = document.getElementById('calendar');
 
     	var calendar = new FullCalendar.Calendar(calendarEl, {
-    		
+    		expendRows: true,
+    		height: '700px',
     		headerToolbar: {
         	left: 'prevYear,prev,next,nextYear today',
         	center: 'title',
         	right: 'dayGridMonth,dayGridWeek,dayGridDay'
       	},
-   		//  initialDate: '2020-09-12',
       	navLinks: true, // can click day/week names to navigate views
       	editable: true,
       	dayMaxEvents: true, // allow "more" link when too many events
       	events: [
-        
     	  // 이벤트 들어갈 자리 ex) 자가진단 질병명 같은거
-    	  
       	]
-    		});
-
-    	calendar.render();
-  		});
-	</script>
-	<!-- 캘린더 -->
+    	});
 	
-	<!-- 풀 캘린더 -->
-	<div id='calendar'></div>
+    	calendar.render();
+	</script>
+	
+	<script type="text/javascript">
+		// 1. DAO에 메서드 하나 만들것
+		//		- 본인의 검사한 기록만 가져오기
+		//		- ArrayList 로 가져오기
+		//		- ppt참고 해서 Gson 라이브러리 사용
+		//				- ArrayList를 json데이터로 변환
+		//		- out.print(json)
+		
+		// 2. 이 페이지가 열릴 때, ajax통신 이용해서 json받아오기
+		
+		// 3. 받아오면 > javascript객체 / 객체 배열 --> 꺼내서 calendar에 추가
+		calendar.addEvent({
+			title: "Test",
+			start: "2021-12-17",
+			allDay: true
+			})
+		// 위의 메서드 이용하면 쉽게 추가 할 수 있음
+
+	</script>
 </body>
 </html>	

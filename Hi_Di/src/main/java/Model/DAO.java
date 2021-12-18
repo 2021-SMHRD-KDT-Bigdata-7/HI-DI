@@ -29,6 +29,7 @@ public class DAO {
 	ArrayList<FoodVO> foodlist = new ArrayList<FoodVO>();
 	RecommendVO revo = null;
 	ArrayList<RecommendVO> recolist = new ArrayList<RecommendVO>();
+	CalendarVO civo = null;
 
 	// DB연결
 	public void connection() {
@@ -733,4 +734,43 @@ public class DAO {
 		return cnt;
 	
 	}
+	
+	// =============================================================================================
+	
+		// 캘린터 체크
+			public ArrayList<CalendarVO> CheckCalendar(String mb_id) {
+				
+				ArrayList<CalendarVO> CheckCalendar = new ArrayList<CalendarVO>(); 
+				
+				try {
+					connection();
+					// sql문
+					String sql = "select * from t_user_check where mb_id = ?";
+					psmt = conn.prepareStatement(sql);
+					psmt.setString(1, mb_id);
+
+					// 실행
+					rs = psmt.executeQuery();
+
+					
+					while (rs.next() == true) {
+						int User_check_seq = rs.getInt(1);
+						int check_seq = rs.getInt(2);
+						String user_check_result = rs.getString(3);
+						String MB_ID = rs.getString(4);
+						String reg_date = rs.getString(5);
+						
+						civo = new CalendarVO(User_check_seq, check_seq, user_check_result, MB_ID, reg_date);
+						CheckCalendar.add(civo);
+					}
+
+				} catch (Exception e) {
+
+					e.printStackTrace();
+
+				} finally {
+					close();
+				}
+				return CheckCalendar;
+			}
 }
