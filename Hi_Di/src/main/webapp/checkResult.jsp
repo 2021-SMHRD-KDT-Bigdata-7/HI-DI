@@ -635,10 +635,10 @@
 		var markerImage = [];   //마커 이미지+크기 배열
 		var imageSize = new kakao.maps.Size(30, 30);   //마커크기
 		var dpt = ["안과", "종합", "내과", "마치통증의학과", "산부인과", "성형외과", "소아과", "소아청소년과", "비뇨기과", "비뇨의학과", "신경과", "신경외과", "외과",
-		   "영상의학과", "정신과", "정형외과", "치과", "피부과", "한방과"];
+		   "영상의학과", "정신과", "정형외과", "치과", "피부과", "한방과", "이비인후과"];
 	
 		//마커 이미지의 이미지 주소입니다
-		for(let i=1; i<20; i++){
+		for(let i=1; i<21; i++){
 		   var imageSrc = "./mapimages/hospital"+i+".png";
 		   markerImage[i-1] = new kakao.maps.MarkerImage(imageSrc, imageSize);
 		}
@@ -661,7 +661,7 @@
 		                '        <div class="body">' +
 		                '            <div class="desc">' + 
 		                '                <div class="ellipsis"><%=hoslist.get(j).getHos_addr()%></div>' + 
-		                '                <div class="jibun ellipsis"><%=hoslist.get(j).getHos_phone()%></div>' + 
+		                '                <div ㅋclass="jibun ellipsis"><%=hoslist.get(j).getHos_phone()%></div>' + 
 		                '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
 		                '            </div>' + 
 		                '        </div>' + 
@@ -669,7 +669,7 @@
 		                '</div>';
 		         
 			// 마커를 생성합니다
-			for(let i=0; i<19; i++){
+			for(let i=0; i<21; i++){
 				if("<%=hoslist.get(j).getHos_dpt()%>" == dpt[i]) {
 					marker[<%=j%>] = new kakao.maps.Marker({
 						map : map, // 마커를 표시할 지도
@@ -699,7 +699,9 @@
 				overlay[<%=j%>].setMap(null);
 			});
 		<%}%>
-		     //HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+		
+		/* 
+	 	     //HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 		    if (navigator.geolocation) {
 
 			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
@@ -746,7 +748,7 @@
 
 			// 지도 중심좌표를 접속위치로 변경합니다
 			map.setCenter(locPosition);
-		}
+		}  */
 	</script>
 <%}%>
 	<!-- 지도 끝 -->
