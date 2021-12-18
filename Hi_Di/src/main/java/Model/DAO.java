@@ -30,6 +30,7 @@ public class DAO {
 	RecommendVO revo = null;
 	ArrayList<RecommendVO> recolist = new ArrayList<RecommendVO>();
 	CalendarVO civo = null;
+	ArrayList<CalendarVO> CheckCalendar = new ArrayList<CalendarVO>();
 
 	// DB연결
 	public void connection() {
@@ -219,7 +220,6 @@ public class DAO {
 
 		return cvo;
 	}
-
 	// ===================================================================
 
 	// 연령으로 검색해 체크리스트 호출
@@ -259,6 +259,45 @@ public class DAO {
 		}
 
 		return checklist;
+	}
+	// ================================================================
+	
+	// 질병 코드로 검색해 체크리스트 호출
+	public ChecklistVO SelectSeqCheck(int check_seq) {
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_checklist where check_seq = ?";
+			psmt = conn.prepareStatement(sql);
+			
+			// 바인드 변수 채우기
+			psmt.setInt(1, check_seq);
+			
+			// 실행
+			rs = psmt.executeQuery();
+			
+			// cvo에 체크리스트 저장
+			if (rs.next() == true) {
+				int checkSeq = rs.getInt(1);
+				String checkAge = rs.getString(2);
+				String checkName = rs.getString(3);
+				String disCode = rs.getString(4);
+				String checkItem = rs.getString(5);
+				int checkStd = rs.getInt(6);
+				String reg_date = rs.getString(7);
+				
+				cvo = new ChecklistVO(checkSeq, checkAge, checkName, disCode, checkItem, checkStd, reg_date);
+			}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close();
+		}
+		
+		return cvo;
 	}
 	// ================================================================
 
@@ -333,8 +372,8 @@ public class DAO {
 
 		return dvo;
 	}
-
 	// =================================================================================================================================
+	
 	// 식품명으로 일부 검색
 	public FoodVO Searchfood(String food_name) {
 
@@ -383,7 +422,8 @@ public class DAO {
 		}
 		return fvo;
 	}
-// =====================================================================================================================================
+	// =====================================================================================================================================
+	
 	// 식품 전체 불러오기
 	public ArrayList<FoodVO> SelectAllfood() {
 		int i = 0;
@@ -434,7 +474,6 @@ public class DAO {
 		}
 		return foodlist;
 	}
-
 	// =====================================================================================================================================
 	
 	//연령별 추천식품 불러오기
@@ -511,6 +550,7 @@ public class DAO {
 		return revo;
 	}
 	//======================================================================================================================================
+	
 	// 병원정보 불러오기
 	public ArrayList<HospitalVO> HospitalAll(String hos_dpt) {
 		try {
@@ -558,8 +598,8 @@ public class DAO {
 
 		return hoslist;
 	}
-
 	// =====================================================================================================================================
+	
 	// 건강기능 식품 불러오기
 	public ArrayList<RawVO> RawSelect() {
 		try {
@@ -595,8 +635,8 @@ public class DAO {
 
 		return rawlist;
 	}
-
 	// =====================================================================================================================================
+	
 	// 회원정보수정
 	public int Update(String name, String id, String pw, String email, String gender, String tel, String birthdate,
 			String addr) {
@@ -672,8 +712,9 @@ public class DAO {
 
 		return pvo;
 	}
-
 	// =============================================================================================
+	
+	//설문항목 가져오기
 	public ArrayList<PollitemsVO> SelectPollItems() {
 		try {
 			connection();
@@ -706,6 +747,7 @@ public class DAO {
 	}
 	//=================================================================================================
 	
+	//설문결과 저장
 	public int InsertPoll(int item_seq, String answer_result, String mb_id) {
 
 
@@ -734,43 +776,37 @@ public class DAO {
 		return cnt;
 	
 	}
-	
 	// =============================================================================================
 	
-		// 캘린터 체크
-			public ArrayList<CalendarVO> CheckCalendar(String mb_id) {
+	// 캘린터 체크
+	public ArrayList<CalendarVO> CheckResult(String mb_id) {			
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_user_check where mb_id = ? order by reg_date";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, mb_id);
+
+			// 실행
+			rs = psmt.executeQuery();
 				
-				ArrayList<CalendarVO> CheckCalendar = new ArrayList<CalendarVO>(); 
+			while (rs.next() == true) {
+				int User_check_seq = rs.getInt(1);
+				int check_seq = rs.getInt(2);
+				String user_check_result = rs.getString(3);
+				String reg_date = rs.getString(4);
+				String MB_ID = rs.getString(5);
 				
-				try {
-					connection();
-					// sql문
-					String sql = "select * from t_user_check where mb_id = ?";
-					psmt = conn.prepareStatement(sql);
-					psmt.setString(1, mb_id);
-
-					// 실행
-					rs = psmt.executeQuery();
-
-					
-					while (rs.next() == true) {
-						int User_check_seq = rs.getInt(1);
-						int check_seq = rs.getInt(2);
-						String user_check_result = rs.getString(3);
-						String MB_ID = rs.getString(4);
-						String reg_date = rs.getString(5);
-						
-						civo = new CalendarVO(User_check_seq, check_seq, user_check_result, MB_ID, reg_date);
-						CheckCalendar.add(civo);
-					}
-
-				} catch (Exception e) {
-
-					e.printStackTrace();
-
-				} finally {
-					close();
-				}
-				return CheckCalendar;
+				civo = new CalendarVO(User_check_seq, check_seq, user_check_result, reg_date, MB_ID);
+				CheckCalendar.add(civo);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return CheckCalendar;
+	}
+	//=============================================================================
+
 }

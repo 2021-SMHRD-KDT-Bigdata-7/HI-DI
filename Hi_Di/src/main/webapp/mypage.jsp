@@ -1,3 +1,4 @@
+<%@page import="Model.CalendarVO"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.time.LocalDate"%>
@@ -53,8 +54,21 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 	<%
+	DAO dao = new DAO();
 	MemberVO vo = (MemberVO) session.getAttribute("vo");
-	System.out.println(vo.getMb_name());
+	ArrayList<CalendarVO> CheckCalendar = new ArrayList<CalendarVO>();
+	ChecklistVO cvo = null;
+	
+	if(vo != null){
+		CheckCalendar = dao.CheckResult(vo.getMb_id());
+		if(CheckCalendar != null){
+			for(int i=0; i<CheckCalendar.size(); i++){
+				out.print(CheckCalendar.get(i).getCheck_seq() + 
+						"," + CheckCalendar.get(i).getUser_check_result() + ","+ CheckCalendar.get(i).getReg_date().substring(0,10)+"   /   ");
+				
+			}
+		}
+	}
 	%>
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -282,30 +296,30 @@
       	dayMaxEvents: true, // allow "more" link when too many events
       	events: [
     	  // 이벤트 들어갈 자리 ex) 자가진단 질병명 같은거
+
       	]
     	});
 	
     	calendar.render();
 	</script>
 	
+<%if(CheckCalendar != null){ %>
 	<script type="text/javascript">
-		// 1. DAO에 메서드 하나 만들것
-		//		- 본인의 검사한 기록만 가져오기
-		//		- ArrayList 로 가져오기
-		//		- ppt참고 해서 Gson 라이브러리 사용
-		//				- ArrayList를 json데이터로 변환
-		//		- out.print(json)
 		
-		// 2. 이 페이지가 열릴 때, ajax통신 이용해서 json받아오기
-		
-		// 3. 받아오면 > javascript객체 / 객체 배열 --> 꺼내서 calendar에 추가
-		calendar.addEvent({
-			title: "Test",
-			start: "2021-12-17",
-			allDay: true
-			})
-		// 위의 메서드 이용하면 쉽게 추가 할 수 있음
-
+		<%for(int i=0; i<CheckCalendar.size(); i++){%>
+			<%if(CheckCalendar.get(i).getUser_check_result().equals("y")){%>
+				<%int seq=CheckCalendar.get(i).getCheck_seq();%>
+				<%cvo = dao.SelectSeqCheck(seq); %>
+				<%if (cvo != null){%>
+					calendar.addEvent({
+						title: "<%=cvo.getCheck_name()%>",
+						start: "<%=CheckCalendar.get(i).getReg_date().substring(0,10)%>",
+						allDay: true
+					});
+				<%}%>
+			<%}%>
+		<%}%>
 	</script>
+<%} %>
 </body>
 </html>	

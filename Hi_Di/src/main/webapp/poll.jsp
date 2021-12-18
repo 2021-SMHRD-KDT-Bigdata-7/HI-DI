@@ -119,9 +119,8 @@
 					<h2 class="polltitle"><%=pvo1.getPoll_title() %></h2>
 					<h6 class="pollsub"><%=pvo1.getPoll_content() %></h6>
 					<br><br>
-					<form action="InserPoll" method="post">
 						<table>
-							<%for(int i=0; i<=5; i++){ %>
+							<%for(int i=0; i<6; i++){ %>
 								<tr>
 									<td>
 										<p class="itemTitle"><%=itemslist.get(i).getItem_name() %></p>
@@ -136,7 +135,6 @@
 								</td>
 							</tr>
 						</table>
-					</form>
 					</div>
 				</div>
 				<!-- 설문시작 -->
@@ -165,7 +163,6 @@
 					<h2 class="polltitle"><%=pvo2.getPoll_title() %></h2>
 					<h6 class="pollsub"><%=pvo2.getPoll_content() %></h6>
 					<br><br>
-					<form action="InserPoll" method="post">
 						<table>
 							<%for(int i=6; i<9; i++){ %>
 								<tr>
@@ -182,7 +179,6 @@
 								</td>
 							</tr>
 						</table>
-					</form>
 					</div>
 				</div>
 				<!-- 설문시작 -->
@@ -211,7 +207,6 @@
 					<h2 class="polltitle"><%=pvo3.getPoll_title() %></h2>
 					<h6 class="pollsub"><%=pvo3.getPoll_content() %></h6>
 					<br><br>
-					<form action="InserPoll" method="post">
 						<table>
 							<%for(int i=9; i<24; i++){ %>
 								<tr>
@@ -227,8 +222,7 @@
 									<button type="button" id="submit">제출</button>
 								</td>
 							</tr>
-						</table>						
-					</form>
+						</table>
 					</div>
 				</div>
 				<!-- 설문시작 -->	
@@ -349,6 +343,7 @@
 	<script type="text/javascript">
 		$('#submit').on('click', function(){
 			alert('설문에 참여해 주셔서 감사합니다.');
+			location.href="main.jsp"
 		});
 	</script>
 </body>

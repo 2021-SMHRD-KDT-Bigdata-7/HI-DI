@@ -25,17 +25,20 @@ public class InsertPoll extends HttpServlet {
 		
 		DAO dao = new DAO();
 		
-		int item_seq = Integer.parseInt(request.getParameter("item_seq"));
+		int item_seq1 = Integer.parseInt(request.getParameter("item_seq1"));
+		int item_seq2 = Integer.parseInt(request.getParameter("item_seq2"));
+		int item_seq3 = Integer.parseInt(request.getParameter("item_seq3"));
+		int item_seq4 = Integer.parseInt(request.getParameter("item_seq4"));
+		int item_seq5 = Integer.parseInt(request.getParameter("item_seq5"));
+		int item_seq6 = Integer.parseInt(request.getParameter("item_seq6"));
 		String answer = request.getParameter("answer");
 		
-		int cnt = dao.InsertPoll(item_seq, answer, vo.getMb_id());
-		
-		if (cnt > 0) {
-			System.out.println("설문 등록 성공!");
-			
-		} else {
-			System.out.println("설문 등록 실패!");
-		}
+		dao.InsertPoll(item_seq1, answer, vo.getMb_id());
+		dao.InsertPoll(item_seq2, answer, vo.getMb_id());
+		dao.InsertPoll(item_seq3, answer, vo.getMb_id());
+		dao.InsertPoll(item_seq4, answer, vo.getMb_id());
+		dao.InsertPoll(item_seq5, answer, vo.getMb_id());
+		dao.InsertPoll(item_seq6, answer, vo.getMb_id());
 		
 		response.sendRedirect("main.jsp");
 				
