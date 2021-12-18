@@ -251,6 +251,7 @@
 	HttpSession session2 = request.getSession();
 	MemberVO vo = (MemberVO) session2.getAttribute("vo");
 	String[] reco_food = null;
+	RecommendVO revo = null;
 	
 	//시퀀스 받아오기
 	int seq = 0;
@@ -305,17 +306,20 @@
 	int num[] = new int[count];
 
 	if(vo!=null){
-		reco_food = dao.SelectDisRecommend(name).getReco_food().split(",");
-		
-		//난수 생성
-		for(int i=0; i<count; i++){
-			num[i] = rd.nextInt(reco_food.length); // 추천식품 개수만큼 랜덤으로 난수 생성 
-			for(int j=0; j<i; j++){
-				if(num[i] == num[j]){
-					i--;
+		revo = dao.SelectDisRecommend(name);
+		if(revo !=null){
+			reco_food = revo.getReco_food().split(",");			
+			//난수 생성
+			for(int i=0; i<count; i++){
+				num[i] = rd.nextInt(reco_food.length); // 추천식품 개수만큼 랜덤으로 난수 생성 
+				for(int j=0; j<i; j++){
+					if(num[i] == num[j]){
+						i--;
+					}
 				}
-			}
-		} 
+			} 
+		}
+		
 	}
 	%>
 
