@@ -719,9 +719,9 @@ public class DAO {
 		try {
 			connection();
 			// sql문
-			String sql = "select * from t_poll_items";
+			String sql = "select * from t_poll_items order by item_seq";
 			psmt = conn.prepareStatement(sql);
-
+			
 			// 실행
 			rs = psmt.executeQuery();
 
@@ -755,7 +755,7 @@ public class DAO {
 		try {
 			connection(); // DB연결
 
-			String sql = "insert into t_mb_answer values (answer_seq.nextval, ?, ?, SYSDATE, ?)";
+			String sql = "insert into t_mb_answer values (t_mb_answer_seq.nextval, ?, ?, SYSDATE, ?)";
 
 			psmt = conn.prepareStatement(sql);
 

@@ -20,26 +20,21 @@ public class InsertPoll extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("euc-kr");
+		
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO)session.getAttribute("vo");
 		
 		DAO dao = new DAO();
 		
-		int item_seq1 = Integer.parseInt(request.getParameter("item_seq1"));
-		int item_seq2 = Integer.parseInt(request.getParameter("item_seq2"));
-		int item_seq3 = Integer.parseInt(request.getParameter("item_seq3"));
-		int item_seq4 = Integer.parseInt(request.getParameter("item_seq4"));
-		int item_seq5 = Integer.parseInt(request.getParameter("item_seq5"));
-		int item_seq6 = Integer.parseInt(request.getParameter("item_seq6"));
-		String answer = request.getParameter("answer");
-		
-		dao.InsertPoll(item_seq1, answer, vo.getMb_id());
-		dao.InsertPoll(item_seq2, answer, vo.getMb_id());
-		dao.InsertPoll(item_seq3, answer, vo.getMb_id());
-		dao.InsertPoll(item_seq4, answer, vo.getMb_id());
-		dao.InsertPoll(item_seq5, answer, vo.getMb_id());
-		dao.InsertPoll(item_seq6, answer, vo.getMb_id());
-		
+		for(int i=1; i<=23; i++){
+			String answer = request.getParameter("answer"+i);
+			System.out.println(answer);
+			if(answer != null) {
+				dao.InsertPoll(i, answer, vo.getMb_id());
+			}
+		}
+				
 		response.sendRedirect("main.jsp");
 				
 	}

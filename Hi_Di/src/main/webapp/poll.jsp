@@ -92,7 +92,6 @@
 	PollVO pvo3 = dao.SelectPoll("뇌졸중 설문지");
 	
 	ArrayList<PollitemsVO> itemslist = dao.SelectPollItems();
-	
 	%>
 
 	<div id="poll_body">
@@ -119,22 +118,51 @@
 					<h2 class="polltitle"><%=pvo1.getPoll_title() %></h2>
 					<h6 class="pollsub"><%=pvo1.getPoll_content() %></h6>
 					<br><br>
-						<table>
-							<%for(int i=0; i<6; i++){ %>
+						<form action="InsertPoll" method="post">
+							<table>
 								<tr>
 									<td>
-										<p class="itemTitle"><%=itemslist.get(i).getItem_name() %></p>
-										<p class="itemSub">(<%=itemslist.get(i).getItem_content() %>)</p>
-										<textarea class="answer" cols = "77" rows="5"></textarea>
+										<p class="itemTitle">-<%=itemslist.get(0).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(0).getItem_content() %>)</p>
+										<textarea name="answer1"class="answer" cols = "77" rows="5"></textarea>
 									</td>
 								</tr>
-							<%} %>
-							<tr>
-								<td>
-									<button type="button" id="submit">제출</button>
-								</td>
-							</tr>
-						</table>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(1).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(1).getItem_content() %>)</p>
+										<textarea name="answer2"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(2).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(2).getItem_content() %>)</p>
+										<textarea name="answer3"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(3).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(3).getItem_content() %>)</p>
+										<textarea name="answer4"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(4).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(4).getItem_content() %>)</p>
+										<textarea name="answer5"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<input type="submit" id="submit" value="제출">
+									</td>
+								</tr>
+							</table>						
+						</form>
 					</div>
 				</div>
 				<!-- 설문시작 -->
@@ -157,28 +185,43 @@
 						<a href="#" class="poll3_click"><p>뇌졸증</p></a>
 					</section>
 				</div>
-				<!-- 설문시작 -->
+								<!-- 설문시작 -->
 				<div class="poll_b_content">
 					<div id="poll_list">
 					<h2 class="polltitle"><%=pvo2.getPoll_title() %></h2>
 					<h6 class="pollsub"><%=pvo2.getPoll_content() %></h6>
 					<br><br>
-						<table>
-							<%for(int i=6; i<9; i++){ %>
+						<form action="InsertPoll" method="post">
+							<table>
 								<tr>
 									<td>
-										<p class="itemTitle"><%=itemslist.get(i).getItem_name() %></p>
-										<p class="itemSub">(<%=itemslist.get(i).getItem_content() %>)</p>
-										<textarea class="answer"  cols = "77" rows="5"></textarea>
+										<p class="itemTitle">-<%=itemslist.get(5).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(5).getItem_content() %>)</p>
+										<textarea name="answer6"class="answer" cols = "77" rows="5"></textarea>
 									</td>
 								</tr>
-							<%} %>
-							<tr>
-								<td>
-									<button type="button" id="submit">제출</button>
-								</td>
-							</tr>
-						</table>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(6).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(6).getItem_content() %>)</p>
+										<textarea name="answer7"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(7).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(7).getItem_content() %>)</p>
+										<textarea name="answer8"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<input type="submit" id="submit" value="제출">
+									</td>
+								</tr>
+							</table>						
+						</form>
 					</div>
 				</div>
 				<!-- 설문시작 -->
@@ -201,31 +244,130 @@
 						<a href="#" class="poll3_click"><p>뇌졸증</p></a>
 					</section>
 				</div>
-				<!-- 설문시작 -->
+								<!-- 설문시작 -->
 				<div class="poll_b_content">
 					<div id="poll_list">
-					<h2 class="polltitle"><%=pvo3.getPoll_title() %></h2>
-					<h6 class="pollsub"><%=pvo3.getPoll_content() %></h6>
+					<h2 class="polltitle"><%=pvo1.getPoll_title() %></h2>
+					<h6 class="pollsub"><%=pvo1.getPoll_content() %></h6>
 					<br><br>
-						<table>
-							<%for(int i=9; i<24; i++){ %>
+						<form action="InsertPoll" method="post">
+							<table>
 								<tr>
 									<td>
-										<p class="itemTitle"><%=itemslist.get(i).getItem_name() %></p>
-										<p class="itemSub">(<%=itemslist.get(i).getItem_content() %>)</p>
-										<textarea class="answer" cols = "77" rows="5"></textarea>
+										<p class="itemTitle">-<%=itemslist.get(8).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(8).getItem_content() %>)</p>
+										<textarea name="answer9"class="answer" cols = "77" rows="5"></textarea>
 									</td>
 								</tr>
-							<%} %>
-							<tr>
-								<td>
-									<button type="button" id="submit">제출</button>
-								</td>
-							</tr>
-						</table>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(9).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(9).getItem_content() %>)</p>
+										<textarea name="answer10"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(10).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(10).getItem_content() %>)</p>
+										<textarea name="answer11"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(11).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(11).getItem_content() %>)</p>
+										<textarea name="answer12"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(12).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(12).getItem_content() %>)</p>
+										<textarea name="answer13"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(13).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(13).getItem_content() %>)</p>
+										<textarea name="answer14"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(14).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(14).getItem_content() %>)</p>
+										<textarea name="answer15"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(15).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(15).getItem_content() %>)</p>
+										<textarea name="answer16"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(16).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(16).getItem_content() %>)</p>
+										<textarea name="answer17"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(17).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(17).getItem_content() %>)</p>
+										<textarea name="answer18"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(18).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(18).getItem_content() %>)</p>
+										<textarea name="answer19"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(19).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(19).getItem_content() %>)</p>
+										<textarea name="answer20"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(20).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(20).getItem_content() %>)</p>
+										<textarea name="answer21"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(21).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(21).getItem_content() %>)</p>
+										<textarea name="answer22"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="itemTitle">-<%=itemslist.get(22).getItem_name() %></p>
+										<p class="itemSub">(<%=itemslist.get(22).getItem_content() %>)</p>
+										<textarea name="answer23"class="answer" cols = "77" rows="5"></textarea>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<input type="submit" id="submit" value="제출">
+									</td>
+								</tr>
+							</table>						
+						</form>
 					</div>
 				</div>
-				<!-- 설문시작 -->	
+				<!-- 설문시작 -->
 			</div>
 		</div>
 	</div>
@@ -343,7 +485,6 @@
 	<script type="text/javascript">
 		$('#submit').on('click', function(){
 			alert('설문에 참여해 주셔서 감사합니다.');
-			location.href="main.jsp"
 		});
 	</script>
 </body>
