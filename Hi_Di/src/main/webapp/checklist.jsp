@@ -122,14 +122,15 @@
 
    LocalDate now = LocalDate.now(); // 현재 날짜
    int year = now.getYear(); // 연도만 가져옴
-
+   
+   String mb_birth = vo.getMb_birthdate();
    int mb_age = Integer.parseInt(vo.getMb_birthdate().substring(0, 4)); // 사용자의 출생년도
    String check_age = Integer.toString((year - mb_age) / 10) + "0대"; //연령대 생성
    ArrayList<ChecklistVO> mb_checklist = dao.SelectCheckAge(check_age); //연령대에 맞는 체크리스트 생성
 
    //연령별 랜덤으로 체크리스트 출력을 위해 랜덤 수 생성
    Random rd = new Random();
-   int num = rd.nextInt(mb_checklist.size() + 1);
+   int num = rd.nextInt(mb_checklist.size());
 
    int check_seq = mb_checklist.get(num).getCheck_seq(); //랜덤 시퀀스
    String check_name = mb_checklist.get(num).getCheck_name(); //랜덤 질병명
@@ -531,23 +532,7 @@
 				alert('진단결과 정상입니다.');
 				result = "n";
 			}
-			window.location = 'checkResultService?id=<%=vo.getMb_id()%>&name=<%=check_name%>&seq=<%=check_seq%>&result='+result;
-		<%-- 		$.ajax({
-					type: "post", // get / post 
-					url:"checkResult.jsp",
-					success : function(res){
-					// res : Servlet에서 돌려준 값
-					// 이 안에 처리할 로직
-					// page이동이 일어나는 경우
-					// window객체 사용 : window객체 --> 현채 창의 모든정보를 가짐
-					// window.location : 현재 페이지 주소
-					// window.location = 'test.jsp' 이런식으로 이동시킬 수 있음
-					window.location = 'checkResultService?name=<%=check_name%>&seq=<%=check_seq%>&result=y';
-					},
-					error : function() {
-						alert('전송 실패');
-					}               
-				}) --%>
+			window.location = 'checkResultService?point=o&id=<%=vo.getMb_id()%>&name=<%=check_name%>&seq=<%=check_seq%>&result='+result;
        		
 			
 	    	

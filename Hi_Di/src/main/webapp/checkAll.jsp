@@ -250,7 +250,7 @@
 					alert('진단결과 정상입니다.');
 					result = "n";
 				}
-				window.location = 'checkResultService?id=<%=vo.getMb_id()%>&name=<%=cvo.getCheck_name()%>&seq=<%=cvo.getCheck_seq()%>&result='+result;
+				window.location = 'checkResultService?point=x&id=<%=vo.getMb_id()%>&name=<%=cvo.getCheck_name()%>&seq=<%=cvo.getCheck_seq()%>&result='+result;
 				
 				
  		      }else{

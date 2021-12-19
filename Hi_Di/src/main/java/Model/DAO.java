@@ -31,6 +31,7 @@ public class DAO {
 	ArrayList<RecommendVO> recolist = new ArrayList<RecommendVO>();
 	CalendarVO civo = null;
 	ArrayList<CalendarVO> CheckCalendar = new ArrayList<CalendarVO>();
+	PointVO povo = null;
 
 	// DB연결
 	public void connection() {
@@ -808,5 +809,106 @@ public class DAO {
 		return CheckCalendar;
 	}
 	//=============================================================================
+	
+	//포인트 저장
+	public int InsertPoint(int point, String point_memo, String mb_id, String point_kind) {
+
+
+		// try문
+		try {
+			connection(); // DB연결
+
+			String sql = "insert into t_point values (t_point_seq.nextval, ?, ?, SYSDATE, ?, ?)";
+
+			psmt = conn.prepareStatement(sql);
+
+			// 바인드 변수 채우기
+			psmt.setInt(1, point);
+			psmt.setString(2, point_memo);
+			psmt.setString(3, mb_id);
+			psmt.setString(4, point_kind);
+
+			cnt = psmt.executeUpdate(); // insert문 이므로 executeUpdate() --> return int
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		return cnt;
+	
+	}
+	// =============================================================================================
+	
+	public PointVO SelectPoint(String mb_id, String point_memo, String reg_date) {
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_point where mb_id = ? and point_memo = ? and reg_date like ?";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, mb_id);
+			psmt.setString(2, point_memo);
+			psmt.setString(3, reg_date+"%");
+			
+			// 실행
+			rs = psmt.executeQuery();
+
+			// cvo에 체크리스트 저장
+			if (rs.next() == true) {
+				int pointSeq = rs.getInt(1);
+				int point = rs.getInt(2);
+				String pointMemo = rs.getString(3);
+				String regDate = rs.getString(4);
+				String mbId = rs.getString(5);
+				String pointKind = rs.getString(6);
+
+				povo = new PointVO(pointSeq, point, pointMemo, regDate, mbId, pointKind);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		return povo;
+	}
+	//=================================================================================================
+	
+	// 포인트 수정
+		public int UpdatePoint(String mb_id, int mb_point) {
+			// try문
+			// JDBC 코드는 문법이 맞더라도, 실행중에 발생하는 오류(런타임 오류) 처리 필요
+			try {
+
+				connection();
+
+				// 3. sql문 준비
+				String sql = "update t_member set mb_point =? where mb_id = ?";
+				psmt = conn.prepareStatement(sql);
+
+				// 4. 바인드 변수 채우기
+				psmt.setInt(1, mb_point);
+				psmt.setString(2, mb_id);
+				// 5. 실행
+				// select -> executeQuery() --> return ResultSet
+				// insert, delete, update -> executeUpdate() --> return int(몇 행이 성공했는지)
+				cnt = psmt.executeUpdate();
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+			} finally {
+				close();
+
+			}
+			return cnt;
+		}
+		// =====================================================================================================================================
 
 }

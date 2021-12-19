@@ -75,19 +75,14 @@
 
 
 	<ul id="login">
-		<%
-		if (vo == null) {
-		%>
-		<li><a href="join.jsp">회원가입</a></li>
-		<li><a href="login.jsp">로그인</a></li>
-		<%
-		} else {
-		%>
-		<li><a href="LogoutService">로그아웃</a></li>
-		<li><a href="mypage.jsp">마이페이지</a></li>
-		<%
-		}
-		%>
+		<%if (vo == null) {%>
+			<li><a href="join.jsp">회원가입</a></li>
+			<li><a href="login.jsp">로그인</a></li>
+		<%} else {%>
+			<li><a href="LogoutService">로그아웃</a></li>
+			<li><a href="mypage.jsp">마이페이지</a></li>
+			<li><a><%=vo.getMb_point() %> P</a></li>
+		<%}%>
 	</ul>
 
 	<nav

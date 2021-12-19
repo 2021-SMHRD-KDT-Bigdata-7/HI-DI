@@ -86,6 +86,7 @@
 	</section>
 	
 	<% 
+	MemberVO vo = (MemberVO)session.getAttribute("vo");
 	DAO dao = new DAO();
 	PollVO pvo1 = dao.SelectPoll("코로나19 바이러스 설문지");
 	PollVO pvo2 = dao.SelectPoll("암 설문지");
@@ -485,6 +486,7 @@
 	<script type="text/javascript">
 		$('#submit').on('click', function(){
 			alert('설문에 참여해 주셔서 감사합니다.');
+			
 		});
 	</script>
 </body>

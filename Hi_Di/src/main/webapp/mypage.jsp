@@ -61,13 +61,6 @@
 	
 	if(vo != null){
 		CheckCalendar = dao.CheckResult(vo.getMb_id());
-		if(CheckCalendar != null){
-			for(int i=0; i<CheckCalendar.size(); i++){
-				out.print(CheckCalendar.get(i).getCheck_seq() + 
-						"," + CheckCalendar.get(i).getUser_check_result() + ","+ CheckCalendar.get(i).getReg_date().substring(0,10)+"   /   ");
-				
-			}
-		}
 	}
 	%>
 
@@ -127,6 +120,9 @@
 					<section>
 						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
 					</section>
+					<section>
+						<a href="#" class="mp3_click"><p>Point</p></a>
+					</section>
 				</div>
 				<div class="mp_b_content">
 					<h5>개인정보수정</h5>
@@ -157,12 +153,48 @@
 					<section>
 						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
 					</section>
+					<section>
+						<a href="#" class="mp3_click"><p>Point</p></a>
+					</section>
 				</div>
 				<div id = "nosibal">
 				<h5>MyCalendar</h5>
 					<div id='calendar-container'>
 						<div id='calendar' class="mp_b_content"></div>
 					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="mypage3" class="mypageMain2">
+			<div class="mp_word">
+				<h3>마이페이지</h3>
+			</div>
+			<div class="mp_body">
+				<div class="mp_b_menu">
+					<section>
+						<a href="#" class="mp1_click"><p>개인정보수정</p></a>
+					</section>
+					<section>
+						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
+					</section>
+					<section>
+						<a href="#" class="mp3_click"><p>Point</p></a>
+					</section>
+				</div>
+				<div class="mp_b_content">
+					<h5>Point</h5>
+					<ul>
+						<li>이름  : <%=vo.getMb_name() %> </li>
+						<li>ID  : <%=vo.getMb_id() %></li>
+						<li>PW  : <%=vo.getMb_pw() %></li>
+						<li>E-mail  : <%=vo.getMb_email() %></li>
+						<li>성별  : <%=vo.getMb_gender() %></li>
+						<li>전화번호  : <%=vo.getMb_phone() %></li>
+						<li>생일  : <%=vo.getMb_birthdate() %></li>
+						<li>주소  : <%=vo.getMb_addr() %></li>
+					</ul>
+					<a href="mypage_check.jsp" class="mp_check_go">수정</a>
 				</div>
 			</div>
 		</div>

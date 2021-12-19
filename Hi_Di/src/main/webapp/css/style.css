@@ -8201,6 +8201,9 @@ h1, h2, h3, h4, h5,
 #login li:nth-child(2){
   margin-right: 30px;
 }
+#login li:nth-child(3){
+  margin-right: 10px;
+}
 #login li a{
   color: #ccc;
   line-height: 4vh;
@@ -9884,6 +9887,10 @@ textarea.form-control {
 }
 /*마이페이지 css*/
 .mypageMain{
+	display:none;
+	color:#111;
+}
+.mypageMain2{
 	display:none;
 	color:#111;
 }
