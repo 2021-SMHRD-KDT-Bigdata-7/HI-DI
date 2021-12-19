@@ -82,12 +82,21 @@ $(".mp1_click").click(
 	function(){
 		$("#mypage1").addClass("open");
 		$("#mypage2").removeClass("open");
+		$("#mypage3").removeClass("open");
 	}
 );
 $(".mp2_click").click(
 	function(){
 		$("#mypage1").removeClass("open");
 		$("#mypage2").addClass("open");
+		$("#mypage3").removeClass("open");
+	}
+);
+$(".mp3_click").click(
+	function(){
+		$("#mypage1").removeClass("open");
+		$("#mypage2").removeClass("open");
+		$("#mypage3").addClass("open");
 	}
 );
 

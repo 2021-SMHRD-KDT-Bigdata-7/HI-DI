@@ -1,3 +1,4 @@
+<%@page import="Model.PointVO"%>
 <%@page import="Model.CalendarVO"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random"%>
@@ -62,6 +63,7 @@
 	if(vo != null){
 		CheckCalendar = dao.CheckResult(vo.getMb_id());
 	}
+	ArrayList<PointVO> polist = dao.SelectAllPoint(vo.getMb_id());
 	%>
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -166,7 +168,7 @@
 			</div>
 		</div>
 		
-		<div id="mypage3" class="mypageMain2">
+		<div id="mypage3" class="mypageMain">
 			<div class="mp_word">
 				<h3>마이페이지</h3>
 			</div>
@@ -184,16 +186,18 @@
 				</div>
 				<div class="mp_b_content">
 					<h5>Point</h5>
-					<ul>
-						<li>이름  : <%=vo.getMb_name() %> </li>
-						<li>ID  : <%=vo.getMb_id() %></li>
-						<li>PW  : <%=vo.getMb_pw() %></li>
-						<li>E-mail  : <%=vo.getMb_email() %></li>
-						<li>성별  : <%=vo.getMb_gender() %></li>
-						<li>전화번호  : <%=vo.getMb_phone() %></li>
-						<li>생일  : <%=vo.getMb_birthdate() %></li>
-						<li>주소  : <%=vo.getMb_addr() %></li>
-					</ul>
+					
+					<table>
+						<%for(int i=0; i<polist.size(); i++){ %>
+							<tr>
+								<td><%=polist.get(i).getPoint_memo() %></td>
+								<td><%=polist.get(i).getPoint_kind() %></td>
+								<td><%=polist.get(i).getPoint() %></td>
+								<td><%=polist.get(i).getReg_date() %></td>
+							</tr>
+						<%} %>
+					</table>
+					
 					<a href="mypage_check.jsp" class="mp_check_go">수정</a>
 				</div>
 			</div>

@@ -32,6 +32,7 @@ public class DAO {
 	CalendarVO civo = null;
 	ArrayList<CalendarVO> CheckCalendar = new ArrayList<CalendarVO>();
 	PointVO povo = null;
+	ArrayList<PointVO> polist = new ArrayList<PointVO>();
 
 	// DB연결
 	public void connection() {
@@ -842,6 +843,7 @@ public class DAO {
 	}
 	// =============================================================================================
 	
+	//포인트 받은 적 있는지 불러오기
 	public PointVO SelectPoint(String mb_id, String point_memo, String reg_date) {
 		try {
 			connection();
@@ -876,6 +878,41 @@ public class DAO {
 			close();
 		}
 		return povo;
+	}
+	//=================================================================================================
+	public ArrayList<PointVO> SelectAllPoint(String mb_id) {
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_point where mb_id = ?";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, mb_id);
+			
+			// 실행
+			rs = psmt.executeQuery();
+
+			// cvo에 체크리스트 저장
+			while (rs.next() == true) {
+				int pointSeq = rs.getInt(1);
+				int point = rs.getInt(2);
+				String pointMemo = rs.getString(3);
+				String regDate = rs.getString(4);
+				String mbId = rs.getString(5);
+				String pointKind = rs.getString(6);
+
+				povo = new PointVO(pointSeq, point, pointMemo, regDate, mbId, pointKind);
+				polist.add(povo);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		return polist;
 	}
 	//=================================================================================================
 	
