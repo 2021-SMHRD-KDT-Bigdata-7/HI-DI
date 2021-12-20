@@ -478,6 +478,11 @@ pre {
     .container {
       max-width: 1140px; } }
 
+.graph{
+	margin-right: auto;
+	margin-left: auto;
+}
+
 .container-fluid {
   width: 100%;
   padding-right: 15px;
@@ -6669,7 +6674,7 @@ button.bg-dark:focus {
 .mx-5 {
   margin-right: 3rem !important; }
 
-.mb-5,
+
 .my-5 {
 	/* margin-top : 3rem !important; */
   margin-bottom: 4rem !important; }
@@ -6784,7 +6789,7 @@ button.bg-dark:focus {
 .px-5 {
   padding-right: 3rem !important; }
 
-.pb-5,
+
 .py-5 {
   padding-bottom: 2.5rem !important; }
 
@@ -10440,36 +10445,33 @@ textarea.form-control {
     padding-top: 4vh;
 }
 
-/* 포인트 페이지 */
-#ds_list{
-    margin: 4vh 0 3vh 5vw;
-}
-#ds_list .checktitle{
-	font-size: 1.7rem;
-	font-weight: 600;
-	margin-bottom:4vh;
-}
-#ds_list table{
+/* 통계페이지 */
+.st_b_content table{
 	width:100%;
 }
-#ds_list table tr:nth-child(4){
-	border-bottom: 3px #748CAA solid;
-}
-#ds_list table tr{
+
+.st_b_content table tr{
 	line-height:5vh;
 	border-bottom: 2px #efefef solid;
 	width:100%;
 }
-#ds_list table tr:nth-child(1){
+.st_b_content table tr:nth-child(1){
 	border-top: 3px #748CAA solid;
 }
-#ds_list table tr td:nth-child(1){
+.st_b_content table tr td:nth-child(1){
 	background: #FaFaFa;
 	text-align: center;
 }
-#ds_list table tr td:nth-child(2){
-	border-left:2px #efefef solid;
+.st_b_content table tr td:nth-child(3){
+	background: #FaFaFa;
+	text-align: center;
 }
-#ds_list table tr:last-child td{
-    padding-top: 4vh;
+.st_b_content table tr td:last-child .st3_click{
+	display: block;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    background: #111;
+    color: #fff !important;
+    margin-right: 5vh;
 }

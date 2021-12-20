@@ -40,7 +40,7 @@
 
 <%
 	DAO dao = new DAO();
-	ArrayList<StatisticsVO> stalist = dao.SelectYearSta("2020");
+	/* ArrayList<StatisticsVO> stalist2020 = dao.SelectYearSta("2020"); */
 	
 	
 %>
@@ -93,7 +93,7 @@
 	</section>
 	
 	<div id="statis_body">
-	
+		
 		<div id="statis1" class="open statisMain">
 			<div class="st_word">
 				<h3>질병통계</h3>
@@ -103,32 +103,9 @@
 					<section>
 						<a href="#" class="st1_click"><p>질병통계</p></a>
 					</section>
-					<section>
-						<a href="#" class="st2_click"><p>연도/연령별 통계</p></a>
-					</section>
 				</div>
 				<div class="st_b_content">
-					<!-- 질병통계 내용 입력하세용 -->
-					<canvas id="bar-chart-horizontal" width="500" height="250"></canvas>
-				</div>
-			</div>
-		</div>
-		
-		<div id="statis2" class="statisMain">
-			<div class="st_word">
-				<h3>질병통계</h3>
-			</div>
-			<div class="st_body">
-				<div class="st_b_menu">
-					<section>
-						<a href="#" class="st1_click"><p>질병통계</p></a>
-					</section>
-					<section>
-						<a href="#" class="st2_click"><p>연도/연령별 통계</p></a>
-					</section>
-				</div>
-				<div class="st_b_content">
-					<form action="">
+					<form action="statistics.jsp">
 						<table>
 							<tr>
 								<td>연령 구분</td>
@@ -154,7 +131,12 @@
 										<option value="2018">2018</option>
 									</select>
 								</td>
-								<td><button class="st3_click">조회</button></td>
+								<td><button class="st3_click">조회</td>
+							</tr>
+							<tr>
+								<td colspan="5">
+									
+								</td>
 							</tr>
 						</table>
 					</form>
@@ -162,15 +144,15 @@
 			</div>
 		</div>
 		
-		<div id="statis3" class="statisMain">
+		<div id="statis2" class="statisMain" style="display:none">
 			<div class="st_body">
+				<div class="st_b_menu"></div>
 				<div class="st_b_content">
-					<!-- 질병통계 내용 입력하세용 -->
-					<span>시발</span>
-					<canvas id="search_bar-chart-horizontal" width="500" height="250"></canvas>
+					<canvas id="bar-chart-horizontal" width="500" height="250"></canvas>
 				</div>
 			</div>
 		</div>
+		
 	</div>
 	
 	
@@ -272,6 +254,7 @@
 		</svg>
 	</div>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -291,105 +274,57 @@
 	<!-- 그래프 그리기 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<script>
-	<%if(stalist != null){%>
-		new Chart(document.getElementById("bar-chart-horizontal"), {
-		    type: 'horizontalBar',
-		    data: {
-		      labels: ["<%=stalist.get(0).getDis_name()%>", 
-		    	  "<%=stalist.get(1).getDis_name()%>", 
-		    	  "<%=stalist.get(2).getDis_name()%>", 
-		    	  "<%=stalist.get(3).getDis_name()%>", 
-		    	  "<%=stalist.get(4).getDis_name()%>", 
-		    	  "<%=stalist.get(5).getDis_name()%>", 
-		    	  "<%=stalist.get(6).getDis_name()%>", 
-		    	  "<%=stalist.get(7).getDis_name()%>", 
-		    	  "<%=stalist.get(8).getDis_name()%>", 
-		    	  "<%=stalist.get(9).getDis_name()%>"],
-		      datasets: [
-		        {
-		          label: "Population (millions)",
-		          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-		          data: ["<%=stalist.get(0).getSta_count()%>", 
-			    	  "<%=stalist.get(1).getSta_count()%>", 
-			    	  "<%=stalist.get(2).getSta_count()%>", 
-			    	  "<%=stalist.get(3).getSta_count()%>", 
-			    	  "<%=stalist.get(4).getSta_count()%>", 
-			    	  "<%=stalist.get(5).getSta_count()%>", 
-			    	  "<%=stalist.get(6).getSta_count()%>", 
-			    	  "<%=stalist.get(7).getSta_count()%>", 
-			    	  "<%=stalist.get(8).getSta_count()%>", 
-			    	  "<%=stalist.get(9).getSta_count()%>"],
-		        }
-		      ]
-		    },
-		    options: {
-		      legend: { display: false },
-		      title: {
-		        display: true,
-		        text: '2020년 외래 환자 수'
-		      }
-		    }
-		});
- 	
 		$(".st3_click").click(function(){
-			$("#statis1").removeClass("open");
-			$("#statis2").addClass("open");
-			$("#statis3").addClass("open");
-			console.log($("select[name=ageselect] option:selected").text());
-			
-			var age = $("select[name=ageselect] option:selected").text();
-			
+			$("#statis2").show();
 			<%
-				String a = request.getParameter("ageselect");
-				System.out.println(a);
+				String age = request.getParameter("ageselect");
+				String year = request.getParameter("yearselect");
+				System.out.println(age);
+				System.out.println(year);
+				ArrayList<StatisticsVO> stalist = dao.SelectAgeYearSta(age, year);
+				System.out.println(stalist.get(0).getDis_name());
 			%>
-			
-			<%-- <%for(int i=0; i<stalist.size(); i++){%>
-				if(age == <%=stalist.get(i).getSta_age()%>){
-					new Chart(document.getElementById("search_bar-chart-horizontal"), {
-					    type: 'horizontalBar',
-					    data: {
-					      labels: ["<%=stalist.get(i).getDis_name()%>", 
-					    	  "<%=stalist.get(i).getDis_name()%>", 
-					    	  "<%=stalist.get(i).getDis_name()%>", 
-					    	  "<%=stalist.get(i).getDis_name()%>", 
-					    	  "<%=stalist.get(i).getDis_name()%>", 
-					    	  "<%=stalist.get(i).getDis_name()%>", 
-					    	  "<%=stalist.get(i).getDis_name()%>", 
-					    	  "<%=stalist.get(i).getDis_name()%>", 
-					    	  "<%=stalist.get(i).getDis_name()%>", 
-					    	  "<%=stalist.get(i).getDis_name()%>"],
-					      datasets: [
-					        {
-					          label: "Population (millions)",
-					          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-					          data: ["<%=stalist.get(i).getSta_count()%>", 
-						    	  "<%=stalist.get(i).getSta_count()%>", 
-						    	  "<%=stalist.get(i).getSta_count()%>", 
-						    	  "<%=stalist.get(i).getSta_count()%>", 
-						    	  "<%=stalist.get(i).getSta_count()%>", 
-						    	  "<%=stalist.get(i).getSta_count()%>", 
-						    	  "<%=stalist.get(i).getSta_count()%>", 
-						    	  "<%=stalist.get(i).getSta_count()%>", 
-						    	  "<%=stalist.get(i).getSta_count()%>", 
-						    	  "<%=stalist.get(i).getSta_count()%>"],
-					        }
-					      ]
-					    },
-					    options: {
-					      legend: { display: false },
-					      title: {
-					        display: true,
-					        text: '2020년 외래 환자 수'
-					      }
-					    }
-					});
-				}
-			<%}%> --%>
-			
+
+			new Chart(document.getElementById("bar-chart-horizontal"), {
+			    type: 'horizontalBar',
+			    data: {
+				      labels: ["<%=stalist.get(0).getDis_name()%>", 
+			    	  "<%=stalist.get(1).getDis_name()%>", 
+			    	  "<%=stalist.get(2).getDis_name()%>", 
+			    	  "<%=stalist.get(3).getDis_name()%>", 
+			    	  "<%=stalist.get(4).getDis_name()%>", 
+			    	  "<%=stalist.get(5).getDis_name()%>", 
+			    	  "<%=stalist.get(6).getDis_name()%>", 
+			    	  "<%=stalist.get(7).getDis_name()%>", 
+			    	  "<%=stalist.get(8).getDis_name()%>", 
+			    	  "<%=stalist.get(9).getDis_name()%>"],
+			      datasets: [
+			        {
+			          label: "환자 수(명)",
+			          backgroundColor: ["#ED4C67", "#B53471","#FDA7DF","#D980FA","#12CBC4","#1289A7","#C4E538","#A3CB38","#FFC312","#F79F1F"],
+			          data: ["<%=stalist.get(0).getSta_count()%>", 
+				    	  "<%=stalist.get(1).getSta_count()%>", 
+				    	  "<%=stalist.get(2).getSta_count()%>", 
+				    	  "<%=stalist.get(3).getSta_count()%>", 
+				    	  "<%=stalist.get(4).getSta_count()%>", 
+				    	  "<%=stalist.get(5).getSta_count()%>", 
+				    	  "<%=stalist.get(6).getSta_count()%>", 
+				    	  "<%=stalist.get(7).getSta_count()%>", 
+				    	  "<%=stalist.get(8).getSta_count()%>", 
+				    	  "<%=stalist.get(9).getSta_count()%>"],
+			        }
+			      ]
+			    },
+			    options: {
+			      legend: { display: false },
+			      title: {
+			        display: true,
+			        text: '<%=year%>년 <%=age%> 외래 환자 수'
+			      }
+			    }
+			});
+
 		});
-	
-	<%}%>
 	</script>
 	
 </body>

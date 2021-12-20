@@ -1,3 +1,5 @@
+<%@page import="Model.StatisticsVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Random"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.MemberVO"%>
@@ -55,8 +57,8 @@
 
 	//DAO객체 생성
 	DAO dao = new DAO();
-	%>
-	<%
+	ArrayList<StatisticsVO> stalist = dao.SelectAgeYearSta("종합", "2020");
+	
 	//Random 값 생성
 	Random random = new Random();
 	int[] imgArray = new int[8];
@@ -854,61 +856,26 @@
 					<h2 class="mb-4">질병 통계</h2>
 					<p>사람들의 질병 현황을 확인하고 싶다면 HiDi로!</p>
 					<div class="col-md-3 justify-content-center counter-wrap ftco-animate">
-					<div style="width: 400px">
-						<canvas id="myChart"></canvas>
+						<!-- <div align="center" style="width: 800px ">
+							<canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+						</div> -->
+						
 					</div>
-				</div>
-					<script>
-					// 우선 컨텍스트를 가져옵니다. 
-					var ctx = document.getElementById("myChart").getContext('2d');
-					/*
-					- Chart를 생성하면서, 
-					- ctx를 첫번째 argument로 넘겨주고, 
-					- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
-					*/
-					var myChart = new Chart(ctx, {
-					    type: 'bar',
-					    data: {
-					        labels: [<%=day1%>, <%=day2%>, <%=day3%>, <%=day4%>, <%=day5%>, <%=day6%>, <%=day7%>],
-					        datasets: [{
-					            label: '코로나 주간현황',
-					            data: [<%=day_increase1%>, <%=day_increase2%>, <%=day_increase3%>, <%=day_increase4%>, <%=day_increase5%>, <%=day_increase6%>, <%=day_increase7%>],
-					            backgroundColor: [
-					                'red',
-					                'red',
-					                'red',
-					                'red',
-					                'red',
-					                'red',
-					                'red'
-					            ],
-					            borderColor: [
-					                'rgba(255,99,132,1)',
-					                'rgba(54, 162, 235, 1)',
-					                'rgba(255, 206, 86, 1)',
-					                'rgba(75, 192, 192, 1)',
-					                'rgba(153, 102, 255, 1)',
-					                'rgba(75, 102, 255, 1)',
-					                'rgba(255, 159, 64, 1)'
-					            ],
-					            borderWidth: 1
-					        }]
-					    },
-					    options: {
-					        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
-					        scales: {
-					            yAxes: [{
-					                ticks: {
-					                    beginAtZero:true
-					                }
-					            }]
-					        }
-					    }
-					});
-				</script>
+					
 				</div>
 			</div>
 		</div>
+			<table class="graph">
+				<tr>
+					<td>
+						<canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+					</td>
+					<td><spnan style="display:non" width="100"></spnan></td>
+					<td>
+						<canvas id="myChart" width="800" height="450"></canvas>
+					</td>
+				</tr>
+			</table>
 	</section>
 
 
@@ -1036,5 +1003,95 @@
 	<script src="js/script.js"></script>
 	<script src="js/js_main.js"></script>
 	<script src="js/slidejs.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script>
+			new Chart(document.getElementById("bar-chart-horizontal"), {
+			    type: 'horizontalBar',
+			    data: {
+				      labels: ["<%=stalist.get(0).getDis_name()%>", 
+			    	  "<%=stalist.get(1).getDis_name()%>", 
+			    	  "<%=stalist.get(2).getDis_name()%>", 
+			    	  "<%=stalist.get(3).getDis_name()%>", 
+			    	  "<%=stalist.get(4).getDis_name()%>", 
+			    	  "<%=stalist.get(5).getDis_name()%>", 
+			    	  "<%=stalist.get(6).getDis_name()%>", 
+			    	  "<%=stalist.get(7).getDis_name()%>", 
+			    	  "<%=stalist.get(8).getDis_name()%>", 
+			    	  "<%=stalist.get(9).getDis_name()%>"],
+			      datasets: [
+			        {
+			          label: "환자 수(명)",
+			          backgroundColor: ["#ED4C67", "#B53471","#FDA7DF","#D980FA","#12CBC4","#1289A7","#C4E538","#A3CB38","#FFC312","#F79F1F"],
+			          data: ["<%=stalist.get(0).getSta_count()%>", 
+				    	  "<%=stalist.get(1).getSta_count()%>", 
+				    	  "<%=stalist.get(2).getSta_count()%>", 
+				    	  "<%=stalist.get(3).getSta_count()%>", 
+				    	  "<%=stalist.get(4).getSta_count()%>", 
+				    	  "<%=stalist.get(5).getSta_count()%>", 
+				    	  "<%=stalist.get(6).getSta_count()%>", 
+				    	  "<%=stalist.get(7).getSta_count()%>", 
+				    	  "<%=stalist.get(8).getSta_count()%>", 
+				    	  "<%=stalist.get(9).getSta_count()%>"],
+			        }
+			      ]
+			    },
+			    options: {
+			      legend: { display: false },
+			      title: {
+			        display: true,
+			        text: '2020년 외래 환자 수'
+			      }
+			    }
+			});
+	</script>
+	
+	<script>
+               // 우선 컨텍스트를 가져옵니다. 
+               var ctx = document.getElementById("myChart").getContext('2d');
+               /*
+               - Chart를 생성하면서, 
+               - ctx를 첫번째 argument로 넘겨주고, 
+               - 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+               */
+               var myChart = new Chart(ctx, {
+                   type: 'bar',
+                   data: {
+                       labels: [<%=day1%>, <%=day2%>, <%=day3%>, <%=day4%>, <%=day5%>, <%=day6%>, <%=day7%>],
+                       datasets: [{
+                           label: '코로나 주간현황',
+                           data: [<%=day_increase1%>, <%=day_increase2%>, <%=day_increase3%>, <%=day_increase4%>, <%=day_increase5%>, <%=day_increase6%>, <%=day_increase7%>],
+                           backgroundColor: [
+                               'red',
+                               'red',
+                               'red',
+                               'red',
+                               'red',
+                               'red',
+                               'red'
+                           ],
+                           borderColor: [
+                               'rgba(255,99,132,1)',
+                               'rgba(54, 162, 235, 1)',
+                               'rgba(255, 206, 86, 1)',
+                               'rgba(75, 192, 192, 1)',
+                               'rgba(153, 102, 255, 1)',
+                               'rgba(75, 102, 255, 1)',
+                               'rgba(255, 159, 64, 1)'
+                           ],
+                           borderWidth: 1
+                       }]
+                   },
+                   options: {
+                       maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+                       scales: {
+                           yAxes: [{
+                               ticks: {
+                                   beginAtZero:true
+                               }
+                           }]
+                       }
+                   }
+               });
+	</script>
 </body>
 </html>

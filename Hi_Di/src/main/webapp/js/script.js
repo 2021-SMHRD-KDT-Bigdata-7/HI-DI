@@ -106,21 +106,18 @@ $(".exchange_go").click(
 );
 
 //통계 탭 메뉴 js
-$(".st1_click").click(
+/*$(".st1_click").click(
 	function(){
 		$("#statis1").addClass("open");
 		$("#statis2").removeClass("open");
-		$("#statis3").removeClass("open");
 	}
 );
 $(".st2_click").click(
 	function(){
 		$("#statis1").removeClass("open");
 		$("#statis2").addClass("open");
-		$("#statis3").addClass("open");
 	}
-);
-
+);*/
 
 /* 자가진단 결과 팝업  */
 $(".result_nutri").on("click", function() { 
