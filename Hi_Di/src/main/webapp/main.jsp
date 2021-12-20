@@ -1061,22 +1061,22 @@
                            label: '코로나 주간현황',
                            data: [<%=day_increase1%>, <%=day_increase2%>, <%=day_increase3%>, <%=day_increase4%>, <%=day_increase5%>, <%=day_increase6%>, <%=day_increase7%>],
                            backgroundColor: [
-                               'red',
-                               'red',
-                               'red',
-                               'red',
-                               'red',
-                               'red',
-                               'red'
+                               '#ED4C67',
+                               '#B53471',
+                               '#FDA7DF',
+                               '#D980FA',
+                               '#12CBC4',
+                               '#1289A7',
+                               '#C4E538'
                            ],
                            borderColor: [
-                               'rgba(255,99,132,1)',
-                               'rgba(54, 162, 235, 1)',
-                               'rgba(255, 206, 86, 1)',
-                               'rgba(75, 192, 192, 1)',
-                               'rgba(153, 102, 255, 1)',
-                               'rgba(75, 102, 255, 1)',
-                               'rgba(255, 159, 64, 1)'
+                        	   '#ED4C67',
+                               '#B53471',
+                               '#FDA7DF',
+                               '#D980FA',
+                               '#12CBC4',
+                               '#1289A7',
+                               '#C4E538'
                            ],
                            borderWidth: 1
                        }]
