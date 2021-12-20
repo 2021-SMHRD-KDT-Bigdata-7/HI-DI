@@ -40,12 +40,8 @@
 
 <%
 	DAO dao = new DAO();
-	ArrayList<StatisticsVO> stalist = dao.SelectStatistics();
+	ArrayList<StatisticsVO> stalist = dao.SelectYearSta("2020");
 	
-	
-	if(stalist != null){
-		
-	}
 	
 %>
 
@@ -97,6 +93,7 @@
 	</section>
 	
 	<div id="statis_body">
+	
 		<div id="statis1" class="open statisMain">
 			<div class="st_word">
 				<h3>질병통계</h3>
@@ -106,6 +103,9 @@
 					<section>
 						<a href="#" class="st1_click"><p>질병통계</p></a>
 					</section>
+					<section>
+						<a href="#" class="st2_click"><p>연도/연령별 통계</p></a>
+					</section>
 				</div>
 				<div class="st_b_content">
 					<!-- 질병통계 내용 입력하세용 -->
@@ -113,7 +113,30 @@
 				</div>
 			</div>
 		</div>
+		
+		<div id="statis2" class="statisMain">
+			<div class="st_word">
+				<h3>질병통계</h3>
+			</div>
+			<div class="st_body">
+				<div class="st_b_menu">
+					<section>
+						<a href="#" class="st1_click"><p>질병통계</p></a>
+					</section>
+					<section>
+						<a href="#" class="st2_click"><p>연도/연령별 통계</p></a>
+					</section>
+				</div>
+				<div class="st_b_content">
+					<!-- 질병통계 내용 입력하세용 -->
+				</div>
+			</div>
+		</div>
+		
 	</div>
+	
+	
+	
 	
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
@@ -230,15 +253,34 @@
 	<!-- 그래프 그리기 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<script>
+	<%if(stalist != null){%>
 		new Chart(document.getElementById("bar-chart-horizontal"), {
 		    type: 'horizontalBar',
 		    data: {
-		      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+		      labels: ["<%=stalist.get(0).getDis_name()%>", 
+		    	  "<%=stalist.get(1).getDis_name()%>", 
+		    	  "<%=stalist.get(2).getDis_name()%>", 
+		    	  "<%=stalist.get(3).getDis_name()%>", 
+		    	  "<%=stalist.get(4).getDis_name()%>", 
+		    	  "<%=stalist.get(5).getDis_name()%>", 
+		    	  "<%=stalist.get(6).getDis_name()%>", 
+		    	  "<%=stalist.get(7).getDis_name()%>", 
+		    	  "<%=stalist.get(8).getDis_name()%>", 
+		    	  "<%=stalist.get(9).getDis_name()%>"],
 		      datasets: [
 		        {
 		          label: "Population (millions)",
 		          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-		          data: [2478,5267,734,784,433]
+		          data: ["<%=stalist.get(0).getSta_count()%>", 
+			    	  "<%=stalist.get(1).getSta_count()%>", 
+			    	  "<%=stalist.get(2).getSta_count()%>", 
+			    	  "<%=stalist.get(3).getSta_count()%>", 
+			    	  "<%=stalist.get(4).getSta_count()%>", 
+			    	  "<%=stalist.get(5).getSta_count()%>", 
+			    	  "<%=stalist.get(6).getSta_count()%>", 
+			    	  "<%=stalist.get(7).getSta_count()%>", 
+			    	  "<%=stalist.get(8).getSta_count()%>", 
+			    	  "<%=stalist.get(9).getSta_count()%>"],
 		        }
 		      ]
 		    },
@@ -246,10 +288,11 @@
 		      legend: { display: false },
 		      title: {
 		        display: true,
-		        text: 'Predicted world population (millions) in 2050'
+		        text: '2020년 외래 환자 수'
 		      }
 		    }
 		});
+	<%}%>
 	</script>
 	
 </body>

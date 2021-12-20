@@ -979,4 +979,41 @@ public class DAO {
 		}
 		return stalist;
 	}
+	//=================================================================================================
+	
+	//통계자료 불러오기
+	public ArrayList<StatisticsVO> SelectYearSta(String year) {
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_statistics where year = ?";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, year);
+			
+			// 실행
+			rs = psmt.executeQuery();
+			
+			// cvo에 체크리스트 저장
+			while (rs.next() == true) {
+				int staSeq = rs.getInt(1);
+				String staAge = rs.getString(2);
+				String disName = rs.getString(3);
+				int staCount = rs.getInt(4);
+				String stayear = rs.getString(5);
+				String mbId = rs.getString(6);
+				
+				svo = new StatisticsVO(staSeq, staAge, disName, staCount, stayear, mbId);
+				stalist.add(svo);
+			}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close();
+		}
+		return stalist;
+	}
 }
