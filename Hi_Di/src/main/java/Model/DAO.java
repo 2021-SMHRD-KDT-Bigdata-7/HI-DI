@@ -33,6 +33,8 @@ public class DAO {
 	ArrayList<CalendarVO> CheckCalendar = new ArrayList<CalendarVO>();
 	PointVO povo = null;
 	ArrayList<PointVO> polist = new ArrayList<PointVO>();
+	StatisticsVO svo = null;
+	ArrayList<StatisticsVO> stalist = new ArrayList<StatisticsVO>();
 
 	// DB연결
 	public void connection() {
@@ -880,6 +882,8 @@ public class DAO {
 		return povo;
 	}
 	//=================================================================================================
+	
+	//회원 포인트 불러오기
 	public ArrayList<PointVO> SelectAllPoint(String mb_id) {
 		try {
 			connection();
@@ -917,35 +921,62 @@ public class DAO {
 	//=================================================================================================
 	
 	// 포인트 수정
-		public int UpdatePoint(String mb_id, int mb_point) {
-			// try문
-			// JDBC 코드는 문법이 맞더라도, 실행중에 발생하는 오류(런타임 오류) 처리 필요
-			try {
-
+	public int UpdatePoint(String mb_id, int mb_point) {
+		// try문
+		// JDBC 코드는 문법이 맞더라도, 실행중에 발생하는 오류(런타임 오류) 처리 필요
+		try {
 				connection();
-
 				// 3. sql문 준비
-				String sql = "update t_member set mb_point =? where mb_id = ?";
-				psmt = conn.prepareStatement(sql);
-
+			String sql = "update t_member set mb_point =? where mb_id = ?";
+			psmt = conn.prepareStatement(sql);
 				// 4. 바인드 변수 채우기
-				psmt.setInt(1, mb_point);
-				psmt.setString(2, mb_id);
-				// 5. 실행
-				// select -> executeQuery() --> return ResultSet
-				// insert, delete, update -> executeUpdate() --> return int(몇 행이 성공했는지)
-				cnt = psmt.executeUpdate();
-
+			psmt.setInt(1, mb_point);
+			psmt.setString(2, mb_id);
+			// 5. 실행
+			// select -> executeQuery() --> return ResultSet
+			// insert, delete, update -> executeUpdate() --> return int(몇 행이 성공했는지)
+			cnt = psmt.executeUpdate();
 			} catch (Exception e) {
-
 				e.printStackTrace();
-
 			} finally {
-				close();
+			close();
 
-			}
-			return cnt;
 		}
-		// =====================================================================================================================================
+		return cnt;
+	}
+	// =====================================================================================================================================
 
+	//통계자료 불러오기
+	public ArrayList<StatisticsVO> SelectStatistics() {
+		try {
+			connection();
+			// sql문
+			String sql = "select * from t_statistics";
+			psmt = conn.prepareStatement(sql);
+			
+			// 실행
+			rs = psmt.executeQuery();
+
+			// cvo에 체크리스트 저장
+			while (rs.next() == true) {
+				int staSeq = rs.getInt(1);
+				String staAge = rs.getString(2);
+				String disName = rs.getString(3);
+				int staCount = rs.getInt(4);
+				String year = rs.getString(5);
+				String mbId = rs.getString(6);
+
+				svo = new StatisticsVO(staSeq, staAge, disName, staCount, year, mbId);
+				stalist.add(svo);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		return stalist;
+	}
 }

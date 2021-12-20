@@ -25,14 +25,16 @@ public class ExchangeService extends HttpServlet {
 		MemberVO vo = (MemberVO)session.getAttribute("vo");
 		
 		DAO dao = new DAO();
-
-		int exchangePoint = vo.getMb_point();
-		dao.UpdatePoint(vo.getMb_id(), 0);
-		dao.InsertPoint(exchangePoint, "exchange", vo.getMb_id(), "-");
-		
-		session.setAttribute("vo", new MemberVO(vo.getMb_id(), vo.getMb_pw(), vo.getMb_email(), vo.getMb_name(), vo.getMb_gender(),
-				vo.getMb_phone(), vo.getMb_birthdate(), vo.getMb_addr(), vo.getMb_joindate(), vo.getAdmin_yn(), 0));
-		
+		if(vo.getMb_point() >0) {
+			int exchangePoint = vo.getMb_point();
+			dao.UpdatePoint(vo.getMb_id(), 0);
+			dao.InsertPoint(exchangePoint, "exchange", vo.getMb_id(), "-");
+			
+			session.setAttribute("vo", new MemberVO(vo.getMb_id(), vo.getMb_pw(), vo.getMb_email(), vo.getMb_name(), vo.getMb_gender(),
+					vo.getMb_phone(), vo.getMb_birthdate(), vo.getMb_addr(), vo.getMb_joindate(), vo.getAdmin_yn(), 0));
+			
+			
+		}
 		response.sendRedirect("mypage.jsp");
 
 	}

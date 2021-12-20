@@ -1,3 +1,4 @@
+<%@page import="Model.StatisticsVO"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.time.LocalDate"%>
@@ -36,6 +37,17 @@
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
+
+<%
+	DAO dao = new DAO();
+	ArrayList<StatisticsVO> stalist = dao.SelectStatistics();
+	
+	
+	if(stalist != null){
+		
+	}
+	
+%>
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
 	<nav
@@ -97,6 +109,7 @@
 				</div>
 				<div class="st_b_content">
 					<!-- 질병통계 내용 입력하세용 -->
+					<canvas id="bar-chart-horizontal" width="500" height="250"></canvas>
 				</div>
 			</div>
 		</div>
@@ -213,5 +226,31 @@
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript"></script>
+	
+	<!-- 그래프 그리기 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script>
+		new Chart(document.getElementById("bar-chart-horizontal"), {
+		    type: 'horizontalBar',
+		    data: {
+		      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+		      datasets: [
+		        {
+		          label: "Population (millions)",
+		          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+		          data: [2478,5267,734,784,433]
+		        }
+		      ]
+		    },
+		    options: {
+		      legend: { display: false },
+		      title: {
+		        display: true,
+		        text: 'Predicted world population (millions) in 2050'
+		      }
+		    }
+		});
+	</script>
+	
 </body>
 </html>
