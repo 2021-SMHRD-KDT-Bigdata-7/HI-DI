@@ -619,7 +619,7 @@
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	    	mapOption = { 
 	        	center: new kakao.maps.LatLng(35.11154588685366, 126.87755807671306), // 지도의 중심좌표
-	        	level: 5 // 지도의 확대 레벨
+	        	level: 6 // 지도의 확대 레벨
 	    	};
 	
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -700,7 +700,7 @@
 			});
 		<%}%>
 		
-		/* 
+		
 	 	     //HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 		    if (navigator.geolocation) {
 
@@ -710,7 +710,7 @@
 				lat = position.coords.latitude; // 위도
 				lon = position.coords.longitude; // 경도
 
-				var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+				var locPosition = new kakao.maps.LatLng(35.14490018947609, 126.88934565365793), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 				message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
 
 				// 마커와 인포윈도우를 표시합니다
@@ -748,7 +748,7 @@
 
 			// 지도 중심좌표를 접속위치로 변경합니다
 			map.setCenter(locPosition);
-		}  */
+		}  
 	</script>
 <%}%>
 	<!-- 지도 끝 -->
