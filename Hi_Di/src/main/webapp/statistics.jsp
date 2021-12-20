@@ -101,7 +101,7 @@
 			<div class="st_body">
 				<div class="st_b_menu">
 					<section>
-						<a href="#" class="st1_click"><span>질병통계</span></a>
+						<a href="#" class="st1_click"><p>질병통계</p></a>
 					</section>
 				</div>
 				<div class="st_b_content">
