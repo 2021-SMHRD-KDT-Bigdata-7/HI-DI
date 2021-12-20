@@ -101,7 +101,7 @@
 			<div class="st_body">
 				<div class="st_b_menu">
 					<section>
-						<a href="#" class="st1_click"><p>질병통계</p></a>
+						<a href="#" class="st1_click"><span>질병통계</span></a>
 					</section>
 				</div>
 				<div class="st_b_content">
@@ -131,7 +131,7 @@
 										<option value="2018">2018</option>
 									</select>
 								</td>
-								<td><button class="st3_click">조회</td>
+								<td><button class="st3_click">조회</button></td>
 							</tr>
 							<tr>
 								<td colspan="5">
@@ -245,14 +245,14 @@
 	</footer>
 	
 	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen">
+<!-- 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
          <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke="#eeeeee" />
          <circle class="path" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
 		</svg>
-	</div>
+	</div> -->
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="js/jquery.min.js"></script>
@@ -277,52 +277,53 @@
 		$(".st3_click").click(function(){
 			$("#statis2").show();
 			<%
+				ArrayList<StatisticsVO> stalist = new ArrayList<StatisticsVO>();
 				String age = request.getParameter("ageselect");
 				String year = request.getParameter("yearselect");
-				System.out.println(age);
-				System.out.println(year);
-				ArrayList<StatisticsVO> stalist = dao.SelectAgeYearSta(age, year);
-				System.out.println(stalist.get(0).getDis_name());
+				if(age !=null && year !=null){
+					stalist = dao.SelectAgeYearSta(age, year);					
+				}
 			%>
-
-			new Chart(document.getElementById("bar-chart-horizontal"), {
-			    type: 'horizontalBar',
-			    data: {
-				      labels: ["<%=stalist.get(0).getDis_name()%>", 
-			    	  "<%=stalist.get(1).getDis_name()%>", 
-			    	  "<%=stalist.get(2).getDis_name()%>", 
-			    	  "<%=stalist.get(3).getDis_name()%>", 
-			    	  "<%=stalist.get(4).getDis_name()%>", 
-			    	  "<%=stalist.get(5).getDis_name()%>", 
-			    	  "<%=stalist.get(6).getDis_name()%>", 
-			    	  "<%=stalist.get(7).getDis_name()%>", 
-			    	  "<%=stalist.get(8).getDis_name()%>", 
-			    	  "<%=stalist.get(9).getDis_name()%>"],
-			      datasets: [
-			        {
-			          label: "환자 수(명)",
-			          backgroundColor: ["#ED4C67", "#B53471","#FDA7DF","#D980FA","#12CBC4","#1289A7","#C4E538","#A3CB38","#FFC312","#F79F1F"],
-			          data: ["<%=stalist.get(0).getSta_count()%>", 
-				    	  "<%=stalist.get(1).getSta_count()%>", 
-				    	  "<%=stalist.get(2).getSta_count()%>", 
-				    	  "<%=stalist.get(3).getSta_count()%>", 
-				    	  "<%=stalist.get(4).getSta_count()%>", 
-				    	  "<%=stalist.get(5).getSta_count()%>", 
-				    	  "<%=stalist.get(6).getSta_count()%>", 
-				    	  "<%=stalist.get(7).getSta_count()%>", 
-				    	  "<%=stalist.get(8).getSta_count()%>", 
-				    	  "<%=stalist.get(9).getSta_count()%>"],
-			        }
-			      ]
-			    },
-			    options: {
-			      legend: { display: false },
-			      title: {
-			        display: true,
-			        text: '<%=year%>년 <%=age%> 외래 환자 수'
-			      }
-			    }
-			});
+			<% if(stalist != null){%>
+				new Chart(document.getElementById("bar-chart-horizontal"), {
+				    type: 'horizontalBar',
+				    data: {
+					      labels: ["<%=stalist.get(0).getDis_name()%>", 
+				    	  "<%=stalist.get(1).getDis_name()%>", 
+				    	  "<%=stalist.get(2).getDis_name()%>", 
+				    	  "<%=stalist.get(3).getDis_name()%>", 
+				    	  "<%=stalist.get(4).getDis_name()%>", 
+				    	  "<%=stalist.get(5).getDis_name()%>", 
+				    	  "<%=stalist.get(6).getDis_name()%>", 
+				    	  "<%=stalist.get(7).getDis_name()%>", 
+				    	  "<%=stalist.get(8).getDis_name()%>", 
+				    	  "<%=stalist.get(9).getDis_name()%>"],
+				      datasets: [
+				        {
+				          label: "환자 수(명)",
+				          backgroundColor: ["#ED4C67", "#B53471","#FDA7DF","#D980FA","#12CBC4","#1289A7","#C4E538","#A3CB38","#FFC312","#F79F1F"],
+				          data: ["<%=stalist.get(0).getSta_count()%>", 
+					    	  "<%=stalist.get(1).getSta_count()%>", 
+					    	  "<%=stalist.get(2).getSta_count()%>", 
+					    	  "<%=stalist.get(3).getSta_count()%>", 
+					    	  "<%=stalist.get(4).getSta_count()%>", 
+					    	  "<%=stalist.get(5).getSta_count()%>", 
+					    	  "<%=stalist.get(6).getSta_count()%>", 
+					    	  "<%=stalist.get(7).getSta_count()%>", 
+					    	  "<%=stalist.get(8).getSta_count()%>", 
+					    	  "<%=stalist.get(9).getSta_count()%>"],
+				        }
+				      ]
+				    },
+				    options: {
+				      legend: { display: false },
+				      title: {
+				        display: true,
+				        text: '<%=year%>년 <%=age%> 외래 환자 수'
+				      }
+				    }
+				});
+			<%}%>
 
 		});
 	</script>

@@ -10340,7 +10340,7 @@ textarea.form-control {
 	font-size: 1.1rem;
 	font-weight: 600;
 }
-.st_b_menu section a p::after{
+.st_b_menu section a span::after{
 	content:">";
 	font-size: 1.1rem;
 	font-weight: 600;
