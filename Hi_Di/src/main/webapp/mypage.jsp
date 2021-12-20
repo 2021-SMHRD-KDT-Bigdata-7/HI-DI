@@ -162,7 +162,7 @@
 				<div id = "nosibal">
 				<h5>MyCalendar</h5>
 					<div id='calendar-container'>
-						<div id='calendar' class="mp_b_content"></div>
+						<div id='calendar'></div>
 					</div>
 				</div>
 			</div>
@@ -320,19 +320,60 @@
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
 	<script src="js/js_main.js"></script>
-	<script src="js/script.js"></script>
+	<script src="js/script.js" charset='utf-8'></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript"></script>
 	
 	<!-- È¯Àü -->
 	<script type="text/javascript">
+		
 		$('#submit').on('click', function(){
-			window.location = 'ExchangeService'
+			window.location = 'ExchangeService';
 		}
 	</script>
 	<!--  -->
 	
 	<!-- Ä¶¸°´õ -->
+	<script>
+    	var calendarEl = document.getElementById('calendar');
+
+    	var calendar = new FullCalendar.Calendar(calendarEl, {
+    		aspectRatio: 1.35,
+    		expendRows: true,
+    		height: '1000px',
+    		headerToolbar: {
+        		left: 'prevYear,prev,next,nextYear',
+        		center: 'title',
+        		right: 'dayGridMonth,dayGridWeek,today'
+      		},
+      		navLinks: true, // can click day/week names to navigate views
+      		editable: true,
+      		dayMaxEvents: true, // allow "more" link when too many events
+    	});
+	
+    	calendar.render();
+	</script>
+	
+<%if(CheckCalendar != null){ %>
+	<script type="text/javascript">
+		
+		<%for(int i=0; i<CheckCalendar.size(); i++){%>
+			<%if(CheckCalendar.get(i).getUser_check_result().equals("y")){%>
+				<%int seq=CheckCalendar.get(i).getCheck_seq();%>
+				<%cvo = dao.SelectSeqCheck(seq); %>
+				<%if (cvo != null){%>
+					calendar.addEvent({
+						title: "<%=cvo.getCheck_name()%>",
+						start: "<%=CheckCalendar.get(i).getReg_date().substring(0,10)%>",
+						allDay: true
+					});
+				<%}%>
+			<%}%>
+		<%}%>
+	</script>
+<%} %>
+	
+	<%-- <!-- Ä¶¸°´õ -->
 	<script>
     	var calendarEl = document.getElementById('calendar');
 
@@ -373,6 +414,6 @@
 			<%}%>
 		<%}%>
 	</script>
-<%} %>
+<%} %> --%>
 </body>
 </html>	

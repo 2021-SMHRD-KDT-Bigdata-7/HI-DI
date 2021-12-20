@@ -1054,7 +1054,7 @@
                - 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
                */
                var myChart = new Chart(ctx, {
-                   type: 'bar',
+                   type: 'horizontalBar',
                    data: {
                        labels: [<%=day1%>, <%=day2%>, <%=day3%>, <%=day4%>, <%=day5%>, <%=day6%>, <%=day7%>],
                        datasets: [{
@@ -1082,15 +1082,12 @@
                        }]
                    },
                    options: {
-                       maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
-                       scales: {
-                           yAxes: [{
-                               ticks: {
-                                   beginAtZero:true
-                               }
-                           }]
-                       }
-                   }
+     			      legend: { display: false },
+     			      title: {
+     			        display: true,
+     			        text: '코로나 주간 현황'
+     			      }
+     			    }
                });
 	</script>
 </body>

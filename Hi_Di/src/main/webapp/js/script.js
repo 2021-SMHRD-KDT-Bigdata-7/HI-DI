@@ -99,8 +99,7 @@ $(".mp3_click").click(
 		$("#mypage3").addClass("open");
 	}
 );
-$(".exchange_go").click(
-	function(){
+$(".exchange_go").on('click', function(){
 		alert('환전이 완료 되었습니다.');
 	}
 );

@@ -1,6 +1,10 @@
 
 /* classes attached to <body> */
 /* TODO: make fc-event selector work when calender in shadow DOM */
+.fc-event-title.fc-sticky{
+    white-space: normal;
+}
+
 .fc-not-allowed,
 .fc-not-allowed .fc-event { /* override events' custom cursors */
   cursor: not-allowed;
