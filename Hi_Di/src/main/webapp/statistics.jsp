@@ -39,10 +39,12 @@
 	data-offset="300">
 
 <%
-	DAO dao = new DAO();
-	/* ArrayList<StatisticsVO> stalist2020 = dao.SelectYearSta("2020"); */
-	
-	
+/* 	DAO dao = new DAO();
+	ArrayList<StatisticsVO> stalist = new ArrayList<StatisticsVO>();
+	String age = request.getParameter("age");
+	String year = request.getParameter("year");
+	stalist = dao.SelectAgeYearSta(age, year); */
+	ArrayList<StatisticsVO> stalist = (ArrayList<StatisticsVO>)request.getAttribute("stalist");
 %>
 
 	<!-- 메뉴(자가진단, 설문, 마이페이지) -->
@@ -105,7 +107,7 @@
 					</section>
 				</div>
 				<div class="st_b_content">
-					<form action="statistics.jsp">
+					<form action="StatisticsService" method="get">
 						<table>
 							<tr>
 								<td>연령 구분</td>
@@ -131,11 +133,9 @@
 										<option value="2018">2018</option>
 									</select>
 								</td>
-								<td><button class="st3_click">조회</button></td>
-							</tr>
-							<tr>
-								<td colspan="5">
-									
+								<td>
+									<!-- <button type="button" id="submit" class="st3_click">조회</button> -->
+									<input type="submit" class="st3_click" value="조회">
 								</td>
 							</tr>
 						</table>
@@ -144,14 +144,19 @@
 			</div>
 		</div>
 		
-		<div id="statis2" class="statisMain" style="display:none">
+		<%if(stalist != null){ %>
+		<!-- <div id="statis2" class="statisMain" style="display:none"> -->
+		<div id="statis2" class="open statisMain">
 			<div class="st_body">
 				<div class="st_b_menu"></div>
 				<div class="st_b_content">
-					<canvas id="bar-chart-horizontal" width="500" height="250"></canvas>
+					
+						<canvas id="bar-chart-horizontal" width="500" height="250"></canvas>
+					
 				</div>
 			</div>
 		</div>
+		<%} %>
 		
 	</div>
 	
@@ -243,16 +248,6 @@
 			</div>
 		</div>
 	</footer>
-	
-	<!-- loader -->
-<!-- 	<div id="ftco-loader" class="show fullscreen">
-		<svg class="circular" width="48px" height="48px">
-         <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke="#eeeeee" />
-         <circle class="path" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
-		</svg>
-	</div> -->
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="js/jquery.min.js"></script>
@@ -271,19 +266,13 @@
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript"></script>
 	
+
 	<!-- 그래프 그리기 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<script>
 		$(".st3_click").click(function(){
-			$("#statis2").show();
-			<%
-				ArrayList<StatisticsVO> stalist = new ArrayList<StatisticsVO>();
-				String age = request.getParameter("ageselect");
-				String year = request.getParameter("yearselect");
-				if(age !=null && year !=null){
-					stalist = dao.SelectAgeYearSta(age, year);					
-				}
-			%>
+			/* $("#statis2").show(); */
+
 			<% if(stalist != null){%>
 				new Chart(document.getElementById("bar-chart-horizontal"), {
 				    type: 'horizontalBar',
@@ -319,7 +308,7 @@
 				      legend: { display: false },
 				      title: {
 				        display: true,
-				        text: '<%=year%>년 <%=age%> 외래 환자 수'
+				        text: '<%=stalist.get(0).getYear()%>년 <%=stalist.get(0).getSta_age()%> 외래 환자 수'
 				      }
 				    }
 				});
