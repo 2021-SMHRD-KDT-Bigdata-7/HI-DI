@@ -9961,7 +9961,27 @@ textarea.form-control {
 	line-height:5vh;
 	border-bottom: 1px #ddd solid;
 }
+.mp_b_content table{
+	padding:0;
+	margin-left:5vw;
+	border-bottom: hidden;
+}
 
+.mp_b_content table tr:nth-child(1){
+	border-top:3px #748CAA solid;
+	background: #FaFaFa
+}
+
+.mp_b_content table tr{
+	line-height:5vh;
+	border-bottom: 1px #ddd solid;
+}
+.mp_b_content table tr td:nth-child(1){
+	width: 1000px;
+}
+.mp_b_content table tr td:nth-child(2){
+	width: 100px;
+}
 .mp_check_go{
 	display:block;
 	width:150px;
@@ -9970,6 +9990,15 @@ textarea.form-control {
     background:#111;
     color:#fff !important;
     margin:5vh 0 0 5vw;
+}
+.exchange_go{
+	display:block;
+	width:150px;
+    line-height:50px;
+    text-align: center;
+    background:#111;
+    color:#fff !important;
+    margin:5vh 5vw 0 0 ;
 }
 
 /*마이페이지 체크 css*/
@@ -10041,6 +10070,7 @@ textarea.form-control {
 	color:#fff;
 	width:20% !important;
 }
+
 
 /* main.jsp 자가진단 */
 
@@ -10377,6 +10407,40 @@ textarea.form-control {
 	width: 85%;
 	margin-top:5vh;
 }
+#ds_list{
+    margin: 4vh 0 3vh 5vw;
+}
+#ds_list .checktitle{
+	font-size: 1.7rem;
+	font-weight: 600;
+	margin-bottom:4vh;
+}
+#ds_list table{
+	width:100%;
+}
+#ds_list table tr:nth-child(4){
+	border-bottom: 3px #748CAA solid;
+}
+#ds_list table tr{
+	line-height:5vh;
+	border-bottom: 2px #efefef solid;
+	width:100%;
+}
+#ds_list table tr:nth-child(1){
+	border-top: 3px #748CAA solid;
+}
+#ds_list table tr td:nth-child(1){
+	background: #FaFaFa;
+	text-align: center;
+}
+#ds_list table tr td:nth-child(2){
+	border-left:2px #efefef solid;
+}
+#ds_list table tr:last-child td{
+    padding-top: 4vh;
+}
+
+/* 포인트 페이지 */
 #ds_list{
     margin: 4vh 0 3vh 5vw;
 }

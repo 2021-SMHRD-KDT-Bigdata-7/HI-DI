@@ -884,7 +884,7 @@ public class DAO {
 		try {
 			connection();
 			// sql¹®
-			String sql = "select * from t_point where mb_id = ?";
+			String sql = "select * from t_point where mb_id = ? order by reg_date";
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setString(1, mb_id);

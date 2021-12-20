@@ -110,20 +110,20 @@
 	</section>
 
 	<div id="mypage_body">
-		<div id="mypage1" class="open mypageMain">
+		<div id="mypage3" class="mypageMain">
 			<div class="mp_word">
 				<h3>마이페이지</h3>
 			</div>
 			<div class="mp_body">
 				<div class="mp_b_menu">
 					<section>
-						<a href="#" class="mp1_click"><p>개인정보수정</p></a>
+						<a href="#" class="mp1_click"><p>Point</p></a>
 					</section>
 					<section>
 						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
 					</section>
 					<section>
-						<a href="#" class="mp3_click"><p>Point</p></a>
+						<a href="#" class="mp3_click"><p>개인정보수정</p></a>
 					</section>
 				</div>
 				<div class="mp_b_content">
@@ -150,13 +150,13 @@
 			<div class="mp_body">
 				<div class="mp_b_menu">
 					<section>
-						<a href="#" class="mp1_click"><p>개인정보수정</p></a>
+						<a href="#" class="mp1_click"><p>Point</p></a>
 					</section>
 					<section>
 						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
 					</section>
 					<section>
-						<a href="#" class="mp3_click"><p>Point</p></a>
+						<a href="#" class="mp3_click"><p>개인정보수정</p></a>
 					</section>
 				</div>
 				<div id = "nosibal">
@@ -168,37 +168,45 @@
 			</div>
 		</div>
 		
-		<div id="mypage3" class="mypageMain">
+		<div id="mypage1" class="open mypageMain">
 			<div class="mp_word">
 				<h3>마이페이지</h3>
 			</div>
 			<div class="mp_body">
 				<div class="mp_b_menu">
 					<section>
-						<a href="#" class="mp1_click"><p>개인정보수정</p></a>
+						<a href="#" class="mp1_click"><p>Point</p></a>
 					</section>
 					<section>
 						<a href="#" class="mp2_click"><p>MyCalendar</p></a>
 					</section>
 					<section>
-						<a href="#" class="mp3_click"><p>Point</p></a>
+						<a href="#" class="mp3_click"><p>개인정보수정</p></a>
 					</section>
 				</div>
 				<div class="mp_b_content">
 					<h5>Point</h5>
-					
-					<table>
-						<%for(int i=0; i<polist.size(); i++){ %>
+					<form action="ExchangeService" method="post">
+						<table>
 							<tr>
-								<td><%=polist.get(i).getPoint_memo() %></td>
-								<td><%=polist.get(i).getPoint_kind() %></td>
-								<td><%=polist.get(i).getPoint() %></td>
-								<td><%=polist.get(i).getReg_date() %></td>
+								<td>포인트 내역</td>
+								<td>포인트</td>
+								<td>날짜</td>
 							</tr>
-						<%} %>
-					</table>
-					
-					<a href="mypage_check.jsp" class="mp_check_go">수정</a>
+							<%for(int i=0; i<polist.size(); i++){ %>
+								<tr>
+									<td><%=polist.get(i).getPoint_memo() %></td>
+									<td><%=polist.get(i).getPoint_kind() %><%=polist.get(i).getPoint() %></td>
+									<td><%=polist.get(i).getReg_date() %></td>
+								</tr>
+							<%} %>
+							<tr>
+								<td colspan="3" align="right">
+									<input type="submit" class="exchange_go" value="환전">
+								</td>
+							</tr>
+						</table>					
+					</form>
 				</div>
 			</div>
 		</div>
@@ -315,6 +323,15 @@
 	<script src="js/script.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript"></script>
+	
+	<!-- 환전 -->
+	<script type="text/javascript">
+		$('#submit').on('click', function(){
+			window.location = 'ExchangeService'
+		}
+	</script>
+	<!--  -->
+	
 	<!-- 캘린더 -->
 	<script>
     	var calendarEl = document.getElementById('calendar');

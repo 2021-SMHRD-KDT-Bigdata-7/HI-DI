@@ -99,6 +99,11 @@ $(".mp3_click").click(
 		$("#mypage3").addClass("open");
 	}
 );
+$(".exchange_go").click(
+	function(){
+		alert('환전이 완료 되었습니다.');
+	}
+);
 
 /* 자가진단 결과 팝업  */
 $(".result_nutri").on("click", function() { 
