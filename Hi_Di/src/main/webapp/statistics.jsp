@@ -128,11 +128,49 @@
 					</section>
 				</div>
 				<div class="st_b_content">
-					<!-- 질병통계 내용 입력하세용 -->
+					<form action="">
+						<table>
+							<tr>
+								<td>연령 구분</td>
+								<td>
+									<select id="ageselect" name="ageselect">
+										<option value="">선택</option>
+										<option value="10대">10대</option>
+										<option value="20대">20대</option>
+										<option value="30대">30대</option>
+										<option value="40대">40대</option>
+										<option value="50대">50대</option>
+										<option value="60대">60대</option>
+										<option value="70대">70대</option>
+										<option value="80대">80대</option>
+									</select>
+								</td>
+								<td>기준 년도</td>
+								<td>
+									<select id="yearselect" name="yearselect">
+										<option value="">선택</option>
+										<option value="2020">2020</option>
+										<option value="2019">2019</option>
+										<option value="2018">2018</option>
+									</select>
+								</td>
+								<td><button class="st3_click">조회</button></td>
+							</tr>
+						</table>
+					</form>
 				</div>
 			</div>
 		</div>
 		
+		<div id="statis3" class="statisMain">
+			<div class="st_body">
+				<div class="st_b_content">
+					<!-- 질병통계 내용 입력하세용 -->
+					<span>시발</span>
+					<canvas id="search_bar-chart-horizontal" width="500" height="250"></canvas>
+				</div>
+			</div>
+		</div>
 	</div>
 	
 	
@@ -292,6 +330,65 @@
 		      }
 		    }
 		});
+ 	
+		$(".st3_click").click(function(){
+			$("#statis1").removeClass("open");
+			$("#statis2").addClass("open");
+			$("#statis3").addClass("open");
+			console.log($("select[name=ageselect] option:selected").text());
+			
+			var age = $("select[name=ageselect] option:selected").text();
+			
+			<%
+				String a = request.getParameter("ageselect");
+				System.out.println(a);
+			%>
+			
+			<%-- <%for(int i=0; i<stalist.size(); i++){%>
+				if(age == <%=stalist.get(i).getSta_age()%>){
+					new Chart(document.getElementById("search_bar-chart-horizontal"), {
+					    type: 'horizontalBar',
+					    data: {
+					      labels: ["<%=stalist.get(i).getDis_name()%>", 
+					    	  "<%=stalist.get(i).getDis_name()%>", 
+					    	  "<%=stalist.get(i).getDis_name()%>", 
+					    	  "<%=stalist.get(i).getDis_name()%>", 
+					    	  "<%=stalist.get(i).getDis_name()%>", 
+					    	  "<%=stalist.get(i).getDis_name()%>", 
+					    	  "<%=stalist.get(i).getDis_name()%>", 
+					    	  "<%=stalist.get(i).getDis_name()%>", 
+					    	  "<%=stalist.get(i).getDis_name()%>", 
+					    	  "<%=stalist.get(i).getDis_name()%>"],
+					      datasets: [
+					        {
+					          label: "Population (millions)",
+					          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+					          data: ["<%=stalist.get(i).getSta_count()%>", 
+						    	  "<%=stalist.get(i).getSta_count()%>", 
+						    	  "<%=stalist.get(i).getSta_count()%>", 
+						    	  "<%=stalist.get(i).getSta_count()%>", 
+						    	  "<%=stalist.get(i).getSta_count()%>", 
+						    	  "<%=stalist.get(i).getSta_count()%>", 
+						    	  "<%=stalist.get(i).getSta_count()%>", 
+						    	  "<%=stalist.get(i).getSta_count()%>", 
+						    	  "<%=stalist.get(i).getSta_count()%>", 
+						    	  "<%=stalist.get(i).getSta_count()%>"],
+					        }
+					      ]
+					    },
+					    options: {
+					      legend: { display: false },
+					      title: {
+					        display: true,
+					        text: '2020년 외래 환자 수'
+					      }
+					    }
+					});
+				}
+			<%}%> --%>
+			
+		});
+	
 	<%}%>
 	</script>
 	
