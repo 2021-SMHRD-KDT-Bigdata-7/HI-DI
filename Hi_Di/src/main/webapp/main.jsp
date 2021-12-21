@@ -904,8 +904,11 @@
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2">식품검색</h2>
-						<p> 회원님의 식품을 추천해주고 6만개의 식품을 검색해서
-							식품에 대한 영양성분을 알아볼 수 있습니다.</p>
+					<ul class="list-unstyled">
+							<li>회원님의 식품을 추천해주고 6만개의 식품을 검색해서
+							식품에 대한 영양성분을 알아볼 수 있습니다. </li>
+						</ul>
+
 					</div>
 				</div>
 				<div class="col-md">
