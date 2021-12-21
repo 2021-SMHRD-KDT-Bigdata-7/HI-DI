@@ -885,56 +885,58 @@
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-4">
+						<h2 class="ftco-heading-2">자가진단</h2>
+						<ul class="list-unstyled">
+							<li><a href="http://localhost:8081/Hi_Di/SelectAllService#"><span class="fa fa-chevron-right mr-2"></span>데일리체크</a></li>
+							<li><a href="http://localhost:8081/Hi_Di/SelectAllService#"><span class="fa fa-chevron-right mr-2"></span>자가진단</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Lets talk about</h2>
-						<p>Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Learn more</a>
-						</p>
+						<h2 class="ftco-heading-2">질병검색</h2>
+						<ul class="list-unstyled">
+							<li>원하는 질병에 대한 정보를 검색하여 정보를 얻을 수 있습니다. </li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">식품검색</h2>
+						<p> 회원님의 식품을 추천해주고 6만개의 식품을 검색해서
+							식품에 대한 영양성분을 알아볼 수 있습니다.</p>
 					</div>
 				</div>
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4 ml-md-4">
-						<h2 class="ftco-heading-2">Links</h2>
+						<h2 class="ftco-heading-2">설문</h2>
 						<ul class="list-unstyled">
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Home</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Services</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Projects</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
+							<li><a href="http://localhost:8081/Hi_Di/poll.jsp"><span class="fa fa-chevron-right mr-2"></span>코로나</a></li>
+							<li><a href="http://localhost:8081/Hi_Di/poll.jsp"><span class="fa fa-chevron-right mr-2"></span>암</a></li>
+							<li><a href="http://localhost:8081/Hi_Di/poll.jsp"><span class="fa fa-chevron-right mr-2"></span>뇌졸중</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Services</h2>
+						<h2 class="ftco-heading-2">질병통계</h2>
 						<ul class="list-unstyled">
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
-									Design</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web
-									Development</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Business
-									Strategy</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Data
-									Analysis</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Graphic
-									Design</a></li>
+							<li>연령별, 연도별 사람들이 많이 걸리는 10가지의 질병 현황 통계를 확인할 수 있습니다.</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<h2 class="ftco-heading-2">마이페이지</h2>
 						<div class="block-23 mb-3">
 							<ul>
 								<li><span class="icon fa fa-map marker"></span><span
-									class="text">203 Fake St. Mountain View, San Francisco,
-										California, USA</span></li>
-								<li><a href="#"><span class="icon fa fa-phone"></span><span
-										class="text">+2 392 3929 210</span></a></li>
-								<li><a href="#"><span
-										class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+									class="text"> 광주 광역시 광산구 산월로 81, 부영 e그린타운</span></li>
+								<li><span class="icon fa fa-phone"></span><span
+										class="text">+82 010 2360 0824</span></li>
+								<li><span
+										class="icon fa fa-paper-plane pr-4"></span><span class="text">belger@naver.com</span></li>
 							</ul>
 						</div>
 						<ul class="ftco-footer-social list-unstyled mt-2">
@@ -942,7 +944,7 @@
 									class="fa fa-twitter"></span></a></li>
 							<li class="ftco-animate"><a href="#"><span
 									class="fa fa-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span
+							<li class="ftco-animate"><a href=""><span
 									class="fa fa-instagram"></span></a></li>
 						</ul>
 					</div>
@@ -1054,7 +1056,7 @@
                - 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
                */
                var myChart = new Chart(ctx, {
-                   type: 'horizontalBar',
+                   type: 'bar',
                    data: {
                        labels: [<%=day1%>, <%=day2%>, <%=day3%>, <%=day4%>, <%=day5%>, <%=day6%>, <%=day7%>],
                        datasets: [{
@@ -1082,12 +1084,15 @@
                        }]
                    },
                    options: {
-     			      legend: { display: false },
-     			      title: {
-     			        display: true,
-     			        text: '코로나 주간 현황'
-     			      }
-     			    }
+                       maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+                       scales: {
+                           yAxes: [{
+                               ticks: {
+                                   beginAtZero:true
+                               }
+                           }]
+                       }
+                   }
                });
 	</script>
 </body>
